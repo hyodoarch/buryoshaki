@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: buryoshaki.github.io
+  baseUrl: hyodoarch.github.io/buryoshaki.github.io
   ignorePatterns:
     - private
     - templates
