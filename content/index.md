@@ -1,8 +1,10 @@
 ---
 title: Welcome to Quartz
+publish:
 ---
-
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
-
-WEB公開の練習
+## 疑問点
+- ファイル名を記事タイトルとする OR 文面内にh1 もしくはプロパティでタイトルをつける
+	- ファイル名を記事タイトルとした場合、検索できるのか？
+	- プロパティでタイトルが必要な場合、テンプレートでファイル名をプロパティタイトルに自動入力できるのか？
+- WXR の xml のファイルから新URL対応表を作る
+	- 対応表 ≫ 303ページの作り方
