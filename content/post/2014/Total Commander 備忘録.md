@@ -12,7 +12,7 @@ old_url: https://www.hyodo-arch.com/buryoshaki/archives/979
 wordpress_id: 979
 ---
 
-![tc-ss|450](/images/2014/tc-ss1.png)
+![tc-ss](/images/2014/tc-ss1.png)
 昨年の 1月より、Windows 環境の[ファイルマネージャ](http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3)に [Total Commander](http://www.ghisler.com/) を使っている。使用開始時のバージョンは、8.01 で、今年の 4月に 8.51a がリリースされていたので、盆休みにアップデートした。
 ファイルマネージャは、PC 上での作業をする際、全ての入口となる重要なアプリケーションである。Total Commander 使い始めて 1年半になるが、使いやすく気に入っている。たまに他人の PC などを使って [Windows Explorer](http://ja.wikipedia.org/wiki/Windows_Explorer) で作業しなければならないときなど、ファイル操作が煩わしくて死ぬかと思うほどである。どうして以前は Windows 標準のエクスプローラなんか使っていられたのだろうか？これまでの経緯と考察、設定の備忘録を残しておくことにする。
 

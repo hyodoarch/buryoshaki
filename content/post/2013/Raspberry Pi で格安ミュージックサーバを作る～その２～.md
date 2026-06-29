@@ -13,7 +13,7 @@ old_url: https://www.hyodo-arch.com/buryoshaki/archives/843
 wordpress_id: 843
 ---
 
-![Raspberry Pi と Topping/TP23|450](/images/2013/Low-DSCN7846.jpg)
+![Raspberry Pi と Topping/TP23](/images/2013/Low-DSCN7846.jpg)
 [前回](https://www.hyodo-arch.com/buryoshaki/archives/787)は、Raspberry Pi を使った格安ミュージックサーバのハード構成を紹介した。今回は、Raspberry Pi をミュージックサーバとして使うために私が行った設定を紹介する。ネット検索で参考にさせていただいた HP は大変貴重な情報がある。また参考書として、「[Raspberry Pi ユーザーガイド](http://www.amazon.co.jp/gp/product/4844333747/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=4844333747&linkCode=as2&tag=buryoshaki-22)」が役に立った。
 
 ### raspi-config の設定

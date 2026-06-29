@@ -12,11 +12,11 @@ old_url: https://www.hyodo-arch.com/buryoshaki/archives/495
 wordpress_id: 495
 ---
 
-![ELSA NVIDIA Quadro 600|450](/images/2011/bs-IMGP5317.jpg "bs-IMGP5317")
+![ELSA NVIDIA Quadro 600](/images/2011/bs-IMGP5317.jpg "bs-IMGP5317")
 ここ３ヶ月ほど非常に多忙でして、今日も仕事です。が、世の中はお盆休みなので、少しくらいブログに時間を割いてもよいかと思いまして、久々のブログ更新です。
 [ELSA NVIDIA Quadro 600](http://www.elsa-jp.co.jp/products/graphicsboard/quadro_600/index.html)は、エントリー向けOpenGL ビデオカードです。昨年末より [SketchUp](http://sketchup.google.com/intl/ja/download/index.html) を使うようになったのですが、GeForce （9500GT なので低スペックすぎて参考にならないかもしれませんが）やIntel Graphics での安定性が（特にプラグインで）悪く、色々調べてみると GeForce はゲーム用に最適化されているので、OpenGL 対応といっても、OpenGL に最適化はされていないようなんですね。Quadro 600 は GeForce GT430 とチップ性能が同じですが、Quadro 600 が２万円前後に対して、GT430 は５千円強と４倍近くも価格差があり、「なんで同じGPU(GF108)なのにこんなにも値段が違うのか！」と憤慨していたせいで購入を決断するまでに時間が掛かりましたが、決定打は、次の二つの比較動画でした。
-@@IFRAME\_0@@
-@@IFRAME\_1@@
+@@OBSIDIAN\_IFRAME\_0@@
+@@OBSIDIAN\_IFRAME\_1@@
 どちらも少し古い製品ですが、GeForce GTX480 はハイエンドモデルです。それに対して、Quadro FX380 はエントリーモデルです。この動画を見る限り、FX380の方がシーンの推移がスムーズです。但し、GTX480の動画は影がONになっているので、その分負荷が結構高くなっているはずで、同じ条件とは言えないのが残念なのですが、参考にはなります。
 また[BTO高知](http://www.btopcshop.com/)さんの「[GeForceとQuadro CAD/Adobe](http://www.btopcshop.com/BtoPageInfo.php/cateType/9/evaluateCateId/0/pageId/179)」もかなり参考になりました。
 ゲームではなく、OpenGL 系グラフィックアプリを使う場合は、OpenGL に最適化されているビデオカードを使用するかどうかで、全然描画性能が異なるようで、それはグラフィックチップの性能差よりもはるかに大きいようなのです。
