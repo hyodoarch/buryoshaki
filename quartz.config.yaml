@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: 無聊写記
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -16,8 +16,9 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Schibsted Grotesk
-      body: Source Sans Pro
+      title: Noto Sans JP
+      header: Noto Sans JP
+      body: Noto Sans JP
       code: IBM Plex Mono
     colors:
       lightMode:
@@ -44,7 +45,7 @@ plugins:
   - source: github:quartz-community/created-modified-date
     enabled: true
     options:
-      defaultDateType: modified
+      defaultDateType: published
       priority:
         - frontmatter
         - git
@@ -154,14 +155,17 @@ plugins:
     enabled: true
   - source: github:quartz-community/explorer
     enabled: true
+    options:
+      title: ""
+      folderDefaultState: collapsed
     layout:
       position: left
-      priority: 50
+      priority: 30
   - source: github:quartz-community/graph
     enabled: true
     layout:
-      position: right
-      priority: 10
+      position: left
+      priority: 60
   - source: github:quartz-community/search
     enabled: true
     layout:
@@ -229,14 +233,23 @@ plugins:
         Discord Community: https://discord.gg/cRFFHYye7t
   - source: github:quartz-community/recent-notes
     enabled: false
+    opsions:
+      title: 最新記事
+      limit: 7
+      showTags: false
+      hideTagPages: true
+      hideFolderPages: true
+    layout:
+      position: left
+      priority: 40
   - source: github:quartz-community/spacer
-    enabled: true
-    options: {}
+    enabled: false
+    options: {}  
     order: 25
     layout:
       position: left
       priority: 25
-      display: mobile-only
+      display: mibile-only
   - source: github:quartz-community/bases-page
     enabled: true
     options: {}
@@ -275,7 +288,7 @@ plugins:
 layout:
   groups:
     toolbar:
-      priority: 35
+      priority: 20
       direction: row
       gap: 0.5rem
   byPageType:

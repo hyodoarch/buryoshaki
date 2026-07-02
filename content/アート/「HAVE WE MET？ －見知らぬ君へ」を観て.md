@@ -1,19 +1,19 @@
 ---
 title: 「HAVE WE MET? －見知らぬ君へ」を観て
-date: '2005-01-28'
-modified: '2005-01-28'
+date: 2005-01-28
+modified: 2005-01-28
 draft: false
 categories:
-- アート
+  - アート
 tags:
-- さわひらき
-- 名和晃平
-- 小林洋子
+  - さわひらき
+  - 名和晃平
+  - 小林洋子
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/59
 wordpress_id: 59
 ---
 
-![28_1211_05](/images/2004/28_1211_05.jpg)
+![28_1211_05|300](/images/2004/28_1211_05.jpg)
 
 赤坂の国際交流基金フォーラムで開かれているアジアの若いキュレイターの共同企画による展覧会である（[詳細はこちら](http://www.jfforum.jpf.go.jp/index-j.html)）。NHK教育テレビの番組「新日曜美術館」で昨年取り上げられていたある作品が非常に印象深く忘れられなかったので、時間を見つけて行って来た。
 

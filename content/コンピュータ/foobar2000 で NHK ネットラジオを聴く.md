@@ -1,15 +1,14 @@
 ---
 title: foobar2000 で NHK ネットラジオを聴く
-date: '2013-12-05'
-modified: '2014-10-23'
+date: 2013-12-05
+modified: 2014-10-23
 draft: false
 categories:
-- コンピュータ
-- 音楽
+  - コンピュータ
 tags:
-- foobar2000
-- PCオーディオ
-- ネットラジオ
+  - foobar2000
+  - PCオーディオ
+  - ネットラジオ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/760
 wordpress_id: 760
 ---
