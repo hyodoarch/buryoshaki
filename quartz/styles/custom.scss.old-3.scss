@@ -1,0 +1,549 @@
+@use "./variables.scss" as *;
+
+// -----------------------------------------------------------------------------
+// Custom layout settings
+// -----------------------------------------------------------------------------
+
+$desktop-breakpoint: 801px;
+$site-title-width: 191px;
+$site-title-height: 54px;
+$desktop-top-spacing: 2rem;
+$sidebar-bottom-spacing: 2rem;
+$serif-font-family:
+  "游明朝",
+  "Yu Mincho",
+  "YuMincho",
+  "Hiragino Mincho ProN",
+  "Hiragino Mincho Pro",
+  "Noto Serif JP",
+  "Noto Serif CJK JP",
+  "MS PMincho",
+  "MS Mincho",
+  serif;
+
+// -----------------------------------------------------------------------------
+// Font
+// -----------------------------------------------------------------------------
+
+:root {
+  --bodyFont: #{$serif-font-family};
+  --headerFont: #{$serif-font-family};
+}
+
+body,
+.page,
+.page h1,
+.page h2,
+.page h3,
+.page h4,
+.page h5,
+.page h6,
+.page p,
+.page li,
+.page a,
+.page time,
+.page input,
+.page button {
+  font-family: $serif-font-family !important;
+}
+
+/* コードだけは等幅フォントを維持 */
+.page code,
+.page pre,
+.page kbd,
+.page samp {
+  font-family: var(--codeFont) !important;
+}
+
+// -----------------------------------------------------------------------------
+// Font color
+// -----------------------------------------------------------------------------
+
+:root {
+  --dark: #000000;
+  --secondary: #000000;
+  --gray: #000000;
+}
+
+body,
+.page,
+.page h1,
+.page h2,
+.page h3,
+.page h4,
+.page h5,
+.page h6,
+.page p,
+.page li,
+.page time {
+  color: #000000 !important;
+}
+
+// -----------------------------------------------------------------------------
+// Site title banner
+// -----------------------------------------------------------------------------
+
+.sidebar.left {
+  .page-title {
+    width: 100%;
+    display: block;
+  }
+
+  .page-title a {
+    display: block;
+    width: $site-title-width;
+    height: $site-title-height;
+    margin-left: 1rem;
+    margin-right: auto;
+
+    background: url("./static/site-title.png") center center / contain no-repeat;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Desktop layout
+// -----------------------------------------------------------------------------
+
+@media all and (min-width: $desktop-breakpoint) {
+  .page {
+    margin-top: 0 !important;
+    font-family: $serif-font-family;
+
+    > #quartz-body {
+      padding-top: 0 !important;
+
+      > .sidebar.left,
+      > .center,
+      > .sidebar.right {
+        padding-top: $desktop-top-spacing !important;
+      }
+
+      > .center {
+        > .page-header {
+          margin: 0 !important;
+          padding: 0 !important;
+          min-height: auto !important;
+          height: auto !important;
+        }
+      }
+
+      > .sidebar.left {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        padding-bottom: $sidebar-bottom-spacing;
+      }
+    }
+  }
+}
+
+/* デスクトップ：右サイドバー領域を完全に消す */
+@media all and (min-width: 801px) {
+  .page > #quartz-body > .sidebar.right {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .page > #quartz-body {
+    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr) !important;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Desktop layout width
+// -----------------------------------------------------------------------------
+
+$left-sidebar-min: 280px;
+$left-sidebar-max: 420px;
+$main-content-measure: 40ic;
+
+@media all and (min-width: $desktop-breakpoint) {
+  .page > #quartz-body {
+    grid-template-columns:
+      clamp(
+        $left-sidebar-min,
+        calc((100vw - #{$main-content-measure}) * 0.6),
+        $left-sidebar-max
+      )
+      minmax(0, 1fr) !important;
+  }
+
+  .page > #quartz-body > .sidebar.right {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Left sidebar
+// -----------------------------------------------------------------------------
+
+.sidebar.left {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding-left: 1rem;
+  padding-right: 0.75rem;
+
+  // Explorer
+  .explorer {
+    flex: 0 0 auto;
+    overflow: visible;
+
+    > .desktop-explorer {
+      display: none;
+    }
+  }
+
+  .explorer-content {
+    margin-top: 0;
+    max-height: none !important;
+    overflow: visible !important;
+
+    > ul.overflow {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    > ul.gradient-active {
+      mask-image: none;
+    }
+  }
+
+  // Category names
+  .folder-title {
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  // Category rows
+  .folder-container {
+    margin-bottom: 0.18rem;
+  }
+
+  // Article titles inside categories
+  .content {
+    a {
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    li {
+      margin: 0.12rem 0;
+    }
+  }
+
+  // Graph view
+  .graph {
+    margin-top: 1rem;
+
+    > h3 {
+      display: none;
+    }
+
+    .graph-outer {
+      border: 1px solid var(--lightgray);
+      border-radius: 6px;
+      padding: 0.5rem;
+      min-height: 150px;
+      background: var(--light);
+    }
+  }
+}
+
+// Left sidebar inner alignment
+$left-sidebar-content-width: 320px;
+
+.sidebar.left {
+  > * {
+    width: min(100%, $left-sidebar-content-width);
+    max-width: $left-sidebar-content-width;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Center content
+// -----------------------------------------------------------------------------
+
+$main-content-measure: 40ic;
+
+@mixin main-content-width {
+  width: min(100%, $main-content-measure);
+  max-width: $main-content-measure;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media all and (min-width: $desktop-breakpoint) {
+  .page > #quartz-body {
+    > .center {
+      width: auto !important;
+      max-width: none !important;
+      min-width: 0;
+
+      // page-header 自体は広いまま残す
+      > .page-header,
+      > header {
+        width: 100% !important;
+        max-width: none !important;
+        margin-left: 0;
+        margin-right: 0;
+
+        // タイトル、公開日など header 内の要素を40文字幅にする
+        > * {
+          @include main-content-width;
+        }
+      }
+
+      // 念のため、タイトル・公開日・タグを個別にも指定
+      h1,
+      .content-meta,
+      .tag-list,
+      .tags,
+      ul.tags,
+      article {
+        @include main-content-width;
+      }
+
+      article {
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        p,
+        li {
+          text-align: justify;
+          text-justify: inter-character;
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Font color / bold
+// -----------------------------------------------------------------------------
+
+// ① 太字も明朝体に固定
+strong,
+b,
+.page strong,
+.page b,
+.center strong,
+.center b {
+  font-family: $serif-font-family !important;
+  font-weight: 700;
+}
+
+// ② 左サイドバーのカテゴリー名・記事名を黒にする
+.sidebar.left {
+  color: #000000 !important;
+
+  .explorer,
+  .explorer *,
+  .explorer-content,
+  .explorer-content *,
+  .folder-title,
+  .folder-title *,
+  .folder-container,
+  .folder-container *,
+  .folder-outer,
+  .folder-outer *,
+  a,
+  button,
+  span {
+    color: #000000 !important;
+    opacity: 1 !important;
+  }
+
+  // 選択中の記事の背景は維持
+  .active,
+  .active * {
+    color: #000000 !important;
+    opacity: 1 !important;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Tag list
+// -----------------------------------------------------------------------------
+
+.page > #quartz-body > .center {
+  .tag-list,
+  .tags {
+    li {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: none !important;
+    }
+
+    a,
+    .tag-link {
+      font-size: 0.85rem !important;
+      font-weight: 400 !important;
+      color: #000000 !important;
+
+      background: #f6f6f6 !important;
+      background-color: #f6f6f6 !important;
+      border: 1px solid #e6e6e6 !important;
+
+      box-shadow: none !important;
+      outline: none !important;
+      filter: none !important;
+      text-shadow: none !important;
+
+      border-radius: 0.35rem;
+      box-sizing: border-box;
+      padding: 0.1rem 0.45rem;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+
+    // # は表示する
+    a::before,
+    .tag-link::before {
+      content: "#" !important;
+      display: inline !important;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    // after側だけ完全に消す
+    a::after,
+    .tag-link::after {
+      content: none !important;
+      display: none !important;
+      box-shadow: none !important;
+      background: none !important;
+      border: none !important;
+    }
+  }
+}
+
+.page a.tag-link,
+.page .tag-list a {
+  background: #f6f6f6 !important;
+  background-color: #f6f6f6 !important;
+  border: 1px solid #e6e6e6 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+  color: #000000 !important;
+  font-weight: 400 !important;
+}
+
+// -----------------------------------------------------------------------------
+// Links / Blockquote
+// -----------------------------------------------------------------------------
+
+.page > #quartz-body > .center {
+  // ① 本文中のリンク色を濃い紫にする
+  article a:not(.tag-link),
+  .page-header a:not(.tag-link) {
+    color: #5a2cff !important;
+  }
+
+  article a:not(.tag-link):hover,
+  .page-header a:not(.tag-link):hover {
+    color: #3f1fbf !important;
+  }
+
+  // ② 引用の縦バーをグレーにし、本文との余白を1文字分空ける
+  article blockquote {
+    border-left: 3px solid #b8b8b8 !important;
+    padding-left: 1em !important;
+    margin-left: 0;
+    color: #000000;
+  }
+
+  article blockquote p {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Paragraph
+// -----------------------------------------------------------------------------
+
+.page > #quartz-body > .center {
+  article {
+    p {
+      line-height: 1.9;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Separator
+// -----------------------------------------------------------------------------
+
+.page > #quartz-body > .center {
+  hr {
+    height: 0;
+    border: none;
+    border-top: 1px solid #e6e6e6;
+    margin: 2rem auto;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Footer
+// -----------------------------------------------------------------------------
+
+.page > #quartz-body > footer {
+  grid-column: 2 / 3 !important;
+  justify-self: center !important;
+
+  width: min(100%, $main-content-measure) !important;
+  max-width: $main-content-measure !important;
+  min-width: 0 !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  text-align: center !important;
+  font-size: 0.8rem;
+}
+
+.page > #quartz-body > footer p {
+  margin: 0 0 0.4rem 0;
+  text-align: center !important;
+}
+
+.page > #quartz-body > footer ul {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1rem;
+
+  margin: 0;
+  padding-left: 0 !important;
+  list-style: none;
+}
+
+.page > #quartz-body > footer li {
+  margin: 0;
+  padding: 0;
+}

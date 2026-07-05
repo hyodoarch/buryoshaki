@@ -1,60 +1,657 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
-/* サイトタイトルを画像に置き換える */
-.page-title a {
-  display: block;
-  width: 191px;
-  height: 54px;
-  background: url("./static/site-title.png") left center / contain no-repeat;
-  text-indent: -9999px;
-  overflow: hidden;
+// =============================================================================
+// Variables
+// =============================================================================
+
+$desktop-breakpoint: 801px;
+
+$site-title-width: 191px;
+$site-title-height: 54px;
+
+$desktop-top-spacing: 2rem;
+$sidebar-bottom-spacing: 2rem;
+
+$left-sidebar-min: 280px;
+$left-sidebar-max: 420px;
+$left-sidebar-content-width: 320px;
+
+$main-content-measure: 40ic;
+
+$serif-font-family:
+  "游明朝",
+  "Yu Mincho",
+  "YuMincho",
+  "Hiragino Mincho ProN",
+  "Hiragino Mincho Pro",
+  "Noto Serif JP",
+  "Noto Serif CJK JP",
+  "MS PMincho",
+  "MS Mincho",
+  serif;
+
+$link-color: #5a2cff;
+$link-hover-color: #3f1fbf;
+
+$tag-bg: #f6f6f6;
+$tag-border: #e6e6e6;
+
+$blockquote-border: #b8b8b8;
+$separator-color: #e6e6e6;
+
+// =============================================================================
+// Mixins
+// =============================================================================
+
+@mixin main-content-width {
+  width: min(100%, $main-content-measure);
+  max-width: $main-content-measure;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* カテゴリーの▶を消す */
-@media all and (min-width: 801px) {
-  .sidebar.left .explorer > .desktop-explorer {
-    display: none;
-  }
+// =============================================================================
+// Base font / color
+// =============================================================================
 
-  .sidebar.left .explorer-content {
-    margin-top: 0;
-  }
+:root {
+  --bodyFont: #{$serif-font-family};
+  --headerFont: #{$serif-font-family};
 
-/* 左サイドバーを内容に合わせて縦に伸ばす */
+  --dark: #000000;
+  --secondary: #000000;
+  --gray: #000000;
 }
-@media all and (min-width: 801px) {
 
-  .page > #quartz-body .sidebar.left {
-    height: auto;
-    min-height: 100vh;
-    position: relative;
+body,
+.page,
+.page h1,
+.page h2,
+.page h3,
+.page h4,
+.page h5,
+.page h6,
+.page p,
+.page li,
+.page a,
+.page time,
+.page input,
+.page button {
+  font-family: $serif-font-family !important;
+}
+
+body,
+.page,
+.page h1,
+.page h2,
+.page h3,
+.page h4,
+.page h5,
+.page h6,
+.page p,
+.page li,
+.page time {
+  color: #000000 !important;
+}
+
+strong,
+b,
+.page strong,
+.page b,
+.center strong,
+.center b {
+  font-family: $serif-font-family !important;
+  font-weight: 700;
+}
+
+// コードだけは等幅フォントを維持
+.page code,
+.page pre,
+.page kbd,
+.page samp {
+  font-family: var(--codeFont) !important;
+}
+
+// =============================================================================
+// Desktop layout
+// =============================================================================
+
+@media all and (min-width: $desktop-breakpoint) {
+  .page {
+    margin-top: 0 !important;
+
+    > #quartz-body {
+      padding-top: 0 !important;
+
+      grid-template-columns:
+        clamp(
+          $left-sidebar-min,
+          calc((100vw - #{$main-content-measure}) * 0.6),
+          $left-sidebar-max
+        )
+        minmax(0, 1fr) !important;
+
+      > .sidebar.left,
+      > .center,
+      > .sidebar.right {
+        padding-top: $desktop-top-spacing !important;
+      }
+
+      > .sidebar.right {
+        display: none !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      > .sidebar.left {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        padding-bottom: $sidebar-bottom-spacing;
+      }
+
+      > .center {
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0;
+
+        > .page-header,
+        > header {
+          width: 100% !important;
+          max-width: none !important;
+          margin-left: 0;
+          margin-right: 0;
+
+          > * {
+            @include main-content-width;
+          }
+        }
+
+        > .page-header {
+          margin: 0 !important;
+          padding: 0 !important;
+          min-height: auto !important;
+          height: auto !important;
+        }
+
+        h1,
+        .content-meta,
+        .tag-list,
+        .tags,
+        ul.tags,
+        article {
+          @include main-content-width;
+        }
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Site title banner
+// =============================================================================
+
+.sidebar.left {
+  .page-title {
+    width: 100%;
+    display: block;
   }
 
-  /* Explorerを縮めない */
-  .sidebar.left .explorer {
+  .page-title a {
+    display: block;
+    width: $site-title-width;
+    height: $site-title-height;
+    margin-left: 1rem;
+    margin-right: auto;
+
+    background: url("./static/site-title.png") center center / contain no-repeat;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+}
+
+// =============================================================================
+// Left sidebar
+// =============================================================================
+
+.sidebar.left {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding-left: 1rem;
+  padding-right: 0.75rem;
+  color: #000000 !important;
+
+  > * {
+    width: min(100%, $left-sidebar-content-width);
+    max-width: $left-sidebar-content-width;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .explorer {
     flex: 0 0 auto;
     overflow: visible;
+
+    > .desktop-explorer {
+      display: none;
+    }
   }
 
-  /* Explorer内部のスクロールを解除 */
-  .sidebar.left .explorer-content,
-  .sidebar.left .explorer-content > ul.overflow {
+  .explorer-content {
+    margin-top: 0;
     max-height: none !important;
     overflow: visible !important;
+
+    > ul.overflow {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    > ul.gradient-active {
+      mask-image: none;
+    }
   }
 
-  /* 下部のグラデーションも解除 */
-  .sidebar.left .explorer-content > ul.gradient-active {
-    mask-image: none;
+  .folder-title {
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  .folder-container {
+    margin-bottom: 0.18rem;
+  }
+
+  .content {
+    a {
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    li {
+      margin: 0.12rem 0;
+    }
+  }
+
+  // カテゴリー名・記事名を黒に固定
+  .explorer,
+  .explorer *,
+  .explorer-content,
+  .explorer-content *,
+  .folder-title,
+  .folder-title *,
+  .folder-container,
+  .folder-container *,
+  .folder-outer,
+  .folder-outer *,
+  a,
+  button,
+  span {
+    color: #000000 !important;
+    opacity: 1 !important;
+  }
+
+  .active,
+  .active * {
+    color: #000000 !important;
+    opacity: 1 !important;
+  }
+
+  .graph {
+    margin-top: 1rem;
+
+    > h3 {
+      display: none;
+    }
+
+    .graph-outer {
+      border: 1px solid var(--lightgray);
+      border-radius: 6px;
+      padding: 0.5rem;
+      min-height: 150px;
+      background: var(--light);
+    }
   }
 }
 
-/* Minimal らしい本文幅 */
-article {
-  max-width: 40em;
-  line-height: 1.7;
+// =============================================================================
+// Center content
+// =============================================================================
+
+.page > #quartz-body > .center {
+  article {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    p {
+      line-height: 1.9;
+    }
+
+    p,
+    li {
+      text-align: justify;
+      text-justify: inter-character;
+    }
+  }
 }
-.sidebar {
+
+// =============================================================================
+// Tags
+// =============================================================================
+
+.page > #quartz-body > .center {
+  .tag-list,
+  .tags {
+    li {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: none !important;
+    }
+
+    a,
+    .tag-link {
+      font-size: 0.85rem !important;
+      font-weight: 400 !important;
+      color: #000000 !important;
+
+      background: $tag-bg !important;
+      background-color: $tag-bg !important;
+      border: 1px solid $tag-border !important;
+
+      box-shadow: none !important;
+      outline: none !important;
+      filter: none !important;
+      text-shadow: none !important;
+
+      border-radius: 0.35rem;
+      box-sizing: border-box;
+      padding: 0.1rem 0.45rem;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+
+    a::before,
+    .tag-link::before {
+      content: "#" !important;
+      display: inline !important;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    a::after,
+    .tag-link::after {
+      content: none !important;
+      display: none !important;
+      box-shadow: none !important;
+      background: none !important;
+      border: none !important;
+    }
+  }
+}
+
+.page a.tag-link,
+.page .tag-list a {
+  background: $tag-bg !important;
+  background-color: $tag-bg !important;
+  border: 1px solid $tag-border !important;
+  box-shadow: none !important;
+  outline: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+  color: #000000 !important;
+  font-weight: 400 !important;
+}
+
+// =============================================================================
+// Links / blockquote
+// =============================================================================
+
+.page > #quartz-body > .center {
+  article a:not(.tag-link),
+  .page-header a:not(.tag-link) {
+    color: $link-color !important;
+  }
+
+  article a:not(.tag-link):hover,
+  .page-header a:not(.tag-link):hover {
+    color: $link-hover-color !important;
+  }
+
+  article blockquote {
+    border-left: 3px solid $blockquote-border !important;
+    padding-left: 1em !important;
+    margin-left: 0;
+    color: #000000;
+  }
+
+  article blockquote p {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+  }
+}
+
+// =============================================================================
+// Separator
+// =============================================================================
+
+.page > #quartz-body > .center {
+  hr {
+    height: 0;
+    border: none;
+    border-top: 1px solid $separator-color;
+    margin: 2rem auto;
+  }
+}
+
+// =============================================================================
+// Footer
+// =============================================================================
+
+.page > #quartz-body > footer {
+  grid-column: 2 / 3 !important;
+  justify-self: center !important;
+
+  width: min(100%, $main-content-measure) !important;
+  max-width: $main-content-measure !important;
+  min-width: 0 !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  text-align: center !important;
+  font-size: 0.8rem;
+
+  p {
+    margin: 0 0 0.4rem 0;
+    text-align: center !important;
+  }
+
+  ul {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1rem;
+
+    margin: 0;
+    padding-left: 0 !important;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* フォルダ一覧ページの表示幅を記事ページに合わせる */
+.center {
+  max-width: $main-content-measure;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* フォルダ一覧ページ全体 */
+.page-listing {
+  max-width: $main-content-measure;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 記事リストの初期余白を整理 */
+.page-listing .section-ul {
+  padding-left: 0 !important;
+  margin: 2.5rem 0 0 0;
+}
+
+.page-listing .section-li {
+  list-style: none !important;
+  margin-bottom: 2.8rem;
+}
+
+/* 各記事を「タイトル → 日付 → タグ」の縦並びにする */
+.page-listing .section {
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* タイトルを一番上へ */
+.page-listing .desc {
+  order: 1;
+}
+
+.page-listing .desc h3 {
+  margin: 0 0 0.65rem 0;
+  font-size: 1.35rem;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+/* 日付をタイトル下へ */
+.page-listing .meta {
+  order: 2;
+  margin: 0 0 0.85rem 0;
+  color: var(--gray);
   font-size: 0.95rem;
+}
+
+/* タグを日付下へ */
+.page-listing .tags {
+  order: 3;
+  display: flex;
+  justify-content: flex-start !important;
+  gap: 0.45rem;
+  padding-left: 0 !important;
+  margin: 0;
+}
+
+/* 最後の下線との距離 */
+.page-listing hr {
+  margin-top: 2.5rem;
+}
+
+/* フォルダ一覧ページ：記事ページ風の縦並び */
+.page-listing {
+  max-width: $main-content-measure;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-listing .section-ul {
+  padding-left: 0 !important;
+  margin: 2.5rem 0 0 0 !important;
+}
+
+.page-listing .section-li {
+  list-style: none !important;
+  margin-bottom: 2.8rem !important;
+}
+
+/* ここで grid を完全に解除する */
+.page-listing li.section-li > .section {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+
+  grid-template-columns: none !important;
+  grid-template-areas: none !important;
+}
+
+/* タイトル */
+.page-listing .section > .desc {
+  order: 1 !important;
+}
+
+.page-listing .section > .desc h3 {
+  margin: 0 0 0.65rem 0 !important;
+  font-size: 1.35rem;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+/* 公開日 */
+.page-listing .section > .meta {
+  order: 2 !important;
+  margin: 0 0 0.9rem 0 !important;
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+/* タグ */
+.page-listing .section > .tags {
+  order: 3 !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+  gap: 0.45rem;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+/* フォルダ一覧：タイトル・日付・タグの間隔を詰める */
+.page-listing .section > .desc h3 {
+  margin: 0 0 0.25rem 0 !important;
+}
+
+.page-listing .section > .meta {
+  margin: 0 0 0.45rem 0 !important;
+}
+
+.page-listing .section > .tags {
+  margin: 0 !important;
+}
+
+/* フォルダ一覧：記事同士の間隔 */
+.page-listing .section-li {
+  margin-bottom: 2.1rem !important;
+}
+
+/* 個別記事：タイトル・日付・タグの間隔を詰める */
+.page-header h1.article-title {
+  margin-bottom: 0.35rem !important;
+}
+
+.page-header .content-meta,
+article .content-meta {
+  margin-top: 0 !important;
+  margin-bottom: 0.55rem !important;
+}
+
+.page-header .tags,
+article .tags {
+  margin-top: 0 !important;
+  margin-bottom: 1.2rem !important;
+  padding-left: 0 !important;
 }

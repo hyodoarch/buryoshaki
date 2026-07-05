@@ -3,7 +3,7 @@ configuration:
   pageTitle: 無聊写記
   pageTitleSuffix: ""
   enableSPA: true
-  enablePopovers: true
+  enablePopovers: false
   analytics:
     provider: plausible
   locale: en-US
@@ -51,6 +51,9 @@ plugins:
         - git
         - filesystem
     order: 10
+    layout:
+      position: beforeBody
+      priority: 10
   - source: github:quartz-community/syntax-highlighting
     enabled: true
     options:
@@ -79,7 +82,7 @@ plugins:
     enabled: true
     order: 40
   - source: github:quartz-community/table-of-contents
-    enabled: true
+    enabled: false
     order: 50
     layout:
       position: right
@@ -163,6 +166,13 @@ plugins:
       priority: 30
   - source: github:quartz-community/graph
     enabled: true
+    options:
+      localGraph:
+        showTags: true
+        removeTags: []
+      globalGraph:
+        showTags: true
+        removeTags: []
     layout:
       position: left
       priority: 60
@@ -175,7 +185,7 @@ plugins:
       groupOptions:
         grow: true
   - source: github:quartz-community/backlinks
-    enabled: true
+    enabled: false
     layout:
       position: right
       priority: 50
@@ -190,10 +200,10 @@ plugins:
       position: beforeBody
       priority: 20
   - source: github:quartz-community/tag-list
-    enabled: false
+    enabled: true
     layout:
       position: beforeBody
-      priority: 30
+      priority: 20
   - source: github:quartz-community/page-title
     enabled: true
     layout:
@@ -212,7 +222,7 @@ plugins:
       priority: 35
       group: toolbar
   - source: github:quartz-community/breadcrumbs
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 5
@@ -234,14 +244,15 @@ plugins:
   - source: github:quartz-community/recent-notes
     enabled: false
     opsions:
-      title: 最新記事
+      title: 最近のノート
       limit: 7
       showTags: false
       hideTagPages: true
       hideFolderPages: true
     layout:
-      position: left
-      priority: 40
+      position: afterBody
+      priority: 10
+      condition: index
   - source: github:quartz-community/spacer
     enabled: false
     options: {}  
@@ -259,17 +270,15 @@ plugins:
     options:
       includeAll: false
       includedProperties:
-        - description
         - tags
-        - aliases
       excludedProperties: []
-      hidePropertiesView: false
+      hidePropertiesView: true
       delimiters: ---
       language: yaml
     order: 5
     layout:
       position: beforeBody
-      priority: 15
+      priority: 20
       display: all
   - source:
       name: quartz-themes

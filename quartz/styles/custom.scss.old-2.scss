@@ -1,0 +1,144 @@
+@use "./variables.scss" as *;
+
+// put your custom CSS here!
+
+/* サイトタイトルを画像に置き換える */
+.page-title a {
+  display: block;
+  width: 191px;
+  height: 54px;
+  background: url("./static/site-title.png") left center / contain no-repeat;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+/* デスクトップ：全体の上余白を揃える */
+@media all and (min-width: 801px) {
+  .page {
+    margin-top: 0 !important;
+  }
+
+  .page > #quartz-body {
+    padding-top: 0 !important;
+  }
+
+ .page > #quartz-body > .center > .page-header {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  .page > #quartz-body > .sidebar.left,
+  .page > #quartz-body > .center,
+  .page > #quartz-body > .sidebar.right {
+    padding-top: 2rem !important;
+  }
+}
+
+/* 左サイドバー */
+.sidebar.left {
+  font-family: 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", HGS明朝E, メイリオ, Meiryo, serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
+
+  /* Explorer */
+  .explorer {
+    flex: 0 0 auto;
+    overflow: visible;
+
+    > .desktop-explorer {
+      display: none;
+    }
+  }
+
+  .explorer-content {
+    margin-top: 0;
+    max-height: none !important;
+    overflow: visible !important;
+
+    > ul.overflow {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    > ul.gradient-active {
+      mask-image: none;
+    }
+  }
+
+  /* カテゴリー名 */
+  .folder-title {
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  /* カテゴリー行 */
+  .folder-container {
+    margin-bottom: 0.18rem;
+  }
+
+  /* 記事タイトル */
+  .content {
+    a {
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    li {
+      margin: 0.12rem 0;
+    }
+  }
+
+  /* グラフビュー */
+  .graph {
+    margin-top: 1rem;
+
+    > h3 {
+      display: none;
+    }
+
+    .graph-outer {
+      border: 1px solid var(--lightgray);
+      border-radius: 6px;
+      padding: 0.5rem;
+      min-height: 150px;
+      background: var(--light);
+    }
+  }
+}
+
+/* デスクトップ：左サイドバー全体をスクロール可能にする */
+@media all and (min-width: 801px) {
+  .page > #quartz-body > .sidebar.left {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding-bottom: 2rem;
+  }
+
+  /* Explorer自体はスクロールさせない */
+  .sidebar.left {
+    .explorer {
+      overflow: visible;
+    }
+
+    .explorer-content {
+      max-height: none !important;
+      overflow: visible !important;
+
+      > ul.overflow {
+        max-height: none !important;
+        overflow: visible !important;
+      }
+
+      > ul.gradient-active {
+        mask-image: none;
+      }
+    }
+  }
+}

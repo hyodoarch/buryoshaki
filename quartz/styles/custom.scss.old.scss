@@ -1,0 +1,110 @@
+@use "./variables.scss" as *;
+
+// put your custom CSS here!
+/* サイトタイトルを画像に置き換える */
+.page-title a {
+  display: block;
+  width: 191px;
+  height: 54px;
+  background: url("./static/site-title.png") left center / contain no-repeat;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+/* カテゴリーの▶を消す */
+@media all and (min-width: 801px) {
+  .sidebar.left .explorer > .desktop-explorer {
+    display: none;
+  }
+
+  .sidebar.left .explorer-content {
+    margin-top: 0;
+  }
+
+/* 左サイドバーを内容に合わせて縦に伸ばす */
+}
+@media all and (min-width: 801px) {
+
+  .page > #quartz-body .sidebar.left {
+    height: auto;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Explorerを縮めない */
+  .sidebar.left .explorer {
+    flex: 0 0 auto;
+    overflow: visible;
+  }
+
+  /* Explorer内部のスクロールを解除 */
+  .sidebar.left .explorer-content,
+  .sidebar.left .explorer-content > ul.overflow {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* 下部のグラデーションも解除 */
+  .sidebar.left .explorer-content > ul.gradient-active {
+    mask-image: none;
+  }
+}
+
+/* Minimal らしい本文幅 */
+article {
+  max-width: 40em;
+  line-height: 1.7;
+}
+.sidebar {
+  font-size: 0.95rem;
+}
+
+/* 左サイドバー：カテゴリーと記事タイトルの調整 */
+
+/* カテゴリー名 */
+.explorer .folder-title {
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+/* カテゴリー行全体 */
+.explorer .folder-container {
+  margin-bottom: 0.18rem;
+}
+
+/* カテゴリー内の記事タイトル */
+.explorer .content a {
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+/* 記事タイトル同士の間隔 */
+.explorer .content li {
+  margin: 0.12rem 0;
+}
+
+/* 左サイドバー：Graph View の見出しを非表示 */
+.graph > h3 {
+  display: none;
+}
+
+/* 左サイドバー：グラフビューを矩形で囲う */
+.graph .graph-outer {
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  padding: 0.5rem;
+  min-height: 150px;
+  background: var(--light);
+}
+
+/* グラフビュー周辺の余白 */
+.graph {
+  margin-top: 1rem;
+}
+
+/* 左サイドバー全体の文字 */
+.left.sidebar {
+  font-family: "Yu Gothic", "Yu Gothic UI", "Hiragino Kaku Gothic ProN", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
