@@ -43,16 +43,6 @@ $tag-radius: 0.35rem;
 $blockquote-border: #b8b8b8;
 $separator-color: #e6e6e6;
 
-// Mobile tuning values
-$mobile-topbar-height: 3.1rem;
-$mobile-content-top-offset: 3.7rem;
-$mobile-banner-top: 0.35rem;
-$mobile-banner-left: 1.5rem;
-$mobile-banner-link-offset: 2.7rem;
-$mobile-explorer-search-left: 4.2rem;
-$mobile-explorer-search-right: 1.6rem;
-$mobile-explorer-list-top: 3.5rem;
-
 // =============================================================================
 // Mixins
 // =============================================================================
@@ -630,14 +620,13 @@ body[data-slug="index"] {
   }
 
   // カテゴリー見出し
-  .page > #quartz-body > .center article h2 {
+  article h2 {
     margin-top: 2.6rem;
     margin-bottom: 0.8rem;
   }
 
   // おすすめ記事タイトル
-  // 通常リンク色指定より強くするため、#quartz-body まで含めて指定する。
-  .page > #quartz-body > .center article h3 {
+  article h3 {
     margin-bottom: 0.15rem !important;
 
     > a,
@@ -649,22 +638,15 @@ body[data-slug="index"] {
     > a:active {
       @include plain-note-title-link;
     }
-
-    > a:hover,
-    > a.internal:hover,
-    > a.internal-link:hover {
-      color: #000000 !important;
-      text-decoration: underline !important;
-    }
   }
 
   // 公開日行
-  .page > #quartz-body > .center article h3 + p {
+  article h3 + p {
     margin-top: 0 !important;
   }
 
   // おすすめ記事内のタグを横並びにする
-  .page > #quartz-body > .center article p > a.tag-link {
+  article p > a.tag-link {
     display: inline-block !important;
     width: auto !important;
     max-width: none !important;
@@ -682,7 +664,7 @@ body[data-slug="index"] {
 
 @media (max-width: $mobile-breakpoint) {
   // ---------------------------------------------------------------------------
-  // 1. Viewport and page flow
+  // Page grid
   // ---------------------------------------------------------------------------
 
   html,
@@ -706,59 +688,47 @@ body[data-slug="index"] {
     overflow-x: hidden !important;
   }
 
-  // モバイルでは footer を記事末尾に置きやすいよう、縦方向の flex にする。
   .page > #quartz-body {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas:
+      "mobile-left"
+      "mobile-center"
+      "mobile-footer" !important;
+    grid-template-rows: auto auto auto !important;
+    grid-auto-rows: auto !important;
+    column-gap: 0 !important;
+    align-content: start !important;
+    align-items: start !important;
     min-height: 0 !important;
     height: auto !important;
   }
 
   // ---------------------------------------------------------------------------
-  // 2. Fixed top bar: 三本線 + バナー
+  // Mobile header / left sidebar
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > .sidebar.left {
-    order: 1 !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    grid-area: mobile-left !important;
+    grid-column: 1 !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
 
-    width: min(100vw - 1rem, 420px) !important;
-    max-width: min(100vw - 1rem, 420px) !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
     min-width: 0 !important;
 
     margin: 0 !important;
-    padding: 1rem !important;
+    padding: 1rem 1rem 0.75rem 1rem !important;
     box-sizing: border-box !important;
 
-    z-index: 10000 !important;
-    background: var(--light) !important;
-    border-bottom: 1px solid var(--lightgray) !important;
-    border-radius: 8px 8px 0 0 !important;
-
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-  }
-
-  // 通常記事表示では、固定バーを薄くして本文の上に重ねる。
-  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed))) {
-    height: $mobile-topbar-height !important;
-    min-height: $mobile-topbar-height !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-
-  // Explorer 展開中は、左サイドバーを画面全体のメニューとして使う。
-  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) {
-    height: 100dvh !important;
-    min-height: 100dvh !important;
-    max-height: 100dvh !important;
-    padding: 1rem !important;
-    overflow-y: auto !important;
-    border-radius: 8px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
   }
 
   .page > #quartz-body > .sidebar.left > * {
@@ -770,7 +740,7 @@ body[data-slug="index"] {
     transform: none !important;
   }
 
-  // 三本線アイコン。通常時・Explorer 展開時ともに左上に置く。
+  // 三本線：通常時・Explorer 展開時ともに左上へ固定
   .page > #quartz-body > .sidebar.left .explorer-toggle.mobile-explorer {
     position: absolute !important;
     top: 1rem !important;
@@ -783,20 +753,15 @@ body[data-slug="index"] {
     max-width: 2rem !important;
     height: 2rem !important;
     min-height: 2rem !important;
-    margin: 0 !important;
     padding: 0.25rem !important;
+    margin: 0 !important;
 
     align-items: center !important;
     justify-content: center !important;
-    z-index: 10100 !important;
+    z-index: 300 !important;
     background: var(--light) !important;
     border: 0 !important;
     box-shadow: none !important;
-  }
-
-  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
-    .explorer-toggle.mobile-explorer {
-    top: 0.55rem !important;
   }
 
   .page > #quartz-body > .sidebar.left .explorer-toggle.desktop-explorer,
@@ -804,72 +769,34 @@ body[data-slug="index"] {
     display: none !important;
   }
 
-  // 通常表示：三本線の右隣にバナーを出す。
-  .page > #quartz-body > .sidebar.left > h2.page-title {
+  // 通常表示：三本線の右にバナー
+  .page > #quartz-body > .sidebar.left > .page-title {
+    order: 1 !important;
     display: block !important;
     width: calc(100vw - 2rem) !important;
     max-width: calc(100vw - 2rem) !important;
-    height: 2.8rem !important;
-    min-height: 0 !important;
-    margin: 0 !important;
+    height: 2.6rem !important;
+    margin: 0 0 0.7rem 0 !important;
     padding: 0 !important;
     text-align: left !important;
-    overflow: hidden !important;
-    z-index: 10050 !important;
   }
 
-  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
-    > h2.page-title {
-    position: absolute !important;
-    top: $mobile-banner-top !important;
-    left: $mobile-banner-left !important;
-  }
-
-  .page > #quartz-body > .sidebar.left > h2.page-title > a {
+  .page > #quartz-body > .sidebar.left > .page-title > a {
     display: block !important;
     width: 134px !important;
-    height: 2.8rem !important;
-    margin-left: $mobile-banner-link-offset !important;
+    height: 38px !important;
+    margin-left: 2.7rem !important;
     margin-right: auto !important;
-
     background-position: left center !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     transform: none !important;
   }
 
-  // Explorer 展開中はバナーを隠し、検索窓を出す。
-  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > h2.page-title {
-    display: none !important;
-  }
-
-  // ---------------------------------------------------------------------------
-  // 3. Search in Explorer
-  // ---------------------------------------------------------------------------
-
-  // 通常表示では検索窓を隠す。
+  // 通常表示では検索窓を隠す。Explorer 展開時だけ表示する。
   .page > #quartz-body > .sidebar.left > .flex-component {
+    order: 2 !important;
     display: none !important;
-  }
-
-  // Explorer 展開中だけ、三本線の右隣に検索窓を表示する。
-  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > .flex-component {
-    display: flex !important;
-    position: absolute !important;
-    top: 1rem !important;
-    left: $mobile-explorer-search-left !important;
-    right: $mobile-explorer-search-right !important;
-    width: auto !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 0 !important;
-    z-index: 200 !important;
   }
 
   .page > #quartz-body > .sidebar.left > .flex-component > div:has(.darkmode),
@@ -896,33 +823,12 @@ body[data-slug="index"] {
     box-sizing: border-box !important;
   }
 
-  // 検索クリック時のポップアップは、サイドバーの幅指定に巻き込ませない。
-  .page > #quartz-body > .sidebar.left .search .search-container {
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    max-width: 100vw !important;
-    max-height: 100vh !important;
-    z-index: 9999 !important;
-    transform: none !important;
-  }
-
-  .page > #quartz-body > .sidebar.left .search .search-container.active {
-    display: block !important;
-  }
-
-  .page > #quartz-body > .sidebar.left .search .search-container .search-space {
-    width: calc(100vw - 2rem) !important;
-    max-width: calc(100vw - 2rem) !important;
-    margin: 4rem auto 0 auto !important;
-  }
-
   // ---------------------------------------------------------------------------
-  // 4. Explorer list
+  // Explorer
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > .sidebar.left > .explorer.nav-files-container {
+    order: 3 !important;
     width: calc(100vw - 2rem) !important;
     max-width: calc(100vw - 2rem) !important;
     height: auto !important;
@@ -939,7 +845,7 @@ body[data-slug="index"] {
   }
 
   .page > #quartz-body > .sidebar.left > .explorer.nav-files-container:not(.collapsed) {
-    padding-top: $mobile-explorer-list-top !important;
+    padding-top: 3.5rem !important;
   }
 
   .page > #quartz-body > .sidebar.left > .explorer.nav-files-container:not(.collapsed) .explorer-content {
@@ -967,17 +873,73 @@ body[data-slug="index"] {
     mask-image: none !important;
   }
 
+  // Explorer 展開中：バナーを隠し、三本線の右に検索窓を表示
+  .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed)) > .sidebar.left {
+    min-height: 100dvh !important;
+    padding-top: 1rem !important;
+  }
+
+  .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed)) > .sidebar.left > .page-title {
+    display: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > .flex-component {
+    display: flex !important;
+    position: absolute !important;
+    top: 1rem !important;
+    left: 1rem !important;
+    right: 0.8rem !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    z-index: 200 !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > .flex-component .search,
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > .flex-component .search-button {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  // 検索ポップアップ
+  .page > #quartz-body > .sidebar.left .search .search-container {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    z-index: 9999 !important;
+    transform: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left .search .search-container.active {
+    display: block !important;
+  }
+
+  .page > #quartz-body > .sidebar.left .search .search-container .search-space {
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    margin: 4rem auto 0 auto !important;
+  }
+
   // ---------------------------------------------------------------------------
-  // 5. Main content
+  // Main content
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > .center {
-    order: 2 !important;
+    grid-area: mobile-center !important;
+    grid-column: 1 !important;
     width: 100vw !important;
     max-width: 100vw !important;
     min-width: 0 !important;
     margin: 0 !important;
-    padding-top: $mobile-content-top-offset !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
     padding-bottom: 0 !important;
@@ -1001,19 +963,18 @@ body[data-slug="index"] {
     display: none !important;
   }
 
-  // Explorer 展開中は、背景側の本文と footer を隠す。
+  // Explorer 展開中は本文と footer を出さない
   .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed)) > .center,
   .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed)) > footer {
     display: none !important;
   }
 
   // ---------------------------------------------------------------------------
-  // 6. Footer
+  // Footer
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > footer {
-    order: 3 !important;
-    position: static !important;
+    grid-area: mobile-footer !important;
     grid-column: 1 / 2 !important;
     grid-row: auto !important;
 
@@ -1027,7 +988,8 @@ body[data-slug="index"] {
     margin: 0.75rem 1rem 0 1rem !important;
     padding: 0.5rem 0 1rem 0 !important;
 
-    align-self: center !important;
+    justify-self: center !important;
+    align-self: start !important;
     text-align: center !important;
     box-sizing: border-box !important;
 
@@ -1056,5 +1018,232 @@ body[data-slug="index"] {
       margin: 0 !important;
       text-align: center !important;
     }
+  }
+}
+
+/* =============================================================================
+   Index page: recommended article title links
+   ============================================================================= */
+
+body[data-slug="index"] .page > #quartz-body > .center article h3 > a.internal,
+body[data-slug="index"] .page > #quartz-body > .center article h3 > a.internal:link,
+body[data-slug="index"] .page > #quartz-body > .center article h3 > a.internal:visited,
+body[data-slug="index"] .page > #quartz-body > .center article h3 > a.internal:hover,
+body[data-slug="index"] .page > #quartz-body > .center article h3 > a.internal:active {
+  color: #333333 !important;
+  text-decoration: none !important;
+}
+
+body[data-slug="index"] .page > #quartz-body > .center article h3 > a.internal:hover {
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+/* =============================================================================
+   Mobile: fixed top bar
+   ============================================================================= */
+
+@media (max-width: 800px) {
+  /* 上部バーを画面上部に固定 */
+  .page > #quartz-body > .sidebar.left {
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    width: min(100vw - 1rem, 420px) !important;
+    max-width: min(100vw - 1rem, 420px) !important;
+    height: 4.2rem !important;
+
+    z-index: 10000 !important;
+    background: var(--light) !important;
+    border-bottom: 1px solid var(--lightgray) !important;
+    border-radius: 8px 8px 0 0 !important;
+
+    overflow: visible !important;
+  }
+
+  /* 固定バーの分だけ本文を下げる */
+  .page > #quartz-body > .center {
+    padding-top: 4.8rem !important;
+  }
+
+  /* 三本線 */
+  .page > #quartz-body > .sidebar.left .explorer-toggle.mobile-explorer {
+    position: absolute !important;
+    top: 1rem !important;
+    left: 1rem !important;
+    z-index: 10100 !important;
+  }
+
+  /* バナー */
+  .page > #quartz-body > .sidebar.left .page-title {
+    position: absolute !important;
+    top: 0.65rem !important;
+    left: 3.4rem !important;
+    z-index: 10050 !important;
+  }
+
+  /* サイドバー展開中は全面表示 */
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) {
+    height: 100dvh !important;
+    overflow-y: auto !important;
+    border-radius: 8px !important;
+  }
+
+  /* サイドバー展開中は本文を隠す */
+  .page > #quartz-body:has(> .sidebar.left .explorer.nav-files-container:not(.collapsed)) > .center,
+  .page > #quartz-body:has(> .sidebar.left .explorer.nav-files-container:not(.collapsed)) > footer {
+    display: none !important;
+  }
+}
+
+/* =============================================================================
+   Mobile: keep footer below article when top bar is fixed
+   ============================================================================= */
+
+@media (max-width: 800px) {
+  .page > #quartz-body {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .page > #quartz-body > .sidebar.left {
+    order: 1 !important;
+  }
+
+  .page > #quartz-body > .center {
+    order: 2 !important;
+    padding-top: 4.8rem !important;
+  }
+
+  .page > #quartz-body > .sidebar.right {
+    display: none !important;
+  }
+
+  .page > #quartz-body > footer {
+    order: 3 !important;
+    position: static !important;
+
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+
+    margin: 0.75rem 1rem 0 1rem !important;
+    padding: 0.5rem 0 1rem 0 !important;
+
+    text-align: center !important;
+    align-self: center !important;
+  }
+}
+
+/* Mobile: adjust article clipping under fixed top bar */
+@media (max-width: 800px) {
+  .page > #quartz-body > .center {
+    padding-top: 4.2rem !important;
+  }
+}
+
+/* =============================================================================
+   Mobile: fixed top bar height adjustment
+   ============================================================================= */
+
+@media (max-width: 800px) {
+  /* 通常時の固定ヘッダーを少し低くする */
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed))) {
+    height: 3.7rem !important;
+    min-height: 3.7rem !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.2rem !important;
+  }
+
+  /* 三本線の位置 */
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
+    .explorer-toggle.mobile-explorer {
+    top: 0.8rem !important;
+  }
+
+  /* バナーの位置 */
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
+    .page-title {
+    top: 0.35rem !important;
+  }
+
+  /* 記事冒頭が固定ヘッダーに潜らないようにする */
+  .page > #quartz-body > .center {
+    padding-top: 4.2rem !important;
+  }
+}
+
+/* =============================================================================
+   Mobile: fixed top bar compact height
+   ============================================================================= */
+
+@media (max-width: 800px) {
+  /* 通常記事表示時だけ、固定バーを低くする */
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed))) {
+    height: 3.1rem !important;
+    min-height: 3.1rem !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* 三本線 */
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
+    .explorer-toggle.mobile-explorer {
+    top: 0.55rem !important;
+    left: 1rem !important;
+  }
+
+  /* バナー本体 */
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
+    h2.page-title {
+    position: absolute !important;
+    top: 0.15rem !important;
+    left: 3.4rem !important;
+
+    height: 2.8rem !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
+    h2.page-title > a {
+    height: 2.8rem !important;
+    background-size: contain !important;
+    background-position: left center !important;
+  }
+
+  /* 記事冒頭の余白 */
+  .page > #quartz-body > .center {
+    padding-top: 3.7rem !important;
+  }
+}
+
+/* Mobile: fine tune fixed banner position */
+@media (max-width: 800px) {
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
+    h2.page-title {
+    top: 0.35rem !important;
+    left: 1.5rem !important;
+  }
+}
+
+/* Mobile: fine tune explorer search position */
+@media (max-width: 800px) {
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > .flex-component {
+    left: 4.2rem !important;
+    right: 1.6rem !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > .flex-component .search,
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > .flex-component .search-button {
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
