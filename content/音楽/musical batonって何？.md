@@ -14,41 +14,38 @@ wordpress_id: 107
 
 ![0803_0534_02.jpg](/images/2005/0803_0534_02.jpg)
 
-「[自転車でおいで](http://chibeemarin.moe-nifty.com/)」の marinさんより頂いたmusical batonを2週間遅れでお届けします（marinさん、お約束より遅れてスミマセン）。ところでmusical batonて何だろう？と思って調べてみたら[はてなダイアリー](http://d.hatena.ne.jp/keyword/Musical%20Baton)に載っていました。で、私の場合はというと･･････
+「[自転車でおいで](http://chibeemarin.moe-nifty.com/)」の marin さんより頂いた musical baton を 2週間遅れでお届けします（marinさん、お約束より遅れてスミマセン）。ところで musical baton て何だろう？と思って調べてみたら[はてなダイアリー](http://d.hatena.ne.jp/keyword/Musical%20Baton)に載っていました。で、私の場合はというと･･････
 
-**１．Total volume of music files on my computer**
+## １．Total volume of music files on my computer
 
 iTuneによると、3151曲、10.26GBでした。CDは置き場所に困るので、最近結構TUTAYAを利用します。何しろお金がかからないのが良いですね。JASRAC（はあてにできないのでそれに変わるまともな組織）に早く著作権のゴタゴタを整理してApple Music Storeでどんなレーベルも購入出来るようになる日を心待ちにしています。8月にApple Music Storeの日本版がスタートするそうなので少し期待しましょう。
 
-**２．Song playing right now**
+## ２．Song playing right now
 
 最近仕事中は何も聴きません。FMも点けませんね。
 
-**３．The last CD I bought**
+## ３．The last CD I bought
 
-「[郷愁アパルタメント](http://www.amazon.co.jp/exec/obidos/redirect?path=ASIN/B000A0H5O4&link_code=as2&camp=247&tag=buryoshaki-22&creative=1211)」 [柳沢暁子](http://www.netlaputa.ne.jp/%7Eakiko/)
-先日、無聊仲間の[IMAIYUMI](http://www.imaiyumi.com/)さんの個展オープニングに伺ったときに柳沢さんのボサノバ・ライブがありました。ギターとフルートの涼しげなパフォーマンスでした。カルロス・リラの娘の話を伺ったりしながらご本人より直接購入。サイン入りです。IMAIさんが柳沢さんのCDスリーブのイラストを描いているので、オープニングに出演していただいたとのことでした。
+「[郷愁アパルタメント](https://www.netlaputa.ne.jp/~akiko/discography_top.html)」 [柳沢暁子](http://www.netlaputa.ne.jp/%7Eakiko/)
+先日、無聊仲間の [IMAIYUMI](https://www.imaiyumi.com/) さんの個展オープニングに伺ったときに柳沢さんのボサノバ・ライブがありました。ギターとフルートの涼しげなパフォーマンスでした。カルロス・リラの娘の話を伺ったりしながらご本人より直接購入。サイン入りです。IMAI さんが柳沢さんの CDスリーブのイラストを描いているので、オープニングに出演していただいたとのことでした。
 
-**４．Five songs(tunes) I listen to a lot, or that mean a lot to me**
+## ４．Five songs(tunes) I listen to a lot, or that mean a lot to me
 
-iPodでも良くかかるLoveな曲をサントラから。良くかかるということはマイレート★★★★以上ということになります(笑)。
+iPod でも良くかかる Love な曲をサントラから。良くかかるということはマイレート★★★★以上ということになります(笑)。
 
-**1) "AUJOURD'HUI C'EST TOI"** >>「[男と女](http://www.amazon.co.jp/exec/obidos/redirect?path=ASIN/B00008CPCQ&link_code=as2&camp=247&tag=buryoshaki-22&creative=1211)」（1966仏、クロード・ルルーシュ）から
+**1) "AUJOURD'HUI C'EST TOI"**  ≫ 「男と女」（1966仏、クロード・ルルーシュ）から
 どんなシーンでこの曲が流れるのか思い出せないのだが（たぶんアヌーク・エーメが昔の旦那を思い出しているシーンかな？）、繰り返し聴くほどに味があるスルメのような曲。音楽はフランシス・レイ、ピエール・バルー。
 
-**2) "LE TOURBILLON"** >>「[突然炎のごとく](http://www.amazon.co.jp/exec/obidos/redirect?path=ASIN/B0006B9ZTA&link_code=as2&camp=247&tag=buryoshaki-22&creative=1211)」（1962仏　フランソワ・トリュフォー）から
+**2) "LE TOURBILLON"**  ≫ 「突然炎のごとく」（1962仏　フランソワ・トリュフォー）から
 映画より有名かもしれない名曲中の名曲。あまり若い頃のジャンヌ・モローの評判は良くないようだが（私の手元にあるフレンチ・ロリータ・コレクションという本にモローは取り上げられていなし、小西康陽氏はPHLIPSのACTRICESシリーズのライナーでミス・キャストではないかと言いたいようである）私はこの映画に出演している彼女が大好きである。音楽はバシアック。
 
-**3) "THE HEART ASK PLEASURE FIRST"**
-　>>「[ピアノ・レッスン](http://www.amazon.co.jp/exec/obidos/redirect?path=ASIN/B0009OA5IO&link_code=as2&camp=247&tag=buryoshaki-22&creative=1211)」（1993豪　ジェーン・カンピオン）から
+**3) "THE HEART ASK PLEASURE FIRST"**　≫ 「ピアノ・レッスン]」（1993豪　ジェーン・カンピオン）から
 浜辺に置き去りにされていたピアノに会いに行く。自分の片割れであるそのピアノをエイダが弾く。ベインズがそれに心打たれて･･････音楽はマイケル・ナイマン
 
-**4) "L'AMORE DICE CIAO"**
-　>>「[女性上位時代](http://www.amazon.co.jp/exec/obidos/redirect?path=ASIN/B00005HUMA&link_code=as2&camp=247&tag=buryoshaki-22&creative=1211)」（1968伊　パスクァーレ・フェスタ・カンパニーレ）から
+**4) "L'AMORE DICE CIAO"**　≫ 「女性上位時代」（1968伊　パスクァーレ・フェスタ・カンパニーレ）から
 このサントラは１テーマを9バージョンでアレンジという手抜きもの。メインテーマからワルツ、ドリームバージョン、ボサノバリミックス等々様々なアレンジで聴かせてくれるだけだが、なぜかずっと聴いていたくなる。取り上げた"L'AMORE DICE CIAO"はそのヴォーカルバージョン。「男と女」のジャン・ルイ役トランティニャンが裸のカトリーヌ・スパークに馬乗りされて部屋中を歩き回らせられるエンディングに流れるのですが、彼らにとっても観客にとってもまさに至福のとき。笑ってしまいながらも結構良いシーン。音楽はアルマンド・トロヴァヨーリ。
 
-**5) "CLEMONTINE CELARIE "VAS ADELANTE""**
-　>>「[シェフと素顔と、おいしい時間](http://www.amazon.co.jp/exec/obidos/redirect?path=ASIN/B000185CU4&link_code=as2&camp=247&tag=buryoshaki-22&creative=1211)」（2003仏　ダニエル・トンプソン）から
+**5) "CLEMONTINE CELARIE "VAS ADELANTE""** ≫ 「シェフと素顔と、おいしい時間」（2003仏　ダニエル・トンプソン）から
 ジュリエット・ビノッシュ、アカプルコ、椰子の木･････爽やかこの上ない組み合わせでかかる軽快な曲。アカプルコを捨てて自分のところへ来てくれたらそりゃ嬉しいですよ、男は、ましてビノッシュなら。音楽はエリック・セラ。
 
 文章を打ち終わって気が付いたのですが、上記のサントラがかかるシーンはどれも女の魅力が特に発揮されるシーン（「男と女」どんなシーンだったか忘れてしまいましたが）なので観て損は無いですよ！
@@ -57,23 +54,23 @@ iPodでも良くかかるLoveな曲をサントラから。良くかかるとい
 
 どなたか引き継いでくれる方は･････いらっしゃいませんよね？不幸の手紙やチェーンメールみたいなものでは無いようなので（かもしれませんが）･････私は久々音楽ネタの記事を打つことができて良かったです。
 
-**今日の写真 ～Underconstction　その4～**
+### 今日の写真 ～Underconstction　その4～
 ローマの･････どこだか忘れてしまったのですが、工事の仮囲いに修理が完了したときのモニュメントの立面が描かれています。イタリア人のサービス精神ですかね。
 
 ---
 
-## 旧ブログのコメント
+#### 旧ブログのコメント
 
 > WordPress時代の承認済みコメントを、記録として移行しています。
 
-### [marin](http://chibeemarin.moe-nifty.com/) — 2005-08-05
+#### [marin](http://chibeemarin.moe-nifty.com/) — 2005-08-05
 
 > hyodoさん、こんばんは。
 > お忙しい中たくさん書いて下さってありがとう！！　２週間なんて早い、早い。私は１ヶ月止めてしまったのですから。
 > どの曲も．．．というか、どの映画も興味深いです。１と２しか観てないけれど、４と５が気になってしまいました。探してみよう．．．。
 > お化けのシフォンケーキ、スゴイ色のケーキが目に浮かびますが、桑の実の懐かしい香りが漂ってきました。次回作に期待します！
 
-### [hyodo](http://www.hyodo-arch.com/) — 2005-08-06
+#### hyodo — 2005-08-06
 
 > marinさん、こんにちは！
 > 僕のところでmusical batonは止まってしまいそうで、
@@ -88,12 +85,12 @@ iPodでも良くかかるLoveな曲をサントラから。良くかかるとい
 > 内容そのものも高く評価しています。
 > お子さんとは一緒に観ないように(笑)
 
-### **sakura** — 2005-08-14
+#### sakura — 2005-08-14
 
 > やはりヨーロッパのエスプリ？？
 > 上海でも鉄の足組だったよ。
 
-### [hyodo](http://www.hyodo-arch.com/) — 2005-08-15
+#### hyodo — 2005-08-15
 
 > sakuraさん、おかえり！
 > 暑くありませんでした？スイカ食べた？
