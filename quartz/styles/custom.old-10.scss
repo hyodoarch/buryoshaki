@@ -644,22 +644,6 @@ article {
       font-size: 1.35rem;
       line-height: 1.55;
       font-weight: 600;
-
-      // カテゴリー一覧の記事タイトルも、本文リンクと同じホバー表示にする。
-      > a {
-        color: $note-title-color !important;
-        background-color: transparent !important;
-        border-radius: $link-radius !important;
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-        text-decoration: none !important;
-
-        &:hover {
-          color: $link-hover-color !important;
-          background: $link-hover-background !important;
-          background-color: $link-hover-background !important;
-        }
-      }
     }
   }
 
@@ -764,7 +748,7 @@ body[data-slug="index"] {
     > a.internal:hover,
     > a.internal-link:hover {
       color: #000000 !important;
-      text-decoration: none !important;
+      text-decoration: underline !important;
     }
   }
 
@@ -1330,45 +1314,6 @@ article {
     &:hover {
       color: var(--article-link-color);
       background-color: var(--article-link-hover-bg);
-    }
-  }
-}
-
-/* index.md：記事タイトル・公開日・タグ間隔 */
-body[data-slug="index"] {
-  .page > #quartz-body > .center article {
-    h3 {
-      margin: 0 0 0.25rem !important;
-      font-size: 1.35rem !important; // 21.6px
-      line-height: 1.55 !important;
-      font-weight: 600 !important;
-
-      > a.internal-link.alias {
-        color: #333333 !important;
-        font-weight: 600 !important;
-      }
-    }
-
-    h3 + p {
-      margin: 0 0 0.45rem !important;
-      font-size: 0.95rem !important; // 15.2px
-      color: var(--gray) !important;
-    }
-
-    h3 + p + ul.tags {
-      margin: 0 0 2.1rem !important;
-      padding-left: 0 !important;
-    }
-  }
-}
-
-/* index.md：記事タイトルのホバー下線を消す */
-body[data-slug="index"] {
-  .page > #quartz-body > .center article h3 > a {
-    text-decoration: none !important;
-
-    &:hover {
-      text-decoration: none !important;
     }
   }
 }
