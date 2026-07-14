@@ -3,7 +3,12 @@ title: おすすめのノート
 ---
 ## [[アート/ピラネージ版画展|ピラネージ版画展]]
 Nov 26, 2008, 4 min read
-#ピラネージ #ローマ #版画
+<ul class="tags">
+  <li><a class="internal tag-link" href="./tags/ピラネージ">ピラネージ</a></li>
+  <li><a class="internal tag-link" href="./tags/ローマ">ローマ</a></li>
+  <li><a class="internal tag-link" href="./tags/版画">版画</a></li>
+</ul>
+
 ## [[アート/『つながる身体　伝える身体』に参加|『つながる身体　伝える身体』に参加]]
 Feb 13, 200913 min read
 #能
