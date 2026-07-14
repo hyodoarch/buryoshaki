@@ -33,29 +33,8 @@ $serif-font-family:
 
 $text-color: #000000;
 $note-title-color: #333333;
-
-// 本文内リンク
-$link-color: #333333;
-$link-background: transparent;
-$link-hover-color: #333333;
-$link-hover-background: #eeeeee;
-
-// Markdown本文：見出し・段落の上下余白
-// 数値はここを変更するだけで調整できます。
-$article-h1-margin-top: 1.625rem;
-$article-h1-margin-bottom: 0.6rem;
-$article-h2-margin-top: 1.375rem;
-$article-h2-margin-bottom: 0.5rem;
-$article-h3-margin-top: 1.125rem;
-$article-h3-margin-bottom: 0.5rem;
-$article-h4-margin-top: 1rem;
-$article-h4-margin-bottom: 0.5rem;
-$article-h5-margin-top: 1rem;
-$article-h5-margin-bottom: 0.5rem;
-$article-h6-margin-top: 1rem;
-$article-h6-margin-bottom: 0.5rem;
-$article-p-margin-top: 0;
-$article-p-margin-bottom: 1.5rem;
+$link-color: #5a2cff;
+$link-hover-color: #3f1fbf;
 
 $tag-bg: #f6f6f6;
 $tag-border: #e6e6e6;
@@ -86,13 +65,6 @@ $mobile-explorer-list-top: 3.5rem;
 }
 
 @mixin tag-pill {
-  display: inline-block !important;
-  width: auto !important;
-  max-width: none !important;
-  min-width: 0 !important;
-  vertical-align: baseline;
-  white-space: nowrap;
-
   font-size: 0.85rem !important;
   font-weight: 400 !important;
   color: $text-color !important;
@@ -413,52 +385,8 @@ b,
       height: auto;
     }
 
-    // -------------------------------------------------------------------------
-    // Markdown本文：見出し・段落の上下余白
-    // 実際の数値はファイル冒頭の $article-...-margin-* で調整する。
-    // -------------------------------------------------------------------------
-
-    h1 {
-      margin-top: $article-h1-margin-top;
-      margin-bottom: $article-h1-margin-bottom;
-    }
-
-    h2 {
-      margin-top: $article-h2-margin-top;
-      margin-bottom: $article-h2-margin-bottom;
-    }
-
-    h3 {
-      margin-top: $article-h3-margin-top;
-      margin-bottom: $article-h3-margin-bottom;
-    }
-
-    h4 {
-      margin-top: $article-h4-margin-top;
-      margin-bottom: $article-h4-margin-bottom;
-    }
-
-    h5 {
-      margin-top: $article-h5-margin-top;
-      margin-bottom: $article-h5-margin-bottom;
-    }
-
-    h6 {
-      margin-top: $article-h6-margin-top;
-      margin-bottom: $article-h6-margin-bottom;
-    }
-
     p {
       line-height: 1.9;
-      margin-top: $article-p-margin-top;
-      margin-bottom: $article-p-margin-bottom;
-
-      // 本文中のタグを、タイトル下のタグと同じように横並びにする。
-      > a.tag-link {
-        margin-right: 0.35rem;
-        margin-bottom: 0.25rem;
-        @include tag-pill;
-      }
     }
 
     p,
@@ -551,29 +479,14 @@ article {
 // =============================================================================
 
 .page > #quartz-body > .center {
-  // 本文の内部リンク・外部リンク
-  // タグリンクと見出し右側のアンカーアイコンは対象外にする。
-  article {
-    a.internal-link:not(.tag-link):not([role="anchor"]),
-    a.external-link:not(.tag-link) {
-      color: $link-color !important;
-      background: $link-background !important;
-      background-color: $link-background !important;
+  article a:not(.tag-link),
+  .page-header a:not(.tag-link) {
+    color: $link-color !important;
+  }
 
-      &:link,
-      &:visited,
-      &:active {
-        color: $link-color !important;
-        background: $link-background !important;
-        background-color: $link-background !important;
-      }
-
-      &:hover {
-        color: $link-hover-color !important;
-        background: $link-hover-background !important;
-        background-color: $link-hover-background !important;
-      }
-    }
+  article a:not(.tag-link):hover,
+  .page-header a:not(.tag-link):hover {
+    color: $link-hover-color !important;
   }
 
   article blockquote {
@@ -750,6 +663,17 @@ body[data-slug="index"] {
     margin-top: 0 !important;
   }
 
+  // おすすめ記事内のタグを横並びにする
+  .page > #quartz-body > .center article p > a.tag-link {
+    display: inline-block !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin-right: 0.35rem;
+    margin-bottom: 0.25rem;
+
+    @include tag-pill;
+  }
 }
 
 // =============================================================================
@@ -1206,27 +1130,27 @@ article {
   /* ---------- 見出しの大きさ ---------- */
 
   h1 {
-    font-size: 1.625rem;                   // 26px
+    font-size: 2rem;                       // 32px
   }
 
   h2 {
-    font-size: 1.375rem;                   // 22px
+    font-size: 1.65rem;                    // 26.4px
   }
 
   h3 {
-    font-size: 1.125rem;                   // 18px
+    font-size: 1.4rem;                     // 22.4px
   }
 
   h4 {
-    font-size: 1rem;                     // 16px
+    font-size: 1.2rem;                     // 19.2px
   }
 
   h5 {
-    font-size: 1rem;                    // 16px
+    font-size: 1.05rem;                    // 16.8px
   }
 
   h6 {
-    font-size: 1rem;                    // 16px
+    font-size: 0.95rem;                    // 15.2px
   }
 
 
