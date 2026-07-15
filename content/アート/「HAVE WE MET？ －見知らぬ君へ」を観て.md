@@ -9,6 +9,8 @@ tags:
   - さわひらき
   - 名和晃平
   - 小林洋子
+  - アート
+  - 現代美術
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/59
 wordpress_id: 59
 ---

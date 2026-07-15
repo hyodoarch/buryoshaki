@@ -1,12 +1,13 @@
 ---
 title: Movable Type 3.2にアップ・グレード
-date: '2005-12-09'
-modified: '2005-12-09'
+date: 2005-12-09
+modified: 2005-12-09
 draft: false
 categories:
-- コンピュータ
+  - コンピュータ
 tags:
-- MT SQLite xrea
+  - コンピュータ
+  - MovableType
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/120
 wordpress_id: 120
 ---
@@ -35,17 +36,17 @@ wordpress_id: 120
 
 現在の不具合は、サイトの再構築ができない場合が多いこと、ヘルプ・ファイルが開けないことです。それら以外は問題ないようです。
 
-**参照記事**
+### 参照記事
 
 > 黍若日記「Movable Type 3.2-ja XREAでのバージョンアップ」
 > Movable Type 3.2 導入手順
 
 どちらも非常にわかりやすい素晴らしい記事です。
 
-**今日の写真**
+### 今日の写真
 コスモスです。しばらくは気ままに写真を載せます。シリーズ写真は考えてあるのですが、マニアックな内容のため、発表を躊躇っております。
 
-**追記　12月29日**
+#### 追記　12月29日
 Movable Type 3.2 にすることにより、スパム対策は講じられましたが、サイトの再構築やトラックバック送信がが出来なくなるなどの新たな問題が発生しました。どうやらデータベース設定が BerkeleyDB だとサーバによっては動作しないことがあるようです。で、SQLiteに変更しました。変換スクリプトを使用すると簡単にできます。
 
 1. cgi-bin 内にディレクトリ sqlite を作成
@@ -61,7 +62,7 @@ Movable Type 3.2 にすることにより、スパム対策は講じられまし
 
 以上でSQLiteに変更され、問題は解決しました。
 
-**更なる参照記事**
+#### 更なる参照記事
 
 > Ogawa::Memoranda　　mt-db-convert.cgi: MTデータベースの相互変換CGIスクリプト
 > The blog of H.Fujimoto　　Movable Type 3.2アップグレードの際にBerkeley DBから他のデータベースに変える手順

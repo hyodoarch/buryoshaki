@@ -17,7 +17,6 @@ wordpress_id: 843
 [前回](https://www.hyodo-arch.com/buryoshaki/archives/787)は、Raspberry Pi を使った格安ミュージックサーバのハード構成を紹介した。今回は、Raspberry Pi をミュージックサーバとして使うために私が行った設定を紹介する。ネット検索で参考にさせていただいた HP は大変貴重な情報がある。また参考書として、「[Raspberry Pi ユーザーガイド](http://www.amazon.co.jp/gp/product/4844333747/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=4844333747&linkCode=as2&tag=buryoshaki-22)」が役に立った。
 
 ### raspi-config の設定
-
 私の場合は、raspbian をしばらくグラフィカル・デスクトップ環境で遊んだあと、ターミナルより sudo raspi-config で下記の設定を行った。
 
 1. Change User Password > pi ユーザのパスワード変更
@@ -28,12 +27,10 @@ wordpress_id: 843
 6. Advanced Options / SSH > Enable に変更
 
 ### 公開鍵で SSH 認証できるようにする
-
 下記リンクの解説及び設定方法が非常に分かりやすい。SSH クライアントは、PuTTY を使用している。
 参考HP > [Qaplaの覚書・メモ・備忘録・独言 Raspberry Pi のSSHでファイル認証](http://qapla.blog52.fc2.com/blog-entry-305.html)
 
 ### LAN の固定IP の設定
-
 sudo nano /etc/network/interfaces で編集
 
 ```
@@ -51,7 +48,6 @@ iface default inet dhcp
 ```
 
 ### 無線LANの設定
-
 sudo nano /etc/network/interfaces で編集
 
 ```
@@ -86,7 +82,6 @@ network={
 ```
 
 ### MPDのインストール
-
 [MPD 公式ページ](http://www.musicpd.org/)
 参考HP > [Raspberry PiをMPD（Music Player Daemon）サーバにする](http://www.soramimi.jp/raspberrypi/mpd/)
 下記コマンドをターミナルから打ち Music Player Daemon のインストール及び設定を行う。
@@ -123,7 +118,6 @@ network={
     > Raspberry Pi を再起動する
 
 ### Samba サーバをマウントする
-
 私は、音楽ファイルを Samba サーバ上に保存している。下記コマンドをターミナルから打ち、Raspberry Pi から Samba サーバをマウントする。一般的な NAS もたぶん同様の設定方法だと思われる。
 
 1. sudo apt-get install cifs-utils↵
@@ -154,7 +148,6 @@ network={
 2. しかし、再起動しても自動的にマウントされなかった。sudo mount -a を実行すれば、マウントされる。しかたないので、sudo nano /etc/rc.local を実行し、exit 0 の直前に mount -a を追記した。rc.local は起動時に最後に読み込まれるファイルとのこと。
 
 ### 目覚ましとして使う
-
 Raspberry Pi も USB-DAC 内臓のプリメインアンプ Topping/TP23 も電源スイッチが無いので、電源は 24時間入れっぱなしである。待機電力も電気代を気にするほど大きくないようだ。そこで目覚ましとしても使うことにした。
 sudo crontab -e で cron を編集する。下記のように mpc コマンドを追記した。
 
@@ -193,5 +186,6 @@ mpc コマンドの使い方は、mpc help で表示される。一応下記リ�
 - mpc play↵
    > 現在のプレイリストを再生する
 
-以上、思ったよりも快適に使えている。仕事場のリスニング環境は、デスクトップ Win7 + foobar2000 + TEAC/A-H01 + 自作スピーカー（長岡鉄男/BS-84、Fostex/FF105WK）であることは以前の記事「[foobar2000 で NHK ネットラジオを聴く](https://www.hyodo-arch.com/buryoshaki/archives/760)」で書いたとおりだが、こちらの更に安価なシステムの方が音質も良い。
-関連記事 > 「[Raspberry Pi で格安ミュージックサーバを作る～その１～](https://www.hyodo-arch.com/buryoshaki/archives/787)」
+以上、思ったよりも快適に使えている。仕事場のリスニング環境は、デスクトップ Win7 + foobar2000 + TEAC/A-H01 + 自作スピーカー（長岡鉄男/BS-84、Fostex/FF105WK）であることは以前の記事「[[foobar2000 で NHK ネットラジオを聴く]]」で書いたとおりだが、こちらの更に安価なシステムの方が音質も良い。
+
+関連記事 ≫ [[Raspberry Pi で格安ミュージックサーバを作る～その１～]]

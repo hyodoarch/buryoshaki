@@ -47,7 +47,7 @@ Jan 29, 2009
  <li><a class="internal tag-link" href="./tags/浅田彰">浅田彰</a></li>
 </ul>
 
-## [[建築/クローズアップ現代「そして、ローンだけが残った」を観て|クローズアップ現代「そして、ローンだけが残った」を観て]]
+### [[建築/クローズアップ現代「そして、ローンだけが残った」を観て|クローズアップ現代「そして、ローンだけが残った」を観て]]
 May 27, 2009
 <ul class="tags">
   <li><a class="internal tag-link" href="./tags/建築">建築</a></li>
@@ -55,7 +55,7 @@ May 27, 2009
   <li><a class="internal tag-link" href="./tags/住宅ローン">住宅ローン</a></li>
 </ul>
 
-## [[建築/都市がつまらない理由|都市がつまらない理由]]
+### [[建築/都市がつまらない理由|都市がつまらない理由]]
 Jun 02, 2009
 <ul class="tags">
   <li><a class="internal tag-link" href="./tags/建築">建築</a></li>
@@ -65,7 +65,7 @@ Jun 02, 2009
   <li><a class="internal tag-link" href="./tags/島田雅彦">島田雅彦</a></li>
 </ul>
 
-## [[料理/シフォンケーキ宇宙編|シフォンケーキ宇宙編]]
+### [[料理/シフォンケーキ宇宙編|シフォンケーキ宇宙編]]
 Nov 12, 2004
 <ul class="tags">
   <li><a class="internal tag-link" href="./tags/料理">料理</a></li>
@@ -74,7 +74,7 @@ Nov 12, 2004
   <li><a class="internal tag-link" href="./tags/赤堀博美">赤堀博美</a></li>
 </ul>
 
-## [[料理/シフォンケーキ地上編|シフォンケーキ地上編]]
+### [[料理/シフォンケーキ地上編|シフォンケーキ地上編]]
 Nov 14, 2004
 <ul class="tags">
   <li><a class="internal tag-link" href="./tags/料理">料理</a></li>

@@ -1,12 +1,14 @@
 ---
 title: MTOS 4.24 へセキュリティアップデート
-date: '2009-03-04'
-modified: '2009-03-04'
+date: 2009-03-04
+modified: 2009-03-04
 draft: false
 categories:
-- コンピュータ
+  - コンピュータ
 tags:
-- MT
+  - MovableType
+  - コンピュータ
+  - CMS
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/164
 wordpress_id: 164
 ---
@@ -29,17 +31,16 @@ wordpress_id: 164
 今回も川口メディアセブンのイベント「55km2」で撮影した写真。峯八幡宮の東側の崖のある未舗装の道から市内を眺めた景色です。かなり高圧線が目立ちます。
 
 ---
-
-## 旧ブログのコメント
+#### 旧ブログのコメント
 
 > WordPress時代の承認済みコメントを、記録として移行しています。
 
-### **dorami** — 2009-03-04
+#### **dorami** — 2009-03-04
 
 > おはようございます　といいたくなるようないい天気の
 > 写真ですね～　はやく晴れないかな。
 
-### [hyodo](http://www.hyodo-arch.com) — 2009-03-04
+#### hyodo — 2009-03-04
 
 > doramiさん、こんにちは。
 > 今日も寒く、曇りですねぇー。

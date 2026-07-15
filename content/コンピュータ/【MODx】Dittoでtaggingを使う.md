@@ -1,21 +1,22 @@
 ---
 title: 【MODx】Dittoでtaggingを使う
-date: '2010-01-13'
-modified: '2010-10-19'
+date: 2010-01-13
+modified: 2010-10-19
 draft: false
 categories:
-- コンピュータ
+  - コンピュータ
 tags:
-- Ditto
-- MODx
+  - Ditto
+  - コンピュータ
+  - MODx
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/182
 wordpress_id: 182
 ---
 
-以下ウェブサイト「[くらしの道具](https://www.hyodo-arch.com/dogu/)」の「くらしの道具たちを種類別にみる／[ぐい吞](https://www.hyodo-arch.com/dogu/web/dogutachi/category/guinomi/00.html)」など種類別作品ページの Ditto のスニペット・コールの備忘録です。同じフォルダ内の親ドキュメントのリソース名と一致するタグを、作家別ドキュメントから抽出します。
-**MODxのドキュメントツリー構成**
+以下ウェブサイト「[くらしの道具](https://www.kurashinodogu.jp/)」の「[ぐい呑／くらしの道具](https://www.kurashinodogu.jp/dogutachi/category/guinomi/00.html)」など種類別作品ページの Ditto のスニペット・コールの備忘録です。同じフォルダ内の親ドキュメントのリソース名と一致するタグを、作家別ドキュメントから抽出します。
+## MODxのドキュメントツリー構成
 ![くらしの道具 MODxドキュメントツリー キャプチャ](/images/2010/FS_dogu_04.png)
-**メイン画像のDitto のスニペット・コール**
+## メイン画像のDitto のスニペット・コール
 次の記述でカレントドキュメントの親ドキュメント・タイトル名と一致するタグを、作家別作品ドキュメントから抽出します。JavaScriptを使用した方が簡単ですが、独立したページを出力するようにしたかったので、このようにしています。種類別作品ページは、リソース名とエイリアス以外は全て同じデータです。作家別作品ページが増減しても自動的に更新されます。
 
 ```
@@ -25,7 +26,7 @@ wordpress_id: 182
 &orderBy=`pagetitle ASC` &start=`[*pagetitle*]` &total=`1` &tpl=`doguByCategoryMain`!]
 ```
 
-**パラメータの説明**
+## パラメータの説明
 parents=`137`　･･････取得したいドキュメントフォルダ id
 depth=`2　･･････取得する階層の深さ。
 language=`japanese-utf8` 　･･････日本語ファイルを使用
@@ -38,8 +39,8 @@ start=`[\*pagetitle\*]`　･･････表示オフセット。抽出した
 total=`1` 　･･････抽出したドキュメントを何件表示するか
 start=`[\*pagetitle\*]`　･･････日本語ファイルを使用
 tpl=`doguByCategoryMain`　･･････テンプレートを指定（チャンク doguByCategoryMain に記述）
-**テンプレート・チャンク "doguByCategoryMain"**
 
+## テンプレート・チャンク "doguByCategoryMain"
 ```
 <div class="medium-column"><!-- ===== 作品メイン画像 ===== -->
 <p>[+workImage+]</p>
@@ -58,7 +59,7 @@ tpl=`doguByCategoryMain`　･･････テンプレートを指定（チ�
 </div><!-- ===== medium-column ===== -->
 ```
 
-**プレイスホルダの説明**
+## プレイスホルダの説明
 [+workImage+]　･･････Dittoで抽出したドキュメントの画像用カスタムテンプレート変数を取得
 [[GetField? &parent=`1` &parentLevel=`1` &field=`pagetitle`]]　･･････親ドキュメントのリソース名をGetField スニペットで取得
 [+workName+]　･･････Dittoで抽出したドキュメントから作品名用カスタムテンプレート変数を取得
@@ -66,8 +67,8 @@ tpl=`doguByCategoryMain`　･･････テンプレートを指定（チ�
 [+workMaterial+]　･･････Dittoで抽出したドキュメントから材質用カスタムテンプレート変数を取得
 [+workSize+]　･･････Dittoで抽出したドキュメントから寸法用カスタムテンプレート変数を取得
 [+availability+]　･･････Dittoで抽出したドキュメントから在庫用カスタムテンプレート変数を取得
-**出力されるhtmlコード**
 
+## 出力されるhtmlコード
 ```
 </div><!-- ===== medium-column ===== -->
 <div class="medium-column"><!-- ===== 作家名、作品名、材質、寸法等 ===== -->
@@ -85,22 +86,23 @@ tpl=`doguByCategoryMain`　･･････テンプレートを指定（チ�
 ```
 
 メイン画像部分は以上です。次にサムネイル画像部分の説明です。
-**サムネイル画像のDitto のスニペット・コール**
-種類別タグに一致するサムネイル画像を抽出するのは、ちょっと複雑です。Dittoを入れ子にして解決しました。最初のDitto コールでカレントドキュメントと同じフォルダ内のドキュメントを抽出し、URI を利用します。次に、ネストするDitto コールで、親ドキュメント・タイトル名と一致するタグを、作家別作品ドキュメントから抽出します。
-**最初のDitto のスニペット・コール**
 
+## サムネイル画像のDitto のスニペット・コール
+種類別タグに一致するサムネイル画像を抽出するのは、ちょっと複雑です。Dittoを入れ子にして解決しました。最初のDitto コールでカレントドキュメントと同じフォルダ内のドキュメントを抽出し、URI を利用します。次に、ネストするDitto コールで、親ドキュメント・タイトル名と一致するタグを、作家別作品ドキュメントから抽出します。
+
+## 最初のDitto のスニペット・コール
 ```
 [!Ditto? &id=`thumbnailUse` &parents=`[*parent*]` &depth=`1`
 &orderBy=`pagetitle ASC` &tpl=`doguByCategoryWorkList`!]
 ```
 
-**最初のDitto のパラメータの説明**
+## 最初のDitto のパラメータの説明
 parents=`[\*parent\*]`　･･････親ドキュメント idを取得
 depth=`1`　･･････取得する階層の深さ。
 orderBy=`pagetitle ASC`　･･････pagetitleを昇順にソート
 tpl=`doguByCategoryWorkList`　･･････テンプレートを指定（チャンク doguByCategoryWorkList に記述）
-**テンプレート・チャンク "doguByCategoryWorkList"**
 
+## テンプレート・チャンク "doguByCategoryWorkList"
 ```
 <div class="thumbnail"><!-- ===== サムネイル画像 ===== -->
 <h6><a href="[~[+id+]~]">
@@ -112,18 +114,17 @@ tpl=`doguByCategoryWorkList`　･･････テンプレートを指定（�
 </div><!-- ===== thumbnail ===== -->
 ```
 
-**プレイスホルダ　及び　ネストするDittoのパラメータの説明**
+## プレイスホルダ　及び　ネストするDittoのパラメータの説明
 [~[+id+]~]　･･････最初のDittoで抽出したドキュメントのURI
 Dittoのパラメータは、idとtpl以外は、メイン画像のコールと同じです。
-**ネストしたテンプレート・チャンク "doguThumbnailUseImg"**
 
+## ネストしたテンプレート・チャンク "doguThumbnailUseImg"
 ```
 [+workImage+]
 ```
-
 [+workImage+]　･･････Dittoで抽出したドキュメントの画像用カスタムテンプレート変数を取得
-**出力されるhtmlコード**
 
+## 出力されるhtmlコード
 ```
 <div class="thumbnail"><!-- ===== サムネイル画像 ===== -->
 <h6><a href="web/dogutachi/category/guinomi/00.html">
@@ -161,6 +162,7 @@ Dittoのパラメータは、idとtpl以外は、メイン画像のコールと�
 ```
 
 サムネイル画像部分は以上です。h6タグは適切な使い方ではありませんが、その辺は見逃してください(笑)。又、同じタグの総数が15以下の場合は、html出力をご覧いただけるとお分かりのように、タグ不足分だけimgタグが出力されず空になります。リンクだけが存在し、それが画面に表れないのは良いことではありません。他にやり方があるのでしょうが、今のところ僕にとってはこれが自動化の限界です。気になる場合は、非公開にすればいいかな、と思っています。
+
 この記事は下記のウェブを参考にさせていただきました。
 [Let's enjoy MODx](http://modx.liolion.net/)･･････スニペット、モジュールの解説が大変充実しています。
 [ウェブ屋のCMS→modxヒキダス流（備忘録）／Dittoのタギング（tagging）をフィルター代わりに使う](http://d.hatena.ne.jp/hikidas_ikeda/20090517/1242521866)･･････MODxを使っているウェブ制作会社のブログです。役に立つ記事が満載です。

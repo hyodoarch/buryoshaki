@@ -1,18 +1,20 @@
 ---
 title: AutoHotkey を利用したトーンダイヤラー
-date: '2014-08-18'
-modified: '2014-10-24'
+date: 2014-08-18
+modified: 2014-10-24
 draft: false
 categories:
-- コンピュータ
+  - コンピュータ
 tags:
-- AutoHotkey
+  - AutoHotkey
+  - コンピュータ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/1020
 wordpress_id: 1020
 ---
-
 [トーンダイヤラー](http://www.sophia-it.com/content/%E3%83%88%E3%83%BC%E3%83%B3%E3%83%80%E3%82%A4%E3%83%A4%E3%83%A9%E3%83%BC) 又は DTMF ダイヤラーというものをご存知だろうか？
+
 プッシュホンの音（[DTMF](http://ja.wikipedia.org/wiki/DTMF)。ピ・ポ・パというやつ）で電話をかける機器やソフトウェアのことである。10年以上前、仕事で Mac OS 8 くらいを使っていた頃、トーン発信機能が付いている電話帳ソフトがあり使っていた。その後、独立して設計事務所を開いてからは、 PC 環境が Windows に変わり、携帯電話を使う機会が多くなったこともあって、必要性を感じなくなっていた。しかし、官公庁やメーカーに問合せたりするときは、通話時間が長くなる場合もあるので、固定電話から掛けたい。その時にホームページに記載されている電話番号の脇にボタンがあってクリックすると電話が掛けられると便利そうだ。Skype をインストールすると、ブラウザ上の電話番号表示がボタンに変わり、ワンクリックで SkypeOut 通話できるようになるが、このよう感じでトーン発信できるソフトウェアはないだろうか？
+
 そんなことを考えながら、トーンダイヤラーできるソフトウェアを探してみると、今では皆無で、あっても発表時期がかなり古い。見つけたものを列記する。
 
 - [ダイヤルパッド](http://www.toxsoft.com/dialpad/index.html) > 起動できなかった
@@ -33,9 +35,8 @@ wordpress_id: 1020
 そこで、上記を実現する AHK スクリプトを作成した。使用方法は、PC のスクリーン上の電話番号を選択した状態でホットキーを押す。すると下図のようなダイアログが表示されるので、OK ボタンをクリックすると、ピ・ポ・パとトーン信号を発信する、それだけである。電話帳を作る必要もない。
 ![tonedial.ahk の GUI](/images/2014/tonedial.png)
 ダウンロード > [tonedial.zip](https://www.hyodo-arch.com/buryoshaki/wp-content/uploads/arc/tonedial.zip)
-中身を見ていただければわかるが、2 byte 数字も有効にしてある。しかし、選択文字が電話番号として成り立つか？は判定していない。
-私は、普段使用している AHK スクリプトに下記のようにインクルードし、ホットキーを Ctrl + Space キーにしている。
 
+中身を見ていただければわかるが、2 byte 数字も有効にしてある。しかし、選択文字が電話番号として成り立つか？は判定していない。私は、普段使用している AHK スクリプトに下記のようにインクルードし、ホットキーを Ctrl + Space キーにしている。
 ```
 #Include tonedial.ahk		;tonedial.ahk の読み込み
 
@@ -44,7 +45,7 @@ wordpress_id: 1020
 
 AutoHotkey を導入している方が対象になりますが、興味がありましたらお試しください。下記に情報サイトを列記します。
 
-- [AutoHotkey](http://www.autohotkey.com/) > 本家サイト
+- [AutoHotkey](https://www.autohotkey.com/) > 本家サイト
 - [AutoHotkey Forums](http://www.autohotkey.com/board/) > 本家サイトフォーラム
 - [流行らせるページ跡地](http://lukewarm.s101.xrea.com/) > 最初の有力な日本語解説サイトの跡地
 - [AutoHotkeyJp](https://sites.google.com/site/autohotkeyjp/) > 流行らせるページを見やすくした日本語解説サイト

@@ -1,44 +1,39 @@
 ---
 title: 【MODx】Wayfinderでグローバル・ナビゲーションを表示する
-date: '2010-01-03'
-modified: '2010-01-03'
+date: 2010-01-03
+modified: 2010-01-03
 draft: false
 categories:
-- コンピュータ
+  - コンピュータ
 tags:
-- MODx
-- Wayfinder
+  - MODx
+  - Wayfinder
+  - コンピュータ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/179
 wordpress_id: 179
 ---
-
 昨秋、妻のショップのウェブ制作に[MODx](http://modxcms-jp.com/)というCMSを導入しました。概念がわかりやすいので、HTMLとCSSが使える人ならば、チャンク（再利用する部分などをパーツ化したもの）やテンプレート変数（MTで言うところのカスタムフィールド）を使うだけでも効率よくウェブ制作できるのではないかと思います。
 
 最近ようやくスニペットやプラグインを使えるようになってきました。この記事では、Wayfinder の使い方を備忘録としてまとめます。
 
-実際の制作したウェブはこちら･･････[くらしの道具](https://www.hyodo-arch.com/dogu/)
-
-**MODxのドキュメントツリー構成**
-
+実際の制作したウェブはこちら･･････[くらしの道具](https://www.kurashinodogu.jp/)
+## MODxのドキュメントツリー構成
 ![くらしの道具 MODxドキュメントツリー キャプチャ](/images/2010/FS_dogu_01.png)
 
-**グローバル・ナビゲーション部分のチャンク・コード**
-
+## グローバル・ナビゲーション部分のチャンク・コード
 ```
 <div id="global-navi"><!-- +++++ グローバル・ナビ +++++ -->
 [[Wayfinder?startId=`8` &level=`1` &excludeDocs=`236,254` &hereClass=`current`]]
 </div><!-- +++++ global-navi +++++ -->
 ```
 
-**パラメータの説明：**
-
+## パラメータの説明：
 **startId=`8`**　･･････リストアップする親ドキュメントのid
 **level=`1`**　･･････リストアップする階層の深さ
 **hereClass=`current`**　･･････カレントドキュメントに挿入するクラス。デフォルトでは"active"挿入されますが、僕の習慣で"current"と指定しています。
 **excludeDocs=`236,254`**　･･････リストアップから除外するドキュメントのid（404ページと閉鎖中ページ）
 
-**出力されるhtmlコード**
-
+## 出力されるhtmlコード
 ```
 <div id="global-navi"><!-- +++++ グローバル・ナビ +++++ -->
 <ul><li class="current"><a href="https://www.hyodo-arch.com/dogu/" title="HOME" >HOME</a></li>
@@ -52,8 +47,7 @@ wordpress_id: 179
 
 テンプレートにプレイスホルダを使ってチャンクを記述し、パラメータで指定すれば、様々な条件でリストアップすることができます。ここでは、デフォルトで十分でしたので、テンプレートは使用していません。
 
-**グローバル・ナビゲーション部分のCSS**
-
+## グローバル・ナビゲーション部分のCSS
 ```
 /* +++++++++++++++ ヘッダー（グローバルナビ部分） +++++++++++++++ */
 #global-navi	{clear: both;}
