@@ -69,10 +69,10 @@ $separator-color: #e6e6e6;
 $mobile-topbar-height: 3.1rem;
 $mobile-content-top-offset: 3.7rem;
 $mobile-banner-top: 0.35rem;
-$mobile-banner-left: 0.5rem;
-$mobile-banner-link-offset: 0;
-$mobile-explorer-search-left: 1.6rem;
-$mobile-explorer-search-right: 4.2rem;
+$mobile-banner-left: 1.5rem;
+$mobile-banner-link-offset: 2.7rem;
+$mobile-explorer-search-left: 4.2rem;
+$mobile-explorer-search-right: 1.6rem;
 $mobile-explorer-list-top: 3.5rem;
 $mobile-menu-background: #f6f6f6;
 
@@ -879,12 +879,11 @@ body[data-slug="index"] {
     transform: none !important;
   }
 
-  // 三本線アイコン。通常時・Explorer 展開時ともに右上に置く。
+  // 三本線アイコン。通常時・Explorer 展開時ともに左上に置く。
   .page > #quartz-body > .sidebar.left .explorer-toggle.mobile-explorer {
     position: absolute !important;
     top: 1rem !important;
-    left: auto !important;
-    right: 0.5rem !important;
+    left: 1rem !important;
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -912,8 +911,6 @@ body[data-slug="index"] {
   // Explorer展開中は、三本線ボタンの背景もメニュー背景になじませる。
   .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed))
     .explorer-toggle.mobile-explorer {
-    top: 0.55rem !important;
-    right: 1rem !important;
     background: transparent !important;
   }
 
@@ -922,7 +919,7 @@ body[data-slug="index"] {
     display: none !important;
   }
 
-  // 通常表示：バナーは左側、三本線は右上に表示する。
+  // 通常表示：三本線の右隣にバナーを出す。
   .page > #quartz-body > .sidebar.left > h2.page-title {
     display: block !important;
     width: calc(100vw - 2rem) !important;
@@ -970,11 +967,11 @@ body[data-slug="index"] {
     display: none !important;
   }
 
-  // Explorer 展開中だけ、右上の三本線と重ならないよう検索窓を表示する。
+  // Explorer 展開中だけ、三本線の右隣に検索窓を表示する。
   .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > .flex-component {
     display: flex !important;
     position: absolute !important;
-    top: 0.55rem !important;
+    top: 1rem !important;
     left: $mobile-explorer-search-left !important;
     right: $mobile-explorer-search-right !important;
     width: auto !important;
@@ -1373,49 +1370,5 @@ body[data-slug="index"] {
     &:hover {
       text-decoration: none !important;
     }
-  }
-}
-
-/* モバイル：目次を開いているとき、三本線を「×」に変更 */
-@media (max-width: 800px) {
-  .page > #quartz-body > .sidebar.left
-    > .explorer.nav-files-container:not(.collapsed)
-    .explorer-toggle.mobile-explorer {
-    position: absolute !important;
-  }
-
-  .page > #quartz-body > .sidebar.left
-    > .explorer.nav-files-container:not(.collapsed)
-    .explorer-toggle.mobile-explorer > svg {
-    display: none !important;
-  }
-
-  .page > #quartz-body > .sidebar.left
-    > .explorer.nav-files-container:not(.collapsed)
-    .explorer-toggle.mobile-explorer::before,
-  .page > #quartz-body > .sidebar.left
-    > .explorer.nav-files-container:not(.collapsed)
-    .explorer-toggle.mobile-explorer::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1.15rem;
-    height: 2px;
-    border-radius: 999px;
-    background: currentColor;
-    transform-origin: center;
-  }
-
-  .page > #quartz-body > .sidebar.left
-    > .explorer.nav-files-container:not(.collapsed)
-    .explorer-toggle.mobile-explorer::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-
-  .page > #quartz-body > .sidebar.left
-    > .explorer.nav-files-container:not(.collapsed)
-    .explorer-toggle.mobile-explorer::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
   }
 }
