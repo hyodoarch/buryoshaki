@@ -9,26 +9,30 @@ tags: []
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/906
 wordpress_id: 906
 ---
-
 今年 1月に、[兵藤善紀建築設計事務所](https://www.hyodo-arch.com/)にスタッフが入ったこともあり、スタッフの T君と嫁さんが使用する共用 PC を新調した。もちろん自作した。自作する理由を下記にまとめる。
 
 1. 故障したときのリスク分散と修理のしやすさ
 2. スペック及び費用の調整のしやすさ
 3. メーカー製 PC に付属するごみソフトが無いので、PC の安定性が良い
 
-事務所設立時は、PC ハードウェアについての私の知識は皆無といってよく、設立から5年くらいは、Dell を使用してた。故障時のカスタマーの対応も良く、修理もスムーズだったが、ハードディスクやマザーボードなどの PC パーツの値段を知ってしまうと高いように感じるようになった。よくよく考えてみれば、ハードディスクのが調子悪いのなら、[CrystalDiskInfo](https://www.hyodo-arch.com/) などで故障の可能性を調査できるし、原因がはっきりしていなくても、とりあえずハードディスクを Amazon で買えば翌日届くし、換装して OS やアプリケーションを再インストールしてみればよいだけのハナシなのである。ハードディスクが原因でなければ、メモリやマザーボード、電源などを交換していけばよい。最新のハイスペック CPU の交換でもなければ、たいした金額ではなく、Dell の修理費や、掛かる日数を考えればなおさら低コストで済む。
+事務所設立時は、PC ハードウェアについての私の知識は皆無といってよく、設立から5年くらいは、Dell を使用してた。故障時のカスタマーの対応も良く、修理もスムーズだったが、ハードディスクやマザーボードなどの PC パーツの値段を知ってしまうと高いように感じるようになった。よくよく考えてみれば、ハードディスクのが調子悪いのなら、[CrystalDiskInfo](https://crystalmark.info/ja/software/crystaldiskinfo/) などで故障の可能性を調査できるし、原因がはっきりしていなくても、とりあえずハードディスクを Amazon で買えば翌日届くし、換装して OS やアプリケーションを再インストールしてみればよいだけのハナシなのである。ハードディスクが原因でなければ、メモリやマザーボード、電源などを交換していけばよい。最新のハイスペック CPU の交換でもなければ、たいした金額ではなく、Dell の修理費や、掛かる日数を考えればなおさら低コストで済む。
+
 また、Dell などのメーカー製 PC は、新型 CPU などに対応させるためのファームウェアが提供されない。よって内部パーツのアップグレードによる延命も図れず、経済性が悪い。グレードアップのためには、本体丸ごと処分する破目になり、環境負荷も大きい。
-自作するようになったきっかけは、私の高校の後輩がプロジェクションマッピング & CG アニメーションを製作するファッション業界では有名なデザイン事務所をやっていて、5年ほど前たまたま彼の事務所に行く機会があり、そこにあった大量の自作 PC の山を見たことである。[Autodesk Maya](http://www.autodesk.co.jp/products/autodesk-maya/overview) を快適に操作するために ハイエンドクラスの [Quadro](http://www.elsa-jp.co.jp/products/graphicsboard/quadro_fx.html) が取付けられた作業用 PC や、フォトリアルアニメーションを納期に間に合わせるためのレンダリング専用 PC 群であったのだが、彼に話を聞くと、〆切のたびにモデリングが終わるとレンダリング専用マシンを自分で部品を買いに行き、順次最新最速のスペックに組み直して、できるだけ速くレンダリングが終了するようにしているとのことだった。
+
+自作するようになったきっかけは、私の高校の後輩がプロジェクションマッピング & CG アニメーションを製作するファッション業界では有名なデザイン事務所をやっていて、5年ほど前たまたま彼の事務所に行く機会があり、そこにあった大量の自作 PC の山を見たことである。[Autodesk Maya](https://www.autodesk.com/jp/products/maya/overview) を快適に操作するために ハイエンドクラスの [Quadro](https://www.elsa-jp.co.jp/html/quadro/contents08.html) が取付けられた作業用 PC や、フォトリアルアニメーションを納期に間に合わせるためのレンダリング専用 PC 群であったのだが、彼に話を聞くと、〆切のたびにモデリングが終わるとレンダリング専用マシンを自分で部品を買いに行き、順次最新最速のスペックに組み直して、できるだけ速くレンダリングが終了するようにしているとのことだった。
+
 彼の洗練された美しい仕事の内容と事務所に山積みの自作 PC には大変感銘を受けた。彼は非常にクリエイティブであるので、独自の技術が必要となり、表現を実現するためにソフト&ハードウェアに精通し駆使する必要があったのである。
+
 私の仕事は建築設計であるので、彼のようなハイレベルに到達しなくてもよいが、自作 PC を組むにはそれなりの知識は必要である。組み方は、「パソコン 自作　本」と Amazon で検索すれば、いろいろな書籍が出ていて、初心者向きのものを一読しておくことをオススメする。
+
 仕事で使用する主なソフトウェアを下記にまとめる。
 
-- 2D-Cad > [Vectorworks](http://www.aanda.co.jp/)
-- 3D-Cad > [SketchUp](http://www.sketchup.com/)（レンダリング：[SU Podium](http://www.suplugins.com/)）
-- 画像編集 > Photoshop
-- 書類作成 > MS Office Pro、Acrobat Pro、[EmEditor](http://jp.emeditor.com/)
-- ネット関連 > Chrome、Dropbox、[Evernote](http://evernote.com/intl/jp/)
-- ツール > [Total Commander](http://www.ghisler.com/)、[AutoHotkey](http://www.autohotkey.com/)、[SparkleShare](http://sparkleshare.org/)
+- 2D-Cad ≫ [Vectorworks](http://www.aanda.co.jp/)
+- 3D-Cad ≫ [SketchUp](http://www.sketchup.com/)（レンダリング：[SU Podium](http://www.suplugins.com/)）
+- 画像編集 ≫ Photoshop
+- 書類作成 ≫ MS Office Pro、Acrobat Pro、[EmEditor](http://jp.emeditor.com/)
+- ネット関連 ≫ Chrome、Dropbox、[Evernote](http://evernote.com/intl/jp/)
+- ツール ≫ [Total Commander](http://www.ghisler.com/)、[AutoHotkey](http://www.autohotkey.com/)、[SparkleShare](http://sparkleshare.org/)
 
 私も彼のようにプロフェッショナルな視点でPCを組んだ。以下考察。
 
@@ -42,18 +46,17 @@ wordpress_id: 906
 
 その結果、下記のようなマシン構成となった。
 
-CPU：
-:   Intel/Pentium Dual-Core G3220 > 5,297円:   MB：
-        :   ASUS/H81M-E > 5,478円:   ケース：
-                :   Loop/LP-2203 > 3,680円:   電源：
-                        :   センチュリー/SF-500P14FG > 12,160円:   メモリ：
-                                :   I-O DATA/DY1600-4GX2/EC (4GB 2枚組) > 7,490円:   内臓SSD：
-                                        :   Intel/335 Series SSDSC2CT240A4K5 > 18,980円:   グラボ：
-                                                :   NVIDIA/Quadro K600 > 15,980円:   DVDドライブ：
-                                                        :   バルク品 > 1,980円:   ディスプレイ：
-                                                                :   DELL/U2412M > 22,480円:   OS：
-                                                                        :   Windows 8.1 Pro (DSP版) 64bit > 16,081円:   費用合計：
-                                                                                :   109,606円
+- CPU：Intel/Pentium Dual-Core G3220 ≫ 5,297円
+- MB：ASUS/H81M-E ≫ 5,478円
+- ケース：Loop/LP-2203 ≫ 3,680円
+- 電源：センチュリー/SF-500P14FG ≫ 12,160円
+- メモリ：I-O DATA/DY1600-4GX2/EC (4GB 2枚組) ≫ 7,490円
+- 内臓SSD：Intel/335 Series SSDSC2CT240A4K5 ≫ 18,980円
+- グラボ：NVIDIA/Quadro K600 ≫ 15,980円
+- DVDドライブ：バルク品 ≫ 1,980円
+- ディスプレイ：DELL/U2412M ≫ 22,480円
+- OS：Windows 8.1 Pro (DSP版) 64bit ≫ 16,081円
+- 費用合計：109,606円
 
 上記に少しコメントを付ける
 
@@ -64,16 +67,19 @@ CPU：
 5. グラボは、Quadro K600 をドスパラで安く入手できた。
 6. ディスプレイは、1920×1200 の Dell 直販の製品。
 
-以上、1月に組み、現在稼働中。Vectorworks や SketchUp の使用で CPU のスペック不足を感じることは無い。私のメイン PC （SandyBridge Core i7-2600、Quadro 600）と比較して、SketchUp の影の表示に掛かる時間も変わらない。
+以上、1月に組み、現在稼働中。Vectorworks や SketchUp の使用で CPU のスペック不足を感じることは無い。私のメイン PC（SandyBridge Core i7-2600、Quadro 600）と比較して、SketchUp の影の表示に掛かる時間も変わらない。
+
 しかし SU Podium のレンダリング時間は、4コア 8スレッドの Core i7 とはさすがに差があるだろうと思い、計測してみた。下記は、レンダリング画像で、元の大きさは、1600 × 900 px である。
 ![SU Podium レンダリング画像](/images/2014/SU_Podium-time.jpg)
 括弧内の数値は、[CPU Benchmarks](http://www.cpubenchmark.net/) での CPU 性能を表す数値で、大きいほど性能が高い。
 
-Pentium Dual-Core G3220：
-:   15分51秒（Passmark CPU Mark 3228 ）:   Core i7-2600：
-        :   6分30秒（Passmark CPU Mark 8315 ）
+- Pentium Dual-Core G3220：15分51秒（Passmark CPU Mark 3228 ）
+- Core i7-2600：6分30秒（Passmark CPU Mark 8315 ）
 
 よって、2.4倍の差があった。CPU のスペックの差とほぼ一致する。価格は、現行の Core i7-4770 （約 32,000円）と比較すると、5倍もある。
+
 この差は大きいが、私の事務所ではレンダリングは、年に5～6回程度しか行わないので、業務に支障をきたすほどでは無い。
+
 以上、スペックとコストのバランスの良い PC を組むことができた。
+
 私の仕事である建築設計は、クライアントが固有の敷地に独自のオーダーを求めるため、ほぼ全て特注である。よってプロジェクト毎に一から考えて作る必要がある。PC も、ユーザの使い方により、購入毎に多くのパーツから組合せを選んだ方が良いのは同じだ。

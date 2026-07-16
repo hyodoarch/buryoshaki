@@ -39,7 +39,7 @@ wordpress_id: 495
 ### 補足：
 ７月中旬までは、G31 + Core2DuoE8400 + RAM 4GB + XP 32bit Home + Quadro 600 でしたが、それでも快適でした。というのは、SketchUpは 32bit アプリなので、32bit OSの方が同じスペックなら快適なはずです。
 
-新しいPCにしたのは、スペックに問題があったわけではなく、7月になってマザーかハードディスクの不調と思われる起動不良が2回発生し、恐ろしくなって（過去に[このようなこと](https://www.hyodo-arch.com/buryoshaki/archives/151)があったので）新調することにしました。そのあたりは、また落ち着いたら記事にしたいと思います。
+新しいPCにしたのは、スペックに問題があったわけではなく、7月になってマザーかハードディスクの不調と思われる起動不良が2回発生し、恐ろしくなって（過去記事参照：[[ハードディスククラッシュ顛末記]]）新調することにしました。そのあたりは、また落ち着いたら記事にしたいと思います。
 
 ### 2014.03.13 追記
-[Quadro K600](http://www.elsa-jp.co.jp/products/graphicsboard/quadro_k600/index.html) を購入しました。Pentium Dual-Core G3220 との組合せ（詳しくは「[事務所の PC を新調した（自作のススメ）](https://www.hyodo-arch.com/buryoshaki/archives/906)」を参照してください）マルチディスプレイ（2台）で使用していますが、調子いいです。
+[Quadro K600](http://www.elsa-jp.co.jp/products/graphicsboard/quadro_k600/index.html) を購入しました。Pentium Dual-Core G3220 との組合せ（詳しくは「[[事務所の PC を新調した（自作のススメ）]]」を参照してください）マルチディスプレイ（2台）で使用していますが、調子いいです。

@@ -1,13 +1,14 @@
 ---
 title: musical batonって何？
-date: '2005-08-03'
-modified: '2005-08-03'
+date: 2005-08-03
+modified: 2005-08-03
 draft: false
 categories:
-- 音楽
+  - 音楽
 tags:
-- ピエール・バルー
-- フランシス・レイ
+  - ピエール・バルー
+  - フランシス・レイ
+  - 音楽
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/107
 wordpress_id: 107
 ---

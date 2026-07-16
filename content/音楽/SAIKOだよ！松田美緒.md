@@ -1,12 +1,15 @@
 ---
 title: SAIKOだよ！松田美緒
-date: '2005-08-29'
-modified: '2014-10-23'
+date: 2005-08-29
+modified: 2014-10-23
 draft: false
 categories:
-- 音楽
+  - 音楽
 tags:
-- 松田美緒
+  - 松田美緒
+  - 音楽
+  - シニフィアン
+  - シニフィエ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/111
 wordpress_id: 111
 ---
@@ -40,7 +43,6 @@ PAPA-Qの「古今東西音楽雑話」>>[彼女のドレスは大西洋の色�
 [開新堂](https://www.kaishindo.co.jp/)のランチのデザート。カラフルなゼリーをふたつ選べる。美味しいのでまた行きたいなぁ！
 
 ---
-
 #### 旧ブログのコメント
 
 > WordPress時代の承認済みコメントを、記録として移行しています。

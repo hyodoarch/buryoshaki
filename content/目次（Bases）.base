@@ -1,3 +1,6 @@
 views:
   - type: cards
     name: 表
+    order:
+      - file.name
+      - draft
