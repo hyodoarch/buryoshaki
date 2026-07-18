@@ -6,7 +6,7 @@ configuration:
   enablePopovers: false
   analytics:
     provider: plausible
-  locale: en-US
+  locale: ja-JP
   baseUrl: blog.hyodo-arch.com
   ignorePatterns:
     - private
@@ -23,7 +23,7 @@ configuration:
     colors:
       lightMode:
         light: "#faf8f8"
-        lightgray: "#e5e5e5"
+        lightgray: "#c0c0c0"
         gray: "#b8b8b8"
         darkgray: "#4e4e4e"
         dark: "#2b2b2b"
@@ -170,15 +170,15 @@ plugins:
       localGraph:
         drag: true
         zoom: true
-        depth: 1
+        depth: 2
         scale: 1.1
         repelForce: 0.5
         centerForce: 0.3
         linkDistance: 30
-        fontSize: 0.6
+        fontSize: 1
         opacityScale: 1
         removeTags: []
-        showTags: false
+        showTags: true
         focusOnHover: false
         enableRadial: false
       globalGraph:
@@ -189,12 +189,30 @@ plugins:
         repelForce: 0.5
         centerForce: 0.3
         linkDistance: 30
-        fontSize: 0.6
+        fontSize: 1
         opacityScale: 1
         removeTags: []
         showTags: true
         focusOnHover: true
         enableRadial: true
+    layout:
+      position: right
+      priority: 10
+      display: desktop-only
+  - source: github:quartz-community/graph
+    enabled: true
+    options:
+      localGraph:
+        drag: true
+        zoom: true
+        depth: 1
+        scale: 1.1
+        fontSize: 1
+        showTags: true
+    layout:
+      position: afterBody
+      priority: 40
+      display: mobile-only
   - source: github:quartz-community/search
     enabled: true
     layout:
@@ -204,10 +222,21 @@ plugins:
       groupOptions:
         grow: true
   - source: github:quartz-community/backlinks
-    enabled: false
+    enabled: true
+    options:
+      hideWhenEmpty: false
     layout:
       position: right
       priority: 50
+      display: desktop-only
+  - source: github:quartz-community/backlinks
+    enabled: true
+    options:
+      hideWhenEmpty: false
+    layout:
+      position: afterBody
+      priority: 50
+      display: mobile-only
   - source: github:quartz-community/article-title
     enabled: true
     layout:

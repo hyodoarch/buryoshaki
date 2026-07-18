@@ -18,7 +18,7 @@ Raspberry Pi をミュージック・サーバとして使用し始めて 1年�
 > google 検索「[raspberry pi 熱対策](http://goo.gl/qroieI)」
 
 - Raspberry Pi の CPU 温度は、下記のコマンドで調べることができる。
-  # cat /sys/class/thermal/thermal\_zone0/temp
+`cat /sys/class/thermal/thermal\_zone0/temp`
 - Raspberry Pi 用のヒートシンクが市販されている。
 - ケースファンを取り付けている人もいる。
 
