@@ -170,7 +170,7 @@ plugins:
       localGraph:
         drag: true
         zoom: true
-        depth: 1
+        depth: 2
         scale: 1.1
         repelForce: 0.8
         centerForce: 0.3
@@ -178,7 +178,7 @@ plugins:
         fontSize: 0.8
         opacityScale: 1
         removeTags: []
-        showTags: false
+        showTags: true
         focusOnHover: false
         enableRadial: false
       globalGraph:
@@ -189,7 +189,7 @@ plugins:
         repelForce: 0.5
         centerForce: 0.3
         linkDistance: 30
-        fontSize: 1
+        fontSize: 0.8
         opacityScale: 1
         removeTags: []
         showTags: true
