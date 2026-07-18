@@ -7,8 +7,6 @@ categories:
   - コンピュータ
 tags:
   - MovableType
-  - コンピュータ
-  - CMS
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/164
 wordpress_id: 164
 ---

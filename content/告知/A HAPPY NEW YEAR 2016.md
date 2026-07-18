@@ -4,7 +4,10 @@ date: 2016-01-01
 modified: 2016-01-01
 draft: false
 categories: 告知
-tags: []
+tags:
+  - 年賀状
+  - 住宅
+  - リノベーション
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/1150
 wordpress_id: 1150
 ---
@@ -13,6 +16,8 @@ wordpress_id: 1150
 あけましておめでとうございます。
 昨年も、設計に関する多くのお問合せ・ご相談をいただきました。
 又、古民家や倉庫の事務所リノベーションなど、これまでに無いタイプの仕事をさせていただき、本当に充実した年でした。
-今年の年賀状は、兵藤善紀建築設計事務所が設計監理をし、昨年完成した「安行の家」、「飯能のマンション・リノベーション」です。年末に竣工した「杉戸の古民家リノベーション」と「Nプロジェクト」は竣工写真を撮り終えたので、次の機会にご紹介します。
+
+今年の年賀状は、兵藤善紀建築設計事務所が設計監理をし、昨年完成した「[安行の家](https://www.hyodo-arch.com/projects/angyo.html)」、「[飯能のマンション・リノベーション](https://www.hyodo-arch.com/projects/hanno.html)」です。年末に竣工した「[関口酒造母屋リノベーション](https://www.hyodo-arch.com/projects/sugito.html)」と「[永久本社事務所リノベーション](https://www.hyodo-arch.com/projects/npro.html)」は竣工写真を撮り終えたので、次の機会にご紹介します。
+
 今年は、年始早々着工の住宅２軒が控えており、準備を進めています。
 本年もどうぞよろしくお願いします。

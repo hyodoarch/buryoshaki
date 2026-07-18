@@ -6,6 +6,8 @@ draft: false
 categories: 告知
 tags:
   - リノベーション
+  - 住宅
+  - メディア掲載
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/1194
 wordpress_id: 1194
 ---

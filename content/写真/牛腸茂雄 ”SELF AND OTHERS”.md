@@ -1,12 +1,13 @@
 ---
 title: 牛腸茂雄 "SELF AND OTHERS"
-date: '2004-12-04'
-modified: '2004-12-04'
+date: 2004-12-04
+modified: 2004-12-04
 draft: false
 categories:
-- アート
+  - アート
 tags:
-- ポートレイト
+  - ポートレイト
+  - 牛腸茂雄
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/38
 wordpress_id: 38
 ---

@@ -7,7 +7,6 @@ categories:
   - 音楽
 tags:
   - 松田美緒
-  - 音楽
   - シニフィアン
   - シニフィエ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/111

@@ -5,7 +5,7 @@ modified: 2005-11-22
 draft: false
 categories: 告知
 tags:
-  - PAP パーティー
+  - イベント
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/123
 wordpress_id: 123
 ---

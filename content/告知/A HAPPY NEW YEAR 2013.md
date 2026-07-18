@@ -4,14 +4,17 @@ date: 2013-01-04
 modified: 2013-01-04
 draft: false
 categories: 告知
-tags: []
+tags:
+  - 年賀状
+  - カフェ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/703
 wordpress_id: 703
 ---
 
 ![2013年賀](/images/2013/2013_nenga.jpg "2013年賀")
 あけましておめでとうございます。
-今年の年賀状は、昨年完成した「[カフェまどか](http://www.cafe-madoka.jp/)」です。
+今年の年賀状は、昨年完成した「[カフェまどか](https://www.hyodo-arch.com/projects/madoka.html)」です。
+
 実はカフェの設計は初めてでした。
 クライアントは、自宅の一部を増改築し、
 長年の夢を実現されました。
@@ -20,8 +23,9 @@ wordpress_id: 703
 また、プロジェクトの増加に伴い、
 構造設計や意匠図作成等、多くの方にご協力いただき、
 事務所の体制を整えることができました。
+
 今年は、2軒の住宅が完成します。
 事務所は開設後 10年を迎えます。
 毎日が楽しくなる建築を設計していきたいと思います。
 本年もどうぞよろしくお願いします。
-[[A HAPPY NEW YEAR 2014]]
+

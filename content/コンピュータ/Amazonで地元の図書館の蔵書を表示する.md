@@ -10,7 +10,6 @@ tags:
   - Greasemonkey
   - Libron
   - Amazon
-  - コンピュータ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/183
 wordpress_id: 183
 ---

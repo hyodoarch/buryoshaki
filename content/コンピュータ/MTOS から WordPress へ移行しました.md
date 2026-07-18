@@ -1,13 +1,13 @@
 ---
 title: MTOS から WordPress へ移行しました
-date: '2010-10-18'
-modified: '2010-10-18'
+date: 2010-10-18
+modified: 2010-10-18
 draft: false
 categories:
-- コンピュータ
+  - コンピュータ
 tags:
-- MTOS
-- WordPress
+  - WordPress
+  - MovableType
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/226
 wordpress_id: 226
 ---

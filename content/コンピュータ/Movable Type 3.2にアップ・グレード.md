@@ -6,7 +6,6 @@ draft: false
 categories:
   - コンピュータ
 tags:
-  - コンピュータ
   - MovableType
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/120
 wordpress_id: 120

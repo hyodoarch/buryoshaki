@@ -8,7 +8,6 @@ categories:
 tags:
   - ピエール・バルー
   - フランシス・レイ
-  - 音楽
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/107
 wordpress_id: 107
 ---

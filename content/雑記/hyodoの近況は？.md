@@ -1,13 +1,13 @@
 ---
 title: hyodoの近況は？
-date: '2005-06-14'
-modified: '2012-09-27'
+date: 2005-06-14
+modified: 2012-09-27
 draft: false
 categories:
-- 雑記
+  - 雑記
 tags:
-- カリーマ
-- ジェームス・タレル
+  - ジェームス・タレル
+  - 師岡カリーマ・エルサムニー
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/99
 wordpress_id: 99
 ---

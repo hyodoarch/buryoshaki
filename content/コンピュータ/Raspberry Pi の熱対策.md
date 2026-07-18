@@ -1,12 +1,13 @@
 ---
 title: Raspberry Pi の熱対策
-date: '2014-12-08'
-modified: '2014-12-10'
+date: 2014-12-08
+modified: 2014-12-10
 draft: false
 categories:
-- コンピュータ
+  - コンピュータ
 tags:
-- Raspberry Pi
+  - RaspberryPi
+  - ヒートシンク
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/1115
 wordpress_id: 1115
 ---

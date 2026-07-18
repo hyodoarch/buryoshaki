@@ -1,11 +1,13 @@
 ---
 title: 事務所の PC を新調した（自作のススメ）
-date: '2014-03-06'
-modified: '2014-10-23'
+date: 2014-03-06
+modified: 2014-10-23
 draft: false
 categories:
-- コンピュータ
-tags: []
+  - コンピュータ
+tags:
+  - デスクトップPC
+  - BTO
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/906
 wordpress_id: 906
 ---

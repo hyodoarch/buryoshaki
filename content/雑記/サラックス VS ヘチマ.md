@@ -1,12 +1,12 @@
 ---
 title: サラックス VS ヘチマ
-date: '2005-02-24'
-modified: '2014-01-09'
+date: 2005-02-24
+modified: 2014-01-09
 draft: false
 categories:
-- 雑記
+  - 雑記
 tags:
-- サラックス
+  - サラックス
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/69
 wordpress_id: 69
 ---
@@ -27,7 +27,6 @@ wordpress_id: 69
 ※雑草の写真は本日休みます。
 
 ---
-
 #### 旧ブログのコメント
 
 > WordPress時代の承認済みコメントを、記録として移行しています。

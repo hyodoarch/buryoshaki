@@ -8,7 +8,6 @@ categories:
 tags:
   - MODx
   - Wayfinder
-  - コンピュータ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/179
 wordpress_id: 179
 ---

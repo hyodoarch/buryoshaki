@@ -6,7 +6,7 @@ draft: false
 categories: 告知
 tags:
   - PAP
-  - アートイベント
+  - イベント
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/154
 wordpress_id: 154
 ---

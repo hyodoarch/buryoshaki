@@ -1,14 +1,15 @@
 ---
 title: Photoshop Element から Paint.NET への移行メモ
-date: '2010-10-26'
-modified: '2014-08-19'
+date: 2010-10-26
+modified: 2014-08-19
 draft: false
 categories:
-- コンピュータ
-- 写真
+  - コンピュータ
+  - 写真
 tags:
-- AutoHotkey
-- Paint.NET
+  - AutoHotkey
+  - Photoshop
+  - PaintNET
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/259
 wordpress_id: 259
 ---

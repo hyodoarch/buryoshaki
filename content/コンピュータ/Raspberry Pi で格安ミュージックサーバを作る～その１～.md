@@ -1,14 +1,14 @@
 ---
 title: Raspberry Pi で格安ミュージックサーバを作る～その１～
-date: '2013-12-17'
-modified: '2014-10-24'
+date: 2013-12-17
+modified: 2014-10-24
 draft: false
 categories:
-- コンピュータ
-- 音楽
+  - コンピュータ
+  - 音楽
 tags:
-- PCオーディオ
-- Raspberry Pi
+  - PCオーディオ
+  - RaspberryPi
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/787
 wordpress_id: 787
 ---

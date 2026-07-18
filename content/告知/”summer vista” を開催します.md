@@ -4,7 +4,8 @@ date: 2009-07-26
 modified: 2009-07-26
 draft: false
 categories: 告知
-tags: []
+tags:
+  - イベント
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/174
 wordpress_id: 174
 ---

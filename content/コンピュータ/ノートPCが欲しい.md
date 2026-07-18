@@ -1,12 +1,13 @@
 ---
 title: ノートPCが欲しい
-date: '2011-08-21'
-modified: '2011-08-21'
+date: 2011-08-21
+modified: 2011-08-21
 draft: false
 categories:
-- コンピュータ
-- 雑記
-tags: []
+  - コンピュータ
+  - 雑記
+tags:
+  - ノートPC
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/511
 wordpress_id: 511
 ---

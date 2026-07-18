@@ -7,7 +7,6 @@ categories:
   - コンピュータ
 tags:
   - AutoHotkey
-  - コンピュータ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/1020
 wordpress_id: 1020
 ---

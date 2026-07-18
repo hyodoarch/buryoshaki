@@ -8,7 +8,6 @@ categories:
 tags:
   - Ditto
   - MODx
-  - コンピュータ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/180
 wordpress_id: 180
 ---

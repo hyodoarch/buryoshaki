@@ -7,8 +7,8 @@ categories:
   - コンピュータ
 tags:
   - SketchUp
-  - コンピュータ
-  - 3D
+  - Google
+  - 3D-CAD
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/552
 wordpress_id: 552
 ---

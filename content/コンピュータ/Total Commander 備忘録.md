@@ -1,13 +1,13 @@
 ---
 title: Total Commander 備忘録
-date: '2014-08-18'
-modified: '2014-10-23'
+date: 2014-08-18
+modified: 2014-10-23
 draft: false
 categories:
-- コンピュータ
+  - コンピュータ
 tags:
-- Total Commander
-- ファイルマネージャ
+  - ファイルマネージャ
+  - TotalCommander
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/979
 wordpress_id: 979
 ---

@@ -1,13 +1,15 @@
 ---
 title: なかなか使いやすいUSBレコードプレイヤー
-date: '2009-05-20'
-modified: '2011-03-23'
+date: 2009-05-20
+modified: 2011-03-23
 draft: false
 categories:
-- コンピュータ
-- 音楽
+  - コンピュータ
+  - 音楽
 tags:
-- USB レコードプレイヤー
+  - レコード
+  - ベンヤミン
+  - 複製技術時代の芸術作品
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/168
 wordpress_id: 168
 ---

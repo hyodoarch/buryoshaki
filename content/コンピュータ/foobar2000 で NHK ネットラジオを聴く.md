@@ -9,7 +9,6 @@ tags:
   - foobar2000
   - PCオーディオ
   - ネットラジオ
-  - コンピュータ
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/760
 wordpress_id: 760
 ---

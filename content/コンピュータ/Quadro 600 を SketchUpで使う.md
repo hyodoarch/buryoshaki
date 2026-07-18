@@ -1,13 +1,15 @@
 ---
 title: Quadro 600 を SketchUpで使う
-date: '2011-08-14'
-modified: '2014-10-14'
+date: 2011-08-14
+modified: 2014-10-14
 draft: false
 categories:
-- コンピュータ
-- 建築
+  - コンピュータ
+  - 建築
 tags:
-- SketchUp
+  - SketchUp
+  - Quadro
+  - 3D-CAD
 old_url: https://www.hyodo-arch.com/buryoshaki/archives/495
 wordpress_id: 495
 ---
