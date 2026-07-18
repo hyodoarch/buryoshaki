@@ -41,7 +41,7 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Install Quartz plugins
-        run: 
+        run: |
           rm -rf .quartz/plugins/graph
           npx quartz plugin install --clean graph
           npx quartz plugin install
