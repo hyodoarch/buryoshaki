@@ -146,10 +146,10 @@
       "installedAt": "2026-06-23T09:17:07.865Z"
     },
     "graph": {
-      "source": "github:quartz-community/graph",
-      "resolved": "https://github.com/quartz-community/graph.git",
-      "commit": "46f0ba1c3c0cc484697572e7bcf315fa384d80d2",
-      "installedAt": "2026-06-23T09:17:10.001Z"
+      "source": "github:hyodoarch/graph",
+      "resolved": "https://github.com/hyodoarch/graph.git",
+      "commit": "a97623c87e49cf5726c35ce8116c8231399f0b99",
+      "installedAt": "2026-07-18T05:51:13.556Z"
     },
     "hard-line-breaks": {
       "source": "github:quartz-community/hard-line-breaks",
