@@ -148,8 +148,8 @@
     "graph": {
       "source": "github:hyodoarch/graph",
       "resolved": "https://github.com/hyodoarch/graph.git",
-      "commit": "a97623c87e49cf5726c35ce8116c8231399f0b99",
-      "installedAt": "2026-07-18T05:51:13.556Z"
+      "commit": "c57672c8b7b8c8a7f4fff0d82ab77e77cabe11fb",
+      "installedAt": "2026-07-18T13:01:25.302Z"
     },
     "hard-line-breaks": {
       "source": "github:quartz-community/hard-line-breaks",
