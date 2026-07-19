@@ -1,7 +1,7 @@
 ---
 title: ようこそ
 ---
-WordPress で運用していたブログを、 Obsidian + Quartz5 運用にしました。デジタルガーデンを目指します。 (Jul 18, 2026, hyodo)
+WordPress で運用していたブログを、 Obsidian + Quartz5 運用に変更しました。デジタルガーデンを目指します。 (Jul 18, 2026, hyodo)
 
 --- 
 # 最近のノート

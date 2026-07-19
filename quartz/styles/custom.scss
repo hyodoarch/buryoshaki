@@ -519,6 +519,38 @@ b,
       text-align: justify;
       text-justify: inter-character;
     }
+
+    // 内部リンク
+    a.internal-link:not(.tag-link):not([role="anchor"]) {
+      color: #087144 !important;
+
+      &:link,
+      &:visited,
+      &:active,
+      &:hover {
+        color: #087144 !important;
+      }
+
+      &:hover {
+        background-color: $link-hover-background !important;
+      }
+    }
+
+    // 外部リンク
+    a.external-link:not(.tag-link) {
+      color: #5219a1 !important;
+
+      &:link,
+      &:visited,
+      &:active,
+      &:hover {
+        color: #5219a1 !important;
+      }
+
+      &:hover {
+        background-color: $link-hover-background !important;
+      }
+    }
   }
 }
 
