@@ -47,6 +47,10 @@ jobs:
           npx quartz plugin install
       - name: Build Quartz
         run: npx quartz build
+ 
+      - name: Copy Search Console verification file
+        run: cp content/googled614ff6354d873ef.html public/googled614ff6354d873ef.html 
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
