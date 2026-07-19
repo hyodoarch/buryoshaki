@@ -519,43 +519,6 @@ b,
       text-align: justify;
       text-justify: inter-character;
     }
-    // 内部リンク
-    a.internal-link:not(.tag-link):not([role="anchor"]) {
-      color: #087144 !important;
-      background-color: transparent !important;
-      border-radius: $link-radius !important;
-
-      &:link,
-      &:visited,
-      &:active {
-        color: #087144 !important;
-        background-color: transparent !important;
-      }
-
-      &:hover {
-        color: #087144 !important;
-        background-color: $link-hover-background !important;
-      }
-    }
-
-    // 外部リンク
-    a.external-link:not(.tag-link) {
-      color: #5219a1 !important;
-      background-color: transparent !important;
-      border-radius: $link-radius !important;
-
-      &:link,
-      &:visited,
-      &:active {
-        color: #5219a1 !important;
-        background-color: transparent !important;
-      }
-
-      &:hover {
-        color: #5219a1 !important;
-        background-color: $link-hover-background !important;
-      }
-    }
   }
 }
 
@@ -1019,29 +982,39 @@ article {
   // 本文の内部リンク・外部リンク
   // タグリンクと見出し右側のアンカーアイコンは対象外にする。
   article {
-    a.internal-link:not(.tag-link):not([role="anchor"]),
-    a.external-link:not(.tag-link) {
-      color: $link-color !important;
-      background: $link-background !important;
-      background-color: $link-background !important;
+    // 内部リンク
+    a.internal-link:not(.tag-link):not([role="anchor"]) {
+      color: #087144 !important;
+      background: transparent !important;
       border-radius: $link-radius !important;
-
-      // リンクが複数行に折り返されても、各行を角丸にする
-      -webkit-box-decoration-break: clone;
-      box-decoration-break: clone;
 
       &:link,
       &:visited,
       &:active {
-        color: $link-color !important;
-        background: $link-background !important;
-        background-color: $link-background !important;
+        color: #087144 !important;
       }
 
       &:hover {
-        color: $link-hover-color !important;
+        color: #087144 !important;
         background: $link-hover-background !important;
-        background-color: $link-hover-background !important;
+      }
+    }
+
+    // 外部リンク
+    a.external-link:not(.tag-link) {
+      color: #5219a1 !important;
+      background: transparent !important;
+      border-radius: $link-radius !important;
+
+      &:link,
+      &:visited,
+      &:active {
+        color: #5219a1 !important;
+      }
+
+      &:hover {
+        color: #5219a1 !important;
+        background: $link-hover-background !important;
       }
     }
   }
