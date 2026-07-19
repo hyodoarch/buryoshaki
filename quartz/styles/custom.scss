@@ -519,19 +519,21 @@ b,
       text-align: justify;
       text-justify: inter-character;
     }
-
     // 内部リンク
     a.internal-link:not(.tag-link):not([role="anchor"]) {
       color: #087144 !important;
+      background-color: transparent !important;
+      border-radius: $link-radius !important;
 
       &:link,
       &:visited,
-      &:active,
-      &:hover {
+      &:active {
         color: #087144 !important;
+        background-color: transparent !important;
       }
 
       &:hover {
+        color: #087144 !important;
         background-color: $link-hover-background !important;
       }
     }
@@ -539,15 +541,18 @@ b,
     // 外部リンク
     a.external-link:not(.tag-link) {
       color: #5219a1 !important;
+      background-color: transparent !important;
+      border-radius: $link-radius !important;
 
       &:link,
       &:visited,
-      &:active,
-      &:hover {
+      &:active {
         color: #5219a1 !important;
+        background-color: transparent !important;
       }
 
       &:hover {
+        color: #5219a1 !important;
         background-color: $link-hover-background !important;
       }
     }
