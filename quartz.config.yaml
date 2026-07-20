@@ -189,7 +189,7 @@ plugins:
         repelForce: 0.5
         centerForce: 0.3
         linkDistance: 30
-        fontSize: 0.5F
+        fontSize: 0.5
         opacityScale: 1
         removeTags: []
         showTags: true
