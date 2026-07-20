@@ -1534,3 +1534,10 @@ article {
     overflow-x: hidden;
   }
 }
+
+/* 801～1200pxで、リーディングモード時のみ右サイドバーを非表示 */
+@media (min-width: 801px) and (max-width: 1200px) {
+  html[reader-mode="on"] .sidebar.right {
+    display: none !important;
+  }
+}
