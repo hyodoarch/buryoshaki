@@ -1602,19 +1602,47 @@ html[saved-theme="dark"] {
 
     /* 外部リンク */
     a.external-link:not(.tag-link) {
-      color: #a17fff !important;
+      color: #D67FFF !important;
       background: transparent !important;
 
       &:link,
       &:visited,
       &:active {
-        color: #a17fff !important;
+        color: #D67FFF !important;
       }
 
       &:hover {
-        color: #a17fff !important;
+        color: #D67FFF !important;
         background: #404040 !important;
       }
+    }
+  }
+}
+
+/* =============================================================================
+   Dark mode：右サイドバー微調整
+   ============================================================================= */
+
+html[saved-theme="dark"] {
+  /* 現在表示中の記事を示すグラフノード */
+  --secondary: #808080 !important;
+
+  /* バックリンクの記事名 */
+  .page > #quartz-body > .sidebar.right .backlinks {
+    a,
+    a.internal,
+    a.internal-link {
+      color: #ffffff !important;
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+
+    a:hover,
+    a.internal:hover,
+    a.internal-link:hover {
+      color: #ffffff !important;
+      background: #282828 !important;
+      background-color: #282828 !important;
     }
   }
 }
