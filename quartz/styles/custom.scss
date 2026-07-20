@@ -1541,3 +1541,38 @@ article {
     display: none !important;
   }
 }
+
+/* =============================================================================
+   Dark mode
+   ============================================================================= */
+
+html[saved-theme="dark"] {
+  // 見出し・本文・グラフの通常ノード
+  --dark: #ffffff !important;
+  --darkgray: #ffffff !important;
+  --gray: #ffffff !important;
+
+  body,
+  .page,
+  .page h1,
+  .page h2,
+  .page h3,
+  .page h4,
+  .page h5,
+  .page h6,
+  .page p,
+  .page li,
+  .page time,
+  .page input,
+  .page button {
+    color: #ffffff !important;
+  }
+
+  // 左右サイドバー
+  .sidebar.left,
+  .sidebar.left *,
+  .sidebar.right,
+  .sidebar.right * {
+    color: #ffffff !important;
+  }
+}
