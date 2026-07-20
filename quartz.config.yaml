@@ -34,7 +34,7 @@ configuration:
       darkMode:
         light: "#161618"
         lightgray: "#393639"
-        gray: "#ffffff"       # グラフビューの通常ノード
+        gray: "#808080"       # グラフビューの通常ノード
         darkgray: "#ffffff"   # 補助テキスト
         dark: "#ffffff"       # 本文テキスト
         secondary: "#7b97aa"

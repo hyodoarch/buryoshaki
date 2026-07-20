@@ -1576,3 +1576,45 @@ html[saved-theme="dark"] {
     color: #ffffff !important;
   }
 }
+
+/* =============================================================================
+   Dark mode：本文リンク
+   ============================================================================= */
+
+html[saved-theme="dark"] {
+  .page > #quartz-body > .center article {
+    /* 内部リンク */
+    a.internal-link:not(.tag-link):not([role="anchor"]) {
+      color: #00ff90 !important;
+      background: transparent !important;
+
+      &:link,
+      &:visited,
+      &:active {
+        color: #00ff90 !important;
+      }
+
+      &:hover {
+        color: #00ff90 !important;
+        background: #404040 !important;
+      }
+    }
+
+    /* 外部リンク */
+    a.external-link:not(.tag-link) {
+      color: #a17fff !important;
+      background: transparent !important;
+
+      &:link,
+      &:visited,
+      &:active {
+        color: #a17fff !important;
+      }
+
+      &:hover {
+        color: #a17fff !important;
+        background: #404040 !important;
+      }
+    }
+  }
+}
