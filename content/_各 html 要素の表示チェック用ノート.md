@@ -4,7 +4,9 @@ tags:
   - ピラネージ
   - ローマ
   - 版画
+thumb: "![ELSA NVIDIA Quadro 600](/images/2011/bs-IMGP5317.jpg)"
 ---
+![ELSA NVIDIA Quadro 600](/images/2011/bs-IMGP5317.jpg)
 # 見出し1
 ## [[見出し2 (内部リンク)]]
 ### 見出し3
