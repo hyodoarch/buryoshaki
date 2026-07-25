@@ -9,6 +9,7 @@ WordPress で運用していたブログを、 Obsidian + Quartz5 運用に変�
 
 ### [[アート/岡本公三の訃報から思い出した《dial H-I-S-T-O-R-Y》|岡本公三の訃報から思い出した《dial H-I-S-T-O-R-Y》]]
 2026年7月25日
+## 
 ### [[コンピュータ/Quartz5 の graph の日本語表示方法|Quartz5 の graph の日本語表示方法]]
 2026年7月18日
 
