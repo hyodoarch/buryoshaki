@@ -67,12 +67,11 @@ Prospect Hair Designのヘアメイクアーティストによるヘアメイク
 ■企画　[**Prospect Art Project**](http://www.prospect-art.com/)
 
 ---
-
-## 旧ブログのコメント
+#### 旧ブログのコメント
 
 > WordPress時代の承認済みコメントを、記録として移行しています。
 
-### [N's　factory](http://nsart.exblog.jp/3797051) — 2005-11-23
+#### [N's　factory](http://nsart.exblog.jp/3797051) — 2005-11-23
 
 > **12月素敵なアートクリスマスを・・・”Prospect2005”開催**
 > 年の瀬もすっかり近づいて参りました。

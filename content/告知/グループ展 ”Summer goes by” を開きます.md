@@ -34,29 +34,28 @@ TEL 03-3467-7344
 **主催　Prospect Art Project**
 
 ---
-
-## 旧ブログのコメント
+#### 旧ブログのコメント
 
 > WordPress時代の承認済みコメントを、記録として移行しています。
 
-### [IMAIYUMI 今井有美](http://www.imaiyumi.com/archives/000198.php) — 2005-08-26
+#### [IMAIYUMI 今井有美](http://www.imaiyumi.com/archives/000198.php) — 2005-08-26
 
 > **展示情報**
 > グループ展に参加します。 先日、書いた橋場さんに加え、兵藤さん、重冨さんの3名が事務局となって運営するProspect Art Projectの企画です。お近...
 
-### [N's　factory](http://nsart.exblog.jp/3369650) — 2005-08-27
+#### [N's　factory](http://nsart.exblog.jp/3369650) — 2005-08-27
 
 > **アーティストイベント"Summer goes by"開催**
 > 先日8/20（sat）の恵比寿で開催したイベントの熱も冷めやらぬ中、次回のアーティスト
 > 合同展示イベントの準備が着々と進んでおります。
 > 先日も展示イベント会...
 
-### [Hassy](http://nsart.net) — 2005-08-28
+#### [Hassy](http://nsart.net) — 2005-08-28
 
 > 今回も楽しく、良い展示会にしましょうね。
 > お互い準備頑張りましょう！
 
-### [hyodo](http://www.hyodo-arch.com/) — 2005-08-28
+#### hyodo — 2005-08-28
 
 > Hassyさん、いつもお世話になります。
 > 今回は飲食できるので、気分的に楽です。
