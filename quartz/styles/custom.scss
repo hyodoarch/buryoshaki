@@ -1647,7 +1647,7 @@ html[saved-theme="dark"] {
   }
 }
 
-/* ダークモード時にバナーを白くする */
-html[saved-theme="dark"] .banner-light {
-  filter: brightness(0) invert(1);
+/* ダークモード時にサイトタイトルのバナーを白くする */
+html[saved-theme="dark"] .sidebar.left .page-title a {
+  filter: brightness(0) invert(1) !important;
 }
