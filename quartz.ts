@@ -6,7 +6,7 @@ ExternalPlugin.Explorer({
   sortFn: (a, b) => {
     // 最上部に固定するファイル
     const pinned = new Map([
-      ["About", 0],
+      ["無聊写記について", 0],
       ["プロフィール", 1],
     ])
 
