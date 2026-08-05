@@ -1646,3 +1646,8 @@ html[saved-theme="dark"] {
     }
   }
 }
+
+/* ダークモード時にバナーを白くする */
+html[saved-theme="dark"] .banner-light {
+  filter: brightness(0) invert(1);
+}
