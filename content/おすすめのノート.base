@@ -1,0 +1,7 @@
+views:
+  - type: list
+    name: おすすめのノート
+    filters:
+      and:
+        - file.hasTag("おすすめ")
+    markers: none
