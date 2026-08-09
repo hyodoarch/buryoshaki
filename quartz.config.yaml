@@ -292,7 +292,7 @@ plugins:
         Discord Community: https://discord.gg/cRFFHYye7t
   - source: github:quartz-community/recent-notes
     enabled: true
-    opsions:
+    options:
       title: 最近のノート
       limit: 9
       showTags: false
