@@ -406,6 +406,10 @@ b,
     > ul.gradient-active {
       mask-image: none;
     }
+
+    ul li > a {
+      font-weight: 400 !important;
+    }
   }
 
   .folder-title {
@@ -525,7 +529,15 @@ b,
 // 個別記事：タイトル・日付・タグの間隔
 .page-header {
   h1.article-title {
-    margin-bottom: 0.35rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  h2.article-subtitle {
+    margin-top: 0rem !important;
+    margin-bottom: 0.8rem !important;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
   }
 
   .content-meta {
@@ -694,6 +706,13 @@ body[data-slug="index"] {
       }
     }
   }
+}
+
+// Mermaid：ノード内テキストの余計な本文スタイルを解除
+article .mermaid .nodeLabel p {
+  margin: 0 !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
 }
 
 // =============================================================================

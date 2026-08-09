@@ -35,9 +35,9 @@ configuration:
       darkMode:
         light: "#161618"
         lightgray: "#393639"
-        gray: "#808080"       # グラフビューの通常ノード
-        darkgray: "#ffffff"   # 補助テキスト
-        dark: "#ffffff"       # 本文テキスト
+        gray: "#808080"
+        darkgray: "#ffffff"
+        dark: "#ffffff"
         secondary: "#7b97aa"
         tertiary: "#84a59d"
         highlight: rgba(143, 159, 169, 0.15)
@@ -238,7 +238,7 @@ plugins:
       position: afterBody
       priority: 50
       display: mobile-only
-  - source: github:quartz-community/article-title
+  - source: github:hyodoarch/article-title
     enabled: true
     layout:
       position: beforeBody
@@ -304,7 +304,7 @@ plugins:
       condition: index
   - source: github:quartz-community/spacer
     enabled: false
-    options: {}  
+    options: {}
     order: 25
     layout:
       position: left
@@ -333,7 +333,7 @@ plugins:
       name: quartz-themes
       repo: github:saberzero1/quartz-themes
       subdir: plugin
-    enabled: true
+    enabled: false
     options:
       theme: default
   - source: github:quartz-community/obsidian-plugin-excalidraw

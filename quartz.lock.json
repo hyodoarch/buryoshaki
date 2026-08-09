@@ -8,10 +8,10 @@
       "installedAt": "2026-06-23T09:17:08.942Z"
     },
     "article-title": {
-      "source": "github:quartz-community/article-title",
-      "resolved": "https://github.com/quartz-community/article-title.git",
-      "commit": "e608ca815e137e22b598094f735bcd8a481dafaa",
-      "installedAt": "2026-06-23T09:17:10.048Z"
+      "source": "github:hyodoarch/article-title",
+      "resolved": "https://github.com/hyodoarch/article-title.git",
+      "commit": "c3602220a58f2ec46075b3b5234221ca2f5d064f",
+      "installedAt": "2026-08-09T11:46:35.781Z"
     },
     "backlinks": {
       "source": "github:quartz-community/backlinks",
