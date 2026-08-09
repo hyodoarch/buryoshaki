@@ -16,3 +16,4 @@ ExternalPlugin.RecentNotes({
 ```
 
 ### 最近のノートをページの下部にリスト表示しない
+%%
