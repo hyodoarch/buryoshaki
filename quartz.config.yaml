@@ -291,10 +291,10 @@ plugins:
         GitHub: https://github.com/hyodoarch/buryoshaki
         Discord Community: https://discord.gg/cRFFHYye7t
   - source: github:quartz-community/recent-notes
-    enabled: false
+    enabled: true
     opsions:
       title: 最近のノート
-      limit: 7
+      limit: 9
       showTags: false
       hideTagPages: true
       hideFolderPages: true
