@@ -38,6 +38,11 @@ ExternalPlugin.Explorer({
   },
 })
 
+// 最近のノートから「プロフィール」を除外
+ExternalPlugin.RecentNotes({
+  filter: (f) => f.slug !== "プロフィール",
+})
+
 const config = await loadQuartzConfig()
 export default config
 export const layout = await loadQuartzLayout()
