@@ -1,5 +1,9 @@
 import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/config-loader"
+import { registerCondition } from "./quartz/plugins/loader/conditions"
 import * as ExternalPlugin from "./.quartz/plugins"
+
+// index.md のみに表示する条件
+registerCondition("index-only", (props) => props.fileData.slug === "index")
 
 // Explorerの表示順を変更
 ExternalPlugin.Explorer({

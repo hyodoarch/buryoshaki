@@ -301,7 +301,7 @@ plugins:
     layout:
       position: afterBody
       priority: 10
-      condition: index
+      condition: index-only
   - source: github:quartz-community/spacer
     enabled: false
     options: {}
