@@ -122,10 +122,10 @@
       "installedAt": "2026-06-23T09:17:09.027Z"
     },
     "folder-page": {
-      "source": "github:quartz-community/folder-page",
-      "resolved": "https://github.com/quartz-community/folder-page.git",
-      "commit": "93304d22e1d7f09f93a33658ec273f7cb8d17793",
-      "installedAt": "2026-06-23T09:17:09.901Z"
+      "source": "github:hyodoarch/folder-page",
+      "resolved": "https://github.com/hyodoarch/folder-page.git",
+      "commit": "a8d4dc6b2d68c449c93b5489394d432ffddbc60d",
+      "installedAt": "2026-08-10T06:11:21.275Z"
     },
     "fonts": {
       "source": "github:quartz-community/fonts",
@@ -217,10 +217,10 @@
       "installedAt": "2026-06-23T09:17:10.825Z"
     },
     "recent-notes": {
-      "source": "github:quartz-community/recent-notes",
-      "resolved": "https://github.com/quartz-community/recent-notes.git",
-      "commit": "3c3d104335e2fc5ff62371ead157667adb79b046",
-      "installedAt": "2026-06-23T09:17:11.033Z"
+      "source": "github:hyodoarch/recent-notes",
+      "resolved": "https://github.com/hyodoarch/recent-notes.git",
+      "commit": "8154c7e6886b0f353065fd993ddefcea42ff554d",
+      "installedAt": "2026-08-10T07:28:56.292Z"
     },
     "remove-draft": {
       "source": "github:quartz-community/remove-draft",
@@ -271,10 +271,10 @@
       "installedAt": "2026-06-23T09:17:10.204Z"
     },
     "tag-page": {
-      "source": "github:quartz-community/tag-page",
-      "resolved": "https://github.com/quartz-community/tag-page.git",
-      "commit": "eabf3eec55c0bab7f49e69957341f34d2ae3c5a1",
-      "installedAt": "2026-06-23T09:17:09.984Z"
+      "source": "github:hyodoarch/tag-page",
+      "resolved": "https://github.com/hyodoarch/tag-page.git",
+      "commit": "c8785b56709abbc1a42d96c662ac1bef3eac4c4d",
+      "installedAt": "2026-08-10T06:11:21.317Z"
     },
     "unlisted-pages": {
       "source": "github:quartz-community/unlisted-pages",

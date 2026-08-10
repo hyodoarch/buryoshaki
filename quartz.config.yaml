@@ -153,9 +153,9 @@ plugins:
     enabled: true
   - source: github:quartz-community/content-page
     enabled: true
-  - source: github:quartz-community/folder-page
+  - source: github:hyodoarch/folder-page
     enabled: true
-  - source: github:quartz-community/tag-page
+  - source: github:hyodoarch/tag-page
     enabled: true
   - source: github:quartz-community/explorer
     enabled: true
@@ -290,7 +290,7 @@ plugins:
       links:
         GitHub: https://github.com/hyodoarch/buryoshaki
         Discord Community: https://discord.gg/cRFFHYye7t
-  - source: github:quartz-community/recent-notes
+  - source: github:hyodoarch/recent-notes
     enabled: true
     options:
       title: 最近のノート

@@ -45,7 +45,10 @@ ExternalPlugin.Explorer({
 
 // 最近のノートから「プロフィール」を除外
 ExternalPlugin.RecentNotes({
-  filter: (f) => !["profile", "about", "myfavorite"].includes(f.slug),
+  filter: (f) =>
+    !["プロフィール", "無聊写記について", "おすすめのノート"].includes(
+      f.frontmatter?.title ?? "",
+    ),
 })
 
 const config = await loadQuartzConfig()
