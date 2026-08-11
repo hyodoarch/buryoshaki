@@ -1,7 +1,35 @@
 @use "./variables.scss" as *;
 
 // =============================================================================
-// 1. Variables
+// custom.scss structure
+// =============================================================================
+//  1. Design tokens / variables
+//  2. Mixins
+//  3. Global foundations and layout
+//  4. Left sidebar — base
+//  5. Center content — common / page header
+//  6. Right sidebar — base
+//  7. Graph view
+//  8. Backlinks
+//  9. Individual note — article elements
+// 10. Tags — common
+// 11. Responsive — mobile layout
+// 12. Responsive — wide desktop
+// 13. Dark mode — base
+// 14. Folder / Tag pages
+// 15. Recent notes
+// 16. Sidebars — final component styling
+// 17. Mobile typography
+// 18. Dark mode — final component overrides
+//
+// NOTE:
+// CSSのカスケード順を保つため、現段階では宣言ブロックの物理的な順序は
+// 大きく移動していない。後段上書きが必要なものは「base / final」に分けている。
+// !important は Quartz / community plugin の既定スタイルとの競合、
+// または既存の強い上書きを維持する箇所に限定して残している。
+
+// =============================================================================
+// 1. Design tokens / variables
 // =============================================================================
 
 $wide-desktop-breakpoint: 1200px;
@@ -32,13 +60,61 @@ $serif-font-family:
   "MS Mincho",
   serif;
 
+// -----------------------------------------------------------------------------
+// Typography scale
+// -----------------------------------------------------------------------------
+//
+// Unit policy:
+// - 主要な文字サイズは px でデザイン値を固定し、下記の変数で一元管理する。
+// - margin / padding / gap などの余白は rem / em を基本とする。
+// - 行間は原則として単位なしの line-height を使う。
+// - 日本語本文幅には ic を使う。
+// - 既存コンポーネント固有の rem 指定は、表示を変えてまで px に換算しない。
+//   （0.92rem 等は意図的にそのまま残す。）
+//
+
+$font-page-title: 25px;
+$font-list-title: 21px;
+$font-h3: 18px;
+$font-body: 16px;
+$font-date: 14px;
+$font-tag: 13px;
+$font-code: 12px;
+
+$font-page-title-mobile: 23px;
+$font-list-title-mobile: 20px;
+$font-date-mobile: 13px;
+$font-tag-mobile: 12px;
+
+// -----------------------------------------------------------------------------
+// Color palette
+// -----------------------------------------------------------------------------
+
 $text-color: #000000;
 $note-title-color: #333333;
+$muted-text-color: #808080;
+
+$internal-link-color: #087144;
+$external-link-color: #5219a1;
+
+$surface-soft: #f0f0f0;
+$surface-muted: #f6f6f6;
+$subtle-border-color: #e0e0e0;
+$tag-border-strong: #d0d0d0;
+$explorer-guide-color: #9cc6b4;
+
+// Dark mode
+$dark-internal-link-color: #66b68a;
+$dark-external-link-color: #b89ac9;
+$dark-hover-background: #282828;
+$dark-sidebar-note-color: #c8c8c8;
+$dark-explorer-guide-color: #4f8067;
+$dark-inline-code-background: #2a2a2d;
+$dark-code-block-background: #232326;
+$dark-code-text-color: #e6e6e6;
 
 // 本文以外で使う既存リンク設定
-$link-color: #333333;
-$link-background: transparent;
-$link-hover-color: #333333;
+$link-hover-color: $note-title-color;
 $link-hover-background: #eeeeee;
 $link-radius: 0.3rem;
 
@@ -65,18 +141,22 @@ $article-p-margin-bottom: 1.9em;
 $article-list-margin-bottom: 1.2rem;
 
 // 共通タグ（folder-page / tag-page / recent-notes 等は現状維持）
-$tag-bg: #f6f6f6;
+$tag-bg: $surface-muted;
 $tag-border: #e6e6e6;
 $tag-radius: 0.35rem;
 
 // 個別ノート用
-$article-link-hover-background: #f0f0f0;
+$article-link-hover-background: $surface-soft;
 $article-highlight-background: #ffe9a6;
-$article-code-background: #f0f0f0;
+$article-code-background: $surface-soft;
 $article-blockquote-color: #676767;
-$article-separator-color: #f0f0f0;
+$article-separator-color: $surface-soft;
 
 $blockquote-border: #b8b8b8;
+
+// 共通UI
+$tag-bg-strong: $surface-soft;
+$sidebar-hover-background: $surface-soft;
 
 // Mobile tuning values
 $mobile-topbar-height: 3.1rem;
@@ -87,7 +167,7 @@ $mobile-banner-link-offset: 0;
 $mobile-explorer-search-left: 1.6rem;
 $mobile-explorer-search-right: 4.2rem;
 $mobile-explorer-list-top: 3.5rem;
-$mobile-menu-background: #f6f6f6;
+$mobile-menu-background: $surface-muted;
 
 // =============================================================================
 // 2. Mixins
@@ -113,7 +193,6 @@ $mobile-menu-background: #f6f6f6;
   color: $text-color !important;
 
   background: $tag-bg !important;
-  background-color: $tag-bg !important;
   border: 1px solid $tag-border !important;
   box-shadow: none !important;
   outline: none !important;
@@ -135,7 +214,6 @@ $mobile-menu-background: #f6f6f6;
 
   color: $note-title-color !important;
   background: transparent !important;
-  background-color: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
   outline: 0 !important;
@@ -334,7 +412,7 @@ b,
 }
 
 // =============================================================================
-// 4. Left sidebar
+// 4. Left sidebar — base
 // =============================================================================
 
 .sidebar.left {
@@ -439,14 +517,8 @@ b,
 }
 
 // =============================================================================
-// 5. Center content
+// 5. Center content — common / page header
 // =============================================================================
-
-// 個別ノート：ヘッダーと本文の間を半行分あける
-.page > #quartz-body > .center > .page-header {
-  margin-bottom: 0.95em !important;
-}
-
 
 .center {
   max-width: $main-content-measure;
@@ -460,20 +532,20 @@ b,
 // -----------------------------------------------------------------------------
 
 .page > #quartz-body > .center > .page-header {
+  // ヘッダーと本文の間を半行分
+  margin-bottom: 0.95em !important;
+
   // date
   .content-meta {
-    margin-top: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 0.55rem !important;
-    margin-left: 0 !important;
+    margin: 0 0 0.55rem 0 !important;
 
-    font-size: 14px !important;
+    font-size: $font-date !important;
     line-height: 1.5;
-    color: #808080 !important;
+    color: $muted-text-color !important;
 
     time,
     span {
-      color: #808080 !important;
+      color: $muted-text-color !important;
     }
   }
 
@@ -482,18 +554,15 @@ b,
     margin-top: 0 !important;
     margin-bottom: 0.2rem !important;
 
-    font-size: 25px !important;
+    font-size: $font-page-title !important;
     line-height: 1.4;
   }
 
   // subtitle
   p.article-subtitle {
-    margin-top: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 1rem !important;
+    margin: 0 0 0 1rem !important;
 
-    font-size: 16px !important;
+    font-size: $font-body !important;
     font-weight: 700 !important;
     line-height: 1.6;
 
@@ -515,10 +584,9 @@ b,
 
     a,
     .tag-link {
-      font-size: 13px !important;
-      background: #f0f0f0 !important;
-      background-color: #f0f0f0 !important;
-      border: 1px solid #d0d0d0 !important;
+      font-size: $font-tag !important;
+      background: $tag-bg-strong !important;
+      border: 1px solid $tag-border-strong !important;
     }
   }
 }
@@ -534,80 +602,6 @@ article {
     margin-top: 0 !important;
     margin-bottom: 1.2rem !important;
     padding-left: 0 !important;
-  }
-}
-
-// -----------------------------------------------------------------------------
-// folder-page：現状維持
-// -----------------------------------------------------------------------------
-
-.page-listing {
-  max-width: $main-content-measure;
-  margin-left: auto;
-  margin-right: auto;
-
-  .section-ul {
-    padding-left: 0 !important;
-    margin: 2.5rem 0 0 0 !important;
-  }
-
-  .section-li {
-    list-style: none !important;
-    margin-bottom: 2.1rem !important;
-  }
-
-  li.section-li > .section {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    grid-template-columns: none !important;
-    grid-template-areas: none !important;
-  }
-
-  .section > .desc {
-    order: 1 !important;
-
-    h3 {
-      margin: 0 0 0.25rem 0 !important;
-      font-size: 1.35rem;
-      line-height: 1.55;
-      font-weight: 600;
-
-      > a {
-        color: $note-title-color !important;
-        background-color: transparent !important;
-        border-radius: $link-radius !important;
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-        text-decoration: none !important;
-
-        &:hover {
-          color: $link-hover-color !important;
-          background: $link-hover-background !important;
-          background-color: $link-hover-background !important;
-        }
-      }
-    }
-  }
-
-  .section > .meta {
-    order: 2 !important;
-    margin: 0 0 0.45rem 0 !important;
-    color: var(--gray);
-    font-size: 0.95rem;
-  }
-
-  .section > .tags {
-    order: 3 !important;
-    display: flex !important;
-    justify-content: flex-start !important;
-    gap: 0.45rem;
-    padding-left: 0 !important;
-    margin: 0 !important;
-  }
-
-  hr {
-    margin-top: 2.5rem;
   }
 }
 
@@ -646,14 +640,14 @@ body[data-slug="index"] {
       }
 
       > a.internal-link.alias {
-        color: #333333 !important;
+        color: $note-title-color !important;
         font-weight: 600 !important;
       }
 
       > a:hover,
       > a.internal:hover,
       > a.internal-link:hover {
-        color: #000000 !important;
+        color: $text-color !important;
         text-decoration: none !important;
       }
     }
@@ -687,7 +681,7 @@ article .mermaid .nodeLabel p {
 }
 
 // =============================================================================
-// 6. Right sidebar
+// 6. Right sidebar — base
 // =============================================================================
 
 .page > #quartz-body > .sidebar.right {
@@ -701,8 +695,9 @@ article .mermaid .nodeLabel p {
   .graph > h3,
   .backlinks > h3 {
     margin: 0 !important;
-    font-size: 0.92rem !important;
-    line-height: 1.8;
+    font-size: $font-body !important;
+    line-height: 1.5 !important;
+    font-weight: 700 !important;
   }
 }
 
@@ -779,7 +774,6 @@ article .mermaid .nodeLabel p {
     color: #{$text-color} !important;
 
     background: transparent !important;
-    background-color: transparent !important;
     border-radius: $link-radius !important;
     text-decoration: none !important;
   }
@@ -789,18 +783,16 @@ article .mermaid .nodeLabel p {
   a.internal-link:hover {
     color: #{$link-hover-color} !important;
     background: #{$link-hover-background} !important;
-    background-color: #{$link-hover-background} !important;
     text-decoration: none !important;
   }
 }
 
 // =============================================================================
-// 9. Article elements：個別ノート本文
+// 9. Individual note — article elements
 // =============================================================================
 
 .page > #quartz-body > .center article {
-  font-family: $serif-font-family !important;
-  font-size: 16px;
+  font-size: $font-body;
   line-height: 1.9;
   letter-spacing: 0.03em;
 
@@ -819,44 +811,43 @@ article .mermaid .nodeLabel p {
   h4,
   h5,
   h6 {
-    font-family: $serif-font-family !important;
     line-height: 1.4;
     letter-spacing: 0.04em;
   }
 
   // article 内では通常 h1 は使わないが、入った場合の値だけ定義しておく。
   h1 {
-    font-size: 25px;
+    font-size: $font-page-title;
     margin-top: $article-h1-margin-top;
     margin-bottom: $article-h1-margin-bottom;
   }
 
   h2 {
-    font-size: 21px;
+    font-size: $font-list-title;
     margin-top: $article-h2-margin-top;
     margin-bottom: $article-h2-margin-bottom;
   }
 
   h3 {
-    font-size: 18px;
+    font-size: $font-h3;
     margin-top: $article-h3-margin-top;
     margin-bottom: $article-h3-margin-bottom;
   }
 
   h4 {
-    font-size: 16px;
+    font-size: $font-body;
     margin-top: $article-h4-margin-top;
     margin-bottom: $article-h4-margin-bottom;
   }
 
   h5 {
-    font-size: 16px;
+    font-size: $font-body;
     margin-top: $article-h5-margin-top;
     margin-bottom: $article-h5-margin-bottom;
   }
 
   h6 {
-    font-size: 16px;
+    font-size: $font-body;
     margin-top: $article-h6-margin-top;
     margin-bottom: $article-h6-margin-bottom;
   }
@@ -866,7 +857,7 @@ article .mermaid .nodeLabel p {
   // ---------------------------------------------------------------------------
 
   p {
-    font-size: 16px;
+    font-size: $font-body;
     line-height: 1.9;
     margin-top: $article-p-margin-top;
     margin-bottom: $article-p-margin-bottom;
@@ -874,14 +865,14 @@ article .mermaid .nodeLabel p {
 
   ul,
   ol {
-    font-size: 16px;
+    font-size: $font-body;
     margin-top: 0.5rem;
     margin-bottom: $article-list-margin-bottom;
     padding-left: 1.8em;
   }
 
   li {
-    font-size: 16px;
+    font-size: $font-body;
     margin-bottom: 0.35em;
   }
 
@@ -916,37 +907,35 @@ article .mermaid .nodeLabel p {
 
   // 内部リンク
   a.internal-link:not(.tag-link):not([role="anchor"]) {
-    color: #087144 !important;
+    color: $internal-link-color !important;
     background: transparent !important;
 
     &:link,
     &:visited,
     &:active {
-      color: #087144 !important;
+      color: $internal-link-color !important;
     }
 
     &:hover {
-      color: #087144 !important;
+      color: $internal-link-color !important;
       background: $article-link-hover-background !important;
-      background-color: $article-link-hover-background !important;
     }
   }
 
   // 外部リンク
   a.external-link:not(.tag-link) {
-    color: #5219a1 !important;
+    color: $external-link-color !important;
     background: transparent !important;
 
     &:link,
     &:visited,
     &:active {
-      color: #5219a1 !important;
+      color: $external-link-color !important;
     }
 
     &:hover {
-      color: #5219a1 !important;
+      color: $external-link-color !important;
       background: $article-link-hover-background !important;
-      background-color: $article-link-hover-background !important;
     }
   }
 
@@ -957,7 +946,6 @@ article .mermaid .nodeLabel p {
   mark,
   .text-highlight {
     background: $article-highlight-background !important;
-    background-color: $article-highlight-background !important;
   }
 
   // ---------------------------------------------------------------------------
@@ -995,19 +983,16 @@ article .mermaid .nodeLabel p {
 
   :not(pre) > code {
     background: $article-code-background !important;
-    background-color: $article-code-background !important;
   }
 
   pre {
     background: $article-code-background !important;
-    background-color: $article-code-background !important;
     border: none !important;
     box-shadow: none !important;
 
     code {
-      font-size: 12px !important;
+      font-size: $font-code !important;
       background: transparent !important;
-      background-color: transparent !important;
     }
   }
 
@@ -1033,7 +1018,7 @@ article .mermaid .nodeLabel p {
 }
 
 // =============================================================================
-// 9-A. Tags（共通部は現状維持）
+// 10. Tags — common
 // =============================================================================
 
 .page > #quartz-body > .center {
@@ -1084,16 +1069,15 @@ article .mermaid .nodeLabel p {
   .tag-list {
     a,
     .tag-link {
-      font-size: 13px !important;
-      background: #f0f0f0 !important;
-      background-color: #f0f0f0 !important;
-      border: 1px solid #d0d0d0 !important;
+      font-size: $font-tag !important;
+      background: $tag-bg-strong !important;
+      border: 1px solid $tag-border-strong !important;
     }
   }
 }
 
 // =============================================================================
-// 10. Mobile layout
+// 11. Responsive — mobile layout
 // =============================================================================
 
 @media (max-width: $mobile-breakpoint) {
@@ -1409,10 +1393,7 @@ article .mermaid .nodeLabel p {
     max-width: 100vw !important;
     min-width: 0 !important;
     margin: 0 !important;
-    padding-top: $mobile-content-top-offset !important;
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
-    padding-bottom: 0 !important;
+    padding: $mobile-content-top-offset 0.5rem 0 !important;
     box-sizing: border-box !important;
   }
 
@@ -1538,7 +1519,7 @@ article .mermaid .nodeLabel p {
 }
 
 // =============================================================================
-// 11. Wide desktop layout
+// 12. Responsive — wide desktop
 // =============================================================================
 
 @media all and (min-width: $wide-desktop-breakpoint) {
@@ -1587,7 +1568,7 @@ article .mermaid .nodeLabel p {
 }
 
 // =============================================================================
-// 12. Dark mode
+// 13. Dark mode — base
 // =============================================================================
 
 html[saved-theme="dark"] {
@@ -1635,49 +1616,47 @@ html[saved-theme="dark"] {
   // 個別ノート：内部リンク
   .page > #quartz-body > .center article {
     a.internal-link:not(.tag-link):not([role="anchor"]) {
-      color: #00ff90 !important;
+      color: $dark-internal-link-color !important;
       background: transparent !important;
 
       &:link,
       &:visited,
       &:active {
-        color: #00ff90 !important;
+        color: $dark-internal-link-color !important;
       }
 
       &:hover {
-        color: #00ff90 !important;
+        color: $dark-internal-link-color !important;
         background: #404040 !important;
-        background-color: #404040 !important;
       }
     }
 
     // 個別ノート：外部リンク
     a.external-link:not(.tag-link) {
-      color: #d67fff !important;
+      color: $dark-external-link-color !important;
       background: transparent !important;
 
       &:link,
       &:visited,
       &:active {
-        color: #d67fff !important;
+        color: $dark-external-link-color !important;
       }
 
       &:hover {
-        color: #d67fff !important;
+        color: $dark-external-link-color !important;
         background: #404040 !important;
-        background-color: #404040 !important;
       }
     }
 
     // ハイライトは文字色を黒にしてコントラストを確保
     mark,
     .text-highlight {
-      color: #000000 !important;
+      color: $text-color !important;
     }
   }
 
   // 右サイドバー
-  --secondary: #808080 !important;
+  --secondary: #{$muted-text-color} !important;
 
   .page > #quartz-body > .sidebar.right .backlinks {
     a,
@@ -1685,15 +1664,13 @@ html[saved-theme="dark"] {
     a.internal-link {
       color: #ffffff !important;
       background: transparent !important;
-      background-color: transparent !important;
     }
 
     a:hover,
     a.internal:hover,
     a.internal-link:hover {
       color: #ffffff !important;
-      background: #282828 !important;
-      background-color: #282828 !important;
+      background: $dark-hover-background !important;
     }
   }
 }
@@ -1712,8 +1689,7 @@ html[saved-theme="dark"] .sidebar.left .page-title a {
   text-overflow: ellipsis;
 }
 // =============================================================================
-// Folder page / Tag page list
-// custom.scss の末尾に追加
+// 14. Folder / Tag pages
 // =============================================================================
 
 // folder-page / tag-page は .page-listing を持つ。
@@ -1727,7 +1703,7 @@ html[saved-theme="dark"] .sidebar.left .page-title a {
   > .page-header {
     // フォルダ名・タグ名
     h1.article-title {
-      font-size: 25px !important;
+      font-size: $font-page-title !important;
     }
 
     // folder-page / tag-page のヘッダーはタイトルだけにする
@@ -1757,7 +1733,7 @@ html[saved-theme="dark"] .sidebar.left .page-title a {
     // 「○件のノート」等
     > p {
       margin: 0 0 1rem 0 !important;
-      font-size: 16px !important;
+      font-size: $font-body !important;
       line-height: 1.9;
     }
 
@@ -1774,12 +1750,12 @@ html[saved-theme="dark"] .sidebar.left .page-title a {
       list-style: none !important;
 
       // ノート同士の区切り
-      border-bottom: 1px solid #e0e0e0 !important;
+      border-bottom: 1px solid $subtle-border-color !important;
     }
 
     // 最初のノートにも上線を入れる
     .section-li:first-child {
-      border-top: 1px solid #e0e0e0 !important;
+      border-top: 1px solid $subtle-border-color !important;
     }
 
     li.section-li > .section {
@@ -1801,14 +1777,14 @@ html[saved-theme="dark"] .sidebar.left .page-title a {
       margin: 0 0 0.3rem 0 !important;
       padding: 0 !important;
 
-      font-size: 14px !important;
+      font-size: $font-date !important;
       line-height: 1.6;
-      color: #808080 !important;
+      color: $muted-text-color !important;
       opacity: 1 !important;  // ← 追加
 
       time {
-        font-size: 14px !important;
-        color: #808080 !important;
+        font-size: $font-date !important;
+        color: $muted-text-color !important;
       }
     }
 
@@ -1824,44 +1800,41 @@ html[saved-theme="dark"] .sidebar.left .page-title a {
         margin: 0 !important;
         padding: 0 !important;
 
-        font-size: 21px !important;
+        font-size: $font-list-title !important;
         line-height: 1.5;
         font-weight: 600;
 
       > a,
       > a.internal {
-        color: #087144 !important;
+        color: $internal-link-color !important;
         background: transparent !important;
-        background-color: transparent !important;
         border-radius: $link-radius !important;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
 
         text-decoration: none !important;
 
         &:link,
         &:visited,
         &:active {
-          color: #087144 !important;
+          color: $internal-link-color !important;
           text-decoration: none !important;
         }
 
         &:hover {
-          color: #087144 !important;
+          color: $internal-link-color !important;
           background: $link-hover-background !important;
-          background-color: $link-hover-background !important;
           text-decoration: none !important;
           }
         }
       }
 
       .section-subtitle {
-        margin-top: 0.25rem !important;
-        margin-right: 0 !important;
-        margin-bottom: 0 !important;
-        margin-left: 1rem !important;
+        margin: 0.25rem 0 0 1rem !important;
 
         padding: 0 !important;
 
-        font-size: 16px !important;
+        font-size: $font-body !important;
         line-height: 1.6;
         font-weight: 700 !important;
 
@@ -1878,6 +1851,10 @@ html[saved-theme="dark"] .sidebar.left .page-title a {
     // -------------------------------------------------------------------------
     // tags
     // -------------------------------------------------------------------------
+
+    hr {
+      margin-top: 2.5rem;
+    }
 
     .section > .tags {
       order: 3 !important;
@@ -1906,14 +1883,13 @@ html[saved-theme="dark"] .sidebar.left .page-title a {
 
         padding: 0.1rem 0.45rem !important;
 
-        font-size: 13px !important;
+        font-size: $font-tag !important;
         line-height: 1.5;
         font-weight: 400 !important;
         color: $text-color !important;
 
-        background: #f0f0f0 !important;
-        background-color: #f0f0f0 !important;
-        border: 1px solid #d0d0d0 !important;
+        background: $tag-bg-strong !important;
+        border: 1px solid $tag-border-strong !important;
         border-radius: $tag-radius !important;
 
         box-shadow: none !important;
@@ -1928,8 +1904,7 @@ html[saved-theme="dark"] .sidebar.left .page-title a {
   }
 }
 // =============================================================================
-// Recent notes
-// custom.scss の末尾に追加
+// 15. Recent notes
 // =============================================================================
 
 body[data-slug="index"] {
@@ -1950,7 +1925,7 @@ body[data-slug="index"] {
       margin: 2rem 0 1rem 0 !important;
       padding: 0 !important;
 
-      font-size: 21px !important;
+      font-size: $font-list-title !important;
       line-height: 1.5;
       font-weight: 700 !important;
     }
@@ -1968,11 +1943,11 @@ body[data-slug="index"] {
       list-style: none !important;
 
       // 区切り線
-      border-bottom: 1px solid #e0e0e0 !important;
+      border-bottom: 1px solid $subtle-border-color !important;
     }
 
     > ul.recent-ul > li.recent-li:first-child {
-      border-top: 1px solid #e0e0e0 !important;
+      border-top: 1px solid $subtle-border-color !important;
     }
 
     .recent-li > .section {
@@ -1992,16 +1967,16 @@ body[data-slug="index"] {
       margin: 0 0 0.3rem 0 !important;
       padding: 0 !important;
 
-      font-size: 14px !important;
+      font-size: $font-date !important;
       line-height: 1.6;
-      color: #808080 !important;
+      color: $muted-text-color !important;
 
       // recentNotes.scss 標準の opacity: 0.6 を解除
       opacity: 1 !important;
 
       time {
-        font-size: 14px !important;
-        color: #808080 !important;
+        font-size: $font-date !important;
+        color: $muted-text-color !important;
         opacity: 1 !important;
       }
     }
@@ -2018,15 +1993,14 @@ body[data-slug="index"] {
         margin: 0 !important;
         padding: 0 !important;
 
-        font-size: 21px !important;
+        font-size: $font-list-title !important;
         line-height: 1.5;
         font-weight: 600 !important;
 
         > a,
         > a.internal {
-          color: #087144 !important;
+          color: $internal-link-color !important;
           background: transparent !important;
-          background-color: transparent !important;
           border-radius: $link-radius !important;
 
           text-decoration: none !important;
@@ -2034,27 +2008,23 @@ body[data-slug="index"] {
           &:link,
           &:visited,
           &:active {
-            color: #087144 !important;
+            color: $internal-link-color !important;
             text-decoration: none !important;
           }
 
           &:hover {
-            color: #087144 !important;
+            color: $internal-link-color !important;
             background: $link-hover-background !important;
-            background-color: $link-hover-background !important;
             text-decoration: none !important;
           }
         }
       }
 
       .section-subtitle {
-        margin-top: 0.25rem !important;
-        margin-right: 0 !important;
-        margin-bottom: 0 !important;
-        margin-left: 1rem !important;
+        margin: 0.25rem 0 0 1rem !important;
         padding: 0 !important;
 
-        font-size: 16px !important;
+        font-size: $font-body !important;
         line-height: 1.6;
         font-weight: 700 !important;
 
@@ -2082,8 +2052,7 @@ body[data-slug="index"] {
 }
 
 // =============================================================================
-// ⑤ Left / Right sidebar
-// custom.scss の末尾に追加
+// 16. Sidebars — final component styling
 // =============================================================================
 
 // -----------------------------------------------------------------------------
@@ -2094,13 +2063,13 @@ body[data-slug="index"] {
 .sidebar.right {
   // 「グラフビュー」「バックリンク」などの機能ブロック見出し
   h3 {
-    font-size: 16px !important;
+    font-size: $font-body !important;
     line-height: 1.5;
   }
 
   // sidebar 内のリスト
   ul li {
-    font-size: 16px !important;
+    font-size: $font-body !important;
   }
 
   // sidebar 内リンクの hover
@@ -2108,8 +2077,7 @@ body[data-slug="index"] {
     text-decoration: none !important;
 
     &:hover {
-      background: #f0f0f0 !important;
-      background-color: #f0f0f0 !important;
+      background: $sidebar-hover-background !important;
       text-decoration: none !important;
     }
   }
@@ -2121,7 +2089,7 @@ body[data-slug="index"] {
 
 .sidebar.left {
   .explorer {
-    font-size: 16px !important;
+    font-size: $font-body !important;
 
     // フォルダ名
     .folder-title,
@@ -2129,10 +2097,10 @@ body[data-slug="index"] {
     .folder-title > span,
     .folder-title button,
     .folder-container > button {
-      font-size: 16px !important;
+      font-size: $font-body !important;
       line-height: 1.6 !important;
       font-weight: 700 !important;
-      color: #087144 !important;
+      color: $internal-link-color !important;
     }
 
     // フォルダ名 hover
@@ -2140,23 +2108,21 @@ body[data-slug="index"] {
     .folder-title > a:hover,
     .folder-title button:hover,
     .folder-container > button:hover {
-      background: #f0f0f0 !important;
-      background-color: #f0f0f0 !important;
+      background: $sidebar-hover-background !important;
     }
 
     // ノート名
     // folder-title 配下を除く通常の Explorer リンクだけを標準ウェイトにする
     .explorer-content li > a:not(.folder-title),
     .content li > a {
-      font-size: 16px !important;
+      font-size: $font-body !important;
       line-height: 1.8 !important;
       font-weight: 400 !important;
       color: $text-color !important;
       text-decoration: none !important;
 
       &:hover {
-        background: #f0f0f0 !important;
-        background-color: #f0f0f0 !important;
+        background: $sidebar-hover-background !important;
         text-decoration: none !important;
       }
     }
@@ -2171,22 +2137,22 @@ body[data-slug="index"] {
     .folder-icon,
     .folder-container svg,
     .folder-title svg {
-      color: #087144 !important;
-      stroke: #087144 !important;
+      color: $internal-link-color !important;
+      stroke: $internal-link-color !important;
     }
 
     // SVG が currentColor を使う場合にも対応
     .folder-icon *,
     .folder-container svg *,
     .folder-title svg * {
-      color: #087144 !important;
-      stroke: #087144 !important;
+      color: $internal-link-color !important;
+      stroke: $internal-link-color !important;
     }
 
     // 展開したフォルダ内の縦線
     .folder-outer > ul,
     .folder-outer ul {
-      border-left-color: #9cc6b4 !important;
+      border-left-color: $explorer-guide-color !important;
     }
   }
 }
@@ -2200,29 +2166,18 @@ body[data-slug="index"] {
   p,
   li,
   a {
-    font-size: 16px !important;
+    font-size: $font-body !important;
   }
 }
 
 
 // -----------------------------------------------------------------------------
-// 追加調整
+// Sidebar component adjustments
 // -----------------------------------------------------------------------------
-
-// Graph / Backlinks：既存 custom.scss の強い 0.92rem 指定を上書き
-.page > #quartz-body > .sidebar.right {
-  .graph > h3,
-  .backlinks > h3 {
-    font-size: 16px !important;
-    line-height: 1.5 !important;
-    font-weight: 700 !important;
-  }
-}
 
 // サイトタイトルバナー：hoverしても背景画像を変更しない
 .sidebar.left .page-title a:hover {
   background: url("./static/site-title.svg") center center / contain no-repeat !important;
-  background-color: transparent !important;
   text-decoration: none !important;
 }
 
@@ -2233,7 +2188,7 @@ body[data-slug="index"] {
   }
 }
 .graph > .graph-outer {
-  border-color: #e0e0e0 !important;
+  border-color: $subtle-border-color !important;
 }
 
 html[saved-theme="dark"] {
@@ -2245,41 +2200,40 @@ html[saved-theme="dark"] {
     .folder-title > span,
     .folder-title button,
     .folder-container > button {
-      color: #66b68a !important;
+      color: $dark-internal-link-color !important;
     }
 
     // ノート名
     .explorer-content li > a:not(.folder-title),
     .content li > a {
-      color: #c8c8c8 !important;
+      color: $dark-sidebar-note-color !important;
     }
 
     // フォルダ左の矢印
     .folder-icon,
     .folder-container svg,
     .folder-title svg {
-      color: #66b68a !important;
-      stroke: #66b68a !important;
+      color: $dark-internal-link-color !important;
+      stroke: $dark-internal-link-color !important;
     }
 
     .folder-icon *,
     .folder-container svg *,
     .folder-title svg * {
-      color: #66b68a !important;
-      stroke: #66b68a !important;
+      color: $dark-internal-link-color !important;
+      stroke: $dark-internal-link-color !important;
     }
 
     // 展開時の縦線
     .folder-outer > ul,
     .folder-outer ul {
-      border-left-color: #4f8067 !important;
+      border-left-color: $dark-explorer-guide-color !important;
     }
   }
 }
 
 // =============================================================================
-// ⑥ Mobile typography
-// custom.scss の一番最後に追加
+// 17. Mobile typography
 // =============================================================================
 
 @media (max-width: $mobile-breakpoint) {
@@ -2290,25 +2244,25 @@ html[saved-theme="dark"] {
 
   .page > #quartz-body > .center > .page-header {
     h1.article-title {
-      font-size: 23px !important;
+      font-size: $font-page-title-mobile !important;
       line-height: 1.4 !important;
     }
 
     p.article-subtitle {
-      font-size: 16px !important;
+      font-size: $font-body !important;
     }
 
     .content-meta,
     .content-meta time,
     .content-meta span {
-      font-size: 13px !important;
+      font-size: $font-date-mobile !important;
     }
 
     .tags,
     .tag-list {
       a,
       .tag-link {
-        font-size: 12px !important;
+        font-size: $font-tag-mobile !important;
       }
     }
   }
@@ -2319,51 +2273,37 @@ html[saved-theme="dark"] {
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > .center article {
-    font-size: 16px !important;
-
     h1 {
-      font-size: 23px !important;
+      font-size: $font-page-title-mobile;
     }
 
     h2 {
-      font-size: 20px !important;
+      font-size: $font-list-title-mobile;
     }
 
+    // indexページには、より強いh3指定があるため !important を残す
     h3 {
-      font-size: 18px !important;
-    }
-
-    h4,
-    h5,
-    h6 {
-      font-size: 16px !important;
+      font-size: $font-h3 !important;
     }
 
     p {
-      font-size: 16px !important;
-      letter-spacing: 0 !important;
-    }
-
-    ul,
-    ol,
-    li {
-      font-size: 16px !important;
+      letter-spacing: 0;
     }
 
     // リスト本文も日本語の字間が広がりすぎないようにする
     li {
-      letter-spacing: 0 !important;
+      letter-spacing: 0;
     }
 
     blockquote,
     blockquote p,
     blockquote li {
-      letter-spacing: 0 !important;
+      letter-spacing: 0;
     }
 
     pre,
     pre code {
-      font-size: 12px !important;
+      font-size: $font-code !important;
     }
   }
 
@@ -2373,35 +2313,35 @@ html[saved-theme="dark"] {
 
   .page > #quartz-body > .center:has(.page-listing) {
     > .page-header h1.article-title {
-      font-size: 23px !important;
+      font-size: $font-page-title-mobile !important;
     }
 
     .page-listing {
       > p {
-        font-size: 16px !important;
+        font-size: $font-body !important;
       }
 
       .section > .meta,
       .section > .meta time {
-        font-size: 13px !important;
+        font-size: $font-date-mobile !important;
       }
 
       .section > .desc {
         h3,
         h3 > a,
         h3 > a.internal {
-          font-size: 20px !important;
+          font-size: $font-list-title-mobile !important;
         }
 
         .section-subtitle {
-          font-size: 16px !important;
+          font-size: $font-body !important;
         }
       }
 
       .section > .tags {
         a,
         .tag-link {
-          font-size: 12px !important;
+          font-size: $font-tag-mobile !important;
         }
       }
     }
@@ -2414,31 +2354,107 @@ html[saved-theme="dark"] {
   body[data-slug="index"] .recent-notes {
     // 「最近のノート」
     > h3 {
-      font-size: 20px !important;
+      font-size: $font-list-title-mobile !important;
     }
 
     .recent-li .section > .meta,
     .recent-li .section > .meta time {
-      font-size: 13px !important;
+      font-size: $font-date-mobile !important;
     }
 
     .recent-li .section > .desc {
       h3,
       h3 > a,
       h3 > a.internal {
-        font-size: 20px !important;
+        font-size: $font-list-title-mobile !important;
       }
 
       .section-subtitle {
-        font-size: 16px !important;
+        font-size: $font-body !important;
       }
     }
 
     .recent-li .section > .tags {
       a,
       .tag-link {
-        font-size: 12px !important;
+        font-size: $font-tag-mobile !important;
       }
+    }
+  }
+}
+
+// =============================================================================
+// 18. Dark mode — final component overrides
+// =============================================================================
+
+html[saved-theme="dark"] {
+
+  // =========================================================
+  // 左sidebar：hover
+  // 右sidebarのバックリンクと同じ背景色にする
+  // =========================================================
+
+  .page > #quartz-body > .sidebar.left .explorer {
+
+    a:hover,
+    .folder-title:hover,
+    .folder-title > a:hover,
+    .folder-title button:hover,
+    .folder-container > button:hover {
+      background: $dark-hover-background !important;
+    }
+  }
+
+
+  // folder-page / tag-page のノートタイトル
+  .page-listing .section > .desc h3 {
+    > a,
+    > a.internal {
+      color: $dark-internal-link-color !important;
+
+      &:link,
+      &:visited,
+      &:active,
+      &:hover {
+        color: $dark-internal-link-color !important;
+      }
+    }
+  }
+
+
+  // recent-notes のノートタイトル
+  .recent-notes .recent-li .section > .desc h3 {
+    > a,
+    > a.internal {
+      color: $dark-internal-link-color !important;
+
+      &:link,
+      &:visited,
+      &:active,
+      &:hover {
+        color: $dark-internal-link-color !important;
+      }
+    }
+  }
+
+
+  // ---------------------------------------------------------------------------
+  // Code
+  // ---------------------------------------------------------------------------
+
+  // インラインコード
+  .page > #quartz-body > .center article :not(pre) > code {
+    background: $dark-inline-code-background !important;
+    color: $dark-code-text-color !important;
+  }
+
+  // コードブロック
+  .page > #quartz-body > .center article pre {
+    background: $dark-code-block-background !important;
+    border: none !important;
+
+    code {
+      background: transparent !important;
     }
   }
 }
