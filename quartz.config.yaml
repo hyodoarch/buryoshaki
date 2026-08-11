@@ -146,7 +146,7 @@ plugins:
   - source: github:quartz-community/favicon
     enabled: true
   - source: github:quartz-community/og-image
-    enabled: true
+    enabled: false
   - source: github:quartz-community/cname
     enabled: true
   - source: github:quartz-community/canvas-page
@@ -247,7 +247,7 @@ plugins:
     enabled: true
     layout:
       position: beforeBody
-      priority: 20
+      priority: 5
   - source: github:quartz-community/tag-list
     enabled: true
     layout:

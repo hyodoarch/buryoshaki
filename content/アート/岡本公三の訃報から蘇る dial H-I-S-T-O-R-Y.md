@@ -1,5 +1,5 @@
 ---
-title: 岡本公三の訃報から思い出した dial H-I-S-T-O-R-Y
+title: 岡本公三の訃報から蘇る dial H-I-S-T-O-R-Y
 date: 2026-07-25
 modified: 2026-07-25
 draft: false

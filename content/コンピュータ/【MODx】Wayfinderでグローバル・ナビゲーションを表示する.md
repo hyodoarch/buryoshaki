@@ -20,7 +20,7 @@ wordpress_id: 179
 ![くらしの道具 MODxドキュメントツリー キャプチャ](/images/2010/FS_dogu_01.png)
 
 ## グローバル・ナビゲーション部分のチャンク・コード
-```
+```html
 <div id="global-navi"><!-- +++++ グローバル・ナビ +++++ -->
 [[Wayfinder?startId=`8` &level=`1` &excludeDocs=`236,254` &hereClass=`current`]]
 </div><!-- +++++ global-navi +++++ -->
@@ -33,7 +33,7 @@ wordpress_id: 179
 **excludeDocs=`236,254`**　･･････リストアップから除外するドキュメントのid（404ページと閉鎖中ページ）
 
 ## 出力されるhtmlコード
-```
+```html
 <div id="global-navi"><!-- +++++ グローバル・ナビ +++++ -->
 <ul><li class="current"><a href="https://www.hyodo-arch.com/dogu/" title="HOME" >HOME</a></li>
 <li><a href="/dogu/web/kawaraban.html" title="かわら版" >かわら版</a></li>
@@ -47,7 +47,7 @@ wordpress_id: 179
 テンプレートにプレイスホルダを使ってチャンクを記述し、パラメータで指定すれば、様々な条件でリストアップすることができます。ここでは、デフォルトで十分でしたので、テンプレートは使用していません。
 
 ## グローバル・ナビゲーション部分のCSS
-```
+```css
 /* +++++++++++++++ ヘッダー（グローバルナビ部分） +++++++++++++++ */
 #global-navi	{clear: both;}
 #global-navi ul {

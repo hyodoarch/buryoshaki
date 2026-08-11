@@ -1,15 +1,16 @@
 {
 	"nodes":[
-		{"id":"720e7fc6ea583f4f","type":"text","text":".page","x":-780,"y":-600,"width":780,"height":780},
-		{"id":"e5af05c6dfe42f07","type":"text","text":"#quartz-body","x":-760,"y":-540,"width":740,"height":700},
-		{"id":"bca0bdc0bd2eedf4","type":"text","text":".sidebar.left","x":-740,"y":-480,"width":180,"height":620},
-		{"id":"18b7b2f93d2812ce","type":"text","text":".sidebar.right","x":-200,"y":-480,"width":160,"height":620},
+		{"id":"720e7fc6ea583f4f","type":"text","text":".page","x":-780,"y":-600,"width":780,"height":860},
+		{"id":"e5af05c6dfe42f07","type":"text","text":"\\#quartz-body","x":-760,"y":-540,"width":740,"height":780},
+		{"id":"bca0bdc0bd2eedf4","type":"text","text":".left.sidebar","x":-740,"y":-480,"width":180,"height":700},
+		{"id":"18b7b2f93d2812ce","type":"text","text":".right.sidebar","x":-200,"y":-480,"width":160,"height":700},
 		{"id":"d1c7c71e48af1b04","type":"text","text":".center","x":-540,"y":-480,"width":310,"height":620},
-		{"id":"6d57445daed8a15f","type":"text","text":"footer","x":-515,"y":60,"width":250,"height":60},
-		{"id":"5cf48fe6cb09af20","type":"text","text":"content","x":-515,"y":-260,"width":250,"height":220},
+		{"id":"6d57445daed8a15f","type":"text","text":".page-footer","x":-515,"y":60,"width":250,"height":60},
 		{"id":"2e36cadb1d576655","type":"text","text":"afterBody","x":-515,"y":-20,"width":250,"height":60},
-		{"id":"ae3ac161abd3a631","type":"text","text":"header","x":-515,"y":-420,"width":250,"height":60},
-		{"id":"91b77f80e454254e","type":"text","text":"beforeBody","x":-515,"y":-340,"width":250,"height":60}
+		{"id":"ae3ac161abd3a631","type":"text","text":".page-header","x":-515,"y":-420,"width":250,"height":60},
+		{"id":"91b77f80e454254e","type":"text","text":"beforeBody","x":-515,"y":-340,"width":250,"height":60},
+		{"id":"e2e26001d01690cd","type":"text","text":"footer","x":-540,"y":160,"width":310,"height":60},
+		{"id":"5cf48fe6cb09af20","type":"text","text":"article","x":-515,"y":-260,"width":250,"height":220}
 	],
 	"edges":[]
 }

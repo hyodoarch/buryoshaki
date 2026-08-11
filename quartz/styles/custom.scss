@@ -35,15 +35,14 @@ $serif-font-family:
 $text-color: #000000;
 $note-title-color: #333333;
 
-// 本文内リンク
+// 本文以外で使う既存リンク設定
 $link-color: #333333;
 $link-background: transparent;
 $link-hover-color: #333333;
 $link-hover-background: #eeeeee;
-$link-radius: 0.3rem; // 本文リンクの背景の角丸
+$link-radius: 0.3rem;
 
-// Markdown本文：見出し・段落の上下余白
-// 数値はここを変更するだけで調整できます。
+// Markdown本文：見出しの上下余白
 $article-h1-margin-top: 1.625rem;
 $article-h1-margin-bottom: 0.6rem;
 $article-h2-margin-top: 1.375rem;
@@ -56,15 +55,28 @@ $article-h5-margin-top: 1rem;
 $article-h5-margin-bottom: 0.5rem;
 $article-h6-margin-top: 1rem;
 $article-h6-margin-bottom: 0.5rem;
-$article-p-margin-top: 0;
-$article-p-margin-bottom: 1.5rem;
 
+// 本文段落の余白
+// line-height: 1.9 のため、1.9em = 本文のちょうど1行分
+$article-p-margin-top: 0;
+$article-p-margin-bottom: 1.9em;
+
+// リストなどの既存ブロック間隔
+$article-list-margin-bottom: 1.2rem;
+
+// 共通タグ（folder-page / tag-page / recent-notes 等は現状維持）
 $tag-bg: #f6f6f6;
 $tag-border: #e6e6e6;
 $tag-radius: 0.35rem;
 
+// 個別ノート用
+$article-link-hover-background: #f0f0f0;
+$article-highlight-background: #ffe9a6;
+$article-code-background: #f0f0f0;
+$article-blockquote-color: #676767;
+$article-separator-color: #f0f0f0;
+
 $blockquote-border: #b8b8b8;
-$separator-color: #e6e6e6;
 
 // Mobile tuning values
 $mobile-topbar-height: 3.1rem;
@@ -76,34 +88,6 @@ $mobile-explorer-search-left: 1.6rem;
 $mobile-explorer-search-right: 4.2rem;
 $mobile-explorer-list-top: 3.5rem;
 $mobile-menu-background: #f6f6f6;
-
-// 本文組版用のCSSカスタムプロパティ
-:root {
-  /* フォント */
-  --article-font-family:
-    "Noto Sans JP",
-    "Hiragino Kaku Gothic ProN",
-    "Yu Gothic",
-    sans-serif;
-
-  --article-heading-font-family:
-    "Noto Sans JP",
-    "Hiragino Kaku Gothic ProN",
-    "Yu Gothic",
-    sans-serif;
-
-  /* 本文 */
-  --article-font-size: 1rem;                // 16px
-  --article-line-height: 1.9;
-  --article-letter-spacing: 0.03em;
-
-  /* 段落・リスト間の余白 */
-  --article-block-margin: 1.2rem;           // 19.2px
-
-  /* リンク */
-  --article-link-color: #888;
-  --article-link-hover-bg: #eee;
-}
 
 // =============================================================================
 // 2. Mixins
@@ -166,7 +150,6 @@ $mobile-menu-background: #f6f6f6;
 // 3. Global foundations and layout
 // =============================================================================
 
-// 基本文字・配色
 :root {
   --bodyFont: #{$serif-font-family};
   --headerFont: #{$serif-font-family};
@@ -175,7 +158,6 @@ $mobile-menu-background: #f6f6f6;
   --secondary: #{$text-color};
   --gray: #{$text-color};
 
-  // グラフの通常線
   --lightgray: #999999 !important;
 }
 
@@ -220,7 +202,7 @@ b,
   font-weight: 700;
 }
 
-// コードだけは等幅フォントを維持
+// コードだけは等幅フォント
 .page code,
 .page pre,
 .page kbd,
@@ -273,6 +255,12 @@ b,
         width: auto !important;
         max-width: none !important;
         min-width: 0;
+
+        // page-header 自体を本文幅に揃える。
+        // これにより内部要素の左右 margin を 0 にしても title と位置が揃う。
+        > .page-header {
+          @include main-content-width;
+        }
 
         > .page-header,
         > header {
@@ -349,7 +337,6 @@ b,
 // 4. Left sidebar
 // =============================================================================
 
-// サイトタイトルバナー
 .sidebar.left {
   .page-title {
     width: 100%;
@@ -369,7 +356,6 @@ b,
   }
 }
 
-// Explorer・カテゴリー・記事一覧
 .sidebar.left {
   font-size: 0.9rem;
   line-height: 1.7;
@@ -432,7 +418,6 @@ b,
     }
   }
 
-  // カテゴリー名・記事名を黒に固定
   .explorer,
   .explorer *,
   .explorer-content,
@@ -457,101 +442,88 @@ b,
 // 5. Center content
 // =============================================================================
 
+// 個別ノート：ヘッダーと本文の間を半行分あける
+.page > #quartz-body > .center > .page-header {
+  margin-bottom: 0.95em !important;
+}
+
+
 .center {
   max-width: $main-content-measure;
   margin-left: auto;
   margin-right: auto;
 }
 
-.page > #quartz-body > .center {
-  article {
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+// -----------------------------------------------------------------------------
+// 個別ノート：page-header
+// quartz.config.yaml 側で content-meta → article-title → tag-list の順にする。
+// -----------------------------------------------------------------------------
 
-    // -------------------------------------------------------------------------
-    // Markdown本文：見出し・段落の上下余白
-    // 実際の数値はファイル冒頭の $article-...-margin-* で調整する。
-    // -------------------------------------------------------------------------
-
-    h1 {
-      margin-top: $article-h1-margin-top;
-      margin-bottom: $article-h1-margin-bottom;
-    }
-
-    h2 {
-      margin-top: $article-h2-margin-top;
-      margin-bottom: $article-h2-margin-bottom;
-    }
-
-    h3 {
-      margin-top: $article-h3-margin-top;
-      margin-bottom: $article-h3-margin-bottom;
-    }
-
-    h4 {
-      margin-top: $article-h4-margin-top;
-      margin-bottom: $article-h4-margin-bottom;
-    }
-
-    h5 {
-      margin-top: $article-h5-margin-top;
-      margin-bottom: $article-h5-margin-bottom;
-    }
-
-    h6 {
-      margin-top: $article-h6-margin-top;
-      margin-bottom: $article-h6-margin-bottom;
-    }
-
-    p {
-      line-height: 1.9;
-      margin-top: $article-p-margin-top;
-      margin-bottom: $article-p-margin-bottom;
-
-      // 本文中のタグを、タイトル下のタグと同じように横並びにする。
-      > a.tag-link {
-        margin-right: 0.35rem;
-        margin-bottom: 0.25rem;
-        @include tag-pill;
-      }
-    }
-
-    p,
-    li {
-      text-align: justify;
-      text-justify: inter-character;
-    }
-  }
-}
-
-// 個別記事：タイトル・日付・タグの間隔
-.page-header {
-  h1.article-title {
-    margin-bottom: 0.2rem !important;
-  }
-
-  h2.article-subtitle {
-    margin-top: 0rem !important;
-    margin-bottom: 0.8rem !important;
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.6;
-  }
-
+.page > #quartz-body > .center > .page-header {
+  // date
   .content-meta {
     margin-top: 0 !important;
+    margin-right: 0 !important;
     margin-bottom: 0.55rem !important;
+    margin-left: 0 !important;
+
+    font-size: 14px !important;
+    line-height: 1.5;
+    color: #808080 !important;
+
+    time,
+    span {
+      color: #808080 !important;
+    }
   }
 
-  .tags {
+  // title
+  h1.article-title {
     margin-top: 0 !important;
-    margin-bottom: 1.2rem !important;
+    margin-bottom: 0.2rem !important;
+
+    font-size: 25px !important;
+    line-height: 1.4;
+  }
+
+  // subtitle
+  p.article-subtitle {
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 1rem !important;
+
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1.6;
+
+    &::before {
+      content: "― ";
+    }
+
+    &::after {
+      content: " ―";
+    }
+  }
+
+  // tags
+  .tags,
+  .tag-list {
+    margin-top: 1rem !important;
+    margin-bottom: 2rem !important;
     padding-left: 0 !important;
+
+    a,
+    .tag-link {
+      font-size: 13px !important;
+      background: #f0f0f0 !important;
+      background-color: #f0f0f0 !important;
+      border: 1px solid #d0d0d0 !important;
+    }
   }
 }
 
+// 本文中に content-meta / tags が置かれた場合の既存余白
 article {
   .content-meta {
     margin-top: 0 !important;
@@ -565,7 +537,10 @@ article {
   }
 }
 
-// フォルダー一覧ページ
+// -----------------------------------------------------------------------------
+// folder-page：現状維持
+// -----------------------------------------------------------------------------
+
 .page-listing {
   max-width: $main-content-measure;
   margin-left: auto;
@@ -598,7 +573,6 @@ article {
       line-height: 1.55;
       font-weight: 600;
 
-      // カテゴリー一覧の記事タイトルも、本文リンクと同じホバー表示にする。
       > a {
         color: $note-title-color !important;
         background-color: transparent !important;
@@ -637,9 +611,11 @@ article {
   }
 }
 
-// トップページ
+// -----------------------------------------------------------------------------
+// トップページ：現状維持
+// -----------------------------------------------------------------------------
+
 body[data-slug="index"] {
-  // トップページ見出し下の公開日・タグを非表示
   .page > #quartz-body > .center > .page-header {
     .content-meta,
     .tags {
@@ -648,13 +624,11 @@ body[data-slug="index"] {
   }
 
   .page > #quartz-body > .center article {
-    // カテゴリー見出し
     h2 {
       margin-top: 2.6rem;
       margin-bottom: 0.8rem;
     }
 
-    // おすすめ記事タイトル
     h3 {
       margin: 0 0 0.25rem !important;
       font-size: 1.35rem !important;
@@ -684,20 +658,17 @@ body[data-slug="index"] {
       }
     }
 
-    // 公開日
     h3 + p {
       margin: 0 0 0.45rem !important;
       font-size: 0.95rem !important;
       color: var(--gray) !important;
     }
 
-    // タグ
     h3 + p + ul.tags {
       margin: 0 0 2.1rem !important;
       padding-left: 0 !important;
     }
 
-    // 記事タイトルのホバー下線を消す
     h3 > a {
       text-decoration: none !important;
 
@@ -708,7 +679,7 @@ body[data-slug="index"] {
   }
 }
 
-// Mermaid：ノード内テキストの余計な本文スタイルを解除
+// Mermaid：ノード内テキストの本文スタイルを解除
 article .mermaid .nodeLabel p {
   margin: 0 !important;
   line-height: 1.35 !important;
@@ -720,7 +691,6 @@ article .mermaid .nodeLabel p {
 // =============================================================================
 
 .page > #quartz-body > .sidebar.right {
-  // 左サイドバーと同じ内部コンテンツ幅
   > * {
     width: min(100%, $left-sidebar-content-width);
     max-width: $left-sidebar-content-width;
@@ -728,7 +698,6 @@ article .mermaid .nodeLabel p {
     margin-right: auto;
   }
 
-  // 見出しをカテゴリー名と同じ大きさにする
   .graph > h3,
   .backlinks > h3 {
     margin: 0 !important;
@@ -741,7 +710,6 @@ article .mermaid .nodeLabel p {
 // 7. Graph view
 // =============================================================================
 
-// 左サイドバー内に配置した場合
 .sidebar.left .graph {
   margin-top: 1rem;
 
@@ -758,13 +726,11 @@ article .mermaid .nodeLabel p {
   }
 }
 
-// 右サイドバー内
 .sidebar.right .graph {
   width: 100%;
   margin-top: 4rem;
 
   > h3 {
-    // バックリンク見出しの左位置に合わせる
     padding-left: 0.5rem;
   }
 
@@ -787,7 +753,6 @@ article .mermaid .nodeLabel p {
     padding: 0 !important;
     list-style: none !important;
 
-    // およそ15行まではスクロールバーを出さない
     max-height: 25rem !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
@@ -830,94 +795,101 @@ article .mermaid .nodeLabel p {
 }
 
 // =============================================================================
-// 9. Article elements
+// 9. Article elements：個別ノート本文
 // =============================================================================
 
-/* ---------- 本文全体 ---------- */
+.page > #quartz-body > .center article {
+  font-family: $serif-font-family !important;
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
 
-article {
-  font-family: var(--article-font-family);
-  font-size: var(--article-font-size);      // 16px
-  line-height: var(--article-line-height);
-  letter-spacing: var(--article-letter-spacing);
-}
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 
+  // ---------------------------------------------------------------------------
+  // 見出し
+  // ---------------------------------------------------------------------------
 
-/* ---------- 見出し共通 ---------- */
-
-article {
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: var(--article-heading-font-family);
+    font-family: $serif-font-family !important;
     line-height: 1.4;
     letter-spacing: 0.04em;
-
-    /* 見出しの上下余白
-       emは各見出し自身の文字サイズを基準にする */
-    margin-top: 2em;
-    margin-bottom: 0.7em;
   }
 
-
-  /* ---------- 見出しの大きさ ---------- */
-
+  // article 内では通常 h1 は使わないが、入った場合の値だけ定義しておく。
   h1 {
-    font-size: 1.625rem;                   // 26px
+    font-size: 25px;
+    margin-top: $article-h1-margin-top;
+    margin-bottom: $article-h1-margin-bottom;
   }
 
   h2 {
-    font-size: 1.375rem;                   // 22px
+    font-size: 21px;
+    margin-top: $article-h2-margin-top;
+    margin-bottom: $article-h2-margin-bottom;
   }
 
   h3 {
-    font-size: 1.125rem;                   // 18px
+    font-size: 18px;
+    margin-top: $article-h3-margin-top;
+    margin-bottom: $article-h3-margin-bottom;
   }
 
   h4 {
-    font-size: 1rem;                     // 16px
+    font-size: 16px;
+    margin-top: $article-h4-margin-top;
+    margin-bottom: $article-h4-margin-bottom;
   }
 
   h5 {
-    font-size: 1rem;                    // 16px
+    font-size: 16px;
+    margin-top: $article-h5-margin-top;
+    margin-bottom: $article-h5-margin-bottom;
   }
 
   h6 {
-    font-size: 1rem;                    // 16px
+    font-size: 16px;
+    margin-top: $article-h6-margin-top;
+    margin-bottom: $article-h6-margin-bottom;
   }
 
-
-  /* ---------- 段落 ---------- */
+  // ---------------------------------------------------------------------------
+  // 段落・リスト
+  // ---------------------------------------------------------------------------
 
   p {
-    margin-top: 0;
-    margin-bottom: var(--article-block-margin); // 19.2px
+    font-size: 16px;
+    line-height: 1.9;
+    margin-top: $article-p-margin-top;
+    margin-bottom: $article-p-margin-bottom;
   }
-
-
-  /* ---------- 箇条書き・番号付きリスト ---------- */
 
   ul,
   ol {
-    margin-top: 0.5rem;                    // 8px
-    margin-bottom: var(--article-block-margin); // 19.2px
-
-    /* 左側の字下げ
-       emはリスト自身の文字サイズを基準にする */
+    font-size: 16px;
+    margin-top: 0.5rem;
+    margin-bottom: $article-list-margin-bottom;
     padding-left: 1.8em;
   }
 
   li {
-    /* リスト項目同士の間隔
-       emはliの文字サイズを基準にする */
+    font-size: 16px;
     margin-bottom: 0.35em;
   }
 
-
-  /* ---------- ボールド ---------- */
+  p,
+  li {
+    text-align: justify;
+    text-justify: inter-character;
+  }
 
   strong,
   b {
@@ -925,11 +897,11 @@ article {
     letter-spacing: 0.02em;
   }
 
-
-  /* ---------- 本文内のリンク ---------- */
+  // ---------------------------------------------------------------------------
+  // リンク
+  // ---------------------------------------------------------------------------
 
   a {
-    color: var(--article-link-color);
     border-radius: $link-radius;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
@@ -937,23 +909,133 @@ article {
     text-decoration-thickness: 1px;
     text-underline-offset: 0.2em;
 
-    /* 背景色の変化を滑らかにする */
     transition:
       color 0.15s ease,
       background-color 0.15s ease;
+  }
 
-    &:visited {
-      color: var(--article-link-color);
+  // 内部リンク
+  a.internal-link:not(.tag-link):not([role="anchor"]) {
+    color: #087144 !important;
+    background: transparent !important;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: #087144 !important;
     }
 
     &:hover {
-      color: var(--article-link-color);
-      background-color: var(--article-link-hover-bg);
+      color: #087144 !important;
+      background: $article-link-hover-background !important;
+      background-color: $article-link-hover-background !important;
     }
+  }
+
+  // 外部リンク
+  a.external-link:not(.tag-link) {
+    color: #5219a1 !important;
+    background: transparent !important;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: #5219a1 !important;
+    }
+
+    &:hover {
+      color: #5219a1 !important;
+      background: $article-link-hover-background !important;
+      background-color: $article-link-hover-background !important;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // ハイライト
+  // ---------------------------------------------------------------------------
+
+  mark,
+  .text-highlight {
+    background: $article-highlight-background !important;
+    background-color: $article-highlight-background !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // 引用
+  // ---------------------------------------------------------------------------
+
+  blockquote {
+    margin-top: $article-p-margin-top !important;
+    margin-right: 0;
+    margin-bottom: $article-p-margin-bottom !important;
+    margin-left: 0;
+
+    padding-left: 1em !important;
+    border-left: 3px solid $blockquote-border !important;
+
+    color: $article-blockquote-color !important;
+  }
+
+  blockquote p,
+  blockquote li {
+    color: $article-blockquote-color !important;
+  }
+
+  blockquote > :first-child {
+    margin-top: 0 !important;
+  }
+
+  blockquote > :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // コード
+  // ---------------------------------------------------------------------------
+
+  :not(pre) > code {
+    background: $article-code-background !important;
+    background-color: $article-code-background !important;
+  }
+
+  pre {
+    background: $article-code-background !important;
+    background-color: $article-code-background !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    code {
+      font-size: 12px !important;
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // 水平線
+  // ---------------------------------------------------------------------------
+
+  hr {
+    height: 0;
+    margin: 2rem auto;
+
+    border: none !important;
+    border-top: 1px solid $article-separator-color !important;
+    background: transparent !important;
+  }
+
+  // 本文中のタグ
+  p > a.tag-link {
+    margin-right: 0.35rem;
+    margin-bottom: 0.25rem;
+    @include tag-pill;
   }
 }
 
-// タグ
+// =============================================================================
+// 9-A. Tags（共通部は現状維持）
+// =============================================================================
+
 .page > #quartz-body > .center {
   .tag-list,
   .tags {
@@ -996,68 +1078,17 @@ article {
   @include tag-pill;
 }
 
-// リンク・引用
-.page > #quartz-body > .center {
-  // 本文の内部リンク・外部リンク
-  // タグリンクと見出し右側のアンカーアイコンは対象外にする。
-  article {
-    // 内部リンク
-    a.internal-link:not(.tag-link):not([role="anchor"]) {
-      color: #087144 !important;
-      background: transparent !important;
-      border-radius: $link-radius !important;
-
-      &:link,
-      &:visited,
-      &:active {
-        color: #087144 !important;
-      }
-
-      &:hover {
-        color: #087144 !important;
-        background: $link-hover-background !important;
-      }
+// 共通タグ指定より後で個別ノートのタグ仕様を確定する
+.page > #quartz-body > .center > .page-header {
+  .tags,
+  .tag-list {
+    a,
+    .tag-link {
+      font-size: 13px !important;
+      background: #f0f0f0 !important;
+      background-color: #f0f0f0 !important;
+      border: 1px solid #d0d0d0 !important;
     }
-
-    // 外部リンク
-    a.external-link:not(.tag-link) {
-      color: #5219a1 !important;
-      background: transparent !important;
-      border-radius: $link-radius !important;
-
-      &:link,
-      &:visited,
-      &:active {
-        color: #5219a1 !important;
-      }
-
-      &:hover {
-        color: #5219a1 !important;
-        background: $link-hover-background !important;
-      }
-    }
-  }
-
-  article blockquote {
-    border-left: 3px solid $blockquote-border !important;
-    padding-left: 1em !important;
-    margin-left: 0;
-    color: $text-color;
-  }
-
-  article blockquote p {
-    margin-top: 0.4em;
-    margin-bottom: 0.4em;
-  }
-}
-
-// 区切り線
-.page > #quartz-body > .center {
-  hr {
-    height: 0;
-    border: none;
-    border-top: 1px solid $separator-color;
-    margin: 2rem auto;
   }
 }
 
@@ -1066,10 +1097,6 @@ article {
 // =============================================================================
 
 @media (max-width: $mobile-breakpoint) {
-  // ---------------------------------------------------------------------------
-  // 1. Viewport and page flow
-  // ---------------------------------------------------------------------------
-
   html,
   body {
     width: 100%;
@@ -1091,7 +1118,6 @@ article {
     overflow-x: hidden !important;
   }
 
-  // モバイルでは footer を記事末尾に置きやすいよう、縦方向の flex にする。
   .page > #quartz-body {
     display: flex !important;
     flex-direction: column !important;
@@ -1101,7 +1127,7 @@ article {
   }
 
   // ---------------------------------------------------------------------------
-  // 2. Fixed top bar: 三本線 + バナー
+  // Fixed top bar
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > .sidebar.left {
@@ -1128,7 +1154,6 @@ article {
     overflow-y: auto !important;
   }
 
-  // 通常記事表示では、固定バーを薄くして本文の上に重ねる。
   .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed))) {
     height: $mobile-topbar-height !important;
     min-height: $mobile-topbar-height !important;
@@ -1136,7 +1161,6 @@ article {
     overflow: hidden !important;
   }
 
-  // Explorer 展開中は、左サイドバーを画面全体のメニューとして使う。
   .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) {
     left: 0 !important;
     transform: none !important;
@@ -1165,7 +1189,7 @@ article {
     transform: none !important;
   }
 
-  // 三本線アイコン。通常時・Explorer 展開時ともに右上に置く。
+  // 三本線アイコン
   .page > #quartz-body > .sidebar.left .explorer-toggle.mobile-explorer {
     position: absolute !important;
     top: 1rem !important;
@@ -1195,7 +1219,6 @@ article {
     top: 0.55rem !important;
   }
 
-  // Explorer展開中は、三本線ボタンの背景もメニュー背景になじませる。
   .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed))
     .explorer-toggle.mobile-explorer {
     top: 0.55rem !important;
@@ -1208,7 +1231,7 @@ article {
     display: none !important;
   }
 
-  // 通常表示：バナーは左側、三本線は右上に表示する。
+  // バナー
   .page > #quartz-body > .sidebar.left > h2.page-title {
     display: block !important;
     width: calc(100vw - 2rem) !important;
@@ -1242,22 +1265,21 @@ article {
     transform: none !important;
   }
 
-  // Explorer 展開中はバナーを隠し、検索窓を出す。
-  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > h2.page-title {
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed))
+    > h2.page-title {
     display: none !important;
   }
 
   // ---------------------------------------------------------------------------
-  // 3. Search in Explorer
+  // Search in Explorer
   // ---------------------------------------------------------------------------
 
-  // 通常表示では検索窓を隠す。
   .page > #quartz-body > .sidebar.left > .flex-component {
     display: none !important;
   }
 
-  // Explorer 展開中だけ、右上の三本線と重ならないよう検索窓を表示する。
-  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) > .flex-component {
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed))
+    > .flex-component {
     display: flex !important;
     position: absolute !important;
     top: 0.55rem !important;
@@ -1300,7 +1322,6 @@ article {
     box-sizing: border-box !important;
   }
 
-  // 検索クリック時のポップアップは、サイドバーの幅指定に巻き込ませない。
   .page > #quartz-body > .sidebar.left .search .search-container {
     position: fixed !important;
     inset: 0 !important;
@@ -1323,7 +1344,7 @@ article {
   }
 
   // ---------------------------------------------------------------------------
-  // 4. Explorer list
+  // Explorer list
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > .sidebar.left > .explorer.nav-files-container {
@@ -1338,15 +1359,20 @@ article {
     position: static !important;
   }
 
-  .page > #quartz-body > .sidebar.left > .explorer.nav-files-container.collapsed .explorer-content {
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container.collapsed
+    .explorer-content {
     display: none !important;
   }
 
-  .page > #quartz-body > .sidebar.left > .explorer.nav-files-container:not(.collapsed) {
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed) {
     padding-top: $mobile-explorer-list-top !important;
   }
 
-  .page > #quartz-body > .sidebar.left > .explorer.nav-files-container:not(.collapsed) .explorer-content {
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-content {
     display: block !important;
     position: static !important;
     background: $mobile-menu-background !important;
@@ -1374,7 +1400,7 @@ article {
   }
 
   // ---------------------------------------------------------------------------
-  // 5. Main content
+  // Main content
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > .center {
@@ -1407,14 +1433,15 @@ article {
     display: none !important;
   }
 
-  // Explorer 展開中は、背景側の本文と footer を隠す。
-  .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed)) > .center,
-  .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed)) > footer {
+  .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed))
+    > .center,
+  .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed))
+    > footer {
     display: none !important;
   }
 
   // ---------------------------------------------------------------------------
-  // 6. Footer
+  // Footer
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > footer {
@@ -1465,56 +1492,55 @@ article {
   }
 
   // ---------------------------------------------------------------------------
-  // 7. Explorerを開いているとき、三本線を「×」に変更
+  // Explorer展開時：三本線を×に変更
   // ---------------------------------------------------------------------------
 
-    .page > #quartz-body > .sidebar.left
-      > .explorer.nav-files-container:not(.collapsed)
-      .explorer-toggle.mobile-explorer {
-      position: absolute !important;
-    }
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer {
+    position: absolute !important;
+  }
 
-    .page > #quartz-body > .sidebar.left
-      > .explorer.nav-files-container:not(.collapsed)
-      .explorer-toggle.mobile-explorer > svg {
-      display: none !important;
-    }
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer > svg {
+    display: none !important;
+  }
 
-    .page > #quartz-body > .sidebar.left
-      > .explorer.nav-files-container:not(.collapsed)
-      .explorer-toggle.mobile-explorer::before,
-    .page > #quartz-body > .sidebar.left
-      > .explorer.nav-files-container:not(.collapsed)
-      .explorer-toggle.mobile-explorer::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 1.15rem;
-      height: 2px;
-      border-radius: 999px;
-      background: currentColor;
-      transform-origin: center;
-    }
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer::before,
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.15rem;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transform-origin: center;
+  }
 
-    .page > #quartz-body > .sidebar.left
-      > .explorer.nav-files-container:not(.collapsed)
-      .explorer-toggle.mobile-explorer::before {
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
 
-    .page > #quartz-body > .sidebar.left
-      > .explorer.nav-files-container:not(.collapsed)
-      .explorer-toggle.mobile-explorer::after {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
 }
 
 // =============================================================================
 // 11. Wide desktop layout
 // =============================================================================
 
-// 1200px以上：3列構成と右サイドバー表示
 @media all and (min-width: $wide-desktop-breakpoint) {
   .page > #quartz-body {
     grid-template-columns:
@@ -1554,19 +1580,17 @@ article {
   }
 }
 
-/* 801～1200pxで、リーディングモード時のみ右サイドバーを非表示 */
 @media (min-width: 801px) and (max-width: 1200px) {
   html[reader-mode="on"] .sidebar.right {
     display: none !important;
   }
 }
 
-/* =============================================================================
-   Dark mode
-   ============================================================================= */
+// =============================================================================
+// 12. Dark mode
+// =============================================================================
 
 html[saved-theme="dark"] {
-  // 見出し・本文・グラフの通常ノード
   --dark: #ffffff !important;
   --darkgray: #ffffff !important;
   --gray: #ffffff !important;
@@ -1587,22 +1611,29 @@ html[saved-theme="dark"] {
     color: #ffffff !important;
   }
 
-  // 左右サイドバー
   .sidebar.left,
   .sidebar.left *,
   .sidebar.right,
   .sidebar.right * {
     color: #ffffff !important;
   }
-}
 
-/* =============================================================================
-   Dark mode：本文リンク
-   ============================================================================= */
+  // 個別ノート：date
+  .page > #quartz-body > .center > .page-header .content-meta,
+  .page > #quartz-body > .center > .page-header .content-meta time,
+  .page > #quartz-body > .center > .page-header .content-meta span {
+    color: #b0b0b0 !important;
+  }
 
-html[saved-theme="dark"] {
+  // 個別ノート：引用は暗色背景で読みやすくする
+  .page > #quartz-body > .center article blockquote,
+  .page > #quartz-body > .center article blockquote p,
+  .page > #quartz-body > .center article blockquote li {
+    color: #ffffff !important;
+  }
+
+  // 個別ノート：内部リンク
   .page > #quartz-body > .center article {
-    /* 内部リンク */
     a.internal-link:not(.tag-link):not([role="anchor"]) {
       color: #00ff90 !important;
       background: transparent !important;
@@ -1616,37 +1647,38 @@ html[saved-theme="dark"] {
       &:hover {
         color: #00ff90 !important;
         background: #404040 !important;
+        background-color: #404040 !important;
       }
     }
 
-    /* 外部リンク */
+    // 個別ノート：外部リンク
     a.external-link:not(.tag-link) {
-      color: #D67FFF !important;
+      color: #d67fff !important;
       background: transparent !important;
 
       &:link,
       &:visited,
       &:active {
-        color: #D67FFF !important;
+        color: #d67fff !important;
       }
 
       &:hover {
-        color: #D67FFF !important;
+        color: #d67fff !important;
         background: #404040 !important;
+        background-color: #404040 !important;
       }
     }
+
+    // ハイライトは文字色を黒にしてコントラストを確保
+    mark,
+    .text-highlight {
+      color: #000000 !important;
+    }
   }
-}
 
-/* =============================================================================
-   Dark mode：右サイドバー微調整
-   ============================================================================= */
-
-html[saved-theme="dark"] {
-  /* 現在表示中の記事を示すグラフノード */
+  // 右サイドバー
   --secondary: #808080 !important;
 
-  /* バックリンクの記事名 */
   .page > #quartz-body > .sidebar.right .backlinks {
     a,
     a.internal,
@@ -1666,16 +1698,581 @@ html[saved-theme="dark"] {
   }
 }
 
-/* ダークモード時にサイトタイトルのバナーを白くする */
+// ダークモード時にサイトタイトルのバナーを白くする
 html[saved-theme="dark"] .sidebar.left .page-title a {
   filter: brightness(0) invert(1) !important;
 }
 
-/* Explorer のノート名を1行表示＋省略 */
+// Explorer のノート名を1行表示＋省略
 .explorer-content ul li > a {
   display: block;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+// =============================================================================
+// Folder page / Tag page list
+// custom.scss の末尾に追加
+// =============================================================================
+
+// folder-page / tag-page は .page-listing を持つ。
+// 個別ノートには影響させない。
+.page > #quartz-body > .center:has(.page-listing) {
+
+  // ---------------------------------------------------------------------------
+  // ヘッダー
+  // ---------------------------------------------------------------------------
+
+  > .page-header {
+    // フォルダ名・タグ名
+    h1.article-title {
+      font-size: 25px !important;
+    }
+
+    // folder-page / tag-page のヘッダーはタイトルだけにする
+    .content-meta,
+    .article-subtitle,
+    .tags,
+    .tag-list {
+      display: none !important;
+    }
+  }
+
+  // folder-page / tag-page では本文 article を表示しない
+  > .popover-hint > article {
+    display: none !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // ノート件数 + ノート一覧
+  // ---------------------------------------------------------------------------
+
+  .page-listing {
+    width: min(100%, $main-content-measure);
+    max-width: $main-content-measure;
+    margin-left: auto;
+    margin-right: auto;
+
+    // 「○件のノート」等
+    > p {
+      margin: 0 0 1rem 0 !important;
+      font-size: 16px !important;
+      line-height: 1.9;
+    }
+
+    .section-ul {
+      margin: 0 !important;
+      padding-left: 0 !important;
+      list-style: none !important;
+    }
+
+    // 各ノート
+    .section-li {
+      margin: 0 !important;
+      padding: 1.25rem 0 1.5rem 0 !important;
+      list-style: none !important;
+
+      // ノート同士の区切り
+      border-bottom: 1px solid #e0e0e0 !important;
+    }
+
+    // 最初のノートにも上線を入れる
+    .section-li:first-child {
+      border-top: 1px solid #e0e0e0 !important;
+    }
+
+    li.section-li > .section {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      grid-template-columns: none !important;
+      grid-template-areas: none !important;
+      width: 100%;
+    }
+
+    // -------------------------------------------------------------------------
+    // date
+    // -------------------------------------------------------------------------
+
+    .section > .meta {
+      order: 1 !important;
+
+      margin: 0 0 0.3rem 0 !important;
+      padding: 0 !important;
+
+      font-size: 14px !important;
+      line-height: 1.6;
+      color: #808080 !important;
+      opacity: 1 !important;  // ← 追加
+
+      time {
+        font-size: 14px !important;
+        color: #808080 !important;
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // title + subtitle
+    // -------------------------------------------------------------------------
+
+    .section > .desc {
+      order: 2 !important;
+      width: 100%;
+
+      h3 {
+        margin: 0 !important;
+        padding: 0 !important;
+
+        font-size: 21px !important;
+        line-height: 1.5;
+        font-weight: 600;
+
+      > a,
+      > a.internal {
+        color: #087144 !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        border-radius: $link-radius !important;
+
+        text-decoration: none !important;
+
+        &:link,
+        &:visited,
+        &:active {
+          color: #087144 !important;
+          text-decoration: none !important;
+        }
+
+        &:hover {
+          color: #087144 !important;
+          background: $link-hover-background !important;
+          background-color: $link-hover-background !important;
+          text-decoration: none !important;
+          }
+        }
+      }
+
+      .section-subtitle {
+        margin-top: 0.25rem !important;
+        margin-right: 0 !important;
+        margin-bottom: 0 !important;
+        margin-left: 1rem !important;
+
+        padding: 0 !important;
+
+        font-size: 16px !important;
+        line-height: 1.6;
+        font-weight: 700 !important;
+
+        &::before {
+          content: "― ";
+        }
+
+        &::after {
+          content: " ―";
+        }
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // tags
+    // -------------------------------------------------------------------------
+
+    .section > .tags {
+      order: 3 !important;
+
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: flex-start !important;
+      gap: 0.45rem !important;
+
+      margin: 1rem 0 0 0 !important;
+      padding-left: 0 !important;
+      list-style: none !important;
+
+      > li {
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        background: transparent !important;
+        border: none !important;
+      }
+
+      a,
+      .tag-link {
+        display: inline-block !important;
+        width: auto !important;
+
+        padding: 0.1rem 0.45rem !important;
+
+        font-size: 13px !important;
+        line-height: 1.5;
+        font-weight: 400 !important;
+        color: $text-color !important;
+
+        background: #f0f0f0 !important;
+        background-color: #f0f0f0 !important;
+        border: 1px solid #d0d0d0 !important;
+        border-radius: $tag-radius !important;
+
+        box-shadow: none !important;
+        text-decoration: none !important;
+        white-space: nowrap;
+
+        &::before {
+          content: "#" !important;
+        }
+      }
+    }
+  }
+}
+// =============================================================================
+// Recent notes
+// custom.scss の末尾に追加
+// =============================================================================
+
+body[data-slug="index"] {
+
+  .page > #quartz-body > .center > hr {
+    display: none !important;
+  }
+
+  .recent-notes {
+    width: min(100%, $main-content-measure);
+    max-width: $main-content-measure;
+    margin-left: auto;
+    margin-right: auto;
+
+    // 「最近のノート」
+    // HTML上は h3 だが、見た目は p 相当にする。
+    > h3 {
+      margin: 2rem 0 1rem 0 !important;
+      padding: 0 !important;
+
+      font-size: 21px !important;
+      line-height: 1.5;
+      font-weight: 700 !important;
+    }
+
+    > ul.recent-ul {
+      margin: 0 !important;
+      padding-left: 0 !important;
+      list-style: none !important;
+    }
+
+    // 各ノート
+    > ul.recent-ul > li.recent-li {
+      margin: 0 !important;
+      padding: 1.25rem 0 1.5rem 0 !important;
+      list-style: none !important;
+
+      // 区切り線
+      border-bottom: 1px solid #e0e0e0 !important;
+    }
+
+    > ul.recent-ul > li.recent-li:first-child {
+      border-top: 1px solid #e0e0e0 !important;
+    }
+
+    .recent-li > .section {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      width: 100%;
+    }
+
+    // -------------------------------------------------------------------------
+    // date
+    // -------------------------------------------------------------------------
+
+    .recent-li .section > .meta {
+      order: 1 !important;
+
+      margin: 0 0 0.3rem 0 !important;
+      padding: 0 !important;
+
+      font-size: 14px !important;
+      line-height: 1.6;
+      color: #808080 !important;
+
+      // recentNotes.scss 標準の opacity: 0.6 を解除
+      opacity: 1 !important;
+
+      time {
+        font-size: 14px !important;
+        color: #808080 !important;
+        opacity: 1 !important;
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // title + subtitle
+    // -------------------------------------------------------------------------
+
+    .recent-li .section > .desc {
+      order: 2 !important;
+      width: 100%;
+
+      h3 {
+        margin: 0 !important;
+        padding: 0 !important;
+
+        font-size: 21px !important;
+        line-height: 1.5;
+        font-weight: 600 !important;
+
+        > a,
+        > a.internal {
+          color: #087144 !important;
+          background: transparent !important;
+          background-color: transparent !important;
+          border-radius: $link-radius !important;
+
+          text-decoration: none !important;
+
+          &:link,
+          &:visited,
+          &:active {
+            color: #087144 !important;
+            text-decoration: none !important;
+          }
+
+          &:hover {
+            color: #087144 !important;
+            background: $link-hover-background !important;
+            background-color: $link-hover-background !important;
+            text-decoration: none !important;
+          }
+        }
+      }
+
+      .section-subtitle {
+        margin-top: 0.25rem !important;
+        margin-right: 0 !important;
+        margin-bottom: 0 !important;
+        margin-left: 1rem !important;
+        padding: 0 !important;
+
+        font-size: 16px !important;
+        line-height: 1.6;
+        font-weight: 700 !important;
+
+        &::before {
+          content: "― ";
+        }
+
+        &::after {
+          content: " ―";
+        }
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // tags
+    // 現状のタグデザインは変更しない。
+    // showTags: true の場合だけ最後に配置される。
+    // -------------------------------------------------------------------------
+
+    .recent-li .section > .tags {
+      order: 3 !important;
+      margin-top: 1rem !important;
+    }
+  }
+}
+
+// =============================================================================
+// ⑤ Left / Right sidebar
+// custom.scss の末尾に追加
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 左右sidebar 共通
+// -----------------------------------------------------------------------------
+
+.sidebar.left,
+.sidebar.right {
+  // 「グラフビュー」「バックリンク」などの機能ブロック見出し
+  h3 {
+    font-size: 16px !important;
+    line-height: 1.5;
+  }
+
+  // sidebar 内のリスト
+  ul li {
+    font-size: 16px !important;
+  }
+
+  // sidebar 内リンクの hover
+  a {
+    text-decoration: none !important;
+
+    &:hover {
+      background: #f0f0f0 !important;
+      background-color: #f0f0f0 !important;
+      text-decoration: none !important;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 左sidebar：Explorer
+// -----------------------------------------------------------------------------
+
+.sidebar.left {
+  .explorer {
+    font-size: 16px !important;
+
+    // フォルダ名
+    .folder-title,
+    .folder-title > a,
+    .folder-title > span,
+    .folder-title button,
+    .folder-container > button {
+      font-size: 16px !important;
+      line-height: 1.6 !important;
+      font-weight: 700 !important;
+      color: #087144 !important;
+    }
+
+    // フォルダ名 hover
+    .folder-title:hover,
+    .folder-title > a:hover,
+    .folder-title button:hover,
+    .folder-container > button:hover {
+      background: #f0f0f0 !important;
+      background-color: #f0f0f0 !important;
+    }
+
+    // ノート名
+    // folder-title 配下を除く通常の Explorer リンクだけを標準ウェイトにする
+    .explorer-content li > a:not(.folder-title),
+    .content li > a {
+      font-size: 16px !important;
+      line-height: 1.8 !important;
+      font-weight: 400 !important;
+      color: $text-color !important;
+      text-decoration: none !important;
+
+      &:hover {
+        background: #f0f0f0 !important;
+        background-color: #f0f0f0 !important;
+        text-decoration: none !important;
+      }
+    }
+
+    // ノート名の行間を少し広くする
+    .explorer-content li,
+    .content li {
+      line-height: 1.8 !important;
+    }
+
+    // フォルダ左の開閉矢印
+    .folder-icon,
+    .folder-container svg,
+    .folder-title svg {
+      color: #087144 !important;
+      stroke: #087144 !important;
+    }
+
+    // SVG が currentColor を使う場合にも対応
+    .folder-icon *,
+    .folder-container svg *,
+    .folder-title svg * {
+      color: #087144 !important;
+      stroke: #087144 !important;
+    }
+
+    // 展開したフォルダ内の縦線
+    .folder-outer > ul,
+    .folder-outer ul {
+      border-left-color: #9cc6b4 !important;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 右sidebar
+// -----------------------------------------------------------------------------
+
+.sidebar.right {
+  // グラフ・バックリンク等の本文／リスト
+  p,
+  li,
+  a {
+    font-size: 16px !important;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// 追加調整
+// -----------------------------------------------------------------------------
+
+// Graph / Backlinks：既存 custom.scss の強い 0.92rem 指定を上書き
+.page > #quartz-body > .sidebar.right {
+  .graph > h3,
+  .backlinks > h3 {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    font-weight: 700 !important;
+  }
+}
+
+// サイトタイトルバナー：hoverしても背景画像を変更しない
+.sidebar.left .page-title a:hover {
+  background: url("./static/site-title.svg") center center / contain no-repeat !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+}
+
+.sidebar.left {
+  .darkmode,
+  .readermode {
+    transform: translateY(3px);
+  }
+}
+.graph > .graph-outer {
+  border-color: #e0e0e0 !important;
+}
+
+html[saved-theme="dark"] {
+  .sidebar.left .explorer {
+
+    // フォルダ名
+    .folder-title,
+    .folder-title > a,
+    .folder-title > span,
+    .folder-title button,
+    .folder-container > button {
+      color: #66b68a !important;
+    }
+
+    // ノート名
+    .explorer-content li > a:not(.folder-title),
+    .content li > a {
+      color: #c8c8c8 !important;
+    }
+
+    // フォルダ左の矢印
+    .folder-icon,
+    .folder-container svg,
+    .folder-title svg {
+      color: #66b68a !important;
+      stroke: #66b68a !important;
+    }
+
+    .folder-icon *,
+    .folder-container svg *,
+    .folder-title svg * {
+      color: #66b68a !important;
+      stroke: #66b68a !important;
+    }
+
+    // 展開時の縦線
+    .folder-outer > ul,
+    .folder-outer ul {
+      border-left-color: #4f8067 !important;
+    }
+  }
 }
