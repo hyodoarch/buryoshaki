@@ -1670,3 +1670,12 @@ html[saved-theme="dark"] {
 html[saved-theme="dark"] .sidebar.left .page-title a {
   filter: brightness(0) invert(1) !important;
 }
+
+/* Explorer のノート名を1行表示＋省略 */
+.explorer-content ul li > a {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
