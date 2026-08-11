@@ -1,0 +1,23 @@
+① 重複・死んだCSS削除	有効。ただしまだ死んだselectorあり
+② 変数整理	有効。ただしQuartz変数/CSS Custom Propertiesとの統合不足
+③ セクション整理	安全な暫定整理として有効
+④ !important整理	不十分。やり直す価値が大きい
+⑤ px/rem方針	問題なし。そのままでよい
+
+②′ テーマ・共通変数の再設計
+④′ !importantの本格削減
+①′ 実DOMに基づく死んだselector削除
+③′ base/finalに分裂したセクションの統合
+
+
+
+作業順序
+
+私は次の順番をおすすめします。
+
+① custom.scss の重複整理
+→ ② 個別ノートの title / subtitle / date / 本文
+→ ③ folder-page・tag-page
+→ ④ recent-notes
+→ ⑤ 左右sidebar
+→ ⑥ モバイル

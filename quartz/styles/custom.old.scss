@@ -1,110 +1,2464 @@
+@use "sass:map";
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
-/* サイトタイトルを画像に置き換える */
-.page-title a {
-  display: block;
-  width: 191px;
-  height: 54px;
-  background: url("./static/site-title.png") left center / contain no-repeat;
-  text-indent: -9999px;
-  overflow: hidden;
+// =============================================================================
+// custom.scss structure
+// =============================================================================
+//  1. Design tokens / variables
+//  2. Mixins
+//  3. Global foundations and layout
+//  4. Left sidebar — base
+//  5. Center content — common / page header
+//  6. Right sidebar — base
+//  7. Graph view
+//  8. Backlinks
+//  9. Individual note — article elements
+// 10. Tags — common
+// 11. Responsive — mobile layout
+// 12. Responsive — wide desktop
+// 13. Dark mode — base
+// 14. Folder / Tag pages
+// 15. Recent notes
+// 16. Sidebars — final component styling
+// 17. Mobile typography
+// 18. Dark mode — final component overrides
+//
+// NOTE:
+// CSSのカスケード順を保つため、現段階では宣言ブロックの物理的な順序は
+// 大きく移動していない。後段上書きが必要なものは「base / final」に分けている。
+// !important は Quartz / community plugin の既定スタイルとの競合、
+// または既存の強い上書きを維持する箇所に限定して残している。
+
+// =============================================================================
+// 1. Design tokens / variables
+// =============================================================================
+
+// Quartz variables.scss を基準にする
+$mobile-breakpoint: map.get($breakpoints, mobile);
+$wide-desktop-breakpoint: map.get($breakpoints, desktop);
+
+// custom.scss では「mobile の次の1px」を非モバイル開始点として使う
+$non-mobile-breakpoint: $mobile-breakpoint + 1px;
+
+$site-title-width: 191px;
+$site-title-height: 54px;
+
+$desktop-top-spacing: 2rem;
+$sidebar-bottom-spacing: 2rem;
+
+$left-sidebar-min: 280px;
+$left-sidebar-max: 420px;
+$left-sidebar-content-width: $sidePanelWidth;
+
+$main-content-measure: 38ic;
+
+$serif-font-family:
+  "游明朝",
+  "Yu Mincho",
+  "YuMincho",
+  "Hiragino Mincho ProN",
+  "Hiragino Mincho Pro",
+  "Noto Serif JP",
+  "Noto Serif CJK JP",
+  "MS PMincho",
+  "MS Mincho",
+  serif;
+
+// -----------------------------------------------------------------------------
+// Typography scale
+// -----------------------------------------------------------------------------
+//
+// Unit policy:
+// - 主要な文字サイズは px でデザイン値を固定し、下記の変数で一元管理する。
+// - margin / padding / gap などの余白は rem / em を基本とする。
+// - 行間は原則として単位なしの line-height を使う。
+// - 日本語本文幅には ic を使う。
+// - 既存コンポーネント固有の rem 指定は、表示を変えてまで px に換算しない。
+//   （0.92rem 等は意図的にそのまま残す。）
+//
+
+$font-page-title: 25px;
+$font-list-title: 21px;
+$font-h3: 18px;
+$font-body: 16px;
+$font-date: 14px;
+$font-tag: 13px;
+$font-code: 12px;
+
+$font-page-title-mobile: 23px;
+$font-list-title-mobile: 20px;
+$font-date-mobile: 13px;
+$font-tag-mobile: 12px;
+
+// -----------------------------------------------------------------------------
+// Color palette
+// -----------------------------------------------------------------------------
+
+$text-color: #000000;
+$note-title-color: #333333;
+$muted-text-color: #808080;
+
+$internal-link-color: #087144;
+$external-link-color: #5219a1;
+
+$surface-soft: #f0f0f0;
+$surface-muted: #f6f6f6;
+$subtle-border-color: #e0e0e0;
+$tag-border-strong: #d0d0d0;
+$explorer-guide-color: #9cc6b4;
+
+// Dark mode
+$dark-internal-link-color: #66b68a;
+$dark-external-link-color: #b89ac9;
+$dark-hover-background: #282828;
+$dark-sidebar-note-color: #c8c8c8;
+$dark-explorer-guide-color: #4f8067;
+$dark-inline-code-background: #2a2a2d;
+$dark-code-block-background: #232326;
+$dark-code-text-color: #e6e6e6;
+
+// 本文以外で使う既存リンク設定
+$link-hover-color: $note-title-color;
+$link-hover-background: #eeeeee;
+$link-radius: 0.3rem;
+
+// Markdown本文：見出しの上下余白
+$article-h1-margin-top: 1.625rem;
+$article-h1-margin-bottom: 0.6rem;
+$article-h2-margin-top: 1.375rem;
+$article-h2-margin-bottom: 0.5rem;
+$article-h3-margin-top: 1.125rem;
+$article-h3-margin-bottom: 0.5rem;
+$article-h4-margin-top: 1rem;
+$article-h4-margin-bottom: 0.5rem;
+$article-h5-margin-top: 1rem;
+$article-h5-margin-bottom: 0.5rem;
+$article-h6-margin-top: 1rem;
+$article-h6-margin-bottom: 0.5rem;
+
+// 本文段落の余白
+// line-height: 1.9 のため、1.9em = 本文のちょうど1行分
+$article-p-margin-top: 0;
+$article-p-margin-bottom: 1.9em;
+
+// リストなどの既存ブロック間隔
+$article-list-margin-bottom: 1.2rem;
+
+// 共通タグ（folder-page / tag-page / recent-notes 等は現状維持）
+$tag-bg: $surface-muted;
+$tag-border: #e6e6e6;
+$tag-radius: 0.35rem;
+
+// 個別ノート用
+$article-link-hover-background: $surface-soft;
+$article-highlight-background: #ffe9a6;
+$article-code-background: $surface-soft;
+$article-blockquote-color: #676767;
+$article-separator-color: $surface-soft;
+
+$blockquote-border: #b8b8b8;
+
+// 共通UI
+$tag-bg-strong: $surface-soft;
+$sidebar-hover-background: $surface-soft;
+
+// Mobile tuning values
+$mobile-topbar-height: 3.1rem;
+$mobile-content-top-offset: 3.7rem;
+$mobile-banner-top: 0.35rem;
+$mobile-banner-left: 0.5rem;
+$mobile-banner-link-offset: 0;
+$mobile-explorer-search-left: 1.6rem;
+$mobile-explorer-search-right: 4.2rem;
+$mobile-explorer-list-top: 3.5rem;
+$mobile-menu-background: $surface-muted;
+
+// =============================================================================
+// 2. Mixins
+// =============================================================================
+
+@mixin main-content-width {
+  width: min(100%, $main-content-measure);
+  max-width: $main-content-measure;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* カテゴリーの▶を消す */
-@media all and (min-width: 801px) {
-  .sidebar.left .explorer > .desktop-explorer {
+@mixin tag-pill {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  vertical-align: baseline;
+  white-space: nowrap;
+
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  color: $text-color !important;
+
+  background: $tag-bg !important;
+  border: 1px solid $tag-border !important;
+  box-shadow: none !important;
+  outline: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+
+  border-radius: $tag-radius;
+  box-sizing: border-box;
+  padding: 0.1rem 0.45rem;
+  line-height: 1.5;
+  text-decoration: none !important;
+}
+
+@mixin plain-note-title-link {
+  display: inline !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+
+  color: $note-title-color !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+
+  text-decoration: none !important;
+  font-weight: 700 !important;
+}
+
+// =============================================================================
+// 3. Global foundations and layout
+// =============================================================================
+
+:root {
+  --bodyFont: #{$serif-font-family};
+  --headerFont: #{$serif-font-family};
+
+  --dark: #{$text-color};
+  --secondary: #{$text-color};
+  --gray: #{$text-color};
+
+  --lightgray: #999999 !important;
+}
+
+body,
+.page,
+.page h1,
+.page h2,
+.page h3,
+.page h4,
+.page h5,
+.page h6,
+.page p,
+.page li,
+.page a,
+.page time,
+.page input,
+.page button {
+  font-family: $serif-font-family !important;
+}
+
+body,
+.page,
+.page h1,
+.page h2,
+.page h3,
+.page h4,
+.page h5,
+.page h6,
+.page p,
+.page li,
+.page time {
+  color: $text-color !important;
+}
+
+strong,
+b,
+.page strong,
+.page b,
+.center strong,
+.center b {
+  font-family: $serif-font-family !important;
+  font-weight: 700;
+}
+
+// コードだけは等幅フォント
+.page code,
+.page pre,
+.page kbd,
+.page samp {
+  font-family: var(--codeFont) !important;
+}
+
+// 非モバイル基本レイアウト（Quartz mobile breakpoint + 1px 以上）
+@media all and (min-width: $non-mobile-breakpoint) {
+  .page {
+    margin-top: 0 !important;
+
+    > #quartz-body {
+      padding-top: 0 !important;
+
+      grid-template-columns:
+        clamp(
+          $left-sidebar-min,
+          calc((100vw - #{$main-content-measure}) * 0.6),
+          $left-sidebar-max
+        )
+        minmax(0, 1fr) !important;
+
+      > .sidebar.left,
+      > .center,
+      > .sidebar.right {
+        padding-top: $desktop-top-spacing !important;
+      }
+
+      > .sidebar.right {
+        display: none !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      > .sidebar.left {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        padding-bottom: $sidebar-bottom-spacing;
+      }
+
+      > .center {
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0;
+
+        // page-header 自体を本文幅に揃える。
+        // これにより内部要素の左右 margin を 0 にしても title と位置が揃う。
+        > .page-header {
+          @include main-content-width;
+        }
+
+        > .page-header,
+        > header {
+          width: 100% !important;
+          max-width: none !important;
+          margin-left: 0;
+          margin-right: 0;
+
+          > * {
+            @include main-content-width;
+          }
+        }
+
+        > .page-header {
+          margin: 0 !important;
+          padding: 0 !important;
+          min-height: auto !important;
+          height: auto !important;
+        }
+
+        h1,
+        .content-meta,
+        .tag-list,
+        .tags,
+        ul.tags,
+        article {
+          @include main-content-width;
+        }
+      }
+    }
+  }
+}
+
+// フッター
+.page > #quartz-body > footer {
+  grid-column: 2 / 3 !important;
+  justify-self: center !important;
+
+  width: min(100%, $main-content-measure) !important;
+  max-width: $main-content-measure !important;
+  min-width: 0 !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  text-align: center !important;
+  font-size: 0.8rem;
+
+  p {
+    margin: 0 0 0.4rem 0;
+    text-align: center !important;
+  }
+
+  ul {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1rem;
+
+    margin: 0;
+    padding-left: 0 !important;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// =============================================================================
+// 4. Left sidebar — base
+// =============================================================================
+
+.sidebar.left {
+  .page-title {
+    width: 100%;
+    display: block;
+  }
+
+  .page-title a {
+    display: block;
+    width: $site-title-width;
+    height: $site-title-height;
+    margin-left: 1rem;
+    margin-right: auto;
+
+    background: url("./static/site-title.svg") center center / contain no-repeat;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+}
+
+.sidebar.left {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding-left: 1rem;
+  padding-right: 0.75rem;
+  color: $text-color !important;
+
+  > * {
+    width: min(100%, $left-sidebar-content-width);
+    max-width: $left-sidebar-content-width;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .explorer {
+    flex: 0 0 auto;
+    overflow: visible;
+
+    > .desktop-explorer {
+      display: none;
+    }
+  }
+
+  .explorer-content {
+    margin-top: 0;
+    max-height: none !important;
+    overflow: visible !important;
+
+    > ul.overflow {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    > ul.gradient-active {
+      mask-image: none;
+    }
+
+    ul li > a {
+      font-weight: 400 !important;
+    }
+  }
+
+  .folder-title {
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  .folder-container {
+    margin-bottom: 0.18rem;
+  }
+
+  .content {
+    a {
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    li {
+      margin: 0.12rem 0;
+    }
+  }
+
+  .explorer,
+  .explorer *,
+  .explorer-content,
+  .explorer-content *,
+  .folder-title,
+  .folder-title *,
+  .folder-container,
+  .folder-container *,
+  .folder-outer,
+  .folder-outer *,
+  a,
+  button,
+  span,
+  .active,
+  .active * {
+    color: $text-color !important;
+    opacity: 1 !important;
+  }
+}
+
+// =============================================================================
+// 5. Center content — common / page header
+// =============================================================================
+
+.center {
+  max-width: $main-content-measure;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// -----------------------------------------------------------------------------
+// 個別ノート：page-header
+// quartz.config.yaml 側で content-meta → article-title → tag-list の順にする。
+// -----------------------------------------------------------------------------
+
+.page > #quartz-body > .center > .page-header {
+  // ヘッダーと本文の間を半行分
+  margin-bottom: 0.95em !important;
+
+  // date
+  .content-meta {
+    margin: 0 0 0.55rem 0 !important;
+
+    font-size: $font-date !important;
+    line-height: 1.5;
+    color: $muted-text-color !important;
+
+    time,
+    span {
+      color: $muted-text-color !important;
+    }
+  }
+
+  // title
+  h1.article-title {
+    margin-top: 0 !important;
+    margin-bottom: 0.2rem !important;
+
+    font-size: $font-page-title !important;
+    line-height: 1.4;
+  }
+
+  // subtitle
+  p.article-subtitle {
+    margin: 0 0 0 1rem !important;
+
+    font-size: $font-body !important;
+    font-weight: 700 !important;
+    line-height: 1.6;
+
+    &::before {
+      content: "― ";
+    }
+
+    &::after {
+      content: " ―";
+    }
+  }
+
+  // tags
+  .tags,
+  .tag-list {
+    margin-top: 1rem !important;
+    margin-bottom: 2rem !important;
+    padding-left: 0 !important;
+
+    a,
+    .tag-link {
+      font-size: $font-tag !important;
+      background: $tag-bg-strong !important;
+      border: 1px solid $tag-border-strong !important;
+    }
+  }
+}
+
+// 本文中に content-meta / tags が置かれた場合の既存余白
+article {
+  .content-meta {
+    margin-top: 0 !important;
+    margin-bottom: 0.55rem !important;
+  }
+
+  .tags {
+    margin-top: 0 !important;
+    margin-bottom: 1.2rem !important;
+    padding-left: 0 !important;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// トップページ：現状維持
+// -----------------------------------------------------------------------------
+
+body[data-slug="index"] {
+  .page > #quartz-body > .center > .page-header {
+    .content-meta,
+    .tags {
+      display: none !important;
+    }
+  }
+
+  .page > #quartz-body > .center article {
+    h2 {
+      margin-top: 2.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    h3 {
+      margin: 0 0 0.25rem !important;
+      font-size: 1.35rem !important;
+      line-height: 1.55 !important;
+      font-weight: 600 !important;
+
+      > a,
+      > a.internal,
+      > a.internal-link,
+      > a:link,
+      > a:visited,
+      > a:hover,
+      > a:active {
+        @include plain-note-title-link;
+      }
+
+      > a.internal-link.alias {
+        color: $note-title-color !important;
+        font-weight: 600 !important;
+      }
+
+      > a:hover,
+      > a.internal:hover,
+      > a.internal-link:hover {
+        color: $text-color !important;
+        text-decoration: none !important;
+      }
+    }
+
+    h3 + p {
+      margin: 0 0 0.45rem !important;
+      font-size: 0.95rem !important;
+      color: var(--gray) !important;
+    }
+
+    h3 + p + ul.tags {
+      margin: 0 0 2.1rem !important;
+      padding-left: 0 !important;
+    }
+
+    h3 > a {
+      text-decoration: none !important;
+
+      &:hover {
+        text-decoration: none !important;
+      }
+    }
+  }
+}
+
+// Mermaid：ノード内テキストの本文スタイルを解除
+article .mermaid .nodeLabel p {
+  margin: 0 !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+}
+
+// =============================================================================
+// 6. Right sidebar — base
+// =============================================================================
+
+.page > #quartz-body > .sidebar.right {
+  > * {
+    width: min(100%, $left-sidebar-content-width);
+    max-width: $left-sidebar-content-width;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .graph > h3,
+  .backlinks > h3 {
+    margin: 0 !important;
+    font-size: $font-body !important;
+    line-height: 1.5 !important;
+    font-weight: 700 !important;
+  }
+}
+
+// =============================================================================
+// 7. Graph view
+// =============================================================================
+
+.sidebar.left .graph {
+  margin-top: 1rem;
+
+  > h3 {
     display: none;
   }
 
-  .sidebar.left .explorer-content {
-    margin-top: 0;
+  .graph-outer {
+    min-height: 150px;
+    padding: 0.5rem;
+    background: var(--light);
+    border: 1px solid var(--lightgray);
+    border-radius: 6px;
   }
-
-/* 左サイドバーを内容に合わせて縦に伸ばす */
 }
-@media all and (min-width: 801px) {
 
-  .page > #quartz-body .sidebar.left {
+.sidebar.right .graph {
+  width: 100%;
+  margin-top: 4rem;
+
+  > h3 {
+    padding-left: 0.5rem;
+  }
+
+  .graph-outer {
+    min-height: 260px;
+  }
+}
+
+// =============================================================================
+// 8. Backlinks
+// =============================================================================
+
+.sidebar.right .backlinks {
+  width: 100%;
+
+  ul,
+  ul.overflow,
+  ul.gradient-active {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+
+    max-height: 25rem !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    mask-image: none !important;
+  }
+
+  li {
+    margin: 0.12rem 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+
+  a,
+  a.internal,
+  a.internal-link {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 0 0.3rem !important;
+
+    font-size: 0.92rem !important;
+    line-height: 1.7;
+    font-weight: 400 !important;
+    color: #{$text-color} !important;
+
+    background: transparent !important;
+    border-radius: $link-radius !important;
+    text-decoration: none !important;
+  }
+
+  a:hover,
+  a.internal:hover,
+  a.internal-link:hover {
+    color: #{$link-hover-color} !important;
+    background: #{$link-hover-background} !important;
+    text-decoration: none !important;
+  }
+}
+
+// =============================================================================
+// 9. Individual note — article elements
+// =============================================================================
+
+.page > #quartz-body > .center article {
+  font-size: $font-body;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+
+  img {
+    max-width: 100%;
     height: auto;
-    min-height: 100vh;
-    position: relative;
   }
 
-  /* Explorerを縮めない */
-  .sidebar.left .explorer {
-    flex: 0 0 auto;
-    overflow: visible;
+  // ---------------------------------------------------------------------------
+  // 見出し
+  // ---------------------------------------------------------------------------
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.4;
+    letter-spacing: 0.04em;
   }
 
-  /* Explorer内部のスクロールを解除 */
-  .sidebar.left .explorer-content,
-  .sidebar.left .explorer-content > ul.overflow {
+  // article 内では通常 h1 は使わないが、入った場合の値だけ定義しておく。
+  h1 {
+    font-size: $font-page-title;
+    margin-top: $article-h1-margin-top;
+    margin-bottom: $article-h1-margin-bottom;
+  }
+
+  h2 {
+    font-size: $font-list-title;
+    margin-top: $article-h2-margin-top;
+    margin-bottom: $article-h2-margin-bottom;
+  }
+
+  h3 {
+    font-size: $font-h3;
+    margin-top: $article-h3-margin-top;
+    margin-bottom: $article-h3-margin-bottom;
+  }
+
+  h4 {
+    font-size: $font-body;
+    margin-top: $article-h4-margin-top;
+    margin-bottom: $article-h4-margin-bottom;
+  }
+
+  h5 {
+    font-size: $font-body;
+    margin-top: $article-h5-margin-top;
+    margin-bottom: $article-h5-margin-bottom;
+  }
+
+  h6 {
+    font-size: $font-body;
+    margin-top: $article-h6-margin-top;
+    margin-bottom: $article-h6-margin-bottom;
+  }
+
+  // ---------------------------------------------------------------------------
+  // 段落・リスト
+  // ---------------------------------------------------------------------------
+
+  p {
+    font-size: $font-body;
+    line-height: 1.9;
+    margin-top: $article-p-margin-top;
+    margin-bottom: $article-p-margin-bottom;
+  }
+
+  ul,
+  ol {
+    font-size: $font-body;
+    margin-top: 0.5rem;
+    margin-bottom: $article-list-margin-bottom;
+    padding-left: 1.8em;
+  }
+
+  li {
+    font-size: $font-body;
+    margin-bottom: 0.35em;
+  }
+
+  p,
+  li {
+    text-align: justify;
+    text-justify: inter-character;
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  // ---------------------------------------------------------------------------
+  // リンク
+  // ---------------------------------------------------------------------------
+
+  a {
+    border-radius: $link-radius;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+
+    transition:
+      color 0.15s ease,
+      background-color 0.15s ease;
+  }
+
+  // 内部リンク
+  a.internal-link:not(.tag-link):not([role="anchor"]) {
+    color: $internal-link-color !important;
+    background: transparent !important;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: $internal-link-color !important;
+    }
+
+    &:hover {
+      color: $internal-link-color !important;
+      background: $article-link-hover-background !important;
+    }
+  }
+
+  // 外部リンク
+  a.external-link:not(.tag-link) {
+    color: $external-link-color !important;
+    background: transparent !important;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: $external-link-color !important;
+    }
+
+    &:hover {
+      color: $external-link-color !important;
+      background: $article-link-hover-background !important;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // ハイライト
+  // ---------------------------------------------------------------------------
+
+  mark,
+  .text-highlight {
+    background: $article-highlight-background !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // 引用
+  // ---------------------------------------------------------------------------
+
+  blockquote {
+    margin-top: $article-p-margin-top !important;
+    margin-right: 0;
+    margin-bottom: $article-p-margin-bottom !important;
+    margin-left: 0;
+
+    padding-left: 1em !important;
+    border-left: 3px solid $blockquote-border !important;
+
+    color: $article-blockquote-color !important;
+  }
+
+  blockquote p,
+  blockquote li {
+    color: $article-blockquote-color !important;
+  }
+
+  blockquote > :first-child {
+    margin-top: 0 !important;
+  }
+
+  blockquote > :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // コード
+  // ---------------------------------------------------------------------------
+
+  :not(pre) > code {
+    background: $article-code-background !important;
+  }
+
+  pre {
+    background: $article-code-background !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    code {
+      font-size: $font-code !important;
+      background: transparent !important;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // 水平線
+  // ---------------------------------------------------------------------------
+
+  hr {
+    height: 0;
+    margin: 2rem auto;
+
+    border: none !important;
+    border-top: 1px solid $article-separator-color !important;
+    background: transparent !important;
+  }
+
+  // 本文中のタグ
+  p > a.tag-link {
+    margin-right: 0.35rem;
+    margin-bottom: 0.25rem;
+    @include tag-pill;
+  }
+}
+
+// =============================================================================
+// 10. Tags — common
+// =============================================================================
+
+.page > #quartz-body > .center {
+  .tag-list,
+  .tags {
+    li {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: none !important;
+    }
+
+    a,
+    .tag-link {
+      @include tag-pill;
+    }
+
+    a::before,
+    .tag-link::before {
+      content: "#" !important;
+      display: inline !important;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    a::after,
+    .tag-link::after {
+      content: none !important;
+      display: none !important;
+      box-shadow: none !important;
+      background: none !important;
+      border: none !important;
+    }
+  }
+}
+
+.page a.tag-link,
+.page .tag-list a {
+  @include tag-pill;
+}
+
+// 共通タグ指定より後で個別ノートのタグ仕様を確定する
+.page > #quartz-body > .center > .page-header {
+  .tags,
+  .tag-list {
+    a,
+    .tag-link {
+      font-size: $font-tag !important;
+      background: $tag-bg-strong !important;
+      border: 1px solid $tag-border-strong !important;
+    }
+  }
+}
+
+// =============================================================================
+// 11. Responsive — mobile layout
+// =============================================================================
+
+@media (max-width: $mobile-breakpoint) {
+  html,
+  body {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .page,
+  #quartz-root,
+  #quartz-body {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  .page > #quartz-body {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Fixed top bar
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .sidebar.left {
+    order: 1 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    width: min(100vw - 1rem, 420px) !important;
+    max-width: min(100vw - 1rem, 420px) !important;
+    min-width: 0 !important;
+
+    margin: 0 !important;
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+
+    z-index: 10000 !important;
+    background: var(--light) !important;
+    border-bottom: 1px solid var(--lightgray) !important;
+    border-radius: 8px 8px 0 0 !important;
+
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed))) {
+    height: $mobile-topbar-height !important;
+    min-height: $mobile-topbar-height !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed)) {
+    left: 0 !important;
+    transform: none !important;
+
+    width: 100vw !important;
+    max-width: 100vw !important;
+
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+
+    padding: 1rem !important;
+    overflow-y: auto !important;
+
+    background: $mobile-menu-background !important;
+    border-bottom: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .page > #quartz-body > .sidebar.left > * {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+
+  // 三本線アイコン
+  .page > #quartz-body > .sidebar.left .explorer-toggle.mobile-explorer {
+    position: absolute !important;
+    top: 1rem !important;
+    left: auto !important;
+    right: 0.5rem !important;
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    width: 2rem !important;
+    max-width: 2rem !important;
+    height: 2rem !important;
+    min-height: 2rem !important;
+    margin: 0 !important;
+    padding: 0.25rem !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10100 !important;
+    background: var(--light) !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
+    .explorer-toggle.mobile-explorer {
+    top: 0.55rem !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed))
+    .explorer-toggle.mobile-explorer {
+    top: 0.55rem !important;
+    right: 1rem !important;
+    background: transparent !important;
+  }
+
+  .page > #quartz-body > .sidebar.left .explorer-toggle.desktop-explorer,
+  .page > #quartz-body > .sidebar.left .title-button.explorer-toggle.desktop-explorer {
+    display: none !important;
+  }
+
+  // バナー
+  .page > #quartz-body > .sidebar.left > h2.page-title {
+    display: block !important;
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    height: 2.8rem !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    overflow: hidden !important;
+    z-index: 10050 !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:not(:has(.explorer.nav-files-container:not(.collapsed)))
+    > h2.page-title {
+    position: absolute !important;
+    top: $mobile-banner-top !important;
+    left: $mobile-banner-left !important;
+  }
+
+  .page > #quartz-body > .sidebar.left > h2.page-title > a {
+    display: block !important;
+    width: 134px !important;
+    height: 2.8rem !important;
+    margin-left: $mobile-banner-link-offset !important;
+    margin-right: auto !important;
+
+    background-position: left center !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    transform: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed))
+    > h2.page-title {
+    display: none !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Search in Explorer
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .sidebar.left > .flex-component {
+    display: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left:has(.explorer.nav-files-container:not(.collapsed))
+    > .flex-component {
+    display: flex !important;
+    position: absolute !important;
+    top: 0.55rem !important;
+    left: $mobile-explorer-search-left !important;
+    right: $mobile-explorer-search-right !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    z-index: 200 !important;
+  }
+
+  .page > #quartz-body > .sidebar.left > .flex-component > div:has(.darkmode),
+  .page > #quartz-body > .sidebar.left > .flex-component > div:has(.readermode) {
+    display: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left > .flex-component > div:has(.search),
+  .page > #quartz-body > .sidebar.left .search {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .page > #quartz-body > .sidebar.left .search-button {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .page > #quartz-body > .sidebar.left .search .search-container {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    z-index: 9999 !important;
+    transform: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left .search .search-container.active {
+    display: block !important;
+  }
+
+  .page > #quartz-body > .sidebar.left .search .search-container .search-space {
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    margin: 4rem auto 0 auto !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Explorer list
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .sidebar.left > .explorer.nav-files-container {
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container.collapsed
+    .explorer-content {
+    display: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed) {
+    padding-top: $mobile-explorer-list-top !important;
+  }
+
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-content {
+    display: block !important;
+    position: static !important;
+    background: $mobile-menu-background !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: calc(100dvh - 4.8rem) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 0 0 4rem 0 !important;
+    margin: 0 !important;
+    mask-image: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left .explorer-content > ul,
+  .page > #quartz-body > .sidebar.left .explorer-content ul.overflow,
+  .page > #quartz-body > .sidebar.left .explorer-content ul.gradient-active {
+    height: auto !important;
+    background: $mobile-menu-background !important;
+    min-height: 0 !important;
     max-height: none !important;
     overflow: visible !important;
+    mask-image: none !important;
   }
 
-  /* 下部のグラデーションも解除 */
-  .sidebar.left .explorer-content > ul.gradient-active {
-    mask-image: none;
+  // ---------------------------------------------------------------------------
+  // Main content
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .center {
+    order: 2 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: $mobile-content-top-offset 0.5rem 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .page > #quartz-body > .center article,
+  .page > #quartz-body > .center .popover-hint {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  article img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .page > #quartz-body > .sidebar.right {
+    display: none !important;
+  }
+
+  .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed))
+    > .center,
+  .page > #quartz-body:has(> .sidebar.left > .explorer.nav-files-container:not(.collapsed))
+    > footer {
+    display: none !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Footer
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > footer {
+    order: 3 !important;
+    position: static !important;
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+
+    display: block !important;
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0.75rem 1rem 0 1rem !important;
+    padding: 0.5rem 0 1rem 0 !important;
+
+    align-self: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+
+    p {
+      margin: 0 0 0.4rem 0 !important;
+      text-align: center !important;
+    }
+
+    ul {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 1.2rem !important;
+      width: auto !important;
+      margin: 0.4rem auto 0 auto !important;
+      padding-left: 0 !important;
+      list-style: none !important;
+    }
+
+    li {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    a {
+      margin: 0 !important;
+      text-align: center !important;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Explorer展開時：三本線を×に変更
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer {
+    position: absolute !important;
+  }
+
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer > svg {
+    display: none !important;
+  }
+
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer::before,
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.15rem;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transform-origin: center;
+  }
+
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .page > #quartz-body > .sidebar.left
+    > .explorer.nav-files-container:not(.collapsed)
+    .explorer-toggle.mobile-explorer::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 }
 
-/* Minimal らしい本文幅 */
-article {
-  max-width: 40em;
-  line-height: 1.7;
-}
-.sidebar {
-  font-size: 0.95rem;
-}
+// =============================================================================
+// 12. Responsive — wide desktop
+// =============================================================================
 
-/* 左サイドバー：カテゴリーと記事タイトルの調整 */
+@media all and (min-width: $wide-desktop-breakpoint) {
+  .page > #quartz-body {
+    grid-template-columns:
+      clamp(
+        $left-sidebar-min,
+        calc(25% - 20px),
+        $left-sidebar-max
+      )
+      minmax($main-content-measure, 1fr)
+      clamp(
+        $left-sidebar-min,
+        calc(25% - 20px),
+        $left-sidebar-max
+      ) !important;
+  }
 
-/* カテゴリー名 */
-.explorer .folder-title {
-  font-size: 0.92rem;
-  line-height: 1.8;
-}
+  .page > #quartz-body > .sidebar.right {
+    display: flex !important;
+    flex-direction: column;
 
-/* カテゴリー行全体 */
-.explorer .folder-container {
-  margin-bottom: 0.18rem;
-}
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding:
+      $desktop-top-spacing
+      1rem
+      $sidebar-bottom-spacing
+      0.75rem !important;
+    box-sizing: border-box;
 
-/* カテゴリー内の記事タイトル */
-.explorer .content a {
-  font-size: 0.84rem;
-  line-height: 1.7;
-}
-
-/* 記事タイトル同士の間隔 */
-.explorer .content li {
-  margin: 0.12rem 0;
-}
-
-/* 左サイドバー：Graph View の見出しを非表示 */
-.graph > h3 {
-  display: none;
-}
-
-/* 左サイドバー：グラフビューを矩形で囲う */
-.graph .graph-outer {
-  border: 1px solid var(--lightgray);
-  border-radius: 6px;
-  padding: 0.5rem;
-  min-height: 150px;
-  background: var(--light);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
-/* グラフビュー周辺の余白 */
-.graph {
-  margin-top: 1rem;
+@media (min-width: $non-mobile-breakpoint) and (max-width: $wide-desktop-breakpoint) {
+  html[reader-mode="on"] .sidebar.right {
+    display: none !important;
+  }
 }
 
-/* 左サイドバー全体の文字 */
-.left.sidebar {
-  font-family: "Yu Gothic", "Yu Gothic UI", "Hiragino Kaku Gothic ProN", sans-serif;
-  font-size: 0.9rem;
-  line-height: 1.7;
+// =============================================================================
+// 13. Dark mode — base
+// =============================================================================
+
+html[saved-theme="dark"] {
+  --dark: #ffffff !important;
+  --darkgray: #ffffff !important;
+  --gray: #ffffff !important;
+
+  body,
+  .page,
+  .page h1,
+  .page h2,
+  .page h3,
+  .page h4,
+  .page h5,
+  .page h6,
+  .page p,
+  .page li,
+  .page time,
+  .page input,
+  .page button {
+    color: #ffffff !important;
+  }
+
+  .sidebar.left,
+  .sidebar.left *,
+  .sidebar.right,
+  .sidebar.right * {
+    color: #ffffff !important;
+  }
+
+  // 個別ノート：date
+  .page > #quartz-body > .center > .page-header .content-meta,
+  .page > #quartz-body > .center > .page-header .content-meta time,
+  .page > #quartz-body > .center > .page-header .content-meta span {
+    color: #b0b0b0 !important;
+  }
+
+  // 個別ノート：引用は暗色背景で読みやすくする
+  .page > #quartz-body > .center article blockquote,
+  .page > #quartz-body > .center article blockquote p,
+  .page > #quartz-body > .center article blockquote li {
+    color: #ffffff !important;
+  }
+
+  // 個別ノート：内部リンク
+  .page > #quartz-body > .center article {
+    a.internal-link:not(.tag-link):not([role="anchor"]) {
+      color: $dark-internal-link-color !important;
+      background: transparent !important;
+
+      &:link,
+      &:visited,
+      &:active {
+        color: $dark-internal-link-color !important;
+      }
+
+      &:hover {
+        color: $dark-internal-link-color !important;
+        background: #404040 !important;
+      }
+    }
+
+    // 個別ノート：外部リンク
+    a.external-link:not(.tag-link) {
+      color: $dark-external-link-color !important;
+      background: transparent !important;
+
+      &:link,
+      &:visited,
+      &:active {
+        color: $dark-external-link-color !important;
+      }
+
+      &:hover {
+        color: $dark-external-link-color !important;
+        background: #404040 !important;
+      }
+    }
+
+    // ハイライトは文字色を黒にしてコントラストを確保
+    mark,
+    .text-highlight {
+      color: $text-color !important;
+    }
+  }
+
+  // 右サイドバー
+  --secondary: #{$muted-text-color} !important;
+
+  .page > #quartz-body > .sidebar.right .backlinks {
+    a,
+    a.internal,
+    a.internal-link {
+      color: #ffffff !important;
+      background: transparent !important;
+    }
+
+    a:hover,
+    a.internal:hover,
+    a.internal-link:hover {
+      color: #ffffff !important;
+      background: $dark-hover-background !important;
+    }
+  }
+}
+
+// ダークモード時にサイトタイトルのバナーを白くする
+html[saved-theme="dark"] .sidebar.left .page-title a {
+  filter: brightness(0) invert(1) !important;
+}
+
+// Explorer のノート名を1行表示＋省略
+.explorer-content ul li > a {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+// =============================================================================
+// 14. Folder / Tag pages
+// =============================================================================
+
+// folder-page / tag-page は .page-listing を持つ。
+// 個別ノートには影響させない。
+.page > #quartz-body > .center:has(.page-listing) {
+
+  // ---------------------------------------------------------------------------
+  // ヘッダー
+  // ---------------------------------------------------------------------------
+
+  > .page-header {
+    // フォルダ名・タグ名
+    h1.article-title {
+      font-size: $font-page-title !important;
+    }
+
+    // folder-page / tag-page のヘッダーはタイトルだけにする
+    .content-meta,
+    .article-subtitle,
+    .tags,
+    .tag-list {
+      display: none !important;
+    }
+  }
+
+  // folder-page / tag-page では本文 article を表示しない
+  > .popover-hint > article {
+    display: none !important;
+  }
+
+  // ---------------------------------------------------------------------------
+  // ノート件数 + ノート一覧
+  // ---------------------------------------------------------------------------
+
+  .page-listing {
+    width: min(100%, $main-content-measure);
+    max-width: $main-content-measure;
+    margin-left: auto;
+    margin-right: auto;
+
+    // 「○件のノート」等
+    > p {
+      margin: 0 0 1rem 0 !important;
+      font-size: $font-body !important;
+      line-height: 1.9;
+    }
+
+    .section-ul {
+      margin: 0 !important;
+      padding-left: 0 !important;
+      list-style: none !important;
+    }
+
+    // 各ノート
+    .section-li {
+      margin: 0 !important;
+      padding: 1.25rem 0 1.5rem 0 !important;
+      list-style: none !important;
+
+      // ノート同士の区切り
+      border-bottom: 1px solid $subtle-border-color !important;
+    }
+
+    // 最初のノートにも上線を入れる
+    .section-li:first-child {
+      border-top: 1px solid $subtle-border-color !important;
+    }
+
+    li.section-li > .section {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      grid-template-columns: none !important;
+      grid-template-areas: none !important;
+      width: 100%;
+    }
+
+    // -------------------------------------------------------------------------
+    // date
+    // -------------------------------------------------------------------------
+
+    .section > .meta {
+      order: 1 !important;
+
+      margin: 0 0 0.3rem 0 !important;
+      padding: 0 !important;
+
+      font-size: $font-date !important;
+      line-height: 1.6;
+      color: $muted-text-color !important;
+      opacity: 1 !important;  // ← 追加
+
+      time {
+        font-size: $font-date !important;
+        color: $muted-text-color !important;
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // title + subtitle
+    // -------------------------------------------------------------------------
+
+    .section > .desc {
+      order: 2 !important;
+      width: 100%;
+
+      h3 {
+        margin: 0 !important;
+        padding: 0 !important;
+
+        font-size: $font-list-title !important;
+        line-height: 1.5;
+        font-weight: 600;
+
+      > a,
+      > a.internal {
+        color: $internal-link-color !important;
+        background: transparent !important;
+        border-radius: $link-radius !important;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        text-decoration: none !important;
+
+        &:link,
+        &:visited,
+        &:active {
+          color: $internal-link-color !important;
+          text-decoration: none !important;
+        }
+
+        &:hover {
+          color: $internal-link-color !important;
+          background: $link-hover-background !important;
+          text-decoration: none !important;
+          }
+        }
+      }
+
+      .section-subtitle {
+        margin: 0.25rem 0 0 1rem !important;
+
+        padding: 0 !important;
+
+        font-size: $font-body !important;
+        line-height: 1.6;
+        font-weight: 700 !important;
+
+        &::before {
+          content: "― ";
+        }
+
+        &::after {
+          content: " ―";
+        }
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // tags
+    // -------------------------------------------------------------------------
+
+    hr {
+      margin-top: 2.5rem;
+    }
+
+    .section > .tags {
+      order: 3 !important;
+
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: flex-start !important;
+      gap: 0.45rem !important;
+
+      margin: 1rem 0 0 0 !important;
+      padding-left: 0 !important;
+      list-style: none !important;
+
+      > li {
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        background: transparent !important;
+        border: none !important;
+      }
+
+      a,
+      .tag-link {
+        display: inline-block !important;
+        width: auto !important;
+
+        padding: 0.1rem 0.45rem !important;
+
+        font-size: $font-tag !important;
+        line-height: 1.5;
+        font-weight: 400 !important;
+        color: $text-color !important;
+
+        background: $tag-bg-strong !important;
+        border: 1px solid $tag-border-strong !important;
+        border-radius: $tag-radius !important;
+
+        box-shadow: none !important;
+        text-decoration: none !important;
+        white-space: nowrap;
+
+        &::before {
+          content: "#" !important;
+        }
+      }
+    }
+  }
+}
+// =============================================================================
+// 15. Recent notes
+// =============================================================================
+
+body[data-slug="index"] {
+
+  .page > #quartz-body > .center > hr {
+    display: none !important;
+  }
+
+  .recent-notes {
+    width: min(100%, $main-content-measure);
+    max-width: $main-content-measure;
+    margin-left: auto;
+    margin-right: auto;
+
+    // 「最近のノート」
+    // HTML上は h3 だが、見た目は p 相当にする。
+    > h3 {
+      margin: 2rem 0 1rem 0 !important;
+      padding: 0 !important;
+
+      font-size: $font-list-title !important;
+      line-height: 1.5;
+      font-weight: 700 !important;
+    }
+
+    > ul.recent-ul {
+      margin: 0 !important;
+      padding-left: 0 !important;
+      list-style: none !important;
+    }
+
+    // 各ノート
+    > ul.recent-ul > li.recent-li {
+      margin: 0 !important;
+      padding: 1.25rem 0 1.5rem 0 !important;
+      list-style: none !important;
+
+      // 区切り線
+      border-bottom: 1px solid $subtle-border-color !important;
+    }
+
+    > ul.recent-ul > li.recent-li:first-child {
+      border-top: 1px solid $subtle-border-color !important;
+    }
+
+    .recent-li > .section {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      width: 100%;
+    }
+
+    // -------------------------------------------------------------------------
+    // date
+    // -------------------------------------------------------------------------
+
+    .recent-li .section > .meta {
+      order: 1 !important;
+
+      margin: 0 0 0.3rem 0 !important;
+      padding: 0 !important;
+
+      font-size: $font-date !important;
+      line-height: 1.6;
+      color: $muted-text-color !important;
+
+      // recentNotes.scss 標準の opacity: 0.6 を解除
+      opacity: 1 !important;
+
+      time {
+        font-size: $font-date !important;
+        color: $muted-text-color !important;
+        opacity: 1 !important;
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // title + subtitle
+    // -------------------------------------------------------------------------
+
+    .recent-li .section > .desc {
+      order: 2 !important;
+      width: 100%;
+
+      h3 {
+        margin: 0 !important;
+        padding: 0 !important;
+
+        font-size: $font-list-title !important;
+        line-height: 1.5;
+        font-weight: 600 !important;
+
+        > a,
+        > a.internal {
+          color: $internal-link-color !important;
+          background: transparent !important;
+          border-radius: $link-radius !important;
+
+          text-decoration: none !important;
+
+          &:link,
+          &:visited,
+          &:active {
+            color: $internal-link-color !important;
+            text-decoration: none !important;
+          }
+
+          &:hover {
+            color: $internal-link-color !important;
+            background: $link-hover-background !important;
+            text-decoration: none !important;
+          }
+        }
+      }
+
+      .section-subtitle {
+        margin: 0.25rem 0 0 1rem !important;
+        padding: 0 !important;
+
+        font-size: $font-body !important;
+        line-height: 1.6;
+        font-weight: 700 !important;
+
+        &::before {
+          content: "― ";
+        }
+
+        &::after {
+          content: " ―";
+        }
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // tags
+    // 現状のタグデザインは変更しない。
+    // showTags: true の場合だけ最後に配置される。
+    // -------------------------------------------------------------------------
+
+    .recent-li .section > .tags {
+      order: 3 !important;
+      margin-top: 1rem !important;
+    }
+  }
+}
+
+// =============================================================================
+// 16. Sidebars — final component styling
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 左右sidebar 共通
+// -----------------------------------------------------------------------------
+
+.sidebar.left,
+.sidebar.right {
+  // 「グラフビュー」「バックリンク」などの機能ブロック見出し
+  h3 {
+    font-size: $font-body !important;
+    line-height: 1.5;
+  }
+
+  // sidebar 内のリスト
+  ul li {
+    font-size: $font-body !important;
+  }
+
+  // sidebar 内リンクの hover
+  a {
+    text-decoration: none !important;
+
+    &:hover {
+      background: $sidebar-hover-background !important;
+      text-decoration: none !important;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 左sidebar：Explorer
+// -----------------------------------------------------------------------------
+
+.sidebar.left {
+  .explorer {
+    font-size: $font-body !important;
+
+    // フォルダ名
+    .folder-title,
+    .folder-title > a,
+    .folder-title > span,
+    .folder-title button,
+    .folder-container > button {
+      font-size: $font-body !important;
+      line-height: 1.6 !important;
+      font-weight: 700 !important;
+      color: $internal-link-color !important;
+    }
+
+    // フォルダ名 hover
+    .folder-title:hover,
+    .folder-title > a:hover,
+    .folder-title button:hover,
+    .folder-container > button:hover {
+      background: $sidebar-hover-background !important;
+    }
+
+    // ノート名
+    // folder-title 配下を除く通常の Explorer リンクだけを標準ウェイトにする
+    .explorer-content li > a:not(.folder-title),
+    .content li > a {
+      font-size: $font-body !important;
+      line-height: 1.8 !important;
+      font-weight: 400 !important;
+      color: $text-color !important;
+      text-decoration: none !important;
+
+      &:hover {
+        background: $sidebar-hover-background !important;
+        text-decoration: none !important;
+      }
+    }
+
+    // ノート名の行間を少し広くする
+    .explorer-content li,
+    .content li {
+      line-height: 1.8 !important;
+    }
+
+    // フォルダ左の開閉矢印
+    .folder-icon,
+    .folder-container svg,
+    .folder-title svg {
+      color: $internal-link-color !important;
+      stroke: $internal-link-color !important;
+    }
+
+    // SVG が currentColor を使う場合にも対応
+    .folder-icon *,
+    .folder-container svg *,
+    .folder-title svg * {
+      color: $internal-link-color !important;
+      stroke: $internal-link-color !important;
+    }
+
+    // 展開したフォルダ内の縦線
+    .folder-outer > ul,
+    .folder-outer ul {
+      border-left-color: $explorer-guide-color !important;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 右sidebar
+// -----------------------------------------------------------------------------
+
+.sidebar.right {
+  // グラフ・バックリンク等の本文／リスト
+  p,
+  li,
+  a {
+    font-size: $font-body !important;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Sidebar component adjustments
+// -----------------------------------------------------------------------------
+
+// サイトタイトルバナー：hoverしても背景画像を変更しない
+.sidebar.left .page-title a:hover {
+  background: url("./static/site-title.svg") center center / contain no-repeat !important;
+  text-decoration: none !important;
+}
+
+.sidebar.left {
+  .darkmode,
+  .readermode {
+    transform: translateY(3px);
+  }
+}
+.graph > .graph-outer {
+  border-color: $subtle-border-color !important;
+}
+
+html[saved-theme="dark"] {
+  .sidebar.left .explorer {
+
+    // フォルダ名
+    .folder-title,
+    .folder-title > a,
+    .folder-title > span,
+    .folder-title button,
+    .folder-container > button {
+      color: $dark-internal-link-color !important;
+    }
+
+    // ノート名
+    .explorer-content li > a:not(.folder-title),
+    .content li > a {
+      color: $dark-sidebar-note-color !important;
+    }
+
+    // フォルダ左の矢印
+    .folder-icon,
+    .folder-container svg,
+    .folder-title svg {
+      color: $dark-internal-link-color !important;
+      stroke: $dark-internal-link-color !important;
+    }
+
+    .folder-icon *,
+    .folder-container svg *,
+    .folder-title svg * {
+      color: $dark-internal-link-color !important;
+      stroke: $dark-internal-link-color !important;
+    }
+
+    // 展開時の縦線
+    .folder-outer > ul,
+    .folder-outer ul {
+      border-left-color: $dark-explorer-guide-color !important;
+    }
+  }
+}
+
+// =============================================================================
+// 17. Mobile typography
+// =============================================================================
+
+@media (max-width: $mobile-breakpoint) {
+
+  // ---------------------------------------------------------------------------
+  // 個別ノート：ヘッダー
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .center > .page-header {
+    h1.article-title {
+      font-size: $font-page-title-mobile !important;
+      line-height: 1.4 !important;
+    }
+
+    p.article-subtitle {
+      font-size: $font-body !important;
+    }
+
+    .content-meta,
+    .content-meta time,
+    .content-meta span {
+      font-size: $font-date-mobile !important;
+    }
+
+    .tags,
+    .tag-list {
+      a,
+      .tag-link {
+        font-size: $font-tag-mobile !important;
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // 個別ノート：本文
+  // 本文16pxは維持。スマホでは字間だけ詰める。
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .center article {
+    h1 {
+      font-size: $font-page-title-mobile;
+    }
+
+    h2 {
+      font-size: $font-list-title-mobile;
+    }
+
+    // indexページには、より強いh3指定があるため !important を残す
+    h3 {
+      font-size: $font-h3 !important;
+    }
+
+    p {
+      letter-spacing: 0;
+    }
+
+    // リスト本文も日本語の字間が広がりすぎないようにする
+    li {
+      letter-spacing: 0;
+    }
+
+    blockquote,
+    blockquote p,
+    blockquote li {
+      letter-spacing: 0;
+    }
+
+    pre,
+    pre code {
+      font-size: $font-code !important;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // folder-page / tag-page
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .center:has(.page-listing) {
+    > .page-header h1.article-title {
+      font-size: $font-page-title-mobile !important;
+    }
+
+    .page-listing {
+      > p {
+        font-size: $font-body !important;
+      }
+
+      .section > .meta,
+      .section > .meta time {
+        font-size: $font-date-mobile !important;
+      }
+
+      .section > .desc {
+        h3,
+        h3 > a,
+        h3 > a.internal {
+          font-size: $font-list-title-mobile !important;
+        }
+
+        .section-subtitle {
+          font-size: $font-body !important;
+        }
+      }
+
+      .section > .tags {
+        a,
+        .tag-link {
+          font-size: $font-tag-mobile !important;
+        }
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // recent-notes
+  // ---------------------------------------------------------------------------
+
+  body[data-slug="index"] .recent-notes {
+    // 「最近のノート」
+    > h3 {
+      font-size: $font-list-title-mobile !important;
+    }
+
+    .recent-li .section > .meta,
+    .recent-li .section > .meta time {
+      font-size: $font-date-mobile !important;
+    }
+
+    .recent-li .section > .desc {
+      h3,
+      h3 > a,
+      h3 > a.internal {
+        font-size: $font-list-title-mobile !important;
+      }
+
+      .section-subtitle {
+        font-size: $font-body !important;
+      }
+    }
+
+    .recent-li .section > .tags {
+      a,
+      .tag-link {
+        font-size: $font-tag-mobile !important;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// 18. Dark mode — final component overrides
+// =============================================================================
+
+html[saved-theme="dark"] {
+
+  // =========================================================
+  // 左sidebar：hover
+  // 右sidebarのバックリンクと同じ背景色にする
+  // =========================================================
+
+  .page > #quartz-body > .sidebar.left .explorer {
+
+    a:hover,
+    .folder-title:hover,
+    .folder-title > a:hover,
+    .folder-title button:hover,
+    .folder-container > button:hover {
+      background: $dark-hover-background !important;
+    }
+  }
+
+
+  // folder-page / tag-page のノートタイトル
+  .page-listing .section > .desc h3 {
+    > a,
+    > a.internal {
+      color: $dark-internal-link-color !important;
+
+      &:link,
+      &:visited,
+      &:active,
+      &:hover {
+        color: $dark-internal-link-color !important;
+      }
+    }
+  }
+
+
+  // recent-notes のノートタイトル
+  .recent-notes .recent-li .section > .desc h3 {
+    > a,
+    > a.internal {
+      color: $dark-internal-link-color !important;
+
+      &:link,
+      &:visited,
+      &:active,
+      &:hover {
+        color: $dark-internal-link-color !important;
+      }
+    }
+  }
+
+
+  // ---------------------------------------------------------------------------
+  // Code
+  // ---------------------------------------------------------------------------
+
+  // インラインコード
+  .page > #quartz-body > .center article :not(pre) > code {
+    background: $dark-inline-code-background !important;
+    color: $dark-code-text-color !important;
+  }
+
+  // コードブロック
+  .page > #quartz-body > .center article pre {
+    background: $dark-code-block-background !important;
+    border: none !important;
+
+    code {
+      background: transparent !important;
+    }
+  }
 }

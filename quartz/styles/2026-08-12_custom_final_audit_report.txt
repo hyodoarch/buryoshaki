@@ -1,0 +1,152 @@
+無聊写記 custom.scss 最終監査
+========================================
+対象:
+  custom_step3prime_C_structural_finish_20260812.scss
+
+最終判定:
+  SCSS本体に追加修正が必要な問題は見つからなかった。
+  custom_final_audited_20260812.scss は対象ファイルと同一内容の監査済み最終版。
+
+1. サイズ
+--------
+開始時:
+  2552 lines
+  62,137 bytes
+
+最終:
+  2029 lines
+  45,647 bytes
+
+削減:
+  lines  20.5%
+  bytes  26.5%
+
+2. カスケード / 構文
+------------------
+  { / } balance     : 247 / 247
+  !important          : 0
+  deprecated @import  : 0
+  .tag-list           : 0
+  Quartz標準theme変数のcustom.scss再定義:
+    --dark       : 0
+    --darkgray   : 0
+    --gray       : 0
+    --secondary  : 0
+    --lightgray  : 0
+
+3. Quartz variables
+-------------------
+  @use "sass:map"                  : OK
+  @use "./variables.scss" as *     : OK
+  hard-coded 800px / 801px / 1200px: 0 / 0 / 0
+
+4. Sass tokens / mixins
+-----------------------
+  Sass variables defined : 63
+  Unused Sass variables  : 0
+  Mixins defined         : 5
+  Unused mixins          : 0
+
+  mixin usage:
+    main-content-width: 4
+    tag-pill: 2
+    plain-note-title-link: 1
+    subtitle-with-dashes: 2
+    strong-tag-appearance: 2
+
+5. 同一block内の重複property
+---------------------------
+  detected: 0
+
+6. 実DOM / runtime selector監査
+-------------------------------
+  Generated HTML audited : 723
+  Generated JS audited   : 17
+  SCSS class names       : 43
+  Static HTMLで存在      : 40
+  Static HTMLで0         : active, collapsed, nodeLabel
+
+  .active     : runtime JSで付与/削除 → KEEP
+  .collapsed  : runtime JSで付与/削除 → KEEP
+  .nodeLabel  : Mermaid runtime生成 → KEEP
+
+  未説明のdead class selector: 0
+
+7. remで残したfont-size
+-----------------------
+  L178: font-size: 0.85rem;
+  L395: font-size: 0.8rem;
+  L452: font-size: 0.9rem;
+  L613: font-size: 0.92rem;
+  L704: font-size: 1.35rem;
+  L733: font-size: 0.95rem;
+  L854: font-size: 0.92rem;
+
+  これらは⑤の方針どおり、表示を変えてまでpx化しない既存component-local値。
+
+8. media query
+--------------
+  L306: @media all and (min-width: $non-mobile-breakpoint) {
+  L1151: @media (max-width: $mobile-breakpoint) {
+  L1593: @media all and (min-width: $wide-desktop-breakpoint) {
+  L1632: @media (min-width: $non-mobile-breakpoint) and (max-width: $wide-desktop-breakpoint) {
+  L1912: @media (max-width: $mobile-breakpoint) {
+
+  mobile layout と mobile typography は意図的に別section。
+  同一breakpointのmedia blockが2つあるのは重複ではなく責務分離。
+
+9. GitHub v5との整合性（要確認）
+-------------------------------
+  最終SCSSはQuartz標準theme変数 (--dark / --gray / --secondary /
+  --lightgray 等) をcustom.scssから上書きしない設計。
+
+  したがって②′-Bで決めた quartz.config.yaml のcolors変更とセットで使う必要がある。
+
+  監査時点でGitHub v5上の quartz.config.yaml は、まだ変更前のcolors:
+    lightMode:
+      lightgray: #c0c0c0
+      gray:      #b8b8b8
+      dark:      #2b2b2b
+      secondary: #284b63
+
+    darkMode:
+      lightgray: #393639
+      gray:      #808080
+      secondary: #7b97aa
+
+  ②′-Bで決めた最終値:
+    lightMode:
+      lightgray: #999999
+      gray:      #000000
+      dark:      #000000
+      secondary: #000000
+
+    darkMode:
+      lightgray: #999999
+      gray:      #ffffff
+      dark:      #ffffff
+      secondary: #808080
+
+  ローカルで既に変更済みなら問題なし。
+  GitHubへ反映するときは、最終custom.scssとquartz.config.yamlを
+  同じpushに含めること。
+
+10. 最終結論
+------------
+  custom.scss:
+    PASS
+
+  DOM selector audit:
+    PASS
+
+  !important cleanup:
+    PASS (0)
+
+  variables / mixins:
+    PASS
+
+  追加のdead selector:
+    なし
+
+  唯一の運用上の確認事項:
+    quartz.config.yaml の②′-B colors変更を最終SCSSと一緒に反映する。
