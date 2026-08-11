@@ -2276,3 +2276,169 @@ html[saved-theme="dark"] {
     }
   }
 }
+
+// =============================================================================
+// ⑥ Mobile typography
+// custom.scss の一番最後に追加
+// =============================================================================
+
+@media (max-width: $mobile-breakpoint) {
+
+  // ---------------------------------------------------------------------------
+  // 個別ノート：ヘッダー
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .center > .page-header {
+    h1.article-title {
+      font-size: 23px !important;
+      line-height: 1.4 !important;
+    }
+
+    p.article-subtitle {
+      font-size: 16px !important;
+    }
+
+    .content-meta,
+    .content-meta time,
+    .content-meta span {
+      font-size: 13px !important;
+    }
+
+    .tags,
+    .tag-list {
+      a,
+      .tag-link {
+        font-size: 12px !important;
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // 個別ノート：本文
+  // 本文16pxは維持。スマホでは字間だけ詰める。
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .center article {
+    font-size: 16px !important;
+
+    h1 {
+      font-size: 23px !important;
+    }
+
+    h2 {
+      font-size: 20px !important;
+    }
+
+    h3 {
+      font-size: 18px !important;
+    }
+
+    h4,
+    h5,
+    h6 {
+      font-size: 16px !important;
+    }
+
+    p {
+      font-size: 16px !important;
+      letter-spacing: 0 !important;
+    }
+
+    ul,
+    ol,
+    li {
+      font-size: 16px !important;
+    }
+
+    // リスト本文も日本語の字間が広がりすぎないようにする
+    li {
+      letter-spacing: 0 !important;
+    }
+
+    blockquote,
+    blockquote p,
+    blockquote li {
+      letter-spacing: 0 !important;
+    }
+
+    pre,
+    pre code {
+      font-size: 12px !important;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // folder-page / tag-page
+  // ---------------------------------------------------------------------------
+
+  .page > #quartz-body > .center:has(.page-listing) {
+    > .page-header h1.article-title {
+      font-size: 23px !important;
+    }
+
+    .page-listing {
+      > p {
+        font-size: 16px !important;
+      }
+
+      .section > .meta,
+      .section > .meta time {
+        font-size: 13px !important;
+      }
+
+      .section > .desc {
+        h3,
+        h3 > a,
+        h3 > a.internal {
+          font-size: 20px !important;
+        }
+
+        .section-subtitle {
+          font-size: 16px !important;
+        }
+      }
+
+      .section > .tags {
+        a,
+        .tag-link {
+          font-size: 12px !important;
+        }
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // recent-notes
+  // ---------------------------------------------------------------------------
+
+  body[data-slug="index"] .recent-notes {
+    // 「最近のノート」
+    > h3 {
+      font-size: 20px !important;
+    }
+
+    .recent-li .section > .meta,
+    .recent-li .section > .meta time {
+      font-size: 13px !important;
+    }
+
+    .recent-li .section > .desc {
+      h3,
+      h3 > a,
+      h3 > a.internal {
+        font-size: 20px !important;
+      }
+
+      .section-subtitle {
+        font-size: 16px !important;
+      }
+    }
+
+    .recent-li .section > .tags {
+      a,
+      .tag-link {
+        font-size: 12px !important;
+      }
+    }
+  }
+}
