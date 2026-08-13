@@ -1171,6 +1171,47 @@ article .mermaid .nodeLabel p {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Canvas standalone page
+// ---------------------------------------------------------------------------
+
+.page[data-frame="canvas"] {
+
+  // Canvas専用ページでは通常記事の38ic制限を解除
+  > #quartz-body > .center.canvas-frame {
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  .canvas-stage {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  article.canvas-page {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .canvas-container {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+
+    // ① 方眼ドットを非表示
+    background-image: none;
+  }
+}
+
 // =============================================================================
 // 10. Tags — common
 // =============================================================================
