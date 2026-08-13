@@ -1121,8 +1121,18 @@ article .mermaid .nodeLabel p {
     max-width: none;
 
     // 通常の本文要素は従来どおり38icに戻す
-    > :not(blockquote.transclude[data-url$=".canvas"]) {
+    > :not(blockquote.transclude[data-url$=".canvas"]):not(ul):not(ol) {
       @include main-content-width;
+    }
+
+    // リストは通常の記事と同じ width:auto にする
+    > ul,
+    > ol {
+      width: auto;
+      max-width: $main-content-measure;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
     }
 
     // Canvas埋め込みだけ.center幅いっぱい
