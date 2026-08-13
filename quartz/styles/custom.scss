@@ -1104,43 +1104,69 @@ article .mermaid .nodeLabel p {
 // Canvas embed
 // ---------------------------------------------------------------------------
 
-// Canvasを含む記事だけ article を .center 幅いっぱいにする
+// Canvasを含む個別ノートだけ article を .center 幅いっぱいにする
 .page > #quartz-body > .center
-article:has(> blockquote.transclude[data-url$=".canvas"]) {
+> article:has(
+  > .markdown-preview-view
+  > blockquote.transclude[data-url$=".canvas"]
+) {
   width: 100%;
   max-width: none;
   margin-left: 0;
   margin-right: 0;
 
-  // 通常本文は従来の本文幅を維持
-  > :not(blockquote.transclude[data-url$=".canvas"]) {
-    @include main-content-width;
-  }
-
-  // Canvas埋め込み
-  > blockquote.transclude[data-url$=".canvas"] {
+  // Markdown本文領域もいったん全幅にする
+  > .markdown-preview-view {
     width: 100%;
     max-width: none;
-    box-sizing: border-box;
 
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-
-    border-left: none;
-    color: var(--dark);
-
-    // Quartzが自動生成するCanvasタイトル
-    > h1 {
-      font-size: $font-list-title;
+    // 通常の本文要素は従来どおり38icに戻す
+    > :not(blockquote.transclude[data-url$=".canvas"]) {
+      @include main-content-width;
     }
 
-    // Canvas本体
-    .canvas-container {
-      background-image: none;
-      border: 1px solid $subtle-border-color;
-      border-radius: 6px;
+    // Canvas埋め込みだけ.center幅いっぱい
+    > blockquote.transclude[data-url$=".canvas"] {
+      width: 100%;
+      max-width: none;
       box-sizing: border-box;
+
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 0;
+
+      // 引用の縦線を消す
+      border-left: none;
+      color: var(--dark);
+
+      // Quartzが自動生成するCanvasタイトル
+      > h1 {
+        font-size: $font-list-title;
+      }
+
+      // Canvasページ自体も全幅
+      > .canvas-page {
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      // Canvas表示領域
+      .canvas-container {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 1 / 1;
+        
+// 方眼ドットを消す
+        background-image: none;
+
+        // Graph Viewと同じ枠
+        border: 1px solid $subtle-border-color;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
     }
   }
 }
