@@ -1159,13 +1159,82 @@ article .mermaid .nodeLabel p {
         min-height: 0;
         aspect-ratio: 1 / 1;
         
-// 方眼ドットを消す
+      // 方眼ドットを消す
         background-image: none;
 
         // Graph Viewと同じ枠
         border: 1px solid $subtle-border-color;
         border-radius: 6px;
         box-sizing: border-box;
+      }
+
+      // Canvas本体と元記事リンクを同じ領域に重ねる
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+
+      // タイトル
+      > h1 {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      // Canvas本体
+      > .canvas-page {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      // 標準の全画面ボタンは使わない
+      .canvas-fullscreen-toggle {
+        display: none;
+      }
+
+      // 「元記事へのリンク」をCanvas内のアイコンにする
+      > a.transclude-src {
+        grid-column: 1;
+        grid-row: 2;
+
+        align-self: start;
+        justify-self: end;
+
+        width: 32px;
+        height: 32px;
+        box-sizing: border-box;
+
+        // ズームボタン列の左隣に配置
+        margin-top: 12px;
+        margin-right: 52px;
+        padding: 0;
+
+        z-index: 30;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 0;
+        line-height: 1;
+
+        color: var(--darkgray);
+        background: var(--light);
+        border: 1px solid var(--lightgray);
+        border-radius: 6px;
+
+        text-decoration: none;
+
+        &:hover {
+          color: var(--darkgray);
+          background: var(--lightgray);
+          text-decoration: none;
+        }
+
+        // 「別ページで開く」アイコン
+        &::before {
+          content: "↗";
+          font-size: 18px;
+          line-height: 1;
+        }
       }
     }
   }
@@ -1177,38 +1246,78 @@ article .mermaid .nodeLabel p {
 
 .page[data-frame="canvas"] {
 
-  // Canvas専用ページでは通常記事の38ic制限を解除
-  > #quartz-body > .center.canvas-frame {
+  > #quartz-body {
     width: 100%;
-    max-width: none;
     height: 100vh;
-    margin: 0;
     padding: 0;
+
+    > .center.canvas-frame {
+      width: 100%;
+      max-width: none;
+      min-width: 100%;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+
+      > .canvas-stage {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+
+        // 通常記事の 38ic 制限を確実に上書き
+        > article.canvas-page {
+          width: 100%;
+          max-width: none;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+
+          > .canvas-container {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+
+            // 方眼ドット非表示
+            background-image: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Canvas objects — embedded / standalone common
+// ---------------------------------------------------------------------------
+
+.page > #quartz-body .canvas-page {
+
+  .canvas-group-label {
+    font-size: 1.575rem;
+    line-height: 1.2;
+    font-weight: 700;
+    top: -0.8em;
   }
 
-  .canvas-stage {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  .canvas-node-content {
+    padding: 9px;
   }
-
-  article.canvas-page {
-    width: 100%;
-    max-width: none;
-    height: 100%;
+  
+  .canvas-node-content p {
     margin: 0;
-    padding: 0;
-  }
+    margin-block-start: 0;
+    margin-block-end: 0;
 
-  .canvas-container {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    margin: 0;
+    // 従来のカード本文サイズを維持
+    font-size: $font-body; // 16px
+    line-height: 1.9;
 
-    // ① 方眼ドットを非表示
-    background-image: none;
+    text-align: left;
+    text-justify: auto;
   }
 }
 
