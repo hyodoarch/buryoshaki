@@ -47,11 +47,15 @@ jobs:
           rm -rf .quartz/plugins/folder-page
           rm -rf .quartz/plugins/tag-page
           rm -rf .quartz/plugins/recent-notes
+          rm -rf .quartz/plugins/canvas-page
+          
           npx quartz plugin install --clean graph
           npx quartz plugin install --clean article-title
           npx quartz plugin install --clean folder-page
           npx quartz plugin install --clean tag-page
           npx quartz plugin install --clean recent-notes
+          npx quartz plugin install --clean canvas-page
+          
           npx quartz plugin install
       - name: Build Quartz
         run: npx quartz build
