@@ -1100,6 +1100,51 @@ article .mermaid .nodeLabel p {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Canvas embed
+// ---------------------------------------------------------------------------
+
+// Canvasを含む記事だけ article を .center 幅いっぱいにする
+.page > #quartz-body > .center
+article:has(> blockquote.transclude[data-url$=".canvas"]) {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+
+  // 通常本文は従来の本文幅を維持
+  > :not(blockquote.transclude[data-url$=".canvas"]) {
+    @include main-content-width;
+  }
+
+  // Canvas埋め込み
+  > blockquote.transclude[data-url$=".canvas"] {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+
+    border-left: none;
+    color: var(--dark);
+
+    // Quartzが自動生成するCanvasタイトル
+    > h1 {
+      font-size: $font-list-title;
+    }
+
+    // Canvas本体
+    .canvas-container {
+      background-image: none;
+      border: 1px solid $subtle-border-color;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+  }
+}
+
 // =============================================================================
 // 10. Tags — common
 // =============================================================================
