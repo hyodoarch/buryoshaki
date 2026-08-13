@@ -32,10 +32,10 @@
       "installedAt": "2026-06-23T09:17:10.974Z"
     },
     "canvas-page": {
-      "source": "github:quartz-community/canvas-page",
-      "resolved": "https://github.com/quartz-community/canvas-page.git",
-      "commit": "84fc96799671a65f76b66e30217dbefdd43a2905",
-      "installedAt": "2026-06-23T09:17:09.710Z"
+      "source": "github:hyodoarch/canvas-page",
+      "resolved": "https://github.com/hyodoarch/canvas-page.git",
+      "commit": "eb005ba5c9cdf1b921fb584592f802a8ddc00eef",
+      "installedAt": "2026-08-13T07:41:50.833Z"
     },
     "citations": {
       "source": "github:quartz-community/citations",
