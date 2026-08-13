@@ -1158,7 +1158,7 @@ article .mermaid .nodeLabel p {
         height: auto;
         min-height: 0;
         aspect-ratio: 1 / 1;
-        
+
         // Graph Viewと同じ枠
         border: 1px solid $subtle-border-color;
         border-radius: 6px;
@@ -1182,7 +1182,7 @@ article .mermaid .nodeLabel p {
         grid-row: 2;
       }
 
-      // 「元記事へのリンク」をCanvas内のアイコンにする
+      // 「元記事へのリンク」は右上アイコンを使うため非表示
       > a.transclude-src {
         display: none;
       }
@@ -1255,7 +1255,6 @@ article .mermaid .nodeLabel p {
     margin-block-end: 0;
 
     // 従来のカード本文サイズを維持
-    font-size: $font-body; // 16px
     line-height: 1.9;
     text-align: left;
     text-justify: auto;

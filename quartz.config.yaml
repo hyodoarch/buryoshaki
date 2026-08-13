@@ -345,7 +345,7 @@ plugins:
     options:
       enableInteraction: true
       initialZoom: 1
-      minZoom: 0.1
+      minZoom: 0.02
       maxZoom: 5
     order: 50
 layout:

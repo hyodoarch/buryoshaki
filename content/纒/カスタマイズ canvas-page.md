@@ -55,6 +55,10 @@ npx quartz build --serve
 ```
 です。
 
+### WEBで確認する
+
+.github\workflows\deploy.yml ≫ を編集する必要がある。 
+
 ### 重要：次回からはアンインストール不要です
 
 今回一度 fork版へ切り替えてしまえば、⑦〜⑫などで fork をさらに修正した際は、
