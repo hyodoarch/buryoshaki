@@ -1,6 +1,12 @@
 ---
 title: プロフィール
 draft: false
+tags:
+  - Martin_Parr
+  - 清野賀子
+  - 松江泰治
+  - ホンマタカシ
+  - Luigi_Ghirri
 ---
 ## 自己紹介
 - 「無聊写記」 管理者　兵藤 善紀 （hyodo)
