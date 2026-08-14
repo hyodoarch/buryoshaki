@@ -10,20 +10,9 @@
 			"file":"images/2026/caroline.jpg",
 			"styleAttributes":{"border":"invisible"},
 			"x":5,
-			"y":33,
+			"y":13,
 			"width":161,
 			"height":232,
-			"color":"#ffffff"
-		},
-		{
-			"id":"4b4dbf839b5c55ca",
-			"type":"file",
-			"file":"images/2026/g20260813_231012420_iOS-mini.jpg",
-			"styleAttributes":{"border":"invisible"},
-			"x":19,
-			"y":972,
-			"width":171,
-			"height":171,
 			"color":"#ffffff"
 		},
 		{
@@ -31,21 +20,10 @@
 			"type":"file",
 			"file":"images/2026/Ingres_Self-portrait.jpg",
 			"styleAttributes":{"border":"invisible"},
-			"x":-461,
+			"x":-472,
 			"y":227,
-			"width":155,
-			"height":193,
-			"color":"#ffffff"
-		},
-		{
-			"id":"31db2e2126259c59",
-			"type":"file",
-			"file":"images/2026/work_of_parr_for_uniqlo.jpg",
-			"styleAttributes":{"border":"invisible"},
-			"x":20,
-			"y":659,
-			"width":158,
-			"height":237,
+			"width":166,
+			"height":206,
 			"color":"#ffffff"
 		},
 		{
@@ -54,7 +32,7 @@
 			"file":"images/2026/girl_in_works_of_parr.png",
 			"styleAttributes":{"border":"invisible"},
 			"x":146,
-			"y":357,
+			"y":377,
 			"width":208,
 			"height":240,
 			"color":"#ffffff"
@@ -71,15 +49,57 @@
 			"color":"#ffffff"
 		},
 		{
+			"id":"31db2e2126259c59",
+			"type":"file",
+			"file":"images/2026/work_of_parr_for_uniqlo.jpg",
+			"styleAttributes":{"border":"invisible"},
+			"x":15,
+			"y":645,
+			"width":158,
+			"height":237,
+			"color":"#ffffff"
+		},
+		{
+			"id":"4b4dbf839b5c55ca",
+			"type":"file",
+			"file":"images/2026/g20260813_231012420_iOS-mini.jpg",
+			"styleAttributes":{"border":"invisible"},
+			"x":17,
+			"y":960,
+			"width":171,
+			"height":171,
+			"color":"#ffffff"
+		},
+		{
 			"id":"b6b7060d393ef892",
 			"type":"file",
 			"file":"images/2026/my_wife.png",
 			"styleAttributes":{"border":"invisible"},
-			"x":202,
-			"y":1307,
+			"x":193,
+			"y":1277,
 			"width":227,
 			"height":341,
 			"color":"#ffffff"
+		},
+		{
+			"id":"8ed9000380fbdc18",
+			"type":"text",
+			"text":"Photo: Raph_PH / Wikimedia Commons / CC BY 2.0",
+			"styleAttributes":{},
+			"x":-475,
+			"y":551,
+			"width":169,
+			"height":172
+		},
+		{
+			"id":"559f7414e32f5b10",
+			"type":"text",
+			"text":"© Martin Parr C/O DMB",
+			"styleAttributes":{},
+			"x":-464,
+			"y":820,
+			"width":158,
+			"height":85
 		}
 	],
 	"edges":[
@@ -92,6 +112,7 @@
 			"fromSide":"top",
 			"toNode":"4b4dbf839b5c55ca",
 			"toSide":"bottom",
+			"color":"2",
 			"label":"見る"
 		},
 		{
@@ -103,6 +124,7 @@
 			"fromSide":"right",
 			"toNode":"f050371d918abfb5",
 			"toSide":"left",
+			"color":"2",
 			"label":"見て描く"
 		},
 		{
@@ -114,6 +136,7 @@
 			"fromSide":"bottom",
 			"toNode":"31db2e2126259c59",
 			"toSide":"left",
+			"color":"2",
 			"label":"Parrの作品"
 		},
 		{
@@ -125,6 +148,7 @@
 			"fromSide":"right",
 			"toNode":"56664d079a1f8900",
 			"toSide":"left",
+			"color":"2",
 			"label":"見る"
 		},
 		{
@@ -149,7 +173,29 @@
 			"fromSide":"right",
 			"toNode":"4b4dbf839b5c55ca",
 			"toSide":"right",
+			"color":"2",
 			"label":"Tシャツになる"
+		},
+		{
+			"id":"ffe76541d4d97cee",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"8ed9000380fbdc18",
+			"fromSide":"right",
+			"toNode":"8b113e65b2691558",
+			"toSide":"left",
+			"label":"クレジット"
+		},
+		{
+			"id":"f750d6a834750a50",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"559f7414e32f5b10",
+			"fromSide":"right",
+			"toNode":"31db2e2126259c59",
+			"toSide":"left",
+			"label":"クレジット"
 		}
 	],
 	"metadata":{
