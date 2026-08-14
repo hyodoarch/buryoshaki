@@ -120,5 +120,9 @@
 		{"id":"5175534aa961cbdb","fromNode":"0ad91a2123a151de","fromSide":"left","toNode":"2e1a9500a0dc3a1d","toSide":"right","toEnd":"none"},
 		{"id":"d6a9edcd1c1c072f","fromNode":"354381f542d6452b","fromSide":"bottom","toNode":"73d32d3fa9260f96","toSide":"top"},
 		{"id":"79fec25b492a5727","fromNode":"84dbb160f9341458","fromSide":"bottom","toNode":"a9cbab9c680d62af","toSide":"top"}
-	]
+	],
+	"metadata":{
+		"version":"1.0-1.0",
+		"frontmatter":{}
+	}
 }
