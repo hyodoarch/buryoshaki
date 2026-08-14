@@ -1,0 +1,568 @@
+jQuery(document).ready(function($){
+    var domain = "";
+    var host_name = window.location.hostname;
+    var expiration = parseInt(jQuery("#content_cookie").attr('data-expiration'));
+    function cookieConfig()
+    {
+        var initdate = new Date();
+
+        initdate.setDate(initdate.getDate() + expiration);
+//        initdate.setDate(initdate.getDate() + 1);
+
+        var c_value = initdate.toUTCString();
+        var gettime = Date.parse(c_value);
+
+        if (!isNaN(gettime))
+            Cookies.set('cookie_expire', gettime, { expires: expiration });
+        if (!isNaN(c_value))
+            Cookies.set('cookie_date', c_value, { expires: expiration });
+    }
+
+    if (host_name.indexOf("epresspack-dev") !== -1) { // IF DEV
+        var split_host_name = host_name.split('.');
+        domain = '.' + split_host_name[0] + '.' + split_host_name[1] + '.' + split_host_name[2];
+    }
+    else if (host_name.indexOf("epresspack") !== -1) { // QUALITY
+        if (host_name.indexOf("us") !== -1) {
+            var split_host_name = host_name.split('.');
+            domain = '.' + split_host_name[1] + '.' + split_host_name[2];
+        } else { // EPRESSPACK.NET
+            var split_host_name = host_name.split('.');
+            domain = split_host_name[1] + '.' + split_host_name[2];
+        }
+    }
+    else {// IF PROD
+        domain = host_name.replace("www", "");
+    }
+
+    //console.log(domain);
+
+    // Global
+    $('body').addClass('footer-upper');
+//            Cookies.set('cookie_status', false , { expires: expiration });
+
+    //var perf_code_ga = jQuery("#performanceCookie").data('ga');
+    //var perf_code_ga2 = jQuery("#performanceCookie").data('ga2');
+    var perf_code_ga = jQuery("#ga_code").val();
+    var perf_code_ga2 = jQuery("#ga2_code").val();
+
+    const GA_PROPERTY = perf_code_ga;
+    const GA_PROPERTY2 = perf_code_ga2;
+    const GA_COOKIE_NAMES = ['_ga', '_gat', '_gid'];
+    const GA_COOKIE_NAMES2 = ['__utma', '__utmb', '__utmc', '__utmt', '__utmt_b', '__utmz'];
+
+    function accept_ga() {
+        // création du cookie spécifique empêchant Google Analytics de démarrer
+        Cookies.set(`ga-disable-${GA_PROPERTY}`, false, { expires: expiration });
+        // insertion de cette valeur dans l'objet window
+        window[`ga-disable-${GA_PROPERTY}`] = false;
+
+        if (perf_code_ga2) {
+            Cookies.set(`ga-disable-${GA_PROPERTY2}`, false, { expires: expiration });
+            window[`ga-disable-${GA_PROPERTY2}`] = false;
+        }
+    }
+    function reject_ga() {
+        // création du cookie spécifique empêchant Google Analytics de démarrer
+        Cookies.set(`ga-disable-${GA_PROPERTY}`, true, { expires: expiration });
+        // insertion de cette valeur dans l'objet window
+        window[`ga-disable-${GA_PROPERTY}`] = true;
+
+
+        // suppression de tous les cookies précédemment créés par Google Analytics
+        GA_COOKIE_NAMES.forEach(cookieName => Cookies.remove(cookieName));
+        Cookies.remove( '_ga', { path: '/', domain: domain });
+        Cookies.remove( '_gid', { path: '/', domain: domain });
+        Cookies.remove( '_gat', { path: '/', domain: domain });
+
+        if (perf_code_ga2) {
+            Cookies.set(`ga-disable-${GA_PROPERTY2}`, true, { expires: expiration });
+            window[`ga-disable-${GA_PROPERTY2}`] = true;
+        }
+
+        GA_COOKIE_NAMES2.forEach(cookieName2 => Cookies.remove(cookieName2));
+        Cookies.remove( '__utma', { path: '/', domain: domain });
+        Cookies.remove( '__utmb', { path: '/', domain: domain });
+        Cookies.remove( '__utmc', { path: '/', domain: domain });
+        Cookies.remove( '__utmt', { path: '/', domain: domain });
+        Cookies.remove( '__utmt_b', { path: '/', domain: domain });
+        Cookies.remove( '__utmz', { path: '/', domain: domain });
+    }
+
+
+    jQuery(".onoffswitch").click(function () {
+        if (!jQuery(this).parent('label').hasAttr('disabled')) {
+            if (jQuery(this).children('input').is(":checked")) { // ON
+                jQuery(this).children('input').prop('checked',  '').val('off');
+            } else { // OFF
+                jQuery(this).children('input').prop('checked', 'checked').val('on');
+            }
+        }
+    });
+
+
+    jQuery(".gdpr_ok").click(function(event) {
+        jQuery("#cookie-banner").remove();
+        $('body').removeClass('footer-upper');
+        accept_ga();
+        Cookies.set('cookie_status', true , { expires: expiration });
+        Cookies.set('cookie_performance', true , { expires: expiration });
+        Cookies.set('cookie_functional', true , { expires: expiration });
+        Cookies.set('cookie_ads', true , { expires: expiration });
+        Cookies.set('cookie_at', true , { expires: expiration });
+        cookieConfig();
+        var user_id = jQuery('#cookie_usr').val();
+        jQuery.ajax({
+            type : "post",
+            url : myAjax.ajaxurl,
+            data : {
+                action: "getDataClientCookies",
+                user_id : user_id,
+                chosen_cookies: "accept_all"
+            },
+            success: function(response) {
+                console.log(response);
+                Cookies.set('cookie_consent', jQuery.trim(response), { expires: expiration });
+                location.reload();
+            }
+        });
+        console.log('test');
+    });
+    jQuery(".gdpr_default_ok").click(function(event) {
+        jQuery("#cookie-banner").remove();
+        $('body').removeClass('footer-upper');
+        Cookies.set('cookie_status', true , { expires: expiration });
+        cookieConfig();
+        var user_id = jQuery('#cookie_usr').val();
+        jQuery.ajax({
+            type : "post",
+            url : myAjax.ajaxurl,
+            data : {
+                action: "getDataClientCookies",
+                user_id : user_id,
+                chosen_cookies: "accept_all"
+            },
+            success: function(response) {
+                Cookies.set('cookie_consent', jQuery.trim(response), { expires: expiration });
+                location.reload();
+            }
+        });
+        console.log('test');
+    });
+    jQuery(".gdpr_nok").click(function(event) {
+        Cookies.set('cookie_status', true , { expires: expiration });
+        Cookies.set('cookie_performance', false , { expires: expiration });
+        Cookies.set('cookie_functional', false , { expires: expiration });
+        Cookies.set('cookie_ads', false , { expires: expiration });
+        Cookies.set('cookie_at', false , { expires: expiration });
+
+        // création du cookie spécifique empêchant Google Analytics de démarrer
+        reject_ga();
+
+        jQuery("#cookie-banner").remove();
+        $('body').removeClass('footer-upper');
+        var user_id = jQuery('#cookie_usr').val();
+        jQuery.ajax({
+            type : "post",
+            url : myAjax.ajaxurl,
+            data : {
+                action: "getDataClientCookies",
+                user_id : user_id,
+                chosen_cookies: "deny_all"
+            },
+            success: function(response) {
+                Cookies.set('cookie_consent', jQuery.trim(response), { expires: expiration });
+                location.reload();
+            }
+        });
+    });
+
+    jQuery(".gdpr_selected").click(function (event) {
+        var cookies_values = [];
+        Cookies.set('cookie_status', true , { expires: expiration });
+        //jQuery("#cookie-banner").remove();
+        //$('body').removeClass('footer-upper');
+
+        if (jQuery("#performanceCookie").prop("checked") === true) {
+            Cookies.set('cookie_performance', true, {expires: expiration});
+            cookies_values.push({'cookie_performance': true});
+            accept_ga();
+        }
+        else {
+            Cookies.set('cookie_performance', false, {expires: expiration});
+            cookies_values.push({'cookie_performance': false});
+            reject_ga();
+        }
+        if (jQuery("#functionalCookie").prop("checked") === true) {
+            Cookies.set('cookie_functional', true, {expires: expiration});
+            cookies_values.push({'cookie_functional': true});
+        }
+        else {
+            Cookies.set('cookie_functional', false, {expires: expiration});
+            cookies_values.push({'cookie_functional': false});
+        }
+        if (jQuery("#adsCookie").prop("checked") === true) {
+            Cookies.set('cookie_ads', true, {expires: expiration});
+            cookies_values.push({'cookie_ads': true});
+        }
+        else {
+            Cookies.set('cookie_ads', false, {expires: expiration});
+            cookies_values.push({'cookie_ads': false});
+        }
+        if (jQuery("#defaultCookie").prop("checked") === true) {
+            cookies_values.push({'cookie_necessary': true});
+        }
+        if (jQuery("#atCookie").prop("checked") === true) {
+            Cookies.set('cookie_at', true, {expires: expiration});
+            cookies_values.push({'cookie_at': true});
+        }
+        else {
+            Cookies.set('cookie_at', false, {expires: expiration});
+            cookies_values.push({'cookie_at': false});
+        }
+        cookieConfig();
+
+        var user_id = jQuery('#cookie_usr').val();
+
+        jQuery.ajax({
+            type : "post",
+            url : myAjax.ajaxurl,
+            data : {
+                action: "getDataClientCookies",
+                user_id : user_id,
+                chosen_cookies: cookies_values,
+                //committee_nonce : jQuery('#committee_nonce').val()
+            },
+            success: function(response) {
+                Cookies.set('cookie_consent', jQuery.trim(response), { expires: expiration });
+                location.reload();
+            }
+        });
+    });
+
+    var cookie_gdpr = Cookies.get('cookie_consent');
+    var cookie_gdpr_functional = Cookies.get('cookie_functional');
+    var cookie_gdpr_performance = Cookies.get('cookie_performance');
+    var cookie_gdpr_status = Cookies.get('cookie_status');
+
+    if (cookie_gdpr_status === 'true') {
+        //console.log('true');
+        if (jQuery("body").hasClass('page-template-tpl-cookies-manager'))
+            jQuery(".content_cookie").show();
+        else
+            jQuery(".content_cookie").hide();
+        $('body').removeClass('footer-upper');
+    } else{
+        jQuery(".content_cookie").show();
+    }
+
+    if (cookie_gdpr_functional === "true") {
+        var functional = jQuery("#functionalCookie");
+        if (functional.length > 0) {
+            functional.prop("checked", true);
+        }
+    }
+    if (cookie_gdpr_performance === "true") {
+        var performance = jQuery("#performanceCookie");
+        if (performance.length > 0) {
+            performance.prop("checked", true);
+        }
+        var code_ga = jQuery("#ga_code").val();
+        var code_ga2 = jQuery("#ga2_code").val();
+        if (code_ga2 && code_ga2.length > 0) {
+            jQuery("<!-- Global site tag (gtag.js) - Google Analytics -->\n" +
+                "                <script async src='https://www.googletagmanager.com/gtag/js?id=" + code_ga + "'></script>\n" +
+                "                <script>\n" +
+                "                    var expiration = 365 * 24 * 60 * 60;\n" +
+                "\n" +
+                "                    window.dataLayer = window.dataLayer || [];\n" +
+                "                    function gtag(){dataLayer.push(arguments);}\n" +
+                "                    gtag('js', new Date());\n" +
+                "\n" +
+                "                    gtag('config', '" + code_ga + "', {\n" +
+                "                        'cookie_expires': expiration,\n" +
+                "                        'anonymize_ip': true\n" +
+                "                    });\n" +
+                "                </script>" +
+                "\n" +
+                "                <script async src='https://www.googletagmanager.com/gtag/js?id=" + code_ga2 + "'></script>\n" +
+                "                <script>\n" +
+                "                    var expiration = 365 * 24 * 60 * 60;\n" +
+                "\n" +
+                "                    window.dataLayer = window.dataLayer || [];\n" +
+                "                    function gtag(){dataLayer.push(arguments);}\n" +
+                "                    gtag('js', new Date());\n" +
+                "\n" +
+                "                    gtag('config', '" + code_ga2 + "', {\n" +
+                "                        'cookie_expires': expiration,\n" +
+                "                        'anonymize_ip': true\n" +
+                "                    });\n" +
+                "                </script>").insertAfter("#cookie_usr");
+        } else {
+            jQuery("<!-- Global site tag (gtag.js) - Google Analytics -->\n" +
+                "                <script async src='https://www.googletagmanager.com/gtag/js?id=" + code_ga + "'></script>\n" +
+                "                <script>\n" +
+                "                    var expiration = 365 * 24 * 60 * 60;\n" +
+                "\n" +
+                "                    window.dataLayer = window.dataLayer || [];\n" +
+                "                    function gtag(){dataLayer.push(arguments);}\n" +
+                "                    gtag('js', new Date());\n" +
+                "\n" +
+                "                    gtag('config', '" + code_ga + "', {\n" +
+                "                        'cookie_expires': expiration,\n" +
+                "                        'anonymize_ip': true\n" +
+                "                    });\n" +
+                "                </script>").insertAfter("#cookie_usr");
+        }
+
+    }
+
+
+    function handleCookieOnFront() {
+        var cookie_gdpr_functional = Cookies.get('cookie_functional');
+        var cookie_gdpr_ads = Cookies.get('cookie_ads');
+        var cookie_gdpr_chatbot = Cookies.get('cookie_chatbot');
+
+        if (cookie_gdpr_functional === 'true')
+            jQuery(".hide_functional").show();
+        else {
+            jQuery(".disabled_social").removeAttr('href');
+            jQuery(".hide_functional").remove();
+        }
+
+        if (cookie_gdpr_ads === 'true')
+            jQuery(".hide_ads").show();
+        else
+            jQuery(".hide_ads").remove();
+
+        if (cookie_gdpr_chatbot === 'true')
+            jQuery(".hide_chatbot").show();
+        else
+            jQuery(".hide_chatbot").remove();
+        /* MODAL ----- var body = jQuery('body');
+        body.on('click', '.disabled_social', function(e){
+            e.preventDefault();
+            $('#modal-cookie-message').fadeIn(150);
+        });
+        body.on('click', '#modal-cookie-message .bg-overlay, #modal-cookie-message button', function(){
+            $('#modal-cookie-message').fadeOut(150);
+        });*/
+    }
+    handleCookieOnFront();
+
+    function hide_banner() {
+        jQuery( ".cookie-banner_toggle" ).click(function() {
+            jQuery( ".content_cookie" ).slideToggle( "slow" );
+        });
+    }
+
+    jQuery( ".cookie-banner_toggle" ).click(function() {
+        console.log("Click");
+        jQuery( ".content_cookie" ).slideToggle( "slow" );
+    });
+
+    jQuery(".show_user_infos button").click(function () {
+        jQuery(".show_user_infos_content").slideToggle();
+    });
+
+    $('.modal-toggle').on('click', function(e) {
+        e.preventDefault();
+        $('.modal_cookies').toggleClass('is-visible');
+    });
+    var count_deny = 0;
+    var count_accepted = 0;
+    jQuery(".accept_cookies").click(function () {
+        jQuery(this).addClass("active").next().removeClass("active");
+        count_accepted++;
+    });
+    jQuery(".deny_cookies").click(function () {
+        jQuery(this).addClass("active").prev().removeClass("active");
+        count_deny++;
+    });
+    $('.close-modal').on('click', function(e) {
+        e.preventDefault();
+        var count_choice = count_accepted + count_deny;
+        if (count_choice > 0) {
+
+            var cookies_val = [];
+            Cookies.set('cookie_status', true , { expires: expiration });
+
+            if (jQuery("#gdpr_performance_accept").hasClass("active")) {
+                Cookies.set('cookie_performance', true, {expires: expiration});
+                cookies_val.push({'cookie_performance': true});
+                accept_ga();
+            }
+            else {
+                Cookies.set('cookie_performance', false, {expires: expiration});
+                cookies_val.push({'cookie_performance': false});
+                reject_ga();
+            }
+            if (jQuery("#gdpr_functional_accept").hasClass("active")) {
+                Cookies.set('cookie_functional', true, {expires: expiration});
+                cookies_val.push({'cookie_functional': true});
+            }
+            else {
+                Cookies.set('cookie_functional', false, {expires: expiration});
+                cookies_val.push({'cookie_functional': false});
+            }
+            if (jQuery("#gdpr_ads_accept").hasClass("active")) {
+                Cookies.set('cookie_ads', true, {expires: expiration});
+                cookies_val.push({'cookie_ads': true});
+            }
+            else {
+                Cookies.set('cookie_ads', false, {expires: expiration});
+                cookies_val.push({'cookie_ads': false});
+            }
+            if (jQuery("#gdpr_at_accept").hasClass("active")) {
+                Cookies.set('cookie_at', true, {expires: expiration});
+                cookies_val.push({'cookie_at': true});
+            }
+            else {
+                Cookies.set('cookie_at', false, {expires: expiration});
+                cookies_val.push({'cookie_at': false});
+            }
+            cookies_val.push({'cookie_necessary': true});
+
+            var user_id = jQuery('#cookie_usr').val();
+
+            jQuery.ajax({
+                type : "post",
+                url : myAjax.ajaxurl,
+                data : {
+                    action: "getDataClientCookies",
+                    user_id : user_id,
+                    chosen_cookies: cookies_val,
+                },
+                success: function(response) {
+                    Cookies.set('cookie_consent', jQuery.trim(response), { expires: expiration });
+                    location.reload();
+                }
+            });
+
+        }
+        $('.modal_cookies').removeClass('is-visible');
+    });
+
+    var all_iframe = $('iframe');
+//    console.log(src);
+
+    all_iframe.each(function () {
+        var srcs = jQuery(this).attr('src');
+        var res = srcs;
+        if (srcs.indexOf('youtube')) {
+            res = srcs.replace("www.youtube.com", "www.youtube-nocookie.com");
+            jQuery(this).attr('data-cookieconsent', "ignore");
+        }
+        else
+            res = srcs;
+        jQuery(this).attr('src', res);
+    });
+
+
+    // IE VERSION
+    (function() {
+
+        if (!!navigator.userAgent.match(/Trident\/7\./) && jQuery("body").hasClass("is_ie")) {
+
+            var content_banner = document.getElementById("content_cookie");
+
+            document.getElementById('cookie-banner_toggle').onclick = function () {
+                console.log("Click");
+                if (content_banner.style.display === "none") {
+                    content_banner.style.display = "block";
+                } else
+                    content_banner.style.display = "none";
+            };
+
+
+            var host_name = window.location.hostname;
+            //console.log(host_name);
+
+            if (host_name.indexOf("epresspack-dev") !== -1) { // IF DEV
+                var split_host_name = host_name.split('.');
+                domain = '.' + split_host_name[0] + '.' + split_host_name[1] + '.' + split_host_name[2];
+            }
+            else if (host_name.indexOf("epresspack") !== -1) { // QUALITY
+                var split_host_name = host_name.split('.');
+                domain = '.' + split_host_name[1] + '.' + split_host_name[2];
+            }
+            else {// IF PROD
+                domain = host_name.replace("www", "");
+            }
+
+            console.log(domain);
+
+            document.getElementById('gdpr_selected').onclick = function () {
+                content_banner.style.display = "none";
+                Cookies.set('cookie_status', true, {expires: expiration});
+                if (document.getElementById("performanceCookie").checked === true) {
+                    Cookies.set('cookie_performance', true, {expires: expiration});
+                    Cookies.set('cookie_consent', true , { expires: expiration });
+                }
+                else {
+                    Cookies.set('cookie_performance', false, {expires: expiration});
+                    Cookies.remove( '_ga', { path: '/', domain: domain });
+                    Cookies.remove( '_gid', { path: '/', domain: domain });
+                    Cookies.remove( '_gat', { path: '/', domain: domain });
+
+                    Cookies.remove( '__utma', { path: '/', domain: domain });
+                    Cookies.remove( '__utmb', { path: '/', domain: domain });
+                    Cookies.remove( '__utmc', { path: '/', domain: domain });
+                    Cookies.remove( '__utmt', { path: '/', domain: domain });
+                    Cookies.remove( '__utmt_b', { path: '/', domain: domain });
+                    Cookies.remove( '__utmz', { path: '/', domain: domain });
+
+                }
+                if (document.getElementById("functionalCookie").checked === true) {
+                    Cookies.set('cookie_functional', true, {expires: expiration});
+                    Cookies.set('cookie_consent', true , { expires: expiration });
+                }
+                else {
+                    Cookies.set('cookie_functional', false, {expires: expiration});
+                }
+                if (document.getElementById("adsCookie").checked === true) {
+                    Cookies.set('cookie_ads', true, {expires: expiration});
+                    Cookies.set('cookie_consent', true , { expires: expiration });
+                }
+                else {
+                    Cookies.set('cookie_ads', false, {expires: expiration});
+                }
+                if (jQuery("#defaultCookie").prop("checked") === true) {
+                    Cookies.set('cookie_consent', true, {expires: expiration});
+                }
+                cookieConfig();
+                location.reload();
+            };
+
+            document.getElementById('gdpr_ok').onclick = function () {
+                content_banner.style.display = "none";
+                Cookies.set('cookie_status', true , { expires: expiration });
+                Cookies.set('cookie_consent', true , { expires: expiration });
+                Cookies.set('cookie_performance', true , { expires: expiration });
+                Cookies.set('cookie_functional', true , { expires: expiration });
+                Cookies.set('cookie_ads', true , { expires: expiration });
+                cookieConfig();
+                location.reload();
+            };
+
+            document.getElementById('gdpr_default_ok').onclick = function () {
+                content_banner.style.display = "none";
+                Cookies.set('cookie_status', true , { expires: expiration });
+                Cookies.set('cookie_consent', true , { expires: expiration });
+                cookieConfig();
+                location.reload();
+            };
+
+            document.getElementById('gdpr_nok').onclick = function () {
+                content_banner.style.display = "none";
+                Cookies.set('cookie_status', true , { expires: expiration });
+                Cookies.set('cookie_consent', false , { expires: expiration });
+                Cookies.set('cookie_performance', false , { expires: expiration });
+                Cookies.set('cookie_functional', false , { expires: expiration });
+                Cookies.set('cookie_ads', false , { expires: expiration });
+                location.reload();
+            };
+
+        }
+    })();
+});

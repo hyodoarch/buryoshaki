@@ -1,0 +1,84 @@
+jQuery(document).ready( function() {
+
+    if (jQuery("#gdisabled").val() == 1) {
+        var domain = "";
+        var host_name = window.location.hostname;
+        //console.log(host_name);
+
+        if (host_name.indexOf("epresspack-dev") !== -1) { // IF DEV
+            var split_host_name = host_name.split('.');
+            domain = '.' + split_host_name[0] + '.' + split_host_name[1] + '.' + split_host_name[2];
+        }
+        else if (host_name.indexOf("epresspack") !== -1) { // QUALITY
+            var split_host_name = host_name.split('.');
+            domain = '.' + split_host_name[1] + '.' + split_host_name[2];
+        }
+        else {// IF PROD
+            domain = host_name.replace("www", "");
+        }
+
+        const GA_COOKIE_NAMES = ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmt_b', '__utmz', 'CONSENT', '1P_JAR', 'NID', 'ga-disable-UA-3652481-2'];
+
+        GA_COOKIE_NAMES.forEach(cookieName => Cookies.remove(cookieName));
+        Cookies.remove( '_ga', { path: '/', domain: domain });
+        Cookies.remove( '_gid', { path: '/', domain: domain });
+        Cookies.remove( '_gat', { path: '/', domain: domain });
+        Cookies.remove( '__utma', { path: '/', domain: domain });
+        Cookies.remove( '__utmb', { path: '/', domain: domain });
+        Cookies.remove( '__utmc', { path: '/', domain: domain });
+        Cookies.remove( '__utmt', { path: '/', domain: domain });
+        Cookies.remove( '__utmz', { path: '/', domain: domain });
+        Cookies.remove( '__utmz', { path: '/', domain: domain });
+        Cookies.remove( 'CONSENT', { path: '/', domain: domain });
+        Cookies.remove( 'NID', { path: '/', domain: domain });
+        Cookies.remove( '1P_JAR', { path: '/', domain: domain });
+        Cookies.remove( 'ga-disable-UA-3652481-2', { path: '/', domain: domain });
+    }
+    var cookies_ga = false;
+    if (Cookies.get('_ga') || Cookies.get('__utma'))
+        cookies_ga = true;
+        if (cookies_ga === true) {
+            jQuery.ajax({
+                type : "post",
+                dataType : "json",
+                url : myAjax.ajaxurl,
+                data : {action: "getDataCookie", post_id : 1},
+                success: function(response) {
+
+                    jQuery("#test2").html(response);
+                }
+            });
+        }
+    /*jQuery(".test").click( function(e) {
+        e.preventDefault();
+        jQuery.ajax({
+            type : "post",
+            dataType : "json",
+            url : myAjax.ajaxurl,
+            data : {action: "getDataCookie", post_id : 1},
+            success: function(response) {
+                console.dir(response);
+                if(response.type == "success") {
+                    jQuery("#test").html(data);
+                }
+                else {
+                    alert("Your like could not be added");
+                }
+            }
+        });
+    });*/
+
+    jQuery("#download_datas").click(function () {
+        jQuery.ajax({
+            type : "post",
+            url : myAjax.ajaxurl,
+            data : {
+                action: "eppGdprExportContactCsv"
+            },
+            success: function(response) {
+                window.location = window.location.origin + '/export/' + response;
+            }
+        });
+    });
+
+});

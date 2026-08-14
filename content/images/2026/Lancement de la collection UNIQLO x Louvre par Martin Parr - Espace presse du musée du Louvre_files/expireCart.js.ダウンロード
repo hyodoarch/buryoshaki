@@ -1,0 +1,220 @@
+function getcontentcart(param) {
+    var cartLS = localStorage.getItem(param),
+        cart = [];
+    if (cartLS)
+        cart = JSON.parse(cartLS);
+    return cart;
+}
+
+function getallkeyscart() {
+    var cart_key = [];
+    for (var i = 0, len = localStorage.length; i < len; ++i) {
+        var key = localStorage.key[i];
+        if (key) {
+            if (key.indexOf('cart') !== -1) {
+                if (key !== 'cart_expires')
+                    cart_key.push(key);
+            }
+        }
+
+    }
+    return cart_key;
+}
+
+function clearcart() {
+    var durationcart = document.querySelector('.durationcart');
+    if (durationcart)
+        durationcart.style.display = "none";
+    var cart_key = getallkeyscart();
+    if (cart_key.length > 0) {
+        localStorage.setItem('cart_expires', "");
+    }
+    jQuery('#listImgCartDropdown.en').html('<div class="alert_msg marg15" role="alert">Your bag is empty, please select an attachment</div>');
+    jQuery('#listImgCartDropdown.fr').html('<div class="alert_msg marg15" role="alert">Votre sélection est vide, veuillez sélectionner une pièce jointe</div>');
+    jQuery("#countImg, .badge-selection").text('0').hide();
+    jQuery(".addImageToCart").children('i').removeClass('fas').addClass('fal');
+    jQuery('.cartItemShow').removeClass('cartload');
+}
+
+function add_months(dt, n)
+{
+    return new Date(dt.setMonth(dt.getMonth() + n));
+}
+
+function returnverifyfunction(dateTimeA, dateTimeB) {
+    var momentA = moment(dateTimeA,"DD/MM/YYYY");
+    var momentB = moment(dateTimeB,"DD/MM/YYYY");
+
+    var time = datediff(momentA,momentB)
+
+
+    var resultdate = momentB - momentA;
+
+
+
+    if (momentA >= momentB) return -1;
+    else return time;
+}
+
+function countitemincart() {
+    var cart_key = getallkeyscart();
+    var i = 0;
+    jQuery.each(cart_key, function(index, value) {
+        var mycart = getcontentcart(value);
+        if (mycart.length > 0)
+            i++;
+    });
+    if (i === 0) {
+        clearcart();
+    }
+}
+
+var body = jQuery("body");
+
+
+body.on('click', '.addImageToCart', function () {
+
+    var d = new Date();
+    var year = d.getFullYear();
+    var month = d.getMonth()+1;
+    var add_month = d.getMonth()+2;
+    var day = d.getDate();
+
+    var get_cart_expires = add_months(new Date(year,month,day),0);
+    var cart_expires = get_cart_expires.getTime() / 1000;
+
+    var ifExpire = localStorage.getItem('cart_expires');
+    if (ifExpire) {
+        // do nothing
+    } else
+        localStorage.setItem('cart_expires', cart_expires.toString());
+    countitemincart();
+});
+
+body.on('click', '.imgDelete', function () {
+    countitemincart();
+});
+
+function datediff(date1, date2){
+    var diff = {}                           // Initialisation du retour
+    var tmp = date2 - date1;
+
+    tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
+    diff.sec = tmp % 60;                    // Extraction du nombre de secondes
+
+    tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie entière)
+    diff.min = tmp % 60;                    // Extraction du nombre de minutes
+
+    tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures (entières)
+    diff.hour = tmp % 24;                   // Extraction du nombre d'heures
+
+    tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
+    diff.day = tmp;
+
+    return diff;
+}
+
+
+function cleartcartfromdate(){
+    var cart_key = getallkeyscart();
+    if (cart_key.length > 0) {
+        var cartExpire = getcontentcart('cart_expires');
+        var ifExpire = localStorage.getItem('cart_expires');
+    }
+    if (ifExpire) {
+        if (cart_key.length > 0) {
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth()+1;
+            var day = d.getDate();
+
+            var d_expires = new Date(cartExpire * 1000);
+            var year_expires = d_expires.getFullYear();
+            var month_expires = d_expires.getMonth()+1;
+            var day_expires = d_expires.getDate();
+            var today_date = day + '/' + month + '/' + year;
+            var expires_date = day_expires + '/' + month_expires + '/' + year_expires;
+            var check_expires_cart = returnverifyfunction(today_date, expires_date);
+
+            if (check_expires_cart === -1) {
+                jQuery.each(cart_key, function(index, value) {
+                    localStorage.setItem(value, JSON.stringify([]));
+                });
+                clearcart();
+            }
+            else
+                return check_expires_cart;
+        }
+    } else {
+        jQuery.each(cart_key, function(index, value) {
+            localStorage.setItem(value, JSON.stringify([]));
+        });
+        clearcart();
+    }
+}
+
+function deleteimgcard() {
+    var tableinlocalstorage = getallkeyscart();
+    if (tableinlocalstorage) {
+        for (let i = 0; i < tableinlocalstorage.length ; i++) {
+            var cartLS = localStorage.getItem(tableinlocalstorage[i]);
+            let array = JSON.parse(cartLS);
+            var request = jQuery.post({
+                method: "POST",
+                url: ajaxurlCartExpire,
+                data: {
+                    'action': 'checkIfAssetExist',
+                    'id': array
+                }
+            });
+            request.done(function (response) {
+                var parseReponse =  JSON.parse(response);
+                if (parseReponse.todelete) {
+                    for (let j = 0; j < parseReponse.todelete.length ; j++) {
+                        if (array) {
+                            var positionarray = array.indexOf(parseReponse.todelete[j]);
+
+                            if (positionarray !== -1) {
+                                array = jQuery.grep(array, function(value) {
+                                    return value != array[positionarray];
+                                });
+                                localStorage.setItem(tableinlocalstorage[i], JSON.stringify(array));
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+}
+
+jQuery(document).ready(function($) {
+     deleteimgcard();
+
+    var resultreturnfunction = cleartcartfromdate();
+    if(resultreturnfunction){
+        var parsedUrl = new URL(window.location.href);
+        var sitelang = parsedUrl.searchParams.get("lang");
+        var durationfinal = resultreturnfunction.day;
+
+        if (sitelang === "fr") {
+            var parent = document.querySelector('.cart_content, #myCart');
+            let newsP = document.createElement('p');
+            newsP.className = "durationcart";
+            newsP.textContent = "Votre selection sera réinitialisée dans " + durationfinal + " jour(s).";
+            newsP.style = "color: grey;text-align:center; font-size:12px;";
+            if (parent)
+                parent.prepend(newsP);
+        }
+        else {
+            var parent = document.querySelector('.cart_content, #myCart');
+            let newsP = document.createElement('p');
+            newsP.className = "durationcart";
+            newsP.textContent = "Your selection will be reset in " + durationfinal + " day(s).";
+            newsP.style = "color: grey;text-align:center; font-size:12px;";
+            if (parent)
+                parent.prepend(newsP);
+        }
+    }
+});
+
