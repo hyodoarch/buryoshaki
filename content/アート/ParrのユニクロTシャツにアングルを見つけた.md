@@ -3,7 +3,7 @@ title: ParrのユニクロTシャツにアングルを見つけた
 subtitle:
 date: 2026-08-14
 modified: 2026-08-14
-draft: true
+draft: false
 categories:
   - アート
 tags:
@@ -35,9 +35,8 @@ tags:
 で、調べてみたところ、実際ほぼ上記の通りであった。
 
 ## もう少しよく見てみる
-このTシャツの作品のように、美術館で作品を見る人々を撮ったParrの写真を知る者ならば
 
-Martin Parr の作品を知るものならば、このTシャツの写真は、「美術作品を鑑賞する人々」シリーズのひとつの作品だとわかるだろう。つまり、下記の構造である。
+Martin Parr の作品を知るものならば、このTシャツの写真は、美術館で作品を見る人々を撮った作品と似ていることに気が付くだろう。つまり、下記の構造である。
 
 - アングルはカロリーヌ嬢を見て描いている。
 - 描かれたカロリーヌ嬢はこちら側を見ている。
@@ -48,7 +47,7 @@ Martin Parr の作品を知るものならば、このTシャツの写真は、�
 
 このシリーズが興味深いのは、さらに次の構造である。
 
-- Parrは、少女が、アングルが見ていたカロリーヌ嬢の肖像画を見ている情景を、見ている。
+- Parrは、少女が、アングルが見て描いたカロリーヌ嬢の肖像画を見ている情景を、見ている。
 - 「このＴシャツを買った私」は、Parrが、アングルが見たカロリーヌ嬢の肖像画を見ている少女が見ている情景を見た写真を見ている。
 - 「私が着たこのＴシャツの写真を見た妻」は・・・・・・、
 
@@ -105,7 +104,7 @@ flowchart TB
 
 後で述べるが、Parrはこの作品を一般客のいないルーヴルで、モデルを使って撮影している、とのこと。よって私の温かい家族愛あふれる豊かな想像力は、無残に破棄された。。。（ｻﾞﾝﾈﾝ）
 
-又、2026年8月14日現在のルーヴル702室にカロリーヌ嬢は展示されているが、父母の肖像画は展示されていない。よってこれらの肖像画はParrが意図時に並べた可能性がある。
+又、2026年8月14日現在のルーヴル702室にカロリーヌ嬢は展示されているが、父母の肖像画は展示されていない。少なくともParrが撮影した時点では、写真のように一家三人の肖像画が並んでいたことになる。これが通常の展示だったのか、今回の撮影のために特別に並べられたものなのかは分からない。
 
 ## 詳しく調べてみると
 
@@ -113,12 +112,12 @@ flowchart TB
 
 - [マーティン・パーと歩くルーヴル美術館 / Mar 05.2026](https://www.uniqlo.com/jp/ja/news/topics/2026030501/)
 
-この記事を読んで、昨年2025年12月に、Parrが亡くなったことを知った。ショックで残念だ。ファンとして追悼したい。
+この記事を読んで、昨年2025年12月に、Parrが亡くなったことを知った。ショックだった。本当に残念だ。ファンの一人として、この記事をParrへの小さな追悼としたい。
 
-その他、ブリストルにマーティン・パー財団（[MARTIN PARR FOUNDATION](https://martinparrfoundation.org/)）に関する紹介や、[KYOTOGRAPHIE 京都国際写真祭 2025](https://www.kyotographie.jp/editions/2025/) で来日した時に撮影された、黄色い帽子をかぶった小学生たちが金閣寺を鑑賞する写真作品が掲載されている。
+その他、ブリストルにあるマーティン・パー財団（[MARTIN PARR FOUNDATION](https://martinparrfoundation.org/)）に関する紹介や、[KYOTOGRAPHIE 京都国際写真祭 2025](https://www.kyotographie.jp/editions/2025/) で来日した時に撮影された、黄色い帽子をかぶった小学生たちが金閣寺を鑑賞する写真作品が掲載されている。
 
-Martin Parr のUT x Louvreコレクションのルーブルのプレスリリースは下記
-- [Lancement de la collection UNIQLO x Louvre par Martin Parr 2mars 2026](https://presse.louvre.fr/lancement-de-la-collection-uniqlo-x-louvre-par-martin-parr/?lang=fr) 
+Martin Parr のUT x Louvreコレクションについてのルーヴルのプレスリリースは下記
+- [Lancement de la collection UNIQLO x Louvre par Martin Parr 2 mars 2026](https://presse.louvre.fr/lancement-de-la-collection-uniqlo-x-louvre-par-martin-parr/?lang=fr) 
 
 ユニクロとルーヴルのパートナーシップについては、下記のユニクロのプレスリリースが詳しい。
 - 2021年01月29日／[2021年ユニクロがルーヴル美術館とパートナーシップを締結](https://www.uniqlo.com/jp/ja/contents/corp/press-release/2021/01/21012909_louvrepartnership.html?srsltid=AfmBOooDjfg2mDX-Ym6UZHnlKzPedcLYEO1oEFihpEX31mYkRxCeXJZW)
