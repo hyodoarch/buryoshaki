@@ -19,17 +19,6 @@
 		{"id":"52f26a6827fc0a3f","type":"group","x":427,"y":-163,"width":172,"height":127,"color":"5","label":"青"},
 		{"id":"8d7d7bace7e6ad57","type":"group","x":637,"y":-163,"width":172,"height":127,"color":"6","label":"紫"},
 		{
-			"id":"09ae5f5ed57c7af4",
-			"type":"text",
-			"text":"赤",
-			"styleAttributes":{},
-			"x":-317,
-			"y":217,
-			"width":102,
-			"height":87,
-			"color":"1"
-		},
-		{
 			"id":"e590b5722f4e7f50",
 			"type":"text",
 			"text":"グループ",
@@ -40,14 +29,36 @@
 			"height":60
 		},
 		{
-			"id":"06f56c9c3b2704bf",
+			"id":"eb1305ef93bf5f40",
 			"type":"text",
-			"text":"ノード",
+			"text":"枠非表示（背景透明）",
 			"styleAttributes":{"border":"invisible"},
-			"x":-672,
-			"y":231,
-			"width":145,
-			"height":60
+			"x":-422,
+			"y":285,
+			"width":202,
+			"height":87,
+			"color":"1"
+		},
+		{
+			"id":"8d988ae3f78eb1d5",
+			"type":"text",
+			"text":"灰",
+			"styleAttributes":{},
+			"x":-453,
+			"y":217,
+			"width":97,
+			"height":87
+		},
+		{
+			"id":"09ae5f5ed57c7af4",
+			"type":"text",
+			"text":"赤",
+			"styleAttributes":{},
+			"x":-317,
+			"y":217,
+			"width":102,
+			"height":87,
+			"color":"1"
 		},
 		{
 			"id":"ddf85d85262d658f",
@@ -105,25 +116,186 @@
 			"color":"6"
 		},
 		{
-			"id":"8d988ae3f78eb1d5",
+			"id":"06f56c9c3b2704bf",
+			"type":"text",
+			"text":"ノード（実線）",
+			"styleAttributes":{"border":"invisible"},
+			"x":-689,
+			"y":231,
+			"width":162,
+			"height":60
+		},
+		{
+			"id":"2ff00caed49a7da6",
 			"type":"text",
 			"text":"灰",
-			"styleAttributes":{},
+			"styleAttributes":{"border":"dashed"},
 			"x":-453,
-			"y":217,
+			"y":397,
 			"width":97,
 			"height":87
 		},
 		{
-			"id":"eb1305ef93bf5f40",
+			"id":"612af744b97cd918",
 			"type":"text",
-			"text":"枠非表示（背景透明）",
-			"styleAttributes":{"border":"invisible"},
-			"x":-422,
-			"y":285,
-			"width":202,
+			"text":"赤",
+			"styleAttributes":{"border":"dashed"},
+			"x":-317,
+			"y":397,
+			"width":102,
 			"height":87,
 			"color":"1"
+		},
+		{
+			"id":"704b5a3d499a9259",
+			"type":"text",
+			"text":"橙",
+			"styleAttributes":{"border":"dashed"},
+			"x":-186,
+			"y":397,
+			"width":102,
+			"height":87,
+			"color":"2"
+		},
+		{
+			"id":"1a4126cc0c84d133",
+			"type":"text",
+			"text":"黄",
+			"styleAttributes":{"border":"dashed"},
+			"x":-60,
+			"y":397,
+			"width":102,
+			"height":87,
+			"color":"3"
+		},
+		{
+			"id":"85e65d351bb13773",
+			"type":"text",
+			"text":"緑",
+			"styleAttributes":{"border":"dashed"},
+			"x":67,
+			"y":397,
+			"width":102,
+			"height":87,
+			"color":"4"
+		},
+		{
+			"id":"fab3f2caeef885da",
+			"type":"text",
+			"text":"青",
+			"styleAttributes":{"border":"dashed"},
+			"x":202,
+			"y":397,
+			"width":102,
+			"height":87,
+			"color":"5"
+		},
+		{
+			"id":"c3a3f50a883ad98a",
+			"type":"text",
+			"text":"紫",
+			"styleAttributes":{"border":"dashed"},
+			"x":332,
+			"y":397,
+			"width":102,
+			"height":87,
+			"color":"6"
+		},
+		{
+			"id":"0b0f1dedb6e0106a",
+			"type":"text",
+			"text":"ノード（破線）",
+			"styleAttributes":{"border":"invisible"},
+			"x":-689,
+			"y":411,
+			"width":162,
+			"height":60
+		},
+		{
+			"id":"56ff1fa70a077c37",
+			"type":"text",
+			"text":"灰",
+			"styleAttributes":{"border":"dotted"},
+			"x":-453,
+			"y":522,
+			"width":97,
+			"height":87
+		},
+		{
+			"id":"c8926ce3720531d5",
+			"type":"text",
+			"text":"赤",
+			"styleAttributes":{"border":"dotted"},
+			"x":-317,
+			"y":522,
+			"width":102,
+			"height":87,
+			"color":"1"
+		},
+		{
+			"id":"14b5bda82b8c8725",
+			"type":"text",
+			"text":"橙",
+			"styleAttributes":{"border":"dotted"},
+			"x":-186,
+			"y":522,
+			"width":102,
+			"height":87,
+			"color":"2"
+		},
+		{
+			"id":"52909088bd9c3f8c",
+			"type":"text",
+			"text":"黄",
+			"styleAttributes":{"border":"dotted"},
+			"x":-60,
+			"y":522,
+			"width":102,
+			"height":87,
+			"color":"3"
+		},
+		{
+			"id":"308ab8aedec89edb",
+			"type":"text",
+			"text":"緑",
+			"styleAttributes":{"border":"dotted"},
+			"x":67,
+			"y":522,
+			"width":102,
+			"height":87,
+			"color":"4"
+		},
+		{
+			"id":"1f1ec393062c69ab",
+			"type":"text",
+			"text":"青",
+			"styleAttributes":{"border":"dotted"},
+			"x":202,
+			"y":522,
+			"width":102,
+			"height":87,
+			"color":"5"
+		},
+		{
+			"id":"4cd09cf381716ff5",
+			"type":"text",
+			"text":"紫",
+			"styleAttributes":{"border":"dotted"},
+			"x":332,
+			"y":522,
+			"width":102,
+			"height":87,
+			"color":"6"
+		},
+		{
+			"id":"56f7226e85da5c98",
+			"type":"text",
+			"text":"ノード（点線）",
+			"styleAttributes":{"border":"invisible"},
+			"x":-689,
+			"y":536,
+			"width":162,
+			"height":60
 		}
 	],
 	"edges":[
@@ -196,6 +368,24 @@
 			"toSide":"bottom",
 			"color":"4",
 			"label":"エッジ（破線2）"
+		},
+		{
+			"id":"fd14aa7af3e830bb",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"0b0f1dedb6e0106a",
+			"fromSide":"right",
+			"toNode":"2ff00caed49a7da6",
+			"toSide":"left"
+		},
+		{
+			"id":"b928e00e51fa88a1",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"56f7226e85da5c98",
+			"fromSide":"right",
+			"toNode":"56ff1fa70a077c37",
+			"toSide":"left"
 		}
 	],
 	"metadata":{
