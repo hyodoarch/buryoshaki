@@ -39,17 +39,6 @@
 			"color":"#ffffff"
 		},
 		{
-			"id":"559f7414e32f5b10",
-			"type":"text",
-			"text":"© Martin Parr C/O DMB",
-			"styleAttributes":{"border":"invisible"},
-			"x":-18,
-			"y":870,
-			"width":238,
-			"height":70,
-			"color":"4"
-		},
-		{
 			"id":"f050371d918abfb5",
 			"type":"file",
 			"file":"images/2026/caroline.jpg",
@@ -68,40 +57,8 @@
 			"x":187,
 			"y":345,
 			"width":137,
-			"height":279,
+			"height":249,
 			"color":"1"
-		},
-		{
-			"id":"81c6efd8818b1967",
-			"type":"text",
-			"text":"",
-			"styleAttributes":{"border":"invisible"},
-			"x":248,
-			"y":1296,
-			"width":129,
-			"height":60
-		},
-		{
-			"id":"b6b7060d393ef892",
-			"type":"file",
-			"file":"images/2026/my_wife.png",
-			"styleAttributes":{"border":"invisible"},
-			"x":319,
-			"y":1286,
-			"width":120,
-			"height":402,
-			"color":"#ffffff"
-		},
-		{
-			"id":"4b4dbf839b5c55ca",
-			"type":"file",
-			"file":"images/2026/g20260813_231012420_iOS-mini.jpg",
-			"styleAttributes":{"border":"invisible"},
-			"x":6,
-			"y":953,
-			"width":197,
-			"height":197,
-			"color":"#ffffff"
 		},
 		{
 			"id":"8ed9000380fbdc18",
@@ -124,6 +81,49 @@
 			"width":177,
 			"height":236,
 			"color":"2"
+		},
+		{
+			"id":"81c6efd8818b1967",
+			"type":"text",
+			"text":"",
+			"styleAttributes":{"border":"invisible"},
+			"x":248,
+			"y":1296,
+			"width":129,
+			"height":60
+		},
+		{
+			"id":"b6b7060d393ef892",
+			"type":"file",
+			"file":"images/2026/my_wife.png",
+			"styleAttributes":{"border":"invisible"},
+			"x":319,
+			"y":1286,
+			"width":120,
+			"height":401,
+			"color":"#ffffff"
+		},
+		{
+			"id":"559f7414e32f5b10",
+			"type":"text",
+			"text":"© Martin Parr C/O DMB",
+			"styleAttributes":{"border":"invisible"},
+			"x":-18,
+			"y":870,
+			"width":238,
+			"height":70,
+			"color":"4"
+		},
+		{
+			"id":"4b4dbf839b5c55ca",
+			"type":"file",
+			"file":"images/2026/g20260813_231012420_iOS-mini.jpg",
+			"styleAttributes":{"border":"invisible"},
+			"x":6,
+			"y":953,
+			"width":197,
+			"height":197,
+			"color":"#ffffff"
 		}
 	],
 	"edges":[
