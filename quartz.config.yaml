@@ -291,7 +291,7 @@ plugins:
     enabled: true
     options:
       title: 最近のノート
-      limit: 10
+      limit: 12
       showTags: false
       hideTagPages: true
       hideFolderPages: true

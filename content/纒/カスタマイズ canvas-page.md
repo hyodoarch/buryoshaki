@@ -35,6 +35,7 @@ Quartz の canvas-page の無聊写記の表示について下記を調べてく
 
 - グループの文字サイズ ≫ 「現実世界」など    
 - カード内の文字サイズ ≫ 「時雄、ときめく」など    
+- 
 - 矢印のラベルの文字サイズ ≫ 「面識あり」など
 
 
@@ -87,26 +88,11 @@ npx quartz build --serve
 ### WEB（リモート）で確認する
 [chatGPTの解説](https://chatgpt.com/share/6a81057e-e3b4-83ee-80d7-4591cafbe898)
 
-まず変更ファイルの確認 ≫ 変更ファイルは赤で表示される
+まず変更ファイルの確認 ≫ "quartz.lock.json" が赤で表示される
 ```cmd
 git status
 ```
 
-問題なければ、add
-```cmd
-git add -A
-```
+問題なければ、Obsidian Git で commit and sync する。
 
-もう一度確認 ≫ 今度は緑で表示される
-```cmd
-git sataus
-```
-
-commit ≫ pull ≫ push
-```cmd
-git commit -m "Update scss"
-git pull --rebase origin v5
-git push origin v5
-```
-
-Actions で Deploy が始まるので待つ
+その後、Actions で Deploy の始まりを確認、終了後に表示を確認
