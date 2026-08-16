@@ -73,7 +73,8 @@ Quartz Community の `canvas-page` をフォークして使用している。
 - オリジナル：[Quartz Community / canvas-page](https://github.com/quartz-community/canvas-page)    
 - カスタマイズ版：[hyodoarch / canvas-page](https://github.com/hyodoarch/canvas-page)    
 
-よろしければ、試してみてください。
+よろしければ、お試しください。
+インストール方法、設定方法については、README.md をお読みください。
 
 [^1]: ラベルの文字サイズは、基準サイズの 1.5rem とした。
 
