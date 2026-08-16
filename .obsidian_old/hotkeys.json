@@ -1,0 +1,16 @@
+{
+  "file-explorer:move-file": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "M"
+    }
+  ],
+  "multi-properties:add-props-to-current-note": [
+    {
+      "modifiers": [],
+      "key": "F5"
+    }
+  ]
+}

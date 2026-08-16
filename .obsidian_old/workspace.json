@@ -1,0 +1,308 @@
+{
+  "main": {
+    "id": "a0f7c13fd2c94921",
+    "type": "split",
+    "children": [
+      {
+        "id": "af396a2c715be6d0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "109e938b7ba23c35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/index.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "index"
+            }
+          },
+          {
+            "id": "19b790d7dc9d570b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/ネタ帳.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "ネタ帳"
+            }
+          },
+          {
+            "id": "a7b857c252fb13ad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/プロフィール.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "プロフィール"
+            }
+          },
+          {
+            "id": "25c7a1166402362a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/料理/２種類の中国茶.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "２種類の中国茶"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "57510406c97bc931",
+    "type": "split",
+    "children": [
+      {
+        "id": "da0c8855e20f8a49",
+        "type": "tabs",
+        "dimension": 66.63669064748201,
+        "children": [
+          {
+            "id": "ee79e90f34099215",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "9ac8773faccad3ca",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:シフォンケーキ",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "7b5a5654644ac472",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      },
+      {
+        "id": "c3cd7ac29d31fc0e",
+        "type": "tabs",
+        "dimension": 33.36330935251798,
+        "children": [
+          {
+            "id": "60d742c06bfb0bc1",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "グラフビュー"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 304.5
+  },
+  "right": {
+    "id": "d23274ee581932a4",
+    "type": "split",
+    "children": [
+      {
+        "id": "84bed84e7a057e59",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3755b9b1c5ffff40",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "content/料理/２種類の中国茶.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "２種類の中国茶へのバックリンク"
+            }
+          },
+          {
+            "id": "a97ea3145117a463",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Quartz の導入.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Quartz の導入からのアウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "90b58ac14576734e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "1ba67ece9155974f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          },
+          {
+            "id": "8a7642fd4188eb6e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Quartz の導入.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Quartz の導入のアウトライン"
+            }
+          },
+          {
+            "id": "e5f28c24b883208b",
+            "type": "leaf",
+            "state": {
+              "type": "footnotes",
+              "state": {
+                "file": "Quartz の導入.md"
+              },
+              "icon": "lucide-file-signature",
+              "title": "脚注"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false,
+      "bases:新規ベースを作成": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "25c7a1166402362a",
+  "lastOpenFiles": [
+    "content/プロフィール.md",
+    "content/ネタ帳.md",
+    "content/index.md",
+    "コンピュータ/Quadro 600 を SketchUpで使う.md",
+    "_各 html 要素の表示チェック用ノート.md",
+    "images/2004/01_1003_02.jpg",
+    "建築/ソヴィエト・スタイルの建築.md",
+    "今、興味を持って取り組んでいること.md",
+    "プロフィール.md",
+    "index.md",
+    "ネタ帳.md",
+    "About.md",
+    "images/2011/top_.md",
+    "images/2026/top_r540-0902_0006.jpg",
+    "コンピュータ/Raspberry Pi で格安ミュージックサーバを作る～その２～.md",
+    "images/top_r540-0902_0006.jpg.0.pdnSave",
+    "images/2026",
+    "images/新しいフォルダー",
+    "コンピュータ/Raspberry Pi で格安ミュージックサーバを作る～その１～.md",
+    "料理/ベリー生活！！お化けのシフォンケーキ　その３.md",
+    "料理/シフォンケーキ宇宙編.md",
+    "料理/ベリー生活！！お化けのシフォンケーキ　その１.md",
+    "料理/朝食にトマトジュース復活！.md",
+    "コンピュータ/Quartz5 の graph の日本語表示方法.md",
+    "コンピュータ/ファイルサーバーを組むことにした.md",
+    "コンピュータ/トップページ画像をランダムに表示する.md",
+    "コンピュータ/ひかり電話の「FAXお知らせメール」サービス.md",
+    "コンピュータ/ハードディスククラッシュ顛末記.md",
+    "コンピュータ/ノートPCが欲しい.md",
+    "コンピュータ/なかなか使いやすいUSBレコードプレイヤー.md",
+    "コンピュータ/スタイルシートを切り替えて、文字サイズを変える.md",
+    "目次（Bases）.base",
+    "ART",
+    "images/2004/02_0789_01.jpg",
+    "images/2008/kikar-3.gif",
+    "images/2008/kikar-2.gif",
+    "images/2008/kikar-1.jpg",
+    "images/2008/_IGP3970.jpg",
+    "images/2008/_IGP1162.jpg",
+    "images/2008/__IGP3483.jpg",
+    "images/2008/__IGP3394a.jpg",
+    "目次（Bases） (fuminyan の競合コピー 2026-07-03).base",
+    "告知",
+    "コンピュータ",
+    "音楽",
+    "本"
+  ]
+}

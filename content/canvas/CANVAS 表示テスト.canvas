@@ -1,5 +1,16 @@
 {
 	"nodes":[
+		{
+			"id":"59b5d4b035233424",
+			"type":"group",
+			"styleAttributes":{"border":"invisible"},
+			"x":-490,
+			"y":-269,
+			"width":405,
+			"height":127,
+			"color":"2",
+			"label":"枠非表示（背景透明）"
+		},
 		{"id":"81b280d65ec40c4c","type":"group","x":-594,"y":-163,"width":172,"height":127,"label":"灰"},
 		{"id":"d6749efcbeab6e80","type":"group","x":-379,"y":-163,"width":172,"height":127,"color":"1","label":"赤"},
 		{"id":"6617174c0a164623","type":"group","x":-176,"y":-163,"width":172,"height":127,"color":"2","label":"橙"},
@@ -13,20 +24,10 @@
 			"text":"赤",
 			"styleAttributes":{},
 			"x":-317,
-			"y":77,
+			"y":217,
 			"width":102,
 			"height":87,
 			"color":"1"
-		},
-		{
-			"id":"8d988ae3f78eb1d5",
-			"type":"text",
-			"text":"灰",
-			"styleAttributes":{},
-			"x":-453,
-			"y":77,
-			"width":97,
-			"height":87
 		},
 		{
 			"id":"e590b5722f4e7f50",
@@ -44,7 +45,7 @@
 			"text":"ノード",
 			"styleAttributes":{"border":"invisible"},
 			"x":-672,
-			"y":91,
+			"y":231,
 			"width":145,
 			"height":60
 		},
@@ -54,7 +55,7 @@
 			"text":"橙",
 			"styleAttributes":{},
 			"x":-186,
-			"y":77,
+			"y":217,
 			"width":102,
 			"height":87,
 			"color":"2"
@@ -65,7 +66,7 @@
 			"text":"黄",
 			"styleAttributes":{},
 			"x":-60,
-			"y":77,
+			"y":217,
 			"width":102,
 			"height":87,
 			"color":"3"
@@ -76,7 +77,7 @@
 			"text":"緑",
 			"styleAttributes":{},
 			"x":67,
-			"y":77,
+			"y":217,
 			"width":102,
 			"height":87,
 			"color":"4"
@@ -87,7 +88,7 @@
 			"text":"青",
 			"styleAttributes":{},
 			"x":202,
-			"y":77,
+			"y":217,
 			"width":102,
 			"height":87,
 			"color":"5"
@@ -98,10 +99,31 @@
 			"text":"紫",
 			"styleAttributes":{},
 			"x":332,
-			"y":77,
+			"y":217,
 			"width":102,
 			"height":87,
 			"color":"6"
+		},
+		{
+			"id":"8d988ae3f78eb1d5",
+			"type":"text",
+			"text":"灰",
+			"styleAttributes":{},
+			"x":-453,
+			"y":217,
+			"width":97,
+			"height":87
+		},
+		{
+			"id":"eb1305ef93bf5f40",
+			"type":"text",
+			"text":"枠非表示（背景透明）",
+			"styleAttributes":{"border":"invisible"},
+			"x":-422,
+			"y":285,
+			"width":202,
+			"height":87,
+			"color":"1"
 		}
 	],
 	"edges":[
@@ -109,6 +131,7 @@
 			"id":"a9b0f5f16063a5d5",
 			"styleAttributes":{},
 			"toFloating":false,
+			"fromFloating":false,
 			"fromNode":"e590b5722f4e7f50",
 			"fromSide":"right",
 			"toNode":"81b280d65ec40c4c",
@@ -122,6 +145,57 @@
 			"fromSide":"right",
 			"toNode":"8d988ae3f78eb1d5",
 			"toSide":"left"
+		},
+		{
+			"id":"7780d9c7d95881b7",
+			"styleAttributes":{
+				"path":null,
+				"pathfindingMethod":null,
+				"arrow":null
+			},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"81b280d65ec40c4c",
+			"fromSide":"bottom",
+			"toNode":"d6749efcbeab6e80",
+			"toSide":"bottom",
+			"label":"エッジ（実線）"
+		},
+		{
+			"id":"b94a319f3fb12a8e",
+			"styleAttributes":{"path":"dotted"},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"d6749efcbeab6e80",
+			"fromSide":"bottom",
+			"toNode":"6617174c0a164623",
+			"toSide":"bottom",
+			"color":"1",
+			"label":"エッジ（点線）"
+		},
+		{
+			"id":"9d77c298310680e6",
+			"styleAttributes":{"path":"short-dashed"},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"6617174c0a164623",
+			"fromSide":"bottom",
+			"toNode":"40c48fb9216f36ae",
+			"toSide":"bottom",
+			"color":"2",
+			"label":"エッジ（破線）"
+		},
+		{
+			"id":"343ca2a67f8f8c4b",
+			"styleAttributes":{"path":"long-dashed"},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"40c48fb9216f36ae",
+			"fromSide":"bottom",
+			"toNode":"8d7d7bace7e6ad57",
+			"toSide":"bottom",
+			"color":"4",
+			"label":"エッジ（破線2）"
 		}
 	],
 	"metadata":{

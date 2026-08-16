@@ -66,7 +66,7 @@ npx quartz build --serve
 ```
 です。
 
-### WEBで確認する
+### WEB（localhost:8080）で確認する
 
 .github\workflows\deploy.yml ≫ を編集する必要がある。 
 
@@ -83,3 +83,30 @@ npx quartz build --serve
 ```
 
 で大丈夫です。`plugin install --latest` が現在のQuartz v5で推奨されている更新方法です。
+
+### WEB（リモート）で確認する
+[chatGPTの解説](https://chatgpt.com/share/6a81057e-e3b4-83ee-80d7-4591cafbe898)
+
+まず変更ファイルの確認 ≫ 変更ファイルは赤で表示される
+```cmd
+git status
+```
+
+問題なければ、add
+```cmd
+git add -A
+```
+
+もう一度確認 ≫ 今度は緑で表示される
+```cmd
+git sataus
+```
+
+commit ≫ pull ≫ push
+```cmd
+git commit -m "Update scss"
+git pull --rebase origin v5
+git push origin v5
+```
+
+Actions で Deploy が始まるので待つ
