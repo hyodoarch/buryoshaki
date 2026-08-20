@@ -83,6 +83,10 @@ export default (() => {
           </>
         )}
 
+        {cfg.baseUrl && fileData.slug !== "404" && (
+          <link rel="canonical" href={socialUrl} />
+        )}
+
         {cfg.baseUrl && (
           <>
             <meta property="twitter:domain" content={cfg.baseUrl}></meta>
