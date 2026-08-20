@@ -1,84 +1,220 @@
 {
 	"nodes":[
 		{
+			"id":"beccfec23bad3103",
+			"type":"group",
+			"styleAttributes":{"border":"invisible"},
+			"x":-700,
+			"y":-460,
+			"width":204,
+			"height":100,
+			"color":"4",
+			"label":"スタート!"
+		},
+		{
 			"id":"82999598fb543a83",
 			"type":"text",
 			"text":"リビングはいつもすっきり見せたい？",
 			"styleAttributes":{"textAlign":"center"},
-			"x":-373,
-			"y":-406,
-			"width":178,
-			"height":118
+			"x":-680,
+			"y":-420,
+			"width":180,
+			"height":120
 		},
 		{
-			"id":"a5a9a546177bd094",
+			"id":"0e71046510633845",
 			"type":"text",
-			"text":"## スタート！",
+			"text":"洗う→干す→しまう\nを一か所で済ませたい？",
 			"styleAttributes":{"textAlign":"center"},
-			"x":-391,
-			"y":-534,
-			"width":213,
-			"height":60
+			"x":-420,
+			"y":-420,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"9d780ef909c88dc5",
+			"type":"text",
+			"text":"洗う→干す→しまう\nを一か所で済ませたい？",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":-220,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"db2ad694ee435021",
+			"type":"text",
+			"text":"食品類は、1週間以上のまとめ買いをする。",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":-20,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"4fc68ed1d111b043",
+			"type":"text",
+			"text":"玄関に靴や傘、ベビーカーなどを出しておきたくない",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":160,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"16eeb63aea4b00f5",
+			"type":"text",
+			"text":"来客から家族の靴や荷物を見えなくしたい",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":360,
+			"width":180,
+			"height":120
 		},
 		{
 			"id":"abc19152c7e73782",
 			"type":"text",
-			"text":"食品類は、1週間以上のまとめ買いはしない",
+			"text":"食品類は、1週間以上のまとめ買いをする。",
 			"styleAttributes":{"textAlign":"center"},
-			"x":-51,
-			"y":-407,
-			"width":178,
-			"height":118
+			"x":-160,
+			"y":-420,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"cdbf9345f46c8d13",
+			"type":"text",
+			"text":"食品類は、1週間以上のまとめ買いをする。",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-420,
+			"y":-220,
+			"width":180,
+			"height":120
 		},
 		{
 			"id":"a316d4b441693e15",
 			"type":"text",
 			"text":"玄関に靴や傘、ベビーカーなどを出しておきたくない",
 			"styleAttributes":{"textAlign":"center"},
-			"x":-247,
-			"y":-194,
-			"width":248,
-			"height":134
-		},
-		{
-			"id":"56ce0e9fe571585e",
-			"type":"text",
-			"text":"",
-			"styleAttributes":{},
-			"x":-547,
-			"y":-181,
-			"width":164,
-			"height":60
+			"x":100,
+			"y":-420,
+			"width":180,
+			"height":120
 		},
 		{
 			"id":"62f1d4ce0729416d",
 			"type":"text",
 			"text":"来客から家族の靴や荷物を見えなくしたい",
 			"styleAttributes":{"textAlign":"center"},
-			"x":-306,
-			"y":51,
-			"width":248,
-			"height":134
+			"x":360,
+			"y":-420,
+			"width":180,
+			"height":120
 		},
 		{
-			"id":"0e71046510633845",
+			"id":"004470289fc590ef",
 			"type":"text",
-			"text":"「洗う→干す→しまう」\nを一か所で済ませたい？",
+			"text":"玄関に靴や傘、ベビーカーなどを出しておきたくない",
 			"styleAttributes":{"textAlign":"center"},
-			"x":-329,
-			"y":272,
-			"width":248,
-			"height":134
+			"x":-160,
+			"y":-220,
+			"width":180,
+			"height":120
 		},
 		{
-			"id":"82206f7d8cee8e15",
+			"id":"f694de3d9670f3a6",
 			"type":"text",
-			"text":"洗濯物は外に干したくない？",
+			"text":"玄関に靴や傘、ベビーカーなどを出しておきたくない",
 			"styleAttributes":{"textAlign":"center"},
-			"x":-305,
-			"y":481,
-			"width":248,
-			"height":134
+			"x":-420,
+			"y":-20,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"9c823878b86ccb6c",
+			"type":"text",
+			"text":"来客から家族の靴や荷物を見えなくしたい",
+			"styleAttributes":{"textAlign":"center"},
+			"x":100,
+			"y":-220,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"1c825dd953868d29",
+			"type":"text",
+			"text":"来客から家族の靴や荷物を見えなくしたい",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-160,
+			"y":-20,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"f0528248a7b13c98",
+			"type":"text",
+			"text":"来客から家族の靴や荷物を見えなくしたい",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-420,
+			"y":160,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"e36bb3612523729c",
+			"type":"text",
+			"text":"**あなたはシンプル派！**  \n＋1〜2畳",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":560,
+			"width":180,
+			"height":120,
+			"color":"4"
+		},
+		{
+			"id":"17575eebed8b6361",
+			"type":"text",
+			"text":"**ほどほど家事ラク派！**  \n＋4〜6畳",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-320,
+			"y":560,
+			"width":180,
+			"height":120,
+			"color":"4"
+		},
+		{
+			"id":"1fa3628f203dc343",
+			"type":"text",
+			"text":"**家事ラク優等生！**  \n＋7〜10畳",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-80,
+			"y":560,
+			"width":180,
+			"height":120,
+			"color":"4"
+		},
+		{
+			"id":"6760ec36615a7893",
+			"type":"text",
+			"text":"**家事ラク優等生！**  \n＋7〜10畳",
+			"styleAttributes":{"textAlign":"center"},
+			"x":160,
+			"y":560,
+			"width":180,
+			"height":120,
+			"color":"4"
+		},
+		{
+			"id":"50dc797a0457a6e5",
+			"type":"text",
+			"text":"**SNS家づくり完全装備！**  \n＋12〜15畳",
+			"styleAttributes":{"textAlign":"center"},
+			"x":400,
+			"y":560,
+			"width":180,
+			"height":120,
+			"color":"4"
 		}
 	],
 	"edges":[
@@ -89,19 +225,10 @@
 			"fromFloating":false,
 			"fromNode":"82999598fb543a83",
 			"fromSide":"bottom",
-			"toNode":"56ce0e9fe571585e",
+			"toNode":"9d780ef909c88dc5",
 			"toSide":"top",
 			"color":"5",
 			"label":"No"
-		},
-		{
-			"id":"db5b9ffaf87e33ee",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"a5a9a546177bd094",
-			"fromSide":"bottom",
-			"toNode":"82999598fb543a83",
-			"toSide":"top"
 		},
 		{
 			"id":"91ea6037895230a3",
@@ -109,9 +236,9 @@
 			"toFloating":false,
 			"fromFloating":false,
 			"fromNode":"a316d4b441693e15",
-			"fromSide":"bottom",
+			"fromSide":"right",
 			"toNode":"62f1d4ce0729416d",
-			"toSide":"top",
+			"toSide":"left",
 			"color":"1"
 		},
 		{
@@ -121,7 +248,7 @@
 			"fromFloating":false,
 			"fromNode":"82999598fb543a83",
 			"fromSide":"right",
-			"toNode":"abc19152c7e73782",
+			"toNode":"0e71046510633845",
 			"toSide":"left",
 			"color":"1",
 			"label":"Yes"
@@ -132,21 +259,284 @@
 			"toFloating":false,
 			"fromFloating":false,
 			"fromNode":"abc19152c7e73782",
-			"fromSide":"bottom",
+			"fromSide":"right",
 			"toNode":"a316d4b441693e15",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"5bd1cca726c4bdc4",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"0e71046510633845",
+			"fromSide":"right",
+			"toNode":"abc19152c7e73782",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"fe434707b896f7cc",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"0e71046510633845",
+			"fromSide":"bottom",
+			"toNode":"cdbf9345f46c8d13",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"ad2a3457421ceaf1",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"9d780ef909c88dc5",
+			"fromSide":"right",
+			"toNode":"cdbf9345f46c8d13",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"e547a5252142dcc3",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"abc19152c7e73782",
+			"fromSide":"bottom",
+			"toNode":"004470289fc590ef",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"b13d27d3581f4573",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"a316d4b441693e15",
+			"fromSide":"bottom",
+			"toNode":"9c823878b86ccb6c",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"8d0813fdf014eb59",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"cdbf9345f46c8d13",
+			"fromSide":"right",
+			"toNode":"004470289fc590ef",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"16d57038376efcfe",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"004470289fc590ef",
+			"fromSide":"right",
+			"toNode":"9c823878b86ccb6c",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"ba7fd4551f3b0dd1",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"9d780ef909c88dc5",
+			"fromSide":"bottom",
+			"toNode":"db2ad694ee435021",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"13529f3ee90f0bd8",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"db2ad694ee435021",
+			"fromSide":"bottom",
+			"toNode":"4fc68ed1d111b043",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"d3747dff0a594b32",
+			"styleAttributes":{
+				"pathfindingMethod":null
+			},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"4fc68ed1d111b043",
+			"fromSide":"bottom",
+			"toNode":"16eeb63aea4b00f5",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"26ee3b38b03656c8",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"db2ad694ee435021",
+			"fromSide":"right",
+			"toNode":"f694de3d9670f3a6",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"489c17a10c6478ac",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"4fc68ed1d111b043",
+			"fromSide":"right",
+			"toNode":"f0528248a7b13c98",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"c7fc56ccd15c6dc4",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"f694de3d9670f3a6",
+			"fromSide":"right",
+			"toNode":"1c825dd953868d29",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"ee40b3c1bd2880bd",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"f694de3d9670f3a6",
+			"fromSide":"bottom",
+			"toNode":"f0528248a7b13c98",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"50ffbc7b154dd47e",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"9c823878b86ccb6c",
+			"fromSide":"right",
+			"toNode":"6760ec36615a7893",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"bdc4780b213784a2",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"cdbf9345f46c8d13",
+			"fromSide":"bottom",
+			"toNode":"f694de3d9670f3a6",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"db702a367fb6e1e5",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"004470289fc590ef",
+			"fromSide":"bottom",
+			"toNode":"1c825dd953868d29",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"d11e26d859143d58",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"16eeb63aea4b00f5",
+			"fromSide":"bottom",
+			"toNode":"e36bb3612523729c",
 			"toSide":"top",
 			"color":"1"
 		},
 		{
-			"id":"f7d4f383abab459a",
+			"id":"9784a81ea6f145a8",
+			"styleAttributes":{
+				"pathfindingMethod":null
+			},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"f0528248a7b13c98",
+			"fromSide":"bottom",
+			"toNode":"e36bb3612523729c",
+			"toSide":"right",
+			"color":"5"
+		},
+		{
+			"id":"944f99f65a393396",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1c825dd953868d29",
+			"fromSide":"bottom",
+			"toNode":"17575eebed8b6361",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"aa8512ceed0f7eae",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"f0528248a7b13c98",
+			"fromSide":"right",
+			"toNode":"17575eebed8b6361",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"d4c2281fb8aeae89",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"1c825dd953868d29",
+			"fromSide":"right",
+			"toNode":"1fa3628f203dc343",
+			"toSide":"left",
+			"color":"1"
+		},
+		{
+			"id":"d681b2504ece66f7",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"9c823878b86ccb6c",
+			"fromSide":"bottom",
+			"toNode":"1fa3628f203dc343",
+			"toSide":"top",
+			"color":"5"
+		},
+		{
+			"id":"f11c24d72656e346",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"62f1d4ce0729416d",
+			"fromSide":"right",
+			"toNode":"50dc797a0457a6e5",
+			"toSide":"right",
+			"color":"1"
+		},
+		{
+			"id":"a1d9031c296f87b9",
 			"styleAttributes":{},
 			"toFloating":false,
 			"fromFloating":false,
 			"fromNode":"62f1d4ce0729416d",
 			"fromSide":"bottom",
-			"toNode":"0e71046510633845",
+			"toNode":"6760ec36615a7893",
 			"toSide":"top",
-			"color":"1"
+			"color":"5"
 		}
 	],
 	"metadata":{
