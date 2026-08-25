@@ -79,6 +79,7 @@ $font-page-title: 25px;
 $font-list-title: 21px;
 $font-h3: 18px;
 $font-body: 16px;
+$font-table: 14px;
 $font-date: 14px;
 $font-tag: 13px;
 $font-code: 12px;
@@ -963,6 +964,27 @@ article .mermaid .nodeLabel p {
   li {
     text-align: justify;
     text-justify: inter-character;
+  }
+
+  // ---------------------------------------------------------------------------
+  // 表
+  // ---------------------------------------------------------------------------
+
+  .table-container > table {
+    font-size: $font-table;
+    margin: 1rem 0; // 上下16px、左右0
+
+    > * {
+      line-height: 1.4rem;
+    }
+
+    th {
+      padding: 0.4rem 0.5rem;
+    }
+
+    td {
+      padding: 0.2rem 0.5rem;
+    }
   }
 
   strong,
