@@ -62,6 +62,48 @@
 			"height":120
 		},
 		{
+			"id":"4fc68ed1d111b043",
+			"type":"text",
+			"text":"玄関に靴や傘、ベビーカーなどを出しておきたくない",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":180,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"16eeb63aea4b00f5",
+			"type":"text",
+			"text":"来客から家族の靴や荷物を見えなくしたい",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":380,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"e36bb3612523729c",
+			"type":"text",
+			"text":"**家事ラクシンプル派！**\n  +200万円コース\n＋1〜3畳",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":580,
+			"width":240,
+			"height":120,
+			"color":"4"
+		},
+		{
+			"id":"773311778e8322f0",
+			"type":"text",
+			"text":"**フツーの家が一番派！** \n+0万円コース \n＋0畳",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":760,
+			"width":200,
+			"height":120,
+			"color":"4"
+		},
+		{
 			"id":"a316d4b441693e15",
 			"type":"text",
 			"text":"玄関に靴や傘、ベビーカーなどを出しておきたくない",
@@ -122,16 +164,6 @@
 			"height":120
 		},
 		{
-			"id":"4fc68ed1d111b043",
-			"type":"text",
-			"text":"玄関に靴や傘、ベビーカーなどを出しておきたくない",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-680,
-			"y":180,
-			"width":180,
-			"height":120
-		},
-		{
 			"id":"f0528248a7b13c98",
 			"type":"text",
 			"text":"来客から家族の靴や荷物を見えなくしたい",
@@ -140,38 +172,6 @@
 			"y":180,
 			"width":180,
 			"height":120
-		},
-		{
-			"id":"16eeb63aea4b00f5",
-			"type":"text",
-			"text":"来客から家族の靴や荷物を見えなくしたい",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-680,
-			"y":380,
-			"width":180,
-			"height":120
-		},
-		{
-			"id":"e36bb3612523729c",
-			"type":"text",
-			"text":"**家事ラクシンプル派！**\n  +200万円コース\n＋1〜3畳",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-680,
-			"y":580,
-			"width":240,
-			"height":120,
-			"color":"4"
-		},
-		{
-			"id":"773311778e8322f0",
-			"type":"text",
-			"text":"**フツーの家が一番派！** \n+0万円コース \n＋0畳",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-680,
-			"y":760,
-			"width":200,
-			"height":120,
-			"color":"4"
 		},
 		{
 			"id":"17575eebed8b6361",
@@ -187,7 +187,7 @@
 		{
 			"id":"a8311484c5addf74",
 			"type":"text",
-			"text":"**SNS家づくり完全装備！**  \n+1,000万コース\n＋7〜12畳",
+			"text":"**SNS家づくり完全装備！**  +1,000万コース\n＋7〜12畳",
 			"styleAttributes":{"textAlign":"center"},
 			"x":60,
 			"y":660,
@@ -209,7 +209,7 @@
 		{
 			"id":"6760ec36615a7893",
 			"type":"text",
-			"text":"**家事ラクが全て！**  \n+800万円コース\n＋6〜10畳",
+			"text":"**家事ラクが全て！**  +800万円コース\n＋6〜10畳",
 			"styleAttributes":{"textAlign":"center"},
 			"x":160,
 			"y":420,
