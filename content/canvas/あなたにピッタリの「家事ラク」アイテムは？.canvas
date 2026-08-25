@@ -14,7 +14,7 @@
 		{
 			"id":"82999598fb543a83",
 			"type":"text",
-			"text":"リビングはいつもすっきり見せたい？",
+			"text":"洗濯にかかる移動や手間をできるだけ減らしたい？",
 			"styleAttributes":{"textAlign":"center"},
 			"x":-680,
 			"y":-420,
@@ -24,7 +24,7 @@
 		{
 			"id":"0e71046510633845",
 			"type":"text",
-			"text":"洗う→干す→しまう\nを一か所で済ませたい？",
+			"text":"リビングはいつもすっきり見せたい？",
 			"styleAttributes":{"textAlign":"center"},
 			"x":-420,
 			"y":-420,
@@ -34,7 +34,7 @@
 		{
 			"id":"9d780ef909c88dc5",
 			"type":"text",
-			"text":"洗う→干す→しまう\nを一か所で済ませたい？",
+			"text":"リビングはいつもすっきり見せたい？",
 			"styleAttributes":{"textAlign":"center"},
 			"x":-680,
 			"y":-220,
@@ -52,42 +52,12 @@
 			"height":120
 		},
 		{
-			"id":"4fc68ed1d111b043",
-			"type":"text",
-			"text":"玄関に靴や傘、ベビーカーなどを出しておきたくない",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-680,
-			"y":160,
-			"width":180,
-			"height":120
-		},
-		{
-			"id":"16eeb63aea4b00f5",
-			"type":"text",
-			"text":"来客から家族の靴や荷物を見えなくしたい",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-680,
-			"y":360,
-			"width":180,
-			"height":120
-		},
-		{
 			"id":"abc19152c7e73782",
 			"type":"text",
 			"text":"食品類は、1週間以上のまとめ買いをする。",
 			"styleAttributes":{"textAlign":"center"},
 			"x":-160,
 			"y":-420,
-			"width":180,
-			"height":120
-		},
-		{
-			"id":"cdbf9345f46c8d13",
-			"type":"text",
-			"text":"食品類は、1週間以上のまとめ買いをする。",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-420,
-			"y":-220,
 			"width":180,
 			"height":120
 		},
@@ -102,12 +72,12 @@
 			"height":120
 		},
 		{
-			"id":"62f1d4ce0729416d",
+			"id":"cdbf9345f46c8d13",
 			"type":"text",
-			"text":"来客から家族の靴や荷物を見えなくしたい",
+			"text":"食品類は、1週間以上のまとめ買いをする。",
 			"styleAttributes":{"textAlign":"center"},
-			"x":360,
-			"y":-420,
+			"x":-420,
+			"y":-220,
 			"width":180,
 			"height":120
 		},
@@ -152,44 +122,86 @@
 			"height":120
 		},
 		{
+			"id":"4fc68ed1d111b043",
+			"type":"text",
+			"text":"玄関に靴や傘、ベビーカーなどを出しておきたくない",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":180,
+			"width":180,
+			"height":120
+		},
+		{
 			"id":"f0528248a7b13c98",
 			"type":"text",
 			"text":"来客から家族の靴や荷物を見えなくしたい",
 			"styleAttributes":{"textAlign":"center"},
 			"x":-420,
-			"y":160,
+			"y":180,
+			"width":180,
+			"height":120
+		},
+		{
+			"id":"16eeb63aea4b00f5",
+			"type":"text",
+			"text":"来客から家族の靴や荷物を見えなくしたい",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":380,
 			"width":180,
 			"height":120
 		},
 		{
 			"id":"e36bb3612523729c",
 			"type":"text",
-			"text":"**あなたはシンプル派！**  \n＋1〜2畳",
+			"text":"**家事ラクシンプル派！**  \n+200万円コース\n＋1〜3畳",
 			"styleAttributes":{"textAlign":"center"},
 			"x":-680,
-			"y":560,
-			"width":180,
+			"y":580,
+			"width":220,
+			"height":120,
+			"color":"4"
+		},
+		{
+			"id":"773311778e8322f0",
+			"type":"text",
+			"text":"**フツーの家が一番派！** \n+0万円コース \n＋0畳",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-680,
+			"y":760,
+			"width":200,
 			"height":120,
 			"color":"4"
 		},
 		{
 			"id":"17575eebed8b6361",
 			"type":"text",
-			"text":"**ほどほど家事ラク派！**  \n＋4〜6畳",
+			"text":"**ほどほど家事ラク派！**  \n+350万円\n＋3〜6畳",
 			"styleAttributes":{"textAlign":"center"},
-			"x":-320,
-			"y":560,
-			"width":180,
+			"x":-260,
+			"y":660,
+			"width":220,
 			"height":120,
 			"color":"4"
 		},
 		{
+			"id":"a8311484c5addf74",
+			"type":"text",
+			"text":"**SNS家づくり完全装備！**  \n+1,000万コース\n＋7〜12畳",
+			"styleAttributes":{"textAlign":"center"},
+			"x":80,
+			"y":660,
+			"width":240,
+			"height":120,
+			"color":"2"
+		},
+		{
 			"id":"1fa3628f203dc343",
 			"type":"text",
-			"text":"**家事ラク優等生！**  \n＋7〜10畳",
+			"text":"**家事ラク優等生！**  +500万円コース\n＋5〜8畳",
 			"styleAttributes":{"textAlign":"center"},
-			"x":-80,
-			"y":560,
+			"x":-60,
+			"y":480,
 			"width":180,
 			"height":120,
 			"color":"4"
@@ -197,24 +209,23 @@
 		{
 			"id":"6760ec36615a7893",
 			"type":"text",
-			"text":"**家事ラク優等生！**  \n＋7〜10畳",
+			"text":"**家事ラクが全て！**  +800万円コース\n＋6〜10畳",
 			"styleAttributes":{"textAlign":"center"},
 			"x":160,
-			"y":560,
-			"width":180,
+			"y":420,
+			"width":200,
 			"height":120,
 			"color":"4"
 		},
 		{
-			"id":"50dc797a0457a6e5",
+			"id":"62f1d4ce0729416d",
 			"type":"text",
-			"text":"**SNS家づくり完全装備！**  \n＋12〜15畳",
+			"text":"来客から家族の靴や荷物を見えなくしたい",
 			"styleAttributes":{"textAlign":"center"},
-			"x":400,
-			"y":560,
+			"x":280,
+			"y":140,
 			"width":180,
-			"height":120,
-			"color":"4"
+			"height":120
 		}
 	],
 	"edges":[
@@ -238,8 +249,9 @@
 			"fromNode":"a316d4b441693e15",
 			"fromSide":"right",
 			"toNode":"62f1d4ce0729416d",
-			"toSide":"left",
-			"color":"1"
+			"toSide":"top",
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"4bd5d85d5db5ecc8",
@@ -262,7 +274,8 @@
 			"fromSide":"right",
 			"toNode":"a316d4b441693e15",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"5bd1cca726c4bdc4",
@@ -273,7 +286,8 @@
 			"fromSide":"right",
 			"toNode":"abc19152c7e73782",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"fe434707b896f7cc",
@@ -284,7 +298,8 @@
 			"fromSide":"bottom",
 			"toNode":"cdbf9345f46c8d13",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"ad2a3457421ceaf1",
@@ -295,17 +310,20 @@
 			"fromSide":"right",
 			"toNode":"cdbf9345f46c8d13",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"e547a5252142dcc3",
 			"styleAttributes":{},
 			"toFloating":false,
+			"fromFloating":false,
 			"fromNode":"abc19152c7e73782",
 			"fromSide":"bottom",
 			"toNode":"004470289fc590ef",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"b13d27d3581f4573",
@@ -316,7 +334,8 @@
 			"fromSide":"bottom",
 			"toNode":"9c823878b86ccb6c",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"8d0813fdf014eb59",
@@ -327,7 +346,8 @@
 			"fromSide":"right",
 			"toNode":"004470289fc590ef",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"16d57038376efcfe",
@@ -338,17 +358,20 @@
 			"fromSide":"right",
 			"toNode":"9c823878b86ccb6c",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"ba7fd4551f3b0dd1",
 			"styleAttributes":{},
 			"toFloating":false,
+			"fromFloating":false,
 			"fromNode":"9d780ef909c88dc5",
 			"fromSide":"bottom",
 			"toNode":"db2ad694ee435021",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"13529f3ee90f0bd8",
@@ -359,7 +382,8 @@
 			"fromSide":"bottom",
 			"toNode":"4fc68ed1d111b043",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"d3747dff0a594b32",
@@ -372,17 +396,20 @@
 			"fromSide":"bottom",
 			"toNode":"16eeb63aea4b00f5",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"26ee3b38b03656c8",
 			"styleAttributes":{},
 			"toFloating":false,
+			"fromFloating":false,
 			"fromNode":"db2ad694ee435021",
 			"fromSide":"right",
 			"toNode":"f694de3d9670f3a6",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"489c17a10c6478ac",
@@ -393,7 +420,8 @@
 			"fromSide":"right",
 			"toNode":"f0528248a7b13c98",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"c7fc56ccd15c6dc4",
@@ -404,7 +432,8 @@
 			"fromSide":"right",
 			"toNode":"1c825dd953868d29",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"ee40b3c1bd2880bd",
@@ -415,28 +444,20 @@
 			"fromSide":"bottom",
 			"toNode":"f0528248a7b13c98",
 			"toSide":"top",
-			"color":"5"
-		},
-		{
-			"id":"50ffbc7b154dd47e",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromFloating":false,
-			"fromNode":"9c823878b86ccb6c",
-			"fromSide":"right",
-			"toNode":"6760ec36615a7893",
-			"toSide":"left",
-			"color":"1"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"bdc4780b213784a2",
 			"styleAttributes":{},
 			"toFloating":false,
+			"fromFloating":false,
 			"fromNode":"cdbf9345f46c8d13",
 			"fromSide":"bottom",
 			"toNode":"f694de3d9670f3a6",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"db702a367fb6e1e5",
@@ -447,7 +468,8 @@
 			"fromSide":"bottom",
 			"toNode":"1c825dd953868d29",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"d11e26d859143d58",
@@ -458,7 +480,8 @@
 			"fromSide":"bottom",
 			"toNode":"e36bb3612523729c",
 			"toSide":"top",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"9784a81ea6f145a8",
@@ -471,17 +494,20 @@
 			"fromSide":"bottom",
 			"toNode":"e36bb3612523729c",
 			"toSide":"right",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"944f99f65a393396",
 			"styleAttributes":{},
 			"toFloating":false,
+			"fromFloating":false,
 			"fromNode":"1c825dd953868d29",
 			"fromSide":"bottom",
 			"toNode":"17575eebed8b6361",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"aa8512ceed0f7eae",
@@ -492,7 +518,8 @@
 			"fromSide":"right",
 			"toNode":"17575eebed8b6361",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"d4c2281fb8aeae89",
@@ -503,7 +530,8 @@
 			"fromSide":"right",
 			"toNode":"1fa3628f203dc343",
 			"toSide":"left",
-			"color":"1"
+			"color":"1",
+			"label":"Yes"
 		},
 		{
 			"id":"d681b2504ece66f7",
@@ -514,18 +542,8 @@
 			"fromSide":"bottom",
 			"toNode":"1fa3628f203dc343",
 			"toSide":"top",
-			"color":"5"
-		},
-		{
-			"id":"f11c24d72656e346",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromFloating":false,
-			"fromNode":"62f1d4ce0729416d",
-			"fromSide":"right",
-			"toNode":"50dc797a0457a6e5",
-			"toSide":"right",
-			"color":"1"
+			"color":"5",
+			"label":"No"
 		},
 		{
 			"id":"a1d9031c296f87b9",
@@ -533,10 +551,47 @@
 			"toFloating":false,
 			"fromFloating":false,
 			"fromNode":"62f1d4ce0729416d",
-			"fromSide":"bottom",
+			"fromSide":"left",
 			"toNode":"6760ec36615a7893",
 			"toSide":"top",
-			"color":"5"
+			"color":"5",
+			"label":"No"
+		},
+		{
+			"id":"095fd2af99e97869",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"16eeb63aea4b00f5",
+			"fromSide":"right",
+			"toNode":"773311778e8322f0",
+			"toSide":"right",
+			"color":"5",
+			"label":"No"
+		},
+		{
+			"id":"50ffbc7b154dd47e",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"9c823878b86ccb6c",
+			"fromSide":"right",
+			"toNode":"6760ec36615a7893",
+			"toSide":"left",
+			"color":"1",
+			"label":"Yes"
+		},
+		{
+			"id":"f11c24d72656e346",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"62f1d4ce0729416d",
+			"fromSide":"bottom",
+			"toNode":"a8311484c5addf74",
+			"toSide":"right",
+			"color":"1",
+			"label":"Yes"
 		}
 	],
 	"metadata":{
