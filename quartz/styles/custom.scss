@@ -956,8 +956,15 @@ p:has(> img) {
   padding-bottom: 0;
 }
 
-// 画像直後のキャプション p
+// 画像直後のキャプション
 p:has(> img) + p {
+  font-size: 14px;
+  font-family:
+    "Yu Gothic",
+    "YuGothic",
+    "Hiragino Kaku Gothic ProN",
+    "Meiryo",
+    sans-serif;
   margin-top: 0;
   margin-bottom: $article-p-margin-bottom;
 }
