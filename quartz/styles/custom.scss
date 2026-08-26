@@ -943,17 +943,23 @@ article .mermaid .nodeLabel p {
   // 段落・リスト
   // ---------------------------------------------------------------------------
 
-  p {
-    font-size: $font-body;
-    line-height: 1.9;
-    margin-top: $article-p-margin-top;
-    margin-bottom: $article-p-margin-bottom;
-  }
+p {
+  font-size: $font-body;
+  line-height: 1.9;
+  margin-top: $article-p-margin-top;
+  margin-bottom: $article-p-margin-bottom;
+}
 
-// 画像だけを含む段落は、画像下の余白をなくす
-  p:has(> img) {
-    margin-bottom: 0;
-    padding-bottom: 0;
+// 画像を囲む p は画像下の余白をなくす
+p:has(> img) {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+// 画像直後のキャプション p
+p:has(> img) + p {
+  margin-top: 0;
+  margin-bottom: $article-p-margin-bottom;
 }
 
   ul,
