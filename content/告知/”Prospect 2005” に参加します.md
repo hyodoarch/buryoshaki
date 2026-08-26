@@ -11,7 +11,6 @@ wordpress_id: 123
 ---
 
 [![1122-pr2005.jpg](/images/2005/1122-pr2005.jpg)](http://www.prospect-art.com/prospect2005/)
-
 [N's factory](http://prospect-hd.com/) の橋場氏を中心に重冨氏、兵藤で運営している[Prospect Art Project](http://www.prospect-art.com/)企画のグループ展を白金台のヘアサロン [Prospect](http://prospect-hd.com/) にて開催します。私は昨年と同様に会場でインスタレーションを行います。
 
 またオープニングにはクリスマス・パーティーも開かれます。是非お越し下さい。入場は無料です。ご来場を希望される方はメールにてご連絡下さい。

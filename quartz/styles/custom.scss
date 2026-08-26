@@ -48,8 +48,6 @@ $left-sidebar-min: 280px;
 $left-sidebar-max: 420px;
 $sidebar-content-width: $sidePanelWidth;
 
-$main-content-measure: 38ic;
-
 $serif-font-family:
   "游明朝",
   "Yu Mincho",
@@ -70,7 +68,7 @@ $serif-font-family:
 // - 主要な文字サイズは px でデザイン値を固定し、下記の変数で一元管理する。
 // - margin / padding / gap などの余白は rem / em を基本とする。
 // - 行間は原則として単位なしの line-height を使う。
-// - 日本語本文幅には ic を使う。
+// - 日本語本文幅は本文16px × 38文字相当（608px）を基準とする。
 // - 既存コンポーネント固有の rem 指定は、表示を変えてまで px に換算しない。
 //   （0.92rem 等は意図的にそのまま残す。）
 //
@@ -79,6 +77,9 @@ $font-page-title: 25px;
 $font-list-title: 21px;
 $font-h3: 18px;
 $font-body: 16px;
+
+$main-content-measure: $font-body * 38; // 608px
+
 $font-table: 14px;
 $font-date: 14px;
 $font-tag: 13px;
@@ -943,31 +944,47 @@ article .mermaid .nodeLabel p {
   // 段落・リスト
   // ---------------------------------------------------------------------------
 
-p {
-  font-size: $font-body;
-  line-height: 1.9;
-  margin-top: $article-p-margin-top;
-  margin-bottom: $article-p-margin-bottom;
-}
+  p {
+    font-size: $font-body;
+    line-height: 1.9;
+    margin-top: $article-p-margin-top;
+    margin-bottom: $article-p-margin-bottom;
+  }
 
-// 画像を囲む p は画像下の余白をなくす
-p:has(> img) {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
+  // ---------------------------------------------------------------------------
+  // 画像・キャプション
+  // ---------------------------------------------------------------------------
 
-// 画像直後のキャプション
-p:has(> img) + p {
-  font-size: 14px;
-  font-family:
-    "Yu Gothic",
-    "YuGothic",
-    "Hiragino Kaku Gothic ProN",
-    "Meiryo",
-    sans-serif;
-  margin-top: 0;
-  margin-bottom: $article-p-margin-bottom;
-}
+  // 画像だけを含む p
+  p:has(> img:only-child) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  // 画像そのもの
+  p:has(> img:only-child) > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  // 画像直後のキャプション
+  p:has(> img:only-child) + p {
+    width: 100%;
+    max-width: none;
+    font-size: 14px;
+    font-family:
+      "Yu Gothic",
+      "YuGothic",
+      "Hiragino Kaku Gothic ProN",
+      "Meiryo",
+      sans-serif;
+    line-height: 1.6;
+    margin: 0 0 $article-p-margin-bottom 0;
+  }
 
   ul,
   ol {

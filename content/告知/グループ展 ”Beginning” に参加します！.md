@@ -11,7 +11,6 @@ wordpress_id: 68
 ---
 
 ![01_DM](/images/2004/01_DM.jpg)
-
 グループ展 "Beginning" を3月26日～4月10日の間の週末に開催します。
 
 昨年、白金台の美容室 [Prospect](https://www.hyodo-arch.com/projects/shop/prospect/prospect-01.html) のギャラリーで、個展とグループ展を行いました。そのときに知り合ったアーティストの方々と「また何かやろう」ということになり、企画した展覧会です。

@@ -13,7 +13,6 @@ wordpress_id: 107
 ---
 
 ![0803_0534_02.jpg](/images/2005/0803_0534_02.jpg)
-
 「[自転車でおいで](http://chibeemarin.moe-nifty.com/)」の marin さんより頂いた musical baton を 2週間遅れでお届けします（marinさん、お約束より遅れてスミマセン）。ところで musical baton て何だろう？と思って調べてみたら[はてなダイアリー](http://d.hatena.ne.jp/keyword/Musical%20Baton)に載っていました。で、私の場合はというと･･････
 
 ## １．Total volume of music files on my computer

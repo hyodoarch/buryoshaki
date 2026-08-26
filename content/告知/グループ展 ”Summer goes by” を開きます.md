@@ -11,7 +11,6 @@ wordpress_id: 106
 ---
 
 ![0826_0346_03.jpg](/images/2005/0826_0346_03.jpg)
-
 [N's factory](http://nsart.exblog.jp/) の橋場氏を中心に重冨氏、兵藤で運営している[Prospect Art Project](http://www.prospect-art.com/)企画のグループ展を下北沢[add Cafe](http://www.addcafe.net/)にて開きます。
 
 "Summer goes by"をテーマに、現在活躍中のアーティスト、若手アーティストによるグループ展を開催します。それぞれのアーティスト達が感じた「過ぎ行く夏」の情景をadd Cafeでくつろぎながら、ご鑑賞いただけたらと思います。4月に開催した"Beginning"に続くProspect Art Projectの今年2回目の企画展です。多くの方にご覧いただければと思いますので、是非お越しくださいませ。オープニング・パーティーも特に予約の必要はございませんので、こちらもご参加ください。またDMをご希望の方は[hyodo](mailto:moso@hyodo-arch.com)までメールにてご連絡ください。

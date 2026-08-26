@@ -11,7 +11,6 @@ wordpress_id: 174
 ---
 
 [![summer vista](http://www.prospect-art.com/img/summer_vista_1.jpg)](http://www.prospect-art.com/flyer/summer_vista_1.html)
-
 僕が企画に参加している [Prospect Art Project](http://www.prospect-art.com/) 企画のアート・イベントを開催します。さまざまな人のご協力により、素晴らしい企画になったと思います。レセプション・パーティーも開きますので、是非お越しいただき、夏の夜をお楽しみください。上の画像をクリックすると参加アーティストの情報等を見ることができます。今回も京都在住のデザイナー[石黒さん](http://d.hatena.ne.jp/AsianPlastic/)にウェブ・フライヤーを作成していただきました。
 
 **白金台にあるヘアサロンProspectでおこなわれているMonthly Galley。2009年の夏は、７名のアーティストによる共演、そしてテーマは"SUMMER VISTA"。７名のアーティストがそれぞれの心で捉えた夏のシーンを演出します。**
