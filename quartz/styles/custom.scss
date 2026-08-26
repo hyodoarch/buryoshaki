@@ -881,8 +881,11 @@ article .mermaid .nodeLabel p {
   letter-spacing: 0.03em;
 
   img {
+    display: block;
     max-width: 100%;
     height: auto;
+    margin: 0;
+    padding: 0;
   }
 
   // ---------------------------------------------------------------------------
@@ -946,6 +949,12 @@ article .mermaid .nodeLabel p {
     margin-top: $article-p-margin-top;
     margin-bottom: $article-p-margin-bottom;
   }
+
+// 画像だけを含む段落は、画像下の余白をなくす
+  p:has(> img) {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 
   ul,
   ol {
