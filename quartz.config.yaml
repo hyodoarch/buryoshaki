@@ -5,7 +5,8 @@ configuration:
   enableSPA: true
   enablePopovers: false
   analytics:
-    provider: plausible
+    provider: google
+    tagId: G-E1H0K9050J
   locale: ja-JP
   baseUrl: blog.hyodo-arch.com
   ignorePatterns:
