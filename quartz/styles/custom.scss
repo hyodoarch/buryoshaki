@@ -1031,6 +1031,10 @@ article .mermaid .nodeLabel p {
     text-align: left;
   }
 
+  figure.image-captions-figure > figcaption.image-captions-caption a {
+    font-family: inherit;
+  }
+
   // 画像同士は横並びを許可するが、後続本文は回り込ませない
   figure.image-captions-left + :not(figure.image-captions-figure),
   figure.image-captions-right + :not(figure.image-captions-figure) {

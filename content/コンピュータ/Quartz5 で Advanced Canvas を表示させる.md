@@ -1,5 +1,5 @@
 ---
-title: Advanced Canvas を Quartz で表示させる
+title: Quartz5 で Advanced Canvas を表示させる
 date: 2026-08-16
 modified: 2026-08-16
 categories:

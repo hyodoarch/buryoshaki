@@ -1,5 +1,5 @@
 ---
-title: Quartz5 の graph の日本語表示方法
+title: Quartz5 の graph で日本語を表示させる
 date: 2026-07-18
 modified: 2026-07-18
 tags:
