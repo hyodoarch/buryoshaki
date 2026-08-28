@@ -882,11 +882,8 @@ article .mermaid .nodeLabel p {
   letter-spacing: 0.03em;
 
   img {
-    display: block;
     max-width: 100%;
     height: auto;
-    margin: 0;
-    padding: 0;
   }
 
   // ---------------------------------------------------------------------------
@@ -951,41 +948,6 @@ article .mermaid .nodeLabel p {
     margin-bottom: $article-p-margin-bottom;
   }
 
-  // ---------------------------------------------------------------------------
-  // 画像・キャプション
-  // ---------------------------------------------------------------------------
-
-  // 画像だけを含む p
-  p:has(> img:only-child) {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  // 画像そのもの
-  p:has(> img:only-child) > img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-  }
-
-  // 画像直後のキャプション
-  p:has(> img:only-child) + p {
-    width: 100%;
-    max-width: none;
-    font-size: 14px;
-    font-family:
-      "Yu Gothic",
-      "YuGothic",
-      "Hiragino Kaku Gothic ProN",
-      "Meiryo",
-      sans-serif;
-    line-height: 1.6;
-    margin: 0 0 $article-p-margin-bottom 0;
-  }
-
   ul,
   ol {
     font-size: $font-body;
@@ -1003,6 +965,100 @@ article .mermaid .nodeLabel p {
   li {
     text-align: justify;
     text-justify: inter-character;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Image Captions
+  // ---------------------------------------------------------------------------
+
+  figure.image-captions-figure {
+    width: fit-content;
+    max-width: min(100%, $main-content-measure);
+
+    margin-top: 0;
+    margin-bottom: $article-p-margin-bottom;
+    padding: 0;
+
+    background: transparent;
+    border-radius: 0;
+  }
+
+  // 通常配置は本文幅の中央に置く
+  figure.image-captions-figure:not(.image-captions-left):not(.image-captions-right) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // 左float：本文の左端を基準にする
+  figure.image-captions-left {
+    float: left;
+    margin-left: max(0px, calc((100% - #{$main-content-measure}) / 2));
+    margin-right: 1em;
+  }
+
+  // 右float：本文の右端を基準にする
+  figure.image-captions-right {
+    float: right;
+    margin-right: max(0px, calc((100% - #{$main-content-measure}) / 2));
+    margin-left: 1em;
+  }
+
+  // 画像
+  figure.image-captions-figure > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  // キャプション
+  figure.image-captions-figure > figcaption.image-captions-caption {
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+
+    font-size: 14px;
+    line-height: 1.6;
+    font-family:
+      "Yu Gothic",
+      "YuGothic",
+      "Hiragino Kaku Gothic ProN",
+      "Meiryo",
+      sans-serif;
+
+    text-align: left;
+  }
+
+  // 画像同士は横並びを許可するが、後続本文は回り込ませない
+  figure.image-captions-left + :not(figure.image-captions-figure),
+  figure.image-captions-right + :not(figure.image-captions-figure) {
+    clear: both;
+  }
+
+  // 左float
+  figure.image-captions-left {
+    float: left;
+    margin-left: max(0px, calc((100% - #{$main-content-measure}) / 2));
+    margin-right: 1em;
+  }
+
+  // left画像が連続するとき、本文位置補正は最初の1枚だけ
+  figure.image-captions-left + figure.image-captions-left {
+    margin-left: 0;
+  }
+
+  // 右float
+  figure.image-captions-right {
+    float: right;
+    margin-right: max(0px, calc((100% - #{$main-content-measure}) / 2));
+    margin-left: 1em;
+  }
+
+  // right画像が連続するとき、本文位置補正は最初の1枚だけ
+  figure.image-captions-right + figure.image-captions-right {
+    margin-right: 0;
   }
 
   // ---------------------------------------------------------------------------
@@ -1182,7 +1238,7 @@ article .mermaid .nodeLabel p {
     max-width: none;
 
     // 通常の本文要素は従来どおり38icに戻す
-    > :not(blockquote.transclude[data-url$=".canvas"]):not(ul):not(ol) {
+    > :not(blockquote.transclude[data-url$=".canvas"]):not(ul):not(ol):not(figure.image-captions-figure) {
       @include main-content-width;
     }
 

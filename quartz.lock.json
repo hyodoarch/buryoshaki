@@ -199,6 +199,12 @@
       "commit": "a2e035fd9a99fc07197c6627bb21d08c57038fc6",
       "installedAt": "2026-08-15T09:13:41.694Z"
     },
+    "quartz-image-captions": {
+      "source": "github:hyodoarch/quartz-image-captions",
+      "resolved": "https://github.com/hyodoarch/quartz-image-captions.git",
+      "commit": "3b32f26264f0019b27802af19b1d6ee7488f238b",
+      "installedAt": "2026-08-28T11:58:01.452Z"
+    },
     "quartz-themes": {
       "source": {
         "name": "quartz-themes",

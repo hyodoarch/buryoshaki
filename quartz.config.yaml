@@ -348,6 +348,14 @@ plugins:
       minZoom: 0.02
       maxZoom: 5
     order: 50
+  - source: github:hyodoarch/quartz-image-captions
+    enabled: true
+    options:
+      captionRegex: "^([^|]+)"
+      enableFilenamePlaceholders: true
+      enableCaptionMarkdown: true
+      enableCaptionWikilinks: true
+    order: 35
 layout:
   groups:
     toolbar:
