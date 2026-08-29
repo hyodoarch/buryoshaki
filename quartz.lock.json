@@ -34,8 +34,8 @@
     "canvas-page": {
       "source": "github:hyodoarch/canvas-page",
       "resolved": "https://github.com/hyodoarch/canvas-page.git",
-      "commit": "debadb4628a460bbd5e4a640a0c63c7745d15bad",
-      "installedAt": "2026-08-16T12:56:32.757Z"
+      "commit": "bbbda0de33c3309dede5b035ffa3c49999aa0fe2",
+      "installedAt": "2026-08-29T14:10:19.551Z"
     },
     "citations": {
       "source": "github:quartz-community/citations",

@@ -30,7 +30,7 @@ orderBy=`pagetitle ASC`　･･････pagetitleを昇順にソート
 tpl=`doguByArtistWorkList`　･･････テンプレートを指定（チャンク doguByArtistWorkList に記述）
 
 ## テンプレート・チャンク "doguByArtistWorkList"
-```
+```html
 <div class="thumbnail"><!-- ===== サムネイル画像 ===== -->
 <h6><a href="[~[+id+]~]">[+workImage+]</a></h6>
 </div><!-- ===== thumbnail ===== -->
@@ -41,7 +41,7 @@ tpl=`doguByArtistWorkList`　･･････テンプレートを指定（チ
 [+workImage+]　･･････Dittoで抽出したドキュメントのサムネイル用カスタムテンプレート変数
 
 ## 出力されるhtmlコード
-```
+```html
 <div class="thumbnail"><!-- ===== サムネイル画像 ===== -->
 <h6><a href="web/dogutachi/artist/doi/01.html"><img src="assets/images/dogu/doi-IMGP1090.jpg" alt="土井善男 白磁七寸皿 画像" /></a></h6>
 </div><!-- ===== thumbnail ===== -->

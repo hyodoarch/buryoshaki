@@ -36,7 +36,7 @@ wordpress_id: 1020
 ダウンロード > [tonedial.zip](https://www.hyodo-arch.com/buryoshaki/wp-content/uploads/arc/tonedial.zip)
 
 中身を見ていただければわかるが、2 byte 数字も有効にしてある。しかし、選択文字が電話番号として成り立つか？は判定していない。私は、普段使用している AHK スクリプトに下記のようにインクルードし、ホットキーを Ctrl + Space キーにしている。
-```
+```autohotkey
 #Include tonedial.ahk		;tonedial.ahk の読み込み
 
 ^Space::tonedial(80)		;トーンダイアルのホットキー

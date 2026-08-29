@@ -40,7 +40,7 @@ start=`[\*pagetitle\*]`　･･････日本語ファイルを使用
 tpl=`doguByCategoryMain`　･･････テンプレートを指定（チャンク doguByCategoryMain に記述）
 
 ## テンプレート・チャンク "doguByCategoryMain"
-```
+```html
 <div class="medium-column"><!-- ===== 作品メイン画像 ===== -->
 <p>[+workImage+]</p>
 </div><!-- ===== medium-column ===== -->
@@ -68,7 +68,7 @@ tpl=`doguByCategoryMain`　･･････テンプレートを指定（チ�
 [+availability+]　･･････Dittoで抽出したドキュメントから在庫用カスタムテンプレート変数を取得
 
 ## 出力されるhtmlコード
-```
+```html
 </div><!-- ===== medium-column ===== -->
 <div class="medium-column"><!-- ===== 作家名、作品名、材質、寸法等 ===== -->
 <table>
@@ -102,7 +102,7 @@ orderBy=`pagetitle ASC`　･･････pagetitleを昇順にソート
 tpl=`doguByCategoryWorkList`　･･････テンプレートを指定（チャンク doguByCategoryWorkList に記述）
 
 ## テンプレート・チャンク "doguByCategoryWorkList"
-```
+```html
 <div class="thumbnail"><!-- ===== サムネイル画像 ===== -->
 <h6><a href="[~[+id+]~]">
 [[Ditto? &id=`thumbnailImg` &parents=`137` &depth=`2` &language=`japanese-utf8`
@@ -124,7 +124,7 @@ Dittoのパラメータは、idとtpl以外は、メイン画像のコールと�
 [+workImage+]　･･････Dittoで抽出したドキュメントの画像用カスタムテンプレート変数を取得
 
 ## 出力されるhtmlコード
-```
+```html
 <div class="thumbnail"><!-- ===== サムネイル画像 ===== -->
 <h6><a href="web/dogutachi/category/guinomi/00.html">
 <img src="assets/images/dogu/okuno-IMGP0427.jpg" alt="  画像" />

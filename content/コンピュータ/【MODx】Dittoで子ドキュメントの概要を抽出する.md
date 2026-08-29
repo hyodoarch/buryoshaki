@@ -33,7 +33,7 @@ tplAlt=`intro-box-2`　･･････交互に適用するテンプレート
 ![くらしの道具 ブロック図](/images/2010/FS_dogu_box-01.png)
 
 ## テンプレート・チャンク "intro-box-1"
-```
+```html
 <div class="entry">
 <div class="intro-box"><!-- ===== 作家・工房紹介リストボックス ===== -->
 <div class="intro-img">
@@ -47,7 +47,7 @@ tplAlt=`intro-box-2`　･･････交互に適用するテンプレート
 ```
 
 ## テンプレート・チャンク "intro-box-2"
-```
+```html
 <div class="intro-box"><!-- ===== 作家・工房紹介リストボックス ===== -->
 <div class="intro-img">
 <p><a href="[~[+id+]~]">[+thumbnail+]</a></p>
@@ -67,7 +67,7 @@ tplAlt=`intro-box-2`　･･････交互に適用するテンプレート
 [+introtext+]　･･････Dittoで抽出したドキュメント（子ドキュメント）の要約（序説）
 
 ## 出力されるhtmlコード
-```
+```html
 <div class="entry">
 <div class="intro-box"><!-- ===== 作家・工房紹介リストボックス ===== -->
 <div class="intro-img">

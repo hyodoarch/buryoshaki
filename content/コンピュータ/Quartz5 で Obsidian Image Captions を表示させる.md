@@ -48,7 +48,9 @@ Image Captions をインストールすると、標準の画像の埋め込み�
 ![[Lotus.jpg|牛ヶ淵の蓮の花|left|181]]![[Lotus.jpg|牛ヶ淵の蓮の花|left|181]]![[Lotus.jpg|牛ヶ淵の蓮の花|left|181]]
 
 下記のように、センター配置で少し小さめに表示することもできる。`![[Lotus.jpg|牛ヶ淵の蓮の花（センター表示、幅：360px）|center|360]]` と記述している。
+
 ![[Lotus.jpg|牛ヶ淵の蓮の花（センター表示、幅：360px）|center|360]]
+
 上記のように、Image Captions をインストールすることにより、①キャプションを付けることができ、②画像配置をコントロールする、といったことができる。画像幅は Obsidian 標準と同様に指定できる。
 
 ### 無聊写記での使用例
@@ -60,16 +62,7 @@ Image Captions をインストールすると、標準の画像の埋め込み�
 
 図式として、下記のようなイメージである。
 
-```mermaid
-flowchart TB
-
-  M["同じ Markdown<br/><br/>![[image.jpg|キャプション|right|350]]"]
-
-  M --> O["Obsidian<br/><br/>Image Captions"]
-  M --> Q["Quartz5<br/><br/>quartz-image-captions"]
-
-  Q --> H["&lt;figure&gt; + &lt;figcaption&gt;"]
-```
+![[Image Captions.canvas]]
 
 作成した `quartz-image-captions` は、GitHub で公開している。
 
