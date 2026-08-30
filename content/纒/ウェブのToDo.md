@@ -1,6 +1,12 @@
 ---
 draft: true
 ---
+## ToDo
+- [ ] マーメイドのテキストが、margin-bottom を小さくする。canvasと同様の設定にできないか？
+- [ ] graph は utils 0.1.0 → 0.1.1 にするだけで日本語問題が解決するかも。
+- [ ] blog.hyodo-arch.com が google に"兵藤事務所" と認識されているようだ。
+- [ ] 日本語タイトルとpermanent link の問題について引き続き調査する。
+- [ ] Minimal Theme を使い続けるか？デフォルトでcssスニペットで合わせるか？
 
 ## カテゴリー左にアイコンがあると良い。
 - [Font Awesome](https://fontawesome.com/search?ip=classic&ic=free-collection) のFree アイコン
