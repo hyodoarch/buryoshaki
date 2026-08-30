@@ -13,6 +13,12 @@ type ExplorerNode = {
 }
 
 componentRegistry.setOptionOverrides("explorer", {
+  // canvas / excalidraw をExplorerから非表示
+  filterFn: (node: ExplorerNode) => {
+    const hiddenFolders = new Set(["canvas", "excalidraw"])
+    return !hiddenFolders.has((node.slugSegment ?? "").toLowerCase())
+  },
+
   sortFn: (a: ExplorerNode, b: ExplorerNode) => {
     const pinned = new Map<string, number>([
       ["おすすめのノート", 0],
@@ -57,14 +63,6 @@ ExternalPlugin.RecentNotes({
     !["プロフィール", "無聊写記について", "おすすめのノート"].includes(
       f.frontmatter?.title ?? "",
     ),
-})
-
-// エクスプローラから canvas, excalidraw を非表示
-ExternalPlugin.Explorer({
-  filterFn: (node) => {
-    const hiddenFolders = new Set(["canvas", "excalidraw"])
-    return !hiddenFolders.has(node.displayName.toLowerCase())
-  },
 })
 
 const config = await loadQuartzConfig()
