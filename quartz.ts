@@ -59,6 +59,14 @@ ExternalPlugin.RecentNotes({
     ),
 })
 
+// エクスプローラから canvas, excalidraw を非表示
+ExternalPlugin.Explorer({
+  filterFn: (node) => {
+    const hiddenFolders = new Set(["canvas", "excalidraw"])
+    return !hiddenFolders.has(node.displayName.toLowerCase())
+  },
+})
+
 const config = await loadQuartzConfig()
 export default config
 export const layout = await loadQuartzLayout()

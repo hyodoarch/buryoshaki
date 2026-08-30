@@ -1,0 +1,49 @@
+---
+draft: true
+---
+
+## カテゴリー左にアイコンがあると良い。
+- [Font Awesome](https://fontawesome.com/search?ip=classic&ic=free-collection) のFree アイコン
+	- canvas
+		- obsidian のアイコンが使えないか？
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/pen-to-square)
+	- VectorScript
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/code)
+	- アート
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/shapes)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/palette)
+	- コンピュータ
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/desktop)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/keyboard)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/display)
+	- 映画
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/film)
+	- 音楽
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/guitar)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/headphones)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/music)
+	- 建築
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/house)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/house-chimney-window)
+	- 告知
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/message)
+	- 雑記
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/paper-plane)
+	- 写真
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/camera)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/images)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/image)
+	- 本
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/bowl-food)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/book)
+	- 料理
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/utensils)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/kitchen-set)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/bowl-food)
+	- 無聊写記について
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/comment)
+	- おすすめのノート
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/star)
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/message)
+	- プロフィール
+		- [Font Awesome](https://fontawesome.com/icons/classic/solid/heart)
