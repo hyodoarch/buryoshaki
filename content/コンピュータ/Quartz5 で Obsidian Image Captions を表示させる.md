@@ -1,5 +1,6 @@
 ---
 title: Quartz5 で Obsidian Image Captions を表示させる
+subtitle: 画像のすぐ下に説明文を入れるには
 date: 2026-08-29
 modified: 2026-08-29
 categories:

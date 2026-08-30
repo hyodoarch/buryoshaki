@@ -163,7 +163,7 @@ plugins:
     layout:
       position: left
       priority: 30
-  - source: github:hyodoarch/graph
+  - source: github:hyodoarch/graph-ja
     enabled: true
     options:
       localGraph:
@@ -173,7 +173,7 @@ plugins:
         scale: 1.1
         repelForce: 0.8
         centerForce: 0.3
-        linkDistance: 45
+        linkDistance: 30
         fontSize: 0.8
         opacityScale: 1
         removeTags: []
@@ -198,7 +198,7 @@ plugins:
       position: right
       priority: 10
       display: desktop-only
-  - source: github:hyodoarch/graph
+  - source: github:hyodoarch/graph-ja
     enabled: true
     options:
       localGraph:
@@ -292,7 +292,7 @@ plugins:
     enabled: true
     options:
       title: 最近のノート
-      limit: 13
+      limit: 14
       showTags: false
       hideTagPages: true
       hideFolderPages: true

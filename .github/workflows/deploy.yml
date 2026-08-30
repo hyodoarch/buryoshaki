@@ -42,14 +42,12 @@ jobs:
         run: npm ci
       - name: Install Quartz plugins
         run: |
-          rm -rf .quartz/plugins/graph
           rm -rf .quartz/plugins/article-title
           rm -rf .quartz/plugins/folder-page
           rm -rf .quartz/plugins/tag-page
           rm -rf .quartz/plugins/recent-notes
           rm -rf .quartz/plugins/canvas-page
           
-          npx quartz plugin install --clean graph
           npx quartz plugin install --clean article-title
           npx quartz plugin install --clean folder-page
           npx quartz plugin install --clean tag-page

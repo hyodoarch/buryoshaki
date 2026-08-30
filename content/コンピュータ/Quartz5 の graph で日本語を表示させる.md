@@ -1,154 +1,54 @@
 ---
 title: Quartz5 の graph で日本語を表示させる
 date: 2026-07-18
-modified: 2026-07-18
+modified: 2026-08-30
 tags:
   - Obsidian
   - Quartz
   - グラフビュー
 draft: false
 ---
-Quartz とは、Obsidian のフォルダ（Vault）をほぼそのまま Web サイト化する静的サイトジェネレーターで、Markdown を HTML に変換し、リンク構造・タグ・グラフビューなどを保持したまま公開できます。ブログよりデジタルガーデンを作りたい人に向いています。
+Quartz5 のコミュニティプラグイン `graph` を使ったところ、私の環境では日本語ファイル名のノートを含むグラフビューが正常に表示されませんでした。日本語のノートではリンク関係が正しく認識されず、現在のノートだけが孤立して表示されることがあります。
 
-以下、Obsidian、Node.js、Git、GitHub、Quartz5 のインストール・登録等の設定が完了していいることが前提となります。
-### 1. 日本語記事でグラフビューが正常に表示されない
+そこで `quartz-community/graph` をフォークし、日本語 `slug` を正しく扱えるように修正しました。
 
-日本語ファイル名の記事、日本語フォルダ下の記事では、現在の記事だけが孤立したノードとして表示されました。
+フォークした graph-ja のリポジトリは下記アドレスで公開しています。
+- [hyodoarch/graph-ja: Quartz 5 graph plugin fork with Japanese slug support and mobile rendering fixes.](https://github.com/hyodoarch/graph-ja)
 
-原因は、Graph 内部で扱う次の slug 表現が一致していなかったためです。
-- ブラウザURL
-- 記事データのキー
-- 内部リンクのリンク先
+## graph-ja で変更したこと
+`graph-ja` は `quartz-community/graph` をフォークし、主に次の点を変更しています。
 
-日本語URLはパーセントエンコードされるため、日本語記事でだけ不具合が発生します。
+- 日本語を含む `slug` をデコード・正規化し、ノート間のリンクを正しく認識
+- グラフのノード名に日本語向けフォントを指定
+- ノードのマウスオーバー判定範囲を拡大
+- モバイル環境でのグラフ描画を安定化
 
-### 2. `graph.inline.ts`を日本語slug対応に変更した
-次のファイルを編集しました。
-```text
-.quartz\plugins\graph\src\components\scripts\graph.inline.ts
-```
-`decodeURIComponent()`と`simplifySlug()`をまとめた`normalizeSlug()`を追加し、次の値を同じ方法で正規化しました。
-- 現在表示中の記事slug
-- Graphデータ内の記事slug
-- 内部リンクのリンク先slug
-- 訪問済み記事のslug
+なお、「グラフビュー」という日本語表記や、ノード間距離・文字サイズなどの設定機能は、元のコミュニティ版 graphにも備わっています。
 
-併せて、グラフのノード名を日本語ゴシック体で表示するように変更しました。
+## 導入方法
+1. `quartz.config.yaml` の参照先を変更する。
+	- 変更前 → `source: github:quartz-community/graph`
+	- 変更後 → `source: github:hyodoarch/graph-ja`
 
-### 3. Graphプラグインを再ビルドした
-`graph.inline.ts`はソースファイルなので、公開用の`dist`も作り直す必要がありました。
-```cmd
-npm install --include=dev
-npm run build
-```
-これで`dist`内のJavaScriptにも変更が反映されました。
+2. 元の `graph` をアンインストールする
+	- 削除対象として `graph` が表示されるか確認 → `npx quartz plugin prune --dry-run`
+	- 問題なければ → `npx quartz plugin prune`
 
-### 4. ローカルプレビューでは正常に反映された
-```cmd
-npx quartz build --serve -o content-preview
-```
-※ `content-preview` フォルダをローカルプレビューフォルダに設定している場合
+3. graph-ja のインストールする
+	- インストール → `npx quartz plugin install --from-config --latest`
 
-では、ローカルにある改変済みの
+> [!NOTE]  
+>`graph-ja` をdesktop 用とmobile 用に分けて同じ設定ファイル内に2回記述している場合、初回の `install --from-config` で同じリポジトリを2回インストールしようとして、2件目に `already exists` と表示されることがあります。  
+> 1件目のインストールが成功していれば、`npx quartz plugin list` で `graph-ja` が登録されていることを確認します。
 
-```text
-.quartz\plugins\graph
-```
+4. インストール状態を確認する
+	 - インストールされているプラグインの表示 → `npx quartz plugin list`
+	 - `graph` が無いことを確認
+	 - `graph-ja` があることを確認
 
-が使用されるため、変更が反映されました。
-
-### 5. 公開サイトでは変更が反映されなかった
-
-`.quartz`フォルダはGitの管理対象外だったため、改変したGraphプラグインはGitHubへ送られていませんでした。
-
-GitHub Actionsでは、公開時に公式プラグインを改めて取得していたため、公開サイトでは改変前のGraphが使われました。
-
-### 6. Graph公式リポジトリをフォークした
-公式版、
-```text
-quartz-community/graph
-```
-をフォークして、
-```text
-githubAccountName/graph
-```
-を作成しました。
-
-フォークをローカルへcloneし、改変した`graph.inline.ts`をコピーしました。
-```text
-..\GitHub\graph
-```
-その後、再ビルドして、`src`と`dist`をフォーク側へpushしました。
-
-### 7. Quartzの参照先をフォーク版へ変更した
-`quartz.config.yaml`のGraph設定を、デスクトップ用・モバイル用ともに変更しました。
-```yaml
-source: github:githubAccountName/graph
-```
-
-### 8. `quartz.lock.json`もフォーク版へ変更した
-Graphの公式版とフォーク版は、どちらもプラグイン名が`graph`です。
-
-そのため、設定ファイルだけ変更しても、Quartzは既存の公式版Graphを「インストール済み」と判断していました。
-
-そこで、`quartz.lock.json`のGraph項目を次の内容へ更新しました。
-```json
-"source": "github:githubAccountName/graph",
-"resolved": "https://github.com/githubAccountName/graph.git",
-"commit": "フォーク版のコミットSHA"
-```
-その後、ローカルのGraphフォルダを削除し、ロックファイルから入れ直しました。
-
-```cmd
-rmdir /s /q .quartz\plugins\graph
-npx quartz plugin install --clean graph
-```
-`npx quartz plugin`で、次の表示になることを確認しました。
-```text
-graph    github:githubAccountName/graph
-```
-
-### 9. GitHub Actionsのキャッシュが公式版Graphを残していた
-GitHub Actionsでは、`.quartz/plugins`をキャッシュしていました。
-
-そのため、古い公式版Graphが復元され、フォーク版のコミットへ更新しようとして失敗していました。
-
-ログには次のように表示されました。
-```text
-graph: updating to ...
-graph: failed to update
-```
-
-### 10. `deploy.yml`でGraphだけ毎回入れ直すようにした
-`.github/workflows/deploy.yml`のインストール処理を次のように変更しました。
-```yaml
-- name: Install Quartz plugins
-  run: |
-    rm -rf .quartz/plugins/graph
-    npx quartz plugin install --clean graph
-    npx quartz plugin install
-```
-最初は`run: |`の`|`が抜けていたため、3行が1つのコマンドとして実行され、Actionsが失敗しました。`|`を追加して解決しました。
-
-## 現在の構成
-```text
-githubAccountName/graph
-    改変したGraphプラグイン本体
-
-quartz.config.yaml
-    Graph の参照先を githubAccountName/graph に指定
-
-quartz.lock.json
-    使用するフォーク版のコミットを固定
-
-deploy.yml
-    Actions実行時にGraphの古いキャッシュを削除して再取得
-```
-つまり今回の作業は、単なる日本語対応だけでなく、
-1. Graphのslug処理を修正    
-2. プラグインをビルド    
-3. フォーク版として管理    
-4. Quartzの設定とロックファイルを変更    
-5. GitHub Actionsのキャッシュ対策    
-
-まで行った、という流れです。
+5. 動作を確認する
+	- ローカルサーバーを起動 → `npx quartz build --serve`
+	- `http://localhost:8080` を開く
+	- グラフビューで、日本語ファイル名のノートが正しく接続されていることを確認
+	- ノードをマウスオーバーし、日本語のノート名が正しく表示されることを確認
+	- Gitでcommit / pushし、公開サイトでも動作を確認
