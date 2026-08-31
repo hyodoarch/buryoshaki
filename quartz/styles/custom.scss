@@ -751,13 +751,6 @@ body[data-slug="index"] {
   }
 }
 
-// Mermaid：ノード内テキストの本文スタイルを解除
-article .mermaid .nodeLabel p {
-  margin: 0;
-  line-height: 1.35;
-  text-align: center;
-}
-
 // =============================================================================
 // 6. Right sidebar
 // =============================================================================
@@ -966,6 +959,13 @@ article .mermaid .nodeLabel p {
     text-align: justify;
     text-justify: inter-character;
   }
+
+// Mermaid：ノード内テキストの本文スタイルを解除
+article .mermaid .nodeLabel p {
+  margin: 0;
+  line-height: 1.35;
+  text-align: center;
+}
 
   // ---------------------------------------------------------------------------
   // Image Captions
