@@ -2,11 +2,18 @@
 draft: true
 ---
 ## ToDo
-- [ ] マーメイドのテキストが、margin-bottom を小さくする。canvasと同様の設定にできないか？
+- [x] マーメイドのテキストが、margin-bottom を小さくする。canvasと同様の設定にできないか？
 - [ ] graph は utils 0.1.0 → 0.1.1 にするだけで日本語問題が解決するかも。
-- [ ] blog.hyodo-arch.com が google に"兵藤事務所" と認識されているようだ。
+-  blog.hyodo-arch.com が google に"兵藤事務所" と認識されているようだ。
+	- [x] トップページの `canonical` を `/index` → `/`
+	- [x] `WebSite` JSON-LD をトップページに追加して、`name: "無聊写記"` を明示
+	- [x] トップページ `<title>` を「無聊写記」または「無聊写記｜ようこそ」にする
+	- [x] `og:site_name` を `name=` → `property=` にする
+	- [ ] フォルダにindex.mdを作成し、description プロパティを付ける。
 - [ ] 日本語タイトルとpermanent link の問題について引き続き調査する。
 - [ ] Minimal Theme を使い続けるか？デフォルトでcssスニペットで合わせるか？
+- [ ] 404ページに「最近のノート」または「おすすめのノート」を載せる。
+- [ ] Link カードプラグインのようにリスト表示させると華やかかも。
 
 ## カテゴリー左にアイコンがあると良い。
 - [Font Awesome](https://fontawesome.com/search?ip=classic&ic=free-collection) のFree アイコン

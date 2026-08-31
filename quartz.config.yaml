@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
   pageTitle: 無聊写記
-  pageTitleSuffix: ""
+  pageTitleSuffix: " | 無聊写記"
   enableSPA: true
   enablePopovers: false
   analytics:

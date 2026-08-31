@@ -15,7 +15,7 @@ type ExplorerNode = {
 componentRegistry.setOptionOverrides("explorer", {
   // canvas / excalidraw をExplorerから非表示
   filterFn: (node: ExplorerNode) => {
-    const hiddenFolders = new Set(["canvas", "excalidraw"])
+    const hiddenFolders = new Set(["canvas", "excalidraw", "tags"])
     return !hiddenFolders.has((node.slugSegment ?? "").toLowerCase())
   },
 
