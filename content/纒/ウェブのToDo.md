@@ -9,7 +9,7 @@ draft: true
 	- [x] `WebSite` JSON-LD をトップページに追加して、`name: "無聊写記"` を明示
 	- [x] トップページ `<title>` を「無聊写記」または「無聊写記｜ようこそ」にする
 	- [x] `og:site_name` を `name=` → `property=` にする
-	- [ ] フォルダにindex.mdを作成し、description プロパティを付ける。
+	- [x] フォルダにindex.mdを作成し、description プロパティを付ける。
 - [ ] 日本語タイトルとpermanent link の問題について引き続き調査する。
 - [ ] Minimal Theme を使い続けるか？デフォルトでcssスニペットで合わせるか？
 - [ ] 404ページに「最近のノート」または「おすすめのノート」を載せる。
