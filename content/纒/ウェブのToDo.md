@@ -10,10 +10,14 @@ draft: true
 	- [x] トップページ `<title>` を「無聊写記」または「無聊写記｜ようこそ」にする
 	- [x] `og:site_name` を `name=` → `property=` にする
 	- [x] フォルダにindex.mdを作成し、description プロパティを付ける。
-- [ ] 日本語タイトルとpermanent link の問題について引き続き調査する。
+- 日本語タイトルとpermanent link の問題について引き続き調査する。
+	- [x] ノート名由来のURLを継続することに決定（2026-09-01）permalink は行わない。よってそこまでSEOにこだわらない
 - [ ] Minimal Theme を使い続けるか？デフォルトでcssスニペットで合わせるか？
 - [ ] 404ページに「最近のノート」または「おすすめのノート」を載せる。
 - [ ] Link カードプラグインのようにリスト表示させると華やかかも。
+- Explorer を使いやすく
+	- [ ] カレントノートの色を変える。
+	- [ ] カレントノートを開いたときにスクロールしないようにする。
 
 ## カテゴリー左にアイコンがあると良い。
 - [Font Awesome](https://fontawesome.com/search?ip=classic&ic=free-collection) のFree アイコン
