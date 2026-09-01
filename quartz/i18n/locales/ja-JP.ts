@@ -68,7 +68,6 @@ export default {
     error: {
       title: "Not Found",
       notFound: "ページが見つかりません。検索してみてください。",
-      home: "ホームページに戻る",
     },
     folderContent: {
       folder: "フォルダ",
