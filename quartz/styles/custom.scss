@@ -553,6 +553,12 @@ b,
         background: var(--site-sidebar-hover-bg);
         text-decoration: none;
       }
+
+      // カレントノート
+      &.active,
+      &.is-active {
+        color: #84a59d;
+      }
     }
 
     .explorer-content li,
@@ -621,13 +627,6 @@ b,
     }
   }
 
-  // Current note
-  .explorer-content ul li > a.active,
-  .explorer-content ul li > a.is-active {
-    color: #84a59d;
-    opacity: 1;
-  }
-  
 }
 
 // =============================================================================
