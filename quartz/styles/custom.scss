@@ -621,8 +621,16 @@ b,
     }
   }
 
+  // Current note
+  .explorer-content ul li > a.active,
+  .explorer-content ul li > a.is-active {
+    color: #84a59d;
+    opacity: 1;
+  }
+  
 }
 
+// =============================================================================
 // 5. Center content — common / page header
 // =============================================================================
 
@@ -1966,13 +1974,15 @@ html[saved-theme="dark"] {
   }
 }
 
+// =============================================================================
 // 14. Note lists — common
 // =============================================================================
 
 // Folder / Tag の一覧と Recent Notes は、
 // date → title/subtitle → tags の同じ情報階層を使う。
 .page > #quartz-body > .center:has(.page-listing) .page-listing,
-body[data-slug="index"] .recent-notes {
+body[data-slug="index"] .recent-notes,
+body[data-slug="404"] .recent-notes {
   @include main-content-width;
 
   // リスト初期化
@@ -2157,7 +2167,8 @@ body[data-slug="index"] .recent-notes {
 // 16. Recent notes
 // =============================================================================
 
-body[data-slug="index"] {
+body[data-slug="index"],
+body[data-slug="404"] {
 
   .page > #quartz-body > .center > hr {
     display: none;
@@ -2259,7 +2270,8 @@ body[data-slug="index"] {
   // ---------------------------------------------------------------------------
 
   .page > #quartz-body > .center:has(.page-listing) .page-listing,
-  body[data-slug="index"] .recent-notes {
+  body[data-slug="index"] .recent-notes,
+  body[data-slug="404"] .recent-notes {
     .section > .meta,
     .section > .meta time {
       font-size: $font-date-mobile;
@@ -2303,7 +2315,8 @@ body[data-slug="index"] {
   // Recent Notes 固有
   // ---------------------------------------------------------------------------
 
-  body[data-slug="index"] .recent-notes > h3 {
+  body[data-slug="index"] .recent-notes > h3,
+  body[data-slug="404"] .recent-notes > h3 {
     font-size: $font-list-title-mobile;
   }
 }

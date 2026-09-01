@@ -299,7 +299,7 @@ plugins:
     layout:
       position: afterBody
       priority: 10
-      condition: index-only
+      condition: index-or-404
   - source: github:quartz-community/spacer
     enabled: false
     options: {}

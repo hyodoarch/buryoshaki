@@ -3,8 +3,13 @@ import { registerCondition } from "./quartz/plugins/loader/conditions"
 import { componentRegistry } from "./quartz/components/registry"
 import * as ExternalPlugin from "./.quartz/plugins"
 
-// index.md のみに表示する条件
-registerCondition("index-only", (props) => props.fileData.slug === "index")
+// index.md と 404 ページに表示する条件
+registerCondition(
+  "index-or-404",
+  (props) =>
+    props.fileData.slug === "index" ||
+    props.fileData.slug === "404",
+)
 
 // Explorerの表示順を変更
 type ExplorerNode = {
