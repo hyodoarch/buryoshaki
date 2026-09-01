@@ -73,18 +73,40 @@ Martin Parr の作品を知るものならば、このTシャツの写真は、�
 
 このTシャツがユニクロで発売されたいきさつは、ユニクロが運営する "TODAY'S PICK UP" の下記のインタビュー記事が詳しい。面白いので是非読んで頂きたい。
 
-- [マーティン・パーと歩くルーヴル美術館 / Mar 05.2026](https://www.uniqlo.com/jp/ja/news/topics/2026030501/)
+```cardlink
+url: https://www.uniqlo.com/jp/ja/news/topics/2026030501/
+title: "マーティン・パーと歩くルーヴル美術館｜UNIQLO TODAY'S PICK UP"
+description: "ルーヴル美術館とのコラボレーションによる唯一無二のUTが完成したのち、伝説的写真家マーティン・パーは、昨年12月、惜しまれながらこの世を去った。その功績を偲び、ここに深い敬意を表したい。マーティンは生前、本プロジェクトのために撮り下ろしたルーヴル美術館での体験や、自身の作品についてUTに語ってくれた..."
+host: www.uniqlo.com
+favicon: https://www.uniqlo.com/favicon.ico
+image: https://www.uniqlo.com/jp/ja/news/topics/2026030501/img/mimg_1_l.jpg
+```
 
 この記事を読んで、昨年2025年12月に、Parrが亡くなったことを知った。ショックだった。本当に残念だ。Parr亡き後半年も経ずにユニクロTシャツが発売されたことは、悲しさと残念な気持ち、嬉しさと楽しさ、写真について考えたり、いろいろな感情と思考が出てきて、まだ整理が付かないが、ファンの一人として、この記事をParrへの小さな追悼としたい。
 
 Parrの最近の活動についてもこの記事に書かれている。ブリストルにあるマーティン・パー財団（[MARTIN PARR FOUNDATION](https://martinparrfoundation.org/)）に関する紹介や、[KYOTOGRAPHIE 京都国際写真祭 2025](https://www.kyotographie.jp/editions/2025/) で来日した時に撮影された、黄色い帽子をかぶった小学生たちが金閣寺を鑑賞する写真作品は、日本的な風景である上に色彩的にも美しい。
 
 Martin Parr のUT x Louvreコレクションについてのルーヴルのプレスリリースは下記も参考になる。
-- [Lancement de la collection UNIQLO x Louvre par Martin Parr 2 mars 2026](https://presse.louvre.fr/lancement-de-la-collection-uniqlo-x-louvre-par-martin-parr/?lang=fr) 
 
+```cardlink
+url: https://presse.louvre.fr/lancement-de-la-collection-uniqlo-x-louvre-par-martin-parr/?lang=fr
+title: "Lancement de la collection UNIQLO x Louvre par Martin Parr - Espace presse du musée du Louvre"
+description: "UNIQLO dévoile une nouvelle collection UT x Louvre née de sa collaboration avec le musée et le photographe britannique Martin Parr, figure majeure de la photographie contemporaine. Conçue à travers une série d’images capturées au musée du Louvre par Martin Parr, la collection est une rencontre singu..."
+host: presse.louvre.fr
+favicon: https://presse.louvre.fr/wp-content/themes/louvre/assets/img/favicon.ico
+image: https://presse.louvre.fr/wp-content/uploads/2026/01/e8341cc739fb625429e1be221cab47e6-711x711.jpg
+```
+ 
 ユニクロとルーヴルのパートナーシップについては、下記のユニクロのプレスリリースが詳しい。
-- 2021年01月29日／[2021年ユニクロがルーヴル美術館とパートナーシップを締結](https://www.uniqlo.com/jp/ja/contents/corp/press-release/2021/01/21012909_louvrepartnership.html?srsltid=AfmBOooDjfg2mDX-Ym6UZHnlKzPedcLYEO1oEFihpEX31mYkRxCeXJZW)
 
+```cardlink
+url: https://www.uniqlo.com/jp/ja/contents/corp/press-release/2021/01/21012909_louvrepartnership.html?srsltid=AfmBOooDjfg2mDX-Ym6UZHnlKzPedcLYEO1oEFihpEX31mYkRxCeXJZW
+title: "2021年ユニクロがルーヴル美術館とパートナーシップを締結　LifeWearの理念に基づき、人々の暮らしを豊かに彩るアートの普及に貢献します - UNIQLO ユニクロ"
+description: "あらゆる人が良いカジュアルを着られるようにする新しい日本の企業、株式会社ユニクロ(UNIQLO CO., LTD.)の最新情報をお届けします。"
+host: www.uniqlo.com
+favicon: https://www.uniqlo.com/favicon.ico
+image: https://im.uniqlo.com/images/jp/pc/img/feature/uq/material/120707_thumb.jpg
+```
 
 [^1]: 英語版 Wikipedia の [_Mademoiselle Caroline Rivière_](https://en.wikipedia.org/wiki/Mademoiselle_Caroline_Rivi%C3%A8re)には、この作品の両脇の作品についての説明があり、カロリーヌ嬢の父母であることが分かる。
 

@@ -67,7 +67,7 @@ Image Captions をインストールすると、標準の画像の埋め込み�
 
 作成した `quartz-image-captions` は、GitHub で公開している。
 
-[Image Captions compatibility plugin for Quartz5](https://github.com/hyodoarch/quartz-image-captions)
+[Fetching Data#jvbg](https://github.com/hyodoarch/quartz-image-captions)
 
 
 ## 設定方法
