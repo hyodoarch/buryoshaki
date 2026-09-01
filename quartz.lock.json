@@ -199,6 +199,12 @@
       "commit": "a2e035fd9a99fc07197c6627bb21d08c57038fc6",
       "installedAt": "2026-08-15T09:13:41.694Z"
     },
+    "quartz-auto-link-card-enhanced": {
+      "source": "github:hyodoarch/quartz-auto-link-card-enhanced",
+      "resolved": "https://github.com/hyodoarch/quartz-auto-link-card-enhanced.git",
+      "commit": "5160936f149f77785cfb9568f1b3574fb11e8147",
+      "installedAt": "2026-09-01T13:05:42.445Z"
+    },
     "quartz-image-captions": {
       "source": "github:hyodoarch/quartz-image-captions",
       "resolved": "https://github.com/hyodoarch/quartz-image-captions.git",

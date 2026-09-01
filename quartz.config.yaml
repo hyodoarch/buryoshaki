@@ -292,7 +292,7 @@ plugins:
     enabled: true
     options:
       title: 最近のノート
-      limit: 14
+      limit: 15
       showTags: false
       hideTagPages: true
       hideFolderPages: true
@@ -357,6 +357,10 @@ plugins:
       enableCaptionMarkdown: true
       enableCaptionWikilinks: true
     order: 35
+  - source: github:hyodoarch/quartz-auto-link-card-enhanced
+    enabled: true
+    options: {}
+    order: 15
 layout:
   groups:
     toolbar:
