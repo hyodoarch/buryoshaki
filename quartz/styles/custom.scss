@@ -450,6 +450,20 @@ b,
 // 左sidebar
 // -----------------------------------------------------------------------------
 
+$explorer-category-icons: (
+  "VectorScript/index": "code",
+  "アート/index": "shapes",
+  "コンピュータ/index": "display",
+  "映画/index": "film",
+  "音楽/index": "headphones",
+  "建築/index": "house-chimney-window",
+  "告知/index": "message",
+  "雑記/index": "paper-plane",
+  "写真/index": "camera",
+  "本/index": "book",
+  "料理/index": "utensils",
+);
+
 .sidebar.left {
   font-size: 0.9rem;
   line-height: 1.7;
@@ -566,7 +580,7 @@ b,
       line-height: 1.8;
     }
 
-    // フォルダ左の開閉矢印
+    // フォルダ左の開閉アイコン
     .folder-icon,
     .folder-container svg,
     .folder-title svg {
@@ -579,6 +593,25 @@ b,
     .folder-title svg * {
       color: var(--site-internal-link);
       stroke: var(--site-internal-link);
+    }
+
+    // 現在のカテゴリーだけ、開閉矢印を Font Awesome の固定アイコンに置き換える。
+    // .folder-icon 自体は残すため、Explorer のクリックによる開閉処理は維持される。
+    @each $folder-path, $icon-name in $explorer-category-icons {
+      .folder-container[data-folderpath="#{$folder-path}"] > .folder-icon {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.45rem;
+        background-color: currentColor;
+        -webkit-mask: url("./static/explorer-icons/#{$icon-name}.svg") center / contain no-repeat;
+        mask: url("./static/explorer-icons/#{$icon-name}.svg") center / contain no-repeat;
+        stroke: none;
+        transform: none;
+
+        > polyline {
+          display: none;
+        }
+      }
     }
 
     // 展開したフォルダ内の縦線
