@@ -365,10 +365,9 @@ layout:
       gap: 0.5rem
   byPageType:
     "404":
+      template: default
       positions:
         beforeBody: []
-        left: []
-        right: []
     content: {}
     folder:
       exclude:
