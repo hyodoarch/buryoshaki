@@ -21,7 +21,7 @@ draft: true
 	- [x] カレントノートの色を変える。
 	- [ ] カレントノートを開いたときにスクロールしないようにする。
 
-## カテゴリー左にアイコンがあると良い。
+## カテゴリー左にアイコンがあると良い。 ≫ 完了
 - [Font Awesome](https://fontawesome.com/search?ip=classic&ic=free-collection) のFree アイコン
 	- canvas
 		- obsidian のアイコンが使えないか？
