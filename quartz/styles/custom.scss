@@ -396,24 +396,37 @@ b,
   text-align: center;
   font-size: 0.8rem;
 
-  p {
-    margin: 0 0 0.4rem 0;
-    text-align: center;
+  // Quartz 標準の "Created with Quartz..." を非表示
+  > p {
+    display: none;
   }
 
   ul {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
 
     margin: 0;
     padding-left: 0;
     list-style: none;
+
+    // コピーライト表示
+    &::before {
+      content: "© 2026 無聊写記";
+    }
   }
 
   li {
     margin: 0;
     padding: 0;
+
+    // コピーライト・各リンク間の区切り
+    &::before {
+      content: "｜";
+      margin: 0 0.6em;
+    }
   }
 }
 

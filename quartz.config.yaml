@@ -286,8 +286,8 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/hyodoarch/buryoshaki
-        Discord Community: https://discord.gg/cRFFHYye7t
+        このサイトについて: /About
+        RSS: /index.xml
   - source: github:hyodoarch/recent-notes
     enabled: true
     options:
