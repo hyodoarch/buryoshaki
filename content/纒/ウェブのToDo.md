@@ -3,6 +3,7 @@ draft: true
 ---
 ## ToDo
 - [x] マーメイドのテキストが、margin-bottom を小さくする。canvasと同様の設定にできないか？
+- [ ] footer が寂しいよね。
 - [ ] graph は utils 0.1.0 → 0.1.1 にするだけで日本語問題が解決するかも。
 -  blog.hyodo-arch.com が google に"兵藤事務所" と認識されているようだ。
 	- [x] トップページの `canonical` を `/index` → `/`
