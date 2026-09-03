@@ -91,26 +91,81 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
   }
 
   if (cfg.analytics?.provider === "google") {
+
     const tagId = cfg.analytics.tagId
     componentResources.afterDOMLoaded.push(`
-      const gtagScript = document.createElement('script');
-      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=${tagId}';
-      gtagScript.defer = true;
-      gtagScript.onload = () => {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
+      const analyticsOptOutKey = "buryoshaki-analytics-optout";
+      let analyticsDisabled = false;
+
+      try {
+        const params = new URLSearchParams(location.search);
+        const analyticsMode = params.get("analytics");
+
+        // このブラウザをアクセス解析から除外する
+        if (analyticsMode === "off") {
+          localStorage.setItem(analyticsOptOutKey, "1");
         }
-        gtag('js', new Date());
-        gtag('config', '${tagId}', { send_page_view: false });
-        gtag('event', 'page_view', { page_title: document.title, page_location: location.href });
-        document.addEventListener('nav', () => {
-          gtag('event', 'page_view', { page_title: document.title, page_location: location.href });
-        });
-      };
-      
-      document.head.appendChild(gtagScript);
+
+        // 除外設定を解除する
+        if (analyticsMode === "on") {
+          localStorage.removeItem(analyticsOptOutKey);
+        }
+
+        // analytics=off または analytics=on をURLから消す
+        if (analyticsMode === "off" || analyticsMode === "on") {
+          params.delete("analytics");
+
+          const remainingQuery = params.toString();
+          const cleanUrl =
+            location.pathname +
+            (remainingQuery ? "?" + remainingQuery : "") +
+            location.hash;
+
+          history.replaceState(history.state, "", cleanUrl);
+        }
+
+        analyticsDisabled =
+          localStorage.getItem(analyticsOptOutKey) === "1";
+      } catch (error) {
+        console.warn(
+          "Analytics opt-out setting could not be read.",
+          error,
+        );
+      }
+
+      // 除外設定がない場合だけGoogle Analyticsを読み込む
+      if (!analyticsDisabled) {
+        const gtagScript = document.createElement("script");
+        gtagScript.src =
+          "https://www.googletagmanager.com/gtag/js?id=${tagId}";
+        gtagScript.defer = true;
+
+        gtagScript.onload = () => {
+          window.dataLayer = window.dataLayer || [];
+
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+
+          gtag("js", new Date());
+          gtag("config", "${tagId}", { send_page_view: false });
+          gtag("event", "page_view", {
+            page_title: document.title,
+            page_location: location.href,
+          });
+
+          document.addEventListener("nav", () => {
+            gtag("event", "page_view", {
+              page_title: document.title,
+              page_location: location.href,
+            });
+          });
+        };
+
+        document.head.appendChild(gtagScript);
+      }
     `)
+
   } else if (cfg.analytics?.provider === "plausible") {
     const plausibleHost = cfg.analytics.host ?? "https://plausible.io"
     componentResources.afterDOMLoaded.push(`
