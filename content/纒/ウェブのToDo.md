@@ -2,9 +2,28 @@
 draft: true
 ---
 ## ToDo
+- Image Captions は2～4段組みを可能にしたい。
+	- [ ] Obsidian のプラグインが作れるか？ → Image Grid を参考にするのがよさそう。
+	- [ ] Quartz はできそう。
+	- [ ] 実装をどうするか？段組み用パラメータを付加するか？
+
+
+```markdown
+```image-grid 3
+![[image01.jpg|キャプション1]]
+![[image02.jpg|キャプション2]]
+![[image03.jpg|キャプション3]]
+```
+
+- [ ] graph は utils 0.1.0 → 0.1.1 にするだけで日本語問題が解決するかも。
+- Minimal Theme を使い続けるか？
+	- [ ] Dragger と干渉する。
+	- [ ] 外観をデフォルトにする。
+	- [ ] CSSスニペットを自宅PCから持ってくる。
+		- [ ] 本文行間
+		- [ ] Image Captions
 - [x] マーメイドのテキストが、margin-bottom を小さくする。canvasと同様の設定にできないか？
 - [x] footer が寂しいよね。
-- [ ] graph は utils 0.1.0 → 0.1.1 にするだけで日本語問題が解決するかも。
 -  blog.hyodo-arch.com が google に"兵藤事務所" と認識されているようだ。
 	- [x] トップページの `canonical` を `/index` → `/`
 	- [x] `WebSite` JSON-LD をトップページに追加して、`name: "無聊写記"` を明示
@@ -15,12 +34,6 @@ draft: true
 	- [x] ノート名由来のURLを継続することに決定
 	- [x] permalink は、ノート名を変更する可能性がある場合に使う
 	- [x] title プロパティは廃止する。
-- Minimal Theme を使い続けるか？
-	- [ ] Dragger と干渉する。
-	- [ ] 外観をデフォルトにする。
-	- [ ] CSSスニペットを自宅PCから持ってくる。
-		- [ ] 本文行間
-		- [ ] Image Captions
 - [x] 404ページに「最近のノート」または「おすすめのノート」を載せる。
 - [x] Link カードプラグインのようにリスト表示させると華やかかも。
 - Explorer を使いやすく
