@@ -214,8 +214,8 @@
     "quartz-image-grid-captions": {
       "source": "github:hyodoarch/quartz-image-grid-captions",
       "resolved": "https://github.com/hyodoarch/quartz-image-grid-captions.git",
-      "commit": "0deb7f2150ea66624b2025116e9aa5a6aefe0857",
-      "installedAt": "2026-09-05T11:22:52.702Z"
+      "commit": "f28e6c97f6d4c545f4a6fd221ac32b086393af70",
+      "installedAt": "2026-09-05T12:19:56.206Z"
     },
     "quartz-themes": {
       "source": {
