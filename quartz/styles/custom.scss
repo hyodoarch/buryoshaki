@@ -1074,6 +1074,14 @@ body[data-slug="index"] {
 
     background: transparent;
 
+    text-align: left;
+  }
+
+  // Image Captions / Image Grid Captions 共通の文字組み
+  figure.image-captions-figure > figcaption.image-captions-caption,
+  .image-grid-captions
+    > figure.image-grid-captions__item
+    > figcaption.image-grid-captions__caption {
     font-size: 14px;
     line-height: 1.6;
     font-family:
@@ -1082,8 +1090,6 @@ body[data-slug="index"] {
       "Hiragino Kaku Gothic ProN",
       "Meiryo",
       sans-serif;
-
-    text-align: left;
   }
 
   // キャプション内のリンクも同じフォントにする
