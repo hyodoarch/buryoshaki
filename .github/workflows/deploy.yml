@@ -37,8 +37,6 @@ jobs:
           path: .quartz/plugins
           key: ${{ runner.os }}-plugins-${{ hashFiles('quartz.lock.json') }}
 
-      - name: Install Dependencies
-        run: npm ci
       - name: Install Quartz plugins
         run: |
           rm -rf .quartz/plugins/article-title
@@ -54,6 +52,27 @@ jobs:
           npx quartz plugin install --clean canvas-page
           
           npx quartz plugin install
+
+      - name: Patch Explorer scroll position
+        shell: bash
+        run: |
+          FILE=".quartz/plugins/explorer/src/components/scripts/explorer.inline.ts"
+
+          test -f "$FILE"
+
+          grep -F 'const explorer = document.querySelector(".explorer-ul");' "$FILE"
+          grep -F 'explorerUl.scrollTop = parseInt(scrollTop, 10);' "$FILE"
+
+          sed -i 's/const explorer = document.querySelector(".explorer-ul");/const explorer = document.querySelector(".sidebar.left");/' "$FILE"
+          sed -i 's/explorerUl.scrollTop = parseInt(scrollTop, 10);/document.querySelector(".sidebar.left").scrollTop = parseInt(scrollTop, 10);/' "$FILE"
+
+          grep -F 'const explorer = document.querySelector(".sidebar.left");' "$FILE"
+          grep -F 'document.querySelector(".sidebar.left").scrollTop = parseInt(scrollTop, 10);' "$FILE"
+
+          cd .quartz/plugins/explorer
+          npm install
+          npm run build
+
       - name: Build Quartz
         run: npx quartz build
  
