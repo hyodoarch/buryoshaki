@@ -357,6 +357,9 @@ plugins:
       enableCaptionMarkdown: true
       enableCaptionWikilinks: true
     order: 35
+  - source: ./plugins/quartz-image-grid-captions
+    enabled: true
+    order: 70
   - source: github:hyodoarch/quartz-auto-link-card-enhanced
     enabled: true
     options: {}

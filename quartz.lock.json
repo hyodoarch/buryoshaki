@@ -211,6 +211,12 @@
       "commit": "3b32f26264f0019b27802af19b1d6ee7488f238b",
       "installedAt": "2026-08-28T11:58:01.452Z"
     },
+    "quartz-image-grid-captions": {
+      "source": "./plugins/quartz-image-grid-captions",
+      "resolved": "./plugins/quartz-image-grid-captions",
+      "commit": "local",
+      "installedAt": "2026-09-05T00:35:57.151Z"
+    },
     "quartz-themes": {
       "source": {
         "name": "quartz-themes",
