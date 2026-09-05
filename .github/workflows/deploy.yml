@@ -61,32 +61,32 @@ jobs:
         run: |
           FILE=".quartz/plugins/explorer/src/components/scripts/explorer.inline.ts"
 
-          set -x
-
           if [ ! -f "$FILE" ]; then
             echo "::error::Explorer source file not found: $FILE"
-            find .quartz/plugins -type f -name 'explorer.inline.ts' -print
             exit 1
           fi
 
-          git -C .quartz/plugins/explorer rev-parse HEAD || true
-          grep -nE 'const explorer =|scrollTop|explorer-content' "$FILE" || true
+          OLD_SAVE='const explorer = document.querySelector(".explorer-ul");'
+          NEW_SAVE='const explorer = document.querySelector(".sidebar.left");'
+          OLD_RESTORE='explorerUl.scrollTop = parseInt(scrollTop, 10);'
+          NEW_RESTORE='document.querySelector(".sidebar.left").scrollTop = parseInt(scrollTop, 10);'
 
-          if ! grep -F 'const explorer = document.querySelector(".explorer-ul");' "$FILE"; then
-            echo "::error::Explorer save-scroll source does not match the patch"
+          if grep -Fq "$NEW_SAVE" "$FILE" &&
+             grep -Fq "$NEW_RESTORE" "$FILE"; then
+            echo "Explorer scroll patch already applied."
+          elif grep -Fq "$OLD_SAVE" "$FILE" &&
+               grep -Fq "$OLD_RESTORE" "$FILE"; then
+            sed -i 's/const explorer = document\.querySelector("\.explorer-ul");/const explorer = document.querySelector(".sidebar.left");/' "$FILE"
+            sed -i 's/explorerUl\.scrollTop = parseInt(scrollTop, 10);/document.querySelector(".sidebar.left").scrollTop = parseInt(scrollTop, 10);/' "$FILE"
+            echo "Explorer scroll patch applied."
+          else
+            echo "::error::Unexpected Explorer source; patch needs review."
+            grep -nE 'const explorer =|scrollTop' "$FILE" || true
             exit 1
           fi
 
-          if ! grep -F 'explorerUl.scrollTop = parseInt(scrollTop, 10);' "$FILE"; then
-            echo "::error::Explorer restore-scroll source does not match the patch"
-            exit 1
-          fi
-
-          sed -i 's/const explorer = document.querySelector(".explorer-ul");/const explorer = document.querySelector(".sidebar.left");/' "$FILE"
-          sed -i 's/explorerUl.scrollTop = parseInt(scrollTop, 10);/document.querySelector(".sidebar.left").scrollTop = parseInt(scrollTop, 10);/' "$FILE"
-
-          grep -F 'const explorer = document.querySelector(".sidebar.left");' "$FILE"
-          grep -F 'document.querySelector(".sidebar.left").scrollTop = parseInt(scrollTop, 10);' "$FILE"
+          grep -F "$NEW_SAVE" "$FILE"
+          grep -F "$NEW_RESTORE" "$FILE"
 
           cd .quartz/plugins/explorer
           npm install
