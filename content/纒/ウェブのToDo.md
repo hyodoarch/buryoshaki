@@ -3,9 +3,9 @@ draft: true
 ---
 ## ToDo
 - Image Captions は2～4段組みを可能にしたい。
-	- [ ] Obsidian のプラグインが作れるか？ → Image Grid を参考にするのがよさそう。
-	- [ ] Quartz はできそう。
-	- [ ] 実装をどうするか？段組み用パラメータを付加するか？
+	- [x] Obsidian のプラグインが作れるか？ → Image Grid を参考にするのがよさそう。
+	- [x] Quartz はできそう。
+	- [x] 実装をどうするか？段組み用パラメータを付加するか？
 
 
 ```markdown
