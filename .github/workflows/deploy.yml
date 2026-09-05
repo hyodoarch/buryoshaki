@@ -61,10 +61,26 @@ jobs:
         run: |
           FILE=".quartz/plugins/explorer/src/components/scripts/explorer.inline.ts"
 
-          test -f "$FILE"
+          set -x
 
-          grep -F 'const explorer = document.querySelector(".explorer-ul");' "$FILE"
-          grep -F 'explorerUl.scrollTop = parseInt(scrollTop, 10);' "$FILE"
+          if [ ! -f "$FILE" ]; then
+            echo "::error::Explorer source file not found: $FILE"
+            find .quartz/plugins -type f -name 'explorer.inline.ts' -print
+            exit 1
+          fi
+
+          git -C .quartz/plugins/explorer rev-parse HEAD || true
+          grep -nE 'const explorer =|scrollTop|explorer-content' "$FILE" || true
+
+          if ! grep -F 'const explorer = document.querySelector(".explorer-ul");' "$FILE"; then
+            echo "::error::Explorer save-scroll source does not match the patch"
+            exit 1
+          fi
+
+          if ! grep -F 'explorerUl.scrollTop = parseInt(scrollTop, 10);' "$FILE"; then
+            echo "::error::Explorer restore-scroll source does not match the patch"
+            exit 1
+          fi
 
           sed -i 's/const explorer = document.querySelector(".explorer-ul");/const explorer = document.querySelector(".sidebar.left");/' "$FILE"
           sed -i 's/explorerUl.scrollTop = parseInt(scrollTop, 10);/document.querySelector(".sidebar.left").scrollTop = parseInt(scrollTop, 10);/' "$FILE"
