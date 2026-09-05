@@ -212,10 +212,10 @@
       "installedAt": "2026-08-28T11:58:01.452Z"
     },
     "quartz-image-grid-captions": {
-      "source": "./plugins/quartz-image-grid-captions",
-      "resolved": "./plugins/quartz-image-grid-captions",
-      "commit": "local",
-      "installedAt": "2026-09-05T00:35:57.151Z"
+      "source": "github:hyodoarch/quartz-image-grid-captions",
+      "resolved": "https://github.com/hyodoarch/quartz-image-grid-captions.git",
+      "commit": "b1286935861d2ff6b43ab3eb7e2afe76185fa828",
+      "installedAt": "2026-09-05T02:28:24.426Z"
     },
     "quartz-themes": {
       "source": {

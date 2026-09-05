@@ -38,7 +38,7 @@ draft: true
 - [x] Link カードプラグインのようにリスト表示させると華やかかも。
 - Explorer を使いやすく
 	- [x] カレントノートの色を変える。
-	- [ ] カレントノートを開いたときにスクロールしないようにする。
+	- [x] カレントノートを開いたときにスクロールしないようにする。
 
 ## カテゴリー左にアイコンがあると良い。 ≫ 完了
 - VectorScript ≫ [Font Awesome](https://fontawesome.com/icons/classic/solid/code)
