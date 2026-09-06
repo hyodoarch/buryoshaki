@@ -40,6 +40,7 @@ Image Captions をインストールすると、標準の画像の埋め込み�
 実際の画像表示の例を示す。下記の例では、`![[Lotus.jpg|牛ヶ淵の蓮の花]]` と記述している。
 
 ![[Lotus.jpg|牛ヶ淵の蓮の花]]
+
 下記のように、センター配置で少し小さめに表示することもできる。`![[Lotus.jpg|牛ヶ淵の蓮の花（センター表示、幅：360px）|center|360]]` と記述している。
 
 ![[Lotus.jpg|牛ヶ淵の蓮の花（センター表示、幅：300px）|center|300]]
@@ -95,8 +96,7 @@ Image Captions をインストールすると、標準の画像の埋め込み�
 
 作成した `quartz-image-captions` は、GitHub で公開している。
 
-[Fetching Data#jvbg](https://github.com/hyodoarch/quartz-image-captions)
-
+[hyodoarch/quartz-image-captions: Image Captions compatibility plugin for Quartz 5](https://github.com/hyodoarch/quartz-image-captions)
 
 ## 設定方法
 

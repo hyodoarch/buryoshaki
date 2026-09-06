@@ -82,10 +82,9 @@ Image Captions をインストールすることにより、①キャプショ�
 
 ![[Image Captions.canvas]]
 
-作成した `quartz-image-captions` は、GitHub で公開している。
+作成した `quartz-image-captions` は、GitHub で公開している。ぜひ
 
-[Fetching Data#jvbg](https://github.com/hyodoarch/quartz-image-captions)
-
+[hyodoarch/quartz-image-captions: Image Captions compatibility plugin for Quartz 5](https://github.com/hyodoarch/quartz-image-captions)
 
 ## 設定方法
 

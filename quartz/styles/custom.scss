@@ -1833,6 +1833,49 @@ body[data-slug="index"] {
     height: auto;
   }
 
+  // 本文直下の通常画像だけ、.center の左右余白（各0.5rem）まで広げる。
+  // width 属性が数値の画像は、Obsidian側の明示幅を優先して従来どおりにする。
+  .page > #quartz-body > .center article > .markdown-preview-view {
+    > p > img:is(:not([width]), [width="auto"]),
+    > p > a:only-child > img:is(:not([width]), [width="auto"]) {
+      display: block;
+      width: calc(100% + 1rem);
+      max-width: calc(100% + 1rem);
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+    }
+
+    // Image Captions は figure 単位で広げ、caption は本文位置へ戻す。
+    > figure.image-captions-figure:has(> img:is(:not([width]), [width="auto"])) {
+      width: calc(100% + 1rem);
+      max-width: calc(100% + 1rem);
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+
+      > figcaption.image-captions-caption {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        box-sizing: border-box;
+      }
+    }
+
+    // Image Grid Captions は計算対象のコンテナごと広げる。
+    // 各captionの外側だけ0.5rem戻し、columns / gap / 画像比率には触れない。
+    // Canvas埋め込みを含む記事の本文幅復元ルールより、この4指定だけを優先する。
+    > .image-grid-captions {
+      width: calc(100% + 1rem) !important;
+      max-width: calc(100% + 1rem) !important;
+      margin-left: -0.5rem !important;
+      margin-right: -0.5rem !important;
+
+      > figure.image-grid-captions__item > figcaption.image-grid-captions__caption {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        box-sizing: border-box;
+      }
+    }
+  }
+
   .page > #quartz-body > .sidebar.right {
     display: none;
   }
