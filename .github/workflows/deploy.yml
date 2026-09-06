@@ -119,8 +119,6 @@ jobs:
           }
           NODE
 
-          npm run build
-
       # Temporary workaround for Quartz Graph local-graph issue with
       # Japanese / non-ASCII slugs.
       # Remove this step once upstream graph includes utils >= 0.1.1.
