@@ -163,7 +163,7 @@ plugins:
     layout:
       position: left
       priority: 30
-  - source: github:hyodoarch/graph-ja
+  - source: github:quartz-community/graph
     enabled: true
     options:
       localGraph:
@@ -198,7 +198,7 @@ plugins:
       position: right
       priority: 10
       display: desktop-only
-  - source: github:hyodoarch/graph-ja
+  - source: github:quartz-community/graph
     enabled: true
     options:
       localGraph:

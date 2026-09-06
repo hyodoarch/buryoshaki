@@ -92,6 +92,26 @@ jobs:
           npm install
           npm run build
 
+      # Temporary workaround for Quartz Graph local-graph issue with
+      # Japanese / non-ASCII slugs.
+      # Remove this step once upstream graph includes utils >= 0.1.1.
+      - name: Patch Graph for Japanese slugs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          cd .quartz/plugins/graph
+
+          npm install \
+            --no-save \
+            --package-lock=false \
+            @quartz-community/utils@0.1.1
+
+          echo "Installed @quartz-community/utils version:"
+          node -p "require('./node_modules/@quartz-community/utils/package.json').version"
+
+          npm run build
+
       - name: Build Quartz
         run: npx quartz build
  
