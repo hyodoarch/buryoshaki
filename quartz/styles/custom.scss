@@ -157,6 +157,7 @@ $mobile-explorer-search-left: 1.6rem;
 $mobile-explorer-search-right: 4.2rem;
 $mobile-explorer-list-top: 3.5rem;
 $mobile-menu-background: $surface-muted;
+$mobile-wide-table-min-width: 34rem;
 
 // =============================================================================
 // 2. Mixins
@@ -1812,6 +1813,13 @@ body[data-slug="index"] {
     max-width: none;
     min-width: 0;
     box-sizing: border-box;
+  }
+
+  // 4列以上の表は可読性を優先し、Quartz標準のtable-container内で横スクロールさせる
+  .page > #quartz-body > .center article
+    .table-container
+    > table:has(> thead > tr > :nth-child(4)) {
+    min-width: $mobile-wide-table-min-width;
   }
 
   article img {

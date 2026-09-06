@@ -40,19 +40,45 @@ Image Captions をインストールすると、標準の画像の埋め込み�
 実際の画像表示の例を示す。下記の例では、`![[Lotus.jpg|牛ヶ淵の蓮の花]]` と記述している。
 
 ![[Lotus.jpg|牛ヶ淵の蓮の花]]
+下記のように、センター配置で少し小さめに表示することもできる。`![[Lotus.jpg|牛ヶ淵の蓮の花（センター表示、幅：360px）|center|360]]` と記述している。
+
+![[Lotus.jpg|牛ヶ淵の蓮の花（センター表示、幅：300px）|center|300]]
+
 
 画像幅を調整すれば、2列横並びもできる。
 `![[Lotus.jpg|牛ヶ淵の蓮の花（左寄せ、幅：288px）|left|288]]![[Lotus.jpg|牛ヶ淵の蓮の花（右寄せ、幅：288px）|right|288]]` と記述している。
 
 ![[Lotus.jpg|牛ヶ淵の蓮の花（左寄せ、幅：288px）|left|288]]![[Lotus.jpg|牛ヶ淵の蓮の花（右寄せ、幅：288px）|right|288]]
 
+
+
+
+
+
+
+
+
+
 画像幅を調整すれば、3列横並びも大丈夫だ。
 
 ![[Lotus.jpg|牛ヶ淵の蓮の花|left|181]]![[Lotus.jpg|牛ヶ淵の蓮の花|left|181]]![[Lotus.jpg|牛ヶ淵の蓮の花|left|181]]
 
-下記のように、センター配置で少し小さめに表示することもできる。`![[Lotus.jpg|牛ヶ淵の蓮の花（センター表示、幅：360px）|center|360]]` と記述している。
 
-![[Lotus.jpg|牛ヶ淵の蓮の花（センター表示、幅：300px）|center|300]]
+
+
+
+
+
+> [!info]
+> 上記のような2段・3段の画像のみの段組みは、Obsidian コミュニティプラグイン "Image Grid" でもっときれいに実現できるのだが、キャプションは付けられない。
+> 
+> このノートを執筆しているときは、Image Grid の存在を知らなかったので、Image Captions を quartz5 へ移植で何とかなる、と思っていた。
+> 
+> しかしモバイル表示は思うようにならなかったため、新たに "Image Grid Captions"というObsidian プラグインを開発し、それに対応する "quartz-image-grid-capthons" も作った。これらについての仕様・解説は、今後ノートにする。リポジトリは下記を参照。
+> 
+> [hyodoarch/obsidian-image-grid-captions: Equal-height, uncropped image rows with individual captions for Obsidian and matching Quartz Markdown.](https://github.com/hyodoarch/obsidian-image-grid-captions)
+>
+ > [hyodoarch/quartz-image-grid-captions: Equal-height, uncropped image rows with Obsidian-compatible captions for Quartz v5.](https://github.com/hyodoarch/quartz-image-grid-captions)
 
 上記のように、Image Captions をインストールすることにより、①キャプションを付けることができ、②画像配置をコントロールする、といったことができる。画像幅は Obsidian 標準と同様に指定できる。
 

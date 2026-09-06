@@ -11,7 +11,7 @@ tags:
   - Quartz
 draft: false
 ---
-WordPress 運用だった「無聊写記」を Quartz 5 運用に移行してから、ひと月たった。
+WordPress 運用だった「無聊写記」を Quartz5 運用に移行してから、ひと月たった。
 
 ## Obsidian の Canvas を使ってみる
 

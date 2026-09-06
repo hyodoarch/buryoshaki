@@ -92,6 +92,35 @@ jobs:
           npm install
           npm run build
 
+      # Keep Graph labels gothic while the site body font remains serif.
+      - name: Use gothic font for Graph labels
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          cd .quartz/plugins/graph
+
+          node --input-type=module <<'NODE'
+          import fs from "node:fs"
+
+          const file = "src/components/scripts/graph.inline.ts"
+          const source = fs.readFileSync(file, "utf8")
+          const oldFont = "fontFamily: bodyFont,"
+          const gothicFont = `fontFamily: '"Noto Sans JP", "Yu Gothic", sans-serif',`
+
+          if (source.includes(gothicFont)) {
+            console.log("Graph gothic font patch already applied.")
+          } else if (source.includes(oldFont)) {
+            fs.writeFileSync(file, source.replace(oldFont, gothicFont))
+            console.log("Graph gothic font patch applied.")
+          } else {
+            console.error("::error::Unexpected Graph font source; patch needs review.")
+            process.exit(1)
+          }
+          NODE
+
+          npm run build
+
       # Temporary workaround for Quartz Graph local-graph issue with
       # Japanese / non-ASCII slugs.
       # Remove this step once upstream graph includes utils >= 0.1.1.
