@@ -1150,6 +1150,16 @@ body[data-slug="index"] {
     }
   }
 
+  .table-container
+    > table:has(> thead > tr > :nth-child(3)):not(
+      :has(> thead > tr > :nth-child(4))
+    ) {
+    th,
+    td {
+      min-width: 3em;
+    }
+  }
+
   strong,
   b {
     font-weight: 700;
