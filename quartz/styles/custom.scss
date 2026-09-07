@@ -1852,8 +1852,8 @@ body[data-slug="index"] {
     height: auto;
   }
 
-  // 本文直下の通常画像だけ、.center の左右余白（各0.5rem）まで広げる。
-  // width 属性が数値の画像は、Obsidian側の明示幅を優先して従来どおりにする。
+  // 本文直下の通常画像だけをモバイル用に調整する。
+  // width 属性が数値の画像は下の比率指定、幅指定なし画像は自然表示幅の2/3にする。
   .page > #quartz-body > .center article > .markdown-preview-view {
     // 通常画像とcaption系プラグインの画像だけ、モバイルでは角丸を解除する。
     > p > img,
@@ -1866,10 +1866,11 @@ body[data-slug="index"] {
     > p > img:is(:not([width]), [width="auto"]),
     > p > a:only-child > img:is(:not([width]), [width="auto"]) {
       display: block;
-      width: calc(100% + 1rem);
-      max-width: calc(100% + 1rem);
-      margin-left: -0.5rem;
-      margin-right: -0.5rem;
+      width: auto;
+      max-width: min($main-content-measure, calc(100% + 1.5rem));
+      margin-left: -0.75rem;
+      margin-right: -0.75rem;
+      zoom: math.div(2, 3);
     }
 
     // 数値幅は「指定幅 ÷ デスクトップ本文幅」の比率で縮小する。
