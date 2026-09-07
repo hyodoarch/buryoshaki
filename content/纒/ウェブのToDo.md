@@ -2,6 +2,8 @@
 draft: true
 ---
 ## ToDo
+- GitHub Actions を動かしたくない場合
+	- `[skip actions]`
 - 無聊写記　訂正事項
 	- [x] 画像の角丸め無し
 	- [x] モバイルの画像の幅をデスクトップの比率で表示
