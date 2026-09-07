@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:math";
 @use "./variables.scss" as *;
 
 // =============================================================================
@@ -79,6 +80,14 @@ $font-h3: 18px;
 $font-body: 16px;
 
 $main-content-measure: $font-body * 38; // 608px
+
+// モバイルでもデスクトップ本文幅（608px）に対する比率を維持する画像幅。
+// 数値幅を追加するときは、この一覧にも同じ値を追加する。
+$proportional-image-widths: 181, 200, 288, 300, 350, 360, 400, 405;
+
+// モバイルでは Image Grid Captions のgapをデスクトップ指定の2/3にする。
+$proportional-image-grid-gaps: 16, 18;
+$image-grid-column-counts: 2, 3;
 
 $font-table: 14px;
 $font-date: 14px;
@@ -1846,6 +1855,14 @@ body[data-slug="index"] {
   // 本文直下の通常画像だけ、.center の左右余白（各0.5rem）まで広げる。
   // width 属性が数値の画像は、Obsidian側の明示幅を優先して従来どおりにする。
   .page > #quartz-body > .center article > .markdown-preview-view {
+    // 通常画像とcaption系プラグインの画像だけ、モバイルでは角丸を解除する。
+    > p > img,
+    > p > a:only-child > img,
+    > figure.image-captions-figure > img,
+    > .image-grid-captions > figure.image-grid-captions__item > img.image-grid-captions__image {
+      border-radius: 0;
+    }
+
     > p > img:is(:not([width]), [width="auto"]),
     > p > a:only-child > img:is(:not([width]), [width="auto"]) {
       display: block;
@@ -1853,6 +1870,27 @@ body[data-slug="index"] {
       max-width: calc(100% + 1rem);
       margin-left: -0.5rem;
       margin-right: -0.5rem;
+    }
+
+    // 数値幅は「指定幅 ÷ デスクトップ本文幅」の比率で縮小する。
+    @each $specified-width in $proportional-image-widths {
+      $relative-width: math.percentage(math.div($specified-width * 1px, $main-content-measure));
+
+      > p > img[width="#{$specified-width}"],
+      > p > a:only-child > img[width="#{$specified-width}"] {
+        width: $relative-width;
+        max-width: $relative-width;
+      }
+
+      > figure.image-captions-figure:has(> img[width="#{$specified-width}"]) {
+        width: $relative-width;
+        max-width: $relative-width;
+
+        > img {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
     }
 
     // Image Captions は figure 単位で広げ、caption は本文位置へ戻す。
@@ -1870,13 +1908,33 @@ body[data-slug="index"] {
     }
 
     // Image Grid Captions は計算対象のコンテナごと広げる。
-    // 各captionの外側だけ0.5rem戻し、columns / gap / 画像比率には触れない。
+    // 各captionの外側だけ0.5rem戻し、columns / 画像比率には触れない。
     // Canvas埋め込みを含む記事の本文幅復元ルールより、この4指定だけを優先する。
     > .image-grid-captions {
       width: calc(100% + 1rem) !important;
       max-width: calc(100% + 1rem) !important;
       margin-left: -0.5rem !important;
       margin-right: -0.5rem !important;
+
+      // プラグインは元のgapで画像寸法を計算するため、縮小した差分を
+      // 計算対象幅へ足し、画像幅・等高配置・グリッドの左右端を維持する。
+      @each $desktop-gap in $proportional-image-grid-gaps {
+        $mobile-gap: math.div($desktop-gap * 2, 3) * 1px;
+        $gap-difference: $desktop-gap * 1px - $mobile-gap;
+
+        &[data-gap="#{$desktop-gap}"] {
+          gap: $mobile-gap !important;
+
+          @each $column-count in $image-grid-column-counts {
+            &[data-columns="#{$column-count}"] {
+              $layout-compensation: $gap-difference * ($column-count - 1);
+
+              width: calc(100% + 1rem + #{$layout-compensation}) !important;
+              max-width: calc(100% + 1rem + #{$layout-compensation}) !important;
+            }
+          }
+        }
+      }
 
       > figure.image-grid-captions__item > figcaption.image-grid-captions__caption {
         padding-left: 0.5rem;
