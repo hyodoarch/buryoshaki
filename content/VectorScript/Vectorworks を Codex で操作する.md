@@ -2,7 +2,7 @@
 subtitle: vssファイルをincludeさせることで Vectorworks でも AIプロンプトを実現
 description: vssファイルをincludeさせることで Vectorworks でも AIプロンプトを実現
 date: 2026-09-09
-draft: true
+draft: false
 tags:
   - Vectorworks
   - Codex
