@@ -1,33 +1,33 @@
 ---
-subtitle: vssファイルをincludeさせることで Vectorworks でも AIプロンプトを実現
-description: vssファイルをincludeさせることで Vectorworks でも AIプロンプトを実現
-date: 2026-09-09
+subtitle: vssファイルをincludeすることで Vectorworks でも疑似的な AIプロンプトを実現
+description: vssファイルをincludeすることで Vectorworks でも疑似的な AIプロンプトを実現
+date: 2026-09-08
 draft: false
 tags:
   - Vectorworks
   - Codex
 ---
-今、仕事で使っている VectorScript を VS Code の開発環境に移して、GitHub で管理するようにしているのですが、その時にこのノートのタイトルのことを思いつきました。
+今、仕事で使っている VectorScript を VS Code の開発環境に移して、GitHub で管理するようにしているのですが、その過程でこの方法を思いつきました。
 
 ### 設定
 
 1. Vectorworks で プラグインマネージャからメニュープラグイン `vs_AI` を作る。
    ※プラグインの名前は何でもいいです。
-2. スクリプトの内部は、下記のように記述する。
-   `{$INCLUDE c:\Users\`*username*`\vectorscript\vs_AI.vss}`
+2. スクリプトの内部を、下記のように記述する。
+   `{$INCLUDE c:\Users\<username>\vectorscript\vs_AI.vss}`
    ※パスは Codex がアクセスできる場所なら何でもいいです。
-3. Vectorworks の環境設定で、Script 開発者モードにチェックを入れておく。
-4. Vectorworks の画面設定で、先ほど作成した `vs_AI` を適当なメニューに登録する。
+3. Vectorworks の環境設定で、「スクリプトを開発者モードで実行」にチェックを入れておく。
+4. 「ツール ＞ 作業画面 ＞ 作業画面の編集」から、先ほど作成した `vs_AI` を適当なメニューに登録する。
 5. 下記の空ファイルを作成する。
-    `c:\Users\`*username*`\vectorscript\vs_AI.vss`
+    `c:\Users\<username>\vectorscript\vs_AI.vss`
 6. Codex で下記のフォルダアクセスを設定する。
-   `c:\Users\`*username*`\vectorscript`
+   `C:\Users\<username>\vectorscript`
 
 ### 使い方
 
 1. Codex に「やってもらいたいこと」を伝える。
-2. しばらくすると、Codex が`vs_AI.vss`に「やってもらいたいこと」をコードにして書き込んでくれる。
-3. メニューから `vs_AI` 実行する。
+2. しばらくすると、Codex が`vs_AI.vss`にその処理を行うための VectorScript を書き込む。
+3. Vectorworks のメニューから `vs_AI` 実行する。
 
 ### 仕組み
 
@@ -40,7 +40,7 @@ flowchart TD
 ```
 
 ### ChatGPT に調べてもらった他のCADとの比較表
-下表のような感じらしいです。
+2026年9月時点で ChatGPT に調べてもらったところ、概ね下表のような違いがあるようです。。
 
 | 比較項目          | AutoCAD 2027 | Archicad 29 | Vectorworks + Codex + VectorScript |
 | ------------- | ------------ | ----------- | ---------------------------------- |
@@ -53,7 +53,9 @@ flowchart TD
 | AIが処理自体をプログラム | 基本×          | 基本×         | **○ Codex**                        |
 | 自作機能を継続的に改良   | 限定的          | 限定的         | **○**                              |
 
-しかし、意外に「やってもらいたいこと」って無いんですよね。便利なプロンプトを思いつきましたら追記していきたいと思います。
+しかし、意外に「やってもらいたいこと」って無いんですよね。
+
+便利なプロンプトを思いつきましたら、ここに追記していきたいと思います。
 
 ```Codexプロンプト
 300×300mm の四角形を長さ 5100mm に隙間約100mmでx方向に割り付けて
