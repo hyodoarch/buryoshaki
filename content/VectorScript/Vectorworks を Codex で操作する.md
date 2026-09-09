@@ -96,6 +96,7 @@ gap: 16
 ![[date_correction-02.png|実行前]]
 ```
 
+自作プラグインのパラメータ操作までできるのは、正直スゴイです。
 
 ```image-grid-captions
 columns: 2
