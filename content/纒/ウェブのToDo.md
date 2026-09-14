@@ -5,6 +5,9 @@ draft: true
 - excalidraw の表示のための scss の変更
 	- 「元記事へのリンク」テキスト ≫ image-captions と同じゴシック体、文字サイズにする。
 	- 左側の引用バーを消す
+	- 幅をテキスト幅と合わせる。
+	- タイトルを canvas-pages の表示と合わせる。
+	- obsidian のテキストの書体のようにquartzも手書きフォントにする。
 - GitHub Actions を動かしたくない場合
 	- [skip actions]
 - 無聊写記　訂正事項

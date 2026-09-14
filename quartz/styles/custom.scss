@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "sass:math";
 @use "./variables.scss" as *;
+@use "./excalidraw-fonts.scss";
 
 // =============================================================================
 // custom.scss structure
@@ -1086,11 +1087,33 @@ body[data-slug="index"] {
     text-align: left;
   }
 
-  // Image Captions / Image Grid Captions 共通の文字組み
+  // Excalidraw 埋め込みを本文幅に揃え、タイトルは Canvas と同じサイズにする
+  blockquote.transclude:has(> article.excalidraw-page) {
+    @include main-content-width;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+    border-left: none;
+    color: var(--dark);
+
+    > h1 {
+      font-size: $font-list-title;
+    }
+
+    > article.excalidraw-page {
+      width: 100%;
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  // Image Captions / Image Grid Captions / Excalidraw 元記事リンク共通の文字組み
   figure.image-captions-figure > figcaption.image-captions-caption,
   .image-grid-captions
     > figure.image-grid-captions__item
-    > figcaption.image-grid-captions__caption {
+    > figcaption.image-grid-captions__caption,
+  blockquote.transclude:has(> article.excalidraw-page) > a.transclude-src {
     font-size: 14px;
     line-height: 1.6;
     font-family:
