@@ -2,6 +2,9 @@
 draft: true
 ---
 ## ToDo
+- excalidraw の表示のための scss の変更
+	- 「元記事へのリンク」テキスト ≫ image-captions と同じゴシック体、文字サイズにする。
+	- 左側の引用バーを消す
 - GitHub Actions を動かしたくない場合
 	- [skip actions]
 - 無聊写記　訂正事項
