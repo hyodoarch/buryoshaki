@@ -300,6 +300,19 @@ plugins:
       position: afterBody
       priority: 10
       condition: index-or-404
+  - source: github:hyodoarch/recent-notes
+    enabled: true
+    options:
+      title: 最近のノート
+      limit: 15
+      showTags: false
+      hideTagPages: true
+      hideFolderPages: true
+    layout:
+      position: right
+      priority: 60
+      display: desktop-only
+      condition: not-index-or-404
   - source: github:quartz-community/spacer
     enabled: false
     options: {}

@@ -11,6 +11,14 @@ registerCondition(
     props.fileData.slug === "404",
 )
 
+// index.md と 404 ページ以外に表示する条件
+registerCondition(
+  "not-index-or-404",
+  (props) =>
+    props.fileData.slug !== "index" &&
+    props.fileData.slug !== "404",
+)
+
 // Explorerの表示順を変更
 type ExplorerNode = {
   isFolder: boolean

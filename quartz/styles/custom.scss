@@ -906,13 +906,21 @@ body[data-slug="index"] {
   a.internal-link {
     display: block;
     width: 100%;
+    min-width: 0;
     box-sizing: border-box;
-    padding: 0 0.3rem;
 
-    font-size: 0.92rem;
-    line-height: 1.7;
+    // 1文字分字下げ
+    padding: 0 0 0 1em;
+
+    font-size: $font-body;
+    line-height: 1.8;
     font-weight: 400;
     color: $text-color;
+
+    // 長いタイトルは1行で省略
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     background: transparent;
     border-radius: $link-radius;
@@ -922,9 +930,13 @@ body[data-slug="index"] {
   a:hover,
   a.internal:hover,
   a.internal-link:hover {
-    color: $link-hover-color;
-    background: $link-hover-background;
+    background: var(--site-sidebar-hover-bg);
     text-decoration: none;
+  }
+
+  // カレントノート
+  a[aria-current="page"] {
+    color: var(--site-internal-link);
   }
 }
 
@@ -2395,6 +2407,99 @@ body[data-slug="404"] {
       order: 3;
       margin-top: 1rem;
     }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 右サイドバー Recent Notes
+// -----------------------------------------------------------------------------
+
+.page > #quartz-body > .sidebar.right .recent-notes {
+  > ul.recent-ul {
+    margin-top: 0.5rem;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .recent-li {
+    margin: 0.12rem 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  // subtitle・日付・タグを非表示
+  .section-subtitle,
+  .section > .meta,
+  .section > .tags {
+    display: none;
+  }
+
+  .section,
+  .desc,
+  .desc > h3 {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .desc > h3 {
+    margin: 0;
+    padding: 0;
+
+    font-size: $font-body;
+    line-height: 1.8;
+    font-weight: 400;
+  }
+
+  // 通常のノートタイトル
+  .desc > h3 > a,
+  .desc > h3 > a.internal,
+  .desc > h3 > a:link,
+  .desc > h3 > a:visited {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    // 1文字分字下げ
+    padding-left: 1em;
+
+    // 1行表示・長い場合は省略
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: $font-body;
+    line-height: 1.8;
+    font-weight: 400;
+
+    color: var(--site-explorer-note);
+    background: transparent;
+    border-radius: $link-radius;
+    text-decoration: none;
+  }
+
+  // hover
+  .desc > h3 > a:hover,
+  .desc > h3 > a.internal:hover {
+    color: var(--site-explorer-note);
+    background: var(--site-sidebar-hover-bg);
+    text-decoration: none;
+  }
+
+  // カレントノート
+  .desc > h3 > a[aria-current="page"],
+  .desc > h3 > a.internal[aria-current="page"],
+  .desc > h3 > a[aria-current="page"]:link,
+  .desc > h3 > a[aria-current="page"]:visited {
+    color: var(--site-internal-link);
+  }
+
+  // カレントノートは hover 時も緑
+  .desc > h3 > a[aria-current="page"]:hover,
+  .desc > h3 > a.internal[aria-current="page"]:hover {
+    color: var(--site-internal-link);
+    background: var(--site-sidebar-hover-bg);
   }
 }
 

@@ -237,8 +237,8 @@
     "recent-notes": {
       "source": "github:hyodoarch/recent-notes",
       "resolved": "https://github.com/hyodoarch/recent-notes.git",
-      "commit": "8154c7e6886b0f353065fd993ddefcea42ff554d",
-      "installedAt": "2026-08-15T09:13:42.519Z"
+      "commit": "66551c67927bd16ec2f205bd75b72c2eae5335ca",
+      "installedAt": "2026-09-15T05:59:34.089Z"
     },
     "remove-draft": {
       "source": "github:quartz-community/remove-draft",
