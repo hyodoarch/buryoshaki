@@ -32,7 +32,7 @@ wordpress_id: 979
 どれも初めて知る名前のアプリケーションばかりだった。ファイルマネージャは、現在ではあまり注目されない分野かもしれない。しかしマニアックで機能豊富なソフトウェアが多いことも分かった。
 上記のリストのファイルマネージャをいくつか使ってみた。最終的に、海外のシェアウェアだが一番歴史が古い、Total Commander を使うことにした。決め手は、
 
-- [日本語化キット](http://www.ghisler.com/languages.htm)、[日本語チュートリアル](http://www.ghisler.com/tutorials_jp/beginners.htm)が用意されている
+- [日本語化キット](https://www.ghisler.com/languages.htm)、[日本語チュートリアル](http://www.ghisler.com/tutorials_jp/beginners.htm)が用意されている
 - カスタマイズの自由度
 - プラグインが豊富
 
