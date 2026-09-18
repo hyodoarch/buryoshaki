@@ -40,6 +40,7 @@ Quartz の canvas-page の無聊写記の表示について下記を調べてく
 
 
 ## フォーク後のリビルド
+> 以下は名称変更前の作業記録です。現在の名称・移行手順は [quartz-advanced-canvas-pages](https://github.com/hyodoarch/quartz-advanced-canvas-pages) を参照してください。
 ### 今回だけ行う作業
 まず現在の `canvas-page` を削除します。
 ```

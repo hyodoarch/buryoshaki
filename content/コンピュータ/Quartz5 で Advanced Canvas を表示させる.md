@@ -72,7 +72,7 @@ Advanced Canvas の設定は `.canvas` ファイル内の `styleAttributes` と�
 Quartz Community の `canvas-page` をフォークして使用している。
 
 - オリジナル：[Quartz Community / canvas-page](https://github.com/quartz-community/canvas-page)    
-- カスタマイズ版：[hyodoarch / canvas-page](https://github.com/hyodoarch/canvas-page)    
+- カスタマイズ版：[hyodoarch / quartz-advanced-canvas-pages](https://github.com/hyodoarch/quartz-advanced-canvas-pages)
 
 よろしければ、お試しください。
 インストール方法、設定方法については、README.md をお読みください。

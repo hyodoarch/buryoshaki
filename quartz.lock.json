@@ -31,12 +31,6 @@
       "commit": "4d283d8704fc7c6afb23e88524eda97316df889d",
       "installedAt": "2026-08-15T09:13:41.781Z"
     },
-    "canvas-page": {
-      "source": "github:hyodoarch/canvas-page",
-      "resolved": "https://github.com/hyodoarch/canvas-page.git",
-      "commit": "bbbda0de33c3309dede5b035ffa3c49999aa0fe2",
-      "installedAt": "2026-08-29T14:10:19.551Z"
-    },
     "citations": {
       "source": "github:quartz-community/citations",
       "resolved": "https://github.com/quartz-community/citations.git",
@@ -198,6 +192,12 @@
       "resolved": "https://github.com/quartz-community/page-title.git",
       "commit": "a2e035fd9a99fc07197c6627bb21d08c57038fc6",
       "installedAt": "2026-08-15T09:13:41.694Z"
+    },
+    "quartz-advanced-canvas-pages": {
+      "source": "github:hyodoarch/quartz-advanced-canvas-pages",
+      "resolved": "https://github.com/hyodoarch/quartz-advanced-canvas-pages.git",
+      "commit": "c3ade303e847abb1b5eca6315542d58f5f819eb6",
+      "installedAt": "2026-09-18T11:53:08.764Z"
     },
     "quartz-auto-link-card-enhanced": {
       "source": "github:hyodoarch/quartz-auto-link-card-enhanced",
