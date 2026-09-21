@@ -1354,9 +1354,17 @@ body[data-slug="index"] {
     // Callout・埋め込みとその内部は従来の表示を維持し、通常引用だけを調整する。
     &:not(.callout):not(.transclude):not(:where(.callout *, .transclude *)) {
       margin: 2em 0;
-      padding: 0.15em 0 0.15em 24px;
+      padding: 6px 12px;
       border-left: 0;
-      background: linear-gradient(to right, rgba(8, 113, 68, 0.35), transparent 24px);
+      border-radius: 6px;
+      background: linear-gradient(
+        to right,
+        rgba(8, 113, 68, 0.2) 0,
+        rgba(8, 113, 68, 0.15) 12px,
+        rgba(8, 113, 68, 0.05) 50%,
+        rgba(8, 113, 68, 0.15) calc(100% - 12px),
+        rgba(8, 113, 68, 0.2) 100%
+      );
       color: #000000;
 
       p:not(:where(.callout *, .transclude *)),
