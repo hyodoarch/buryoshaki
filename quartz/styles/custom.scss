@@ -1108,24 +1108,81 @@ body[data-slug="index"] {
     border-left: none;
     color: var(--dark);
 
+    // タイトルと図を別の行にし、元記事リンクを図の右上に重ねる。
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+
     > h1 {
+      grid-column: 1;
+      grid-row: 1;
       font-size: $font-list-title;
     }
 
     > article.excalidraw-page {
+      grid-column: 1;
+      grid-row: 2;
+      min-width: 0;
       width: 100%;
       max-width: none;
       margin-left: 0;
       margin-right: 0;
     }
+
+    > a.transclude-src {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: start;
+      justify-self: end;
+      position: relative;
+      z-index: 11;
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      margin: 12px;
+      padding: 0;
+      border: 1px solid var(--lightgray);
+      border-radius: 6px;
+      background: var(--light);
+      color: var(--darkgray);
+      text-decoration: none;
+
+      // 元のリンク文字列を残し、見た目だけCanvasと同じ矢印にする。
+      font-size: 0;
+      line-height: 0;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 7px;
+        background-color: currentColor;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M7 7h10v10'/%3E%3C/svg%3E") center / contain no-repeat;
+        pointer-events: none;
+      }
+
+      &:link,
+      &:visited,
+      &:active {
+        color: var(--darkgray);
+      }
+
+      &:hover {
+        color: var(--darkgray);
+        background: var(--lightgray);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--secondary);
+        outline-offset: 2px;
+      }
+    }
   }
 
-  // Image Captions / Image Grid Captions / Excalidraw 元記事リンク共通の文字組み
+  // Image Captions / Image Grid Captions 共通の文字組み
   figure.image-captions-figure > figcaption.image-captions-caption,
   .image-grid-captions
     > figure.image-grid-captions__item
-    > figcaption.image-grid-captions__caption,
-  blockquote.transclude:has(> article.excalidraw-page) > a.transclude-src {
+    > figcaption.image-grid-captions__caption {
     font-size: 14px;
     line-height: 1.6;
     font-family:
@@ -1504,6 +1561,92 @@ body[data-slug="index"] {
             padding: 0;
           }
         }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Excalidraw standalone page
+// ---------------------------------------------------------------------------
+
+// ページスクロールではなく、既存のパン・ズームで図を操作する。
+html:has(.page[data-frame="excalidraw"]),
+body:has(.page[data-frame="excalidraw"]) {
+  overflow: hidden;
+}
+
+.page[data-frame="excalidraw"] {
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+
+  > #quartz-body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-areas: "grid-center";
+    gap: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    > .center.excalidraw-frame {
+      width: 100%;
+      max-width: none;
+      min-width: 0;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+
+      > .excalidraw-stage {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+
+        // 本文用の608px制限を解除し、表示領域を画面全体に広げる。
+        > article.excalidraw-page {
+          width: 100%;
+          max-width: none;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+
+          > .excalidraw-container {
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // 既存ボタンと動作を使い、Canvas同様に右上へ縦並びで配置する。
+  .excalidraw-controls {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    bottom: auto;
+    z-index: 25;
+    flex-direction: column;
+    gap: 4px;
+
+    > button {
+      width: 32px;
+      height: 32px;
+
+      &:focus-visible {
+        outline: 2px solid var(--secondary);
+        outline-offset: 2px;
       }
     }
   }
