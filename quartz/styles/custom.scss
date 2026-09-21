@@ -1284,6 +1284,29 @@ body[data-slug="index"] {
     border-left: 3px solid $blockquote-border;
 
     color: var(--site-blockquote-text);
+
+    &.callout {
+      border-left: 1px solid var(--border);
+
+      // 本文段落の下余白（1.9em）をCallout見出しには適用しない。
+      > .callout-title > .callout-title-inner > p {
+        margin-bottom: 0;
+      }
+    }
+
+    // Callout・埋め込みとその内部は従来の表示を維持し、通常引用だけを調整する。
+    &:not(.callout):not(.transclude):not(:where(.callout *, .transclude *)) {
+      margin: 2em 0;
+      padding: 0.15em 0 0.15em 24px;
+      border-left: 0;
+      background: linear-gradient(to right, rgba(8, 113, 68, 0.35), transparent 24px);
+      color: #000000;
+
+      p:not(:where(.callout *, .transclude *)),
+      li:not(:where(.callout *, .transclude *)) {
+        color: #000000;
+      }
+    }
   }
 
   blockquote p,
