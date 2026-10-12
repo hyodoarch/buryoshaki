@@ -1,6 +1,14 @@
 ---
 draft: true
 ---
+## アクセス除外
+| 操作        | リンク                                                      | QRコード                      |
+| --------- | -------------------------------------------------------- | -------------------------- |
+| アクセスを除外する | [除外設定を保存](https://blog.hyodo-arch.com/?analytics=off)    | ![[Analytics_Exclude.png]] |
+| 設定を確認する   | [除外状態を確認](https://blog.hyodo-arch.com/?analytics=status) | ![[Analytics_Confirm.png]] |
+| 除外を解除する   | [除外設定を解除](https://blog.hyodo-arch.com/?analytics=on)     | ![[Analytics_Exclude.png]] |
+
+
 ## ToDo
 - 引用
 	- [x] テキストを濃く、引用バーに工夫

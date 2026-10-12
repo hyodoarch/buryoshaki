@@ -97,12 +97,13 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
     const tagId = cfg.analytics.tagId
     componentResources.afterDOMLoaded.push(`
       const analyticsOptOutKey = "buryoshaki-analytics-optout";
-      let analyticsDisabled = false;
+      const params = new URLSearchParams(location.search);
+      const analyticsMode = params.get("analytics");
+      const isAnalyticsAction = ["off", "on", "status"].includes(analyticsMode);
+      let analyticsDisabled = analyticsMode === "off";
+      let settingAvailable = true;
 
       try {
-        const params = new URLSearchParams(location.search);
-        const analyticsMode = params.get("analytics");
-
         // このブラウザをアクセス解析から除外する
         if (analyticsMode === "off") {
           localStorage.setItem(analyticsOptOutKey, "1");
@@ -113,8 +114,17 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
           localStorage.removeItem(analyticsOptOutKey);
         }
 
-        // analytics=off または analytics=on をURLから消す
-        if (analyticsMode === "off" || analyticsMode === "on") {
+        analyticsDisabled =
+          localStorage.getItem(analyticsOptOutKey) === "1";
+      } catch (error) {
+        settingAvailable = false;
+        analyticsDisabled = true;
+        console.warn("Analytics opt-out setting could not be saved or read.", error);
+      }
+
+      if (isAnalyticsAction) {
+        // 操作後は他のクエリとハッシュを残して操作パラメータだけを消す
+        try {
           params.delete("analytics");
 
           const remainingQuery = params.toString();
@@ -124,16 +134,30 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
             location.hash;
 
           history.replaceState(history.state, "", cleanUrl);
+        } catch (error) {
+          console.warn("Analytics action URL could not be cleared.", error);
         }
 
-        analyticsDisabled =
-          localStorage.getItem(analyticsOptOutKey) === "1";
-      } catch (error) {
-        console.warn(
-          "Analytics opt-out setting could not be read.",
-          error,
+        const message = !settingAvailable
+          ? "除外設定を保存・確認できませんでした。ブラウザのストレージ設定を確認してください。このページでは計測を停止しています。"
+          : analyticsMode === "off"
+            ? "除外設定を保存しました。このブラウザのアクセスは計測しません。"
+            : analyticsMode === "on"
+              ? "除外設定を解除しました。このブラウザは計測対象です。"
+              : analyticsDisabled
+                ? "現在、このブラウザのアクセスは除外されています。"
+                : "現在、このブラウザは計測対象です（除外設定なし）。";
+        window.alert(
+          "無聊写記：アクセス除外\\n\\n" + message +
+          "\\n\\n設定は端末・ブラウザごとに必要です。ブラウザのサイトデータを削除すると設定も消えます。",
         );
       }
+
+      // SPA遷移でも操作を通常のページ読み込みで実行する
+      document.addEventListener("nav", () => {
+        const mode = new URLSearchParams(location.search).get("analytics");
+        if (["off", "on", "status"].includes(mode)) location.reload();
+      });
 
       // 除外設定がない場合だけGoogle Analyticsを読み込む
       if (!analyticsDisabled) {
@@ -157,6 +181,7 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
           });
 
           document.addEventListener("nav", () => {
+            if (["off", "on", "status"].includes(new URLSearchParams(location.search).get("analytics"))) return;
             gtag("event", "page_view", {
               page_title: document.title,
               page_location: location.href,
