@@ -1,0 +1,23 @@
+{
+  "name": "buryoshaki-article-end-ad",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./components": "./index.js"
+  },
+  "quartz": {
+    "name": "article-end-ad",
+    "displayName": "Article end AdSense",
+    "category": "component",
+    "quartzVersion": ">=5.0.0",
+    "components": {
+      "ArticleEndAd": {
+        "displayName": "Article end AdSense",
+        "defaultPosition": "afterBody",
+        "defaultPriority": 5
+      }
+    }
+  }
+}

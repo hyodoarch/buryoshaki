@@ -1,0 +1,18 @@
+.article-end-ad {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 336px;
+  margin: 4rem auto;
+  padding: 0;
+  /* No fixed height, aspect ratio, clipping, or overrides of Google's iframe. */
+}
+
+.article-end-ad__label {
+  margin-bottom: 0.75rem;
+  color: var(--darkgray);
+  font-family: var(--bodyFont);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+}
